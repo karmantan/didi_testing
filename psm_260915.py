@@ -5579,6 +5579,130 @@ def _save_figure(fig: plt.Figure, base_path: str | Path) -> dict[str, str]:
     plt.close(fig)
     return {"png": str(png), "pdf": str(pdf)}
 
+def _plot_point_estimates_with_intervals(
+    ax: plt.Axes,
+    estimate: np.ndarray,
+    ci_low: np.ndarray,
+    ci_high: np.ndarray,
+    positions: np.ndarray,
+    orientation: str = "x",
+    marker: str = "o",
+    capsize: float = 4.0,
+    color: str | None = None,
+    connect: bool = False,
+    linewidth: float = 1.5,
+    zorder: float = 2.0,
+) -> dict[str, object]:
+    """Draw point estimates and their confidence intervals as two independent
+    graphical elements, instead of via ``Axes.errorbar(..., xerr=...)`` /
+    ``yerr=...``.
+
+    Why this exists: ``errorbar`` computes bar half-lengths as
+    ``estimate - ci_low`` and ``ci_high - estimate`` and raises
+    ``ValueError: 'xerr'/'yerr' must not contain negative values`` if either
+    is negative. A percentile-bootstrap confidence interval is not
+    guaranteed to contain the point estimate that produced it -- that is a
+    valid statistical outcome (e.g. a skewed bootstrap distribution, or a
+    point estimate near a boundary of the estimand), not bad input, so it
+    must never be clipped, reordered, or otherwise forced to "fit" the
+    errorbar API.
+
+    This helper sidesteps the constraint entirely: it draws the interval as
+    a line segment directly between the recorded ``ci_low`` and ``ci_high``
+    endpoints (never as a +/- offset from the point estimate), and draws the
+    point estimate as a separate marker at its own recorded value. The two
+    share only a position and a color. A point that lies above, below,
+    inside, or exactly on its interval all render correctly, with the point
+    visibly outside the interval line when that is what the data show.
+
+    Parameters mirror the pieces of an ``errorbar`` call being replaced:
+    ``orientation="x"`` means the interval runs along the x-axis at a fixed
+    y ``positions`` value (replacing ``xerr``); ``orientation="y"`` means the
+    interval runs along the y-axis at a fixed x ``positions`` value
+    (replacing ``yerr``). ``connect=True`` additionally draws a line through
+    the point estimates in position order (replacing the implicit
+    connecting line ``errorbar`` draws when a ``marker`` is requested without
+    an explicit ``fmt``).
+    """
+    estimate = np.asarray(estimate, dtype=float)
+    ci_low = np.asarray(ci_low, dtype=float)
+    ci_high = np.asarray(ci_high, dtype=float)
+    positions = np.asarray(positions, dtype=float)
+    n = len(estimate)
+    if not (len(ci_low) == len(ci_high) == len(positions) == n):
+        raise ValueError(
+            "estimate, ci_low, ci_high, and positions must all have the same "
+            f"length (got {n}, {len(ci_low)}, {len(ci_high)}, {len(positions)})."
+        )
+    if orientation not in ("x", "y"):
+        raise ValueError(f"orientation must be 'x' or 'y', got {orientation!r}")
+    if color is None:
+        # Pull the next color from the axes' property cycle via a no-op,
+        # empty artist (public API), so this series gets the same automatic
+        # color an equivalent errorbar()/plot() call would have used.
+        (probe,) = ax.plot([], [])
+        color = probe.get_color()
+        probe.remove()
+    interval_lines: list[plt.Line2D] = []
+    cap_lines: list[plt.Line2D] = []
+    for pos, lo, hi in zip(positions, ci_low, ci_high):
+        if orientation == "x":
+            (segment,) = ax.plot(
+                [lo, hi], [pos, pos], linestyle="-", linewidth=linewidth,
+                color=color, zorder=zorder,
+            )
+        else:
+            (segment,) = ax.plot(
+                [pos, pos], [lo, hi], linestyle="-", linewidth=linewidth,
+                color=color, zorder=zorder,
+            )
+        interval_lines.append(segment)
+        if capsize:
+            cap_marker = "|" if orientation == "x" else "_"
+            if orientation == "x":
+                (cap,) = ax.plot(
+                    [lo, hi], [pos, pos], marker=cap_marker,
+                    markersize=2.0 * capsize, linestyle="None",
+                    color=color, zorder=zorder,
+                )
+            else:
+                (cap,) = ax.plot(
+                    [pos, pos], [lo, hi], marker=cap_marker,
+                    markersize=2.0 * capsize, linestyle="None",
+                    color=color, zorder=zorder,
+                )
+            cap_lines.append(cap)
+    connect_line = None
+    if connect:
+        order = np.argsort(positions)
+        if orientation == "x":
+            (connect_line,) = ax.plot(
+                estimate[order], positions[order], linestyle="-",
+                linewidth=linewidth, color=color, zorder=zorder,
+            )
+        else:
+            (connect_line,) = ax.plot(
+                positions[order], estimate[order], linestyle="-",
+                linewidth=linewidth, color=color, zorder=zorder,
+            )
+    if orientation == "x":
+        (point,) = ax.plot(
+            estimate, positions, marker=marker, linestyle="None",
+            color=color, zorder=zorder + 1,
+        )
+    else:
+        (point,) = ax.plot(
+            positions, estimate, marker=marker, linestyle="None",
+            color=color, zorder=zorder + 1,
+        )
+    return {
+        "color": color,
+        "interval_lines": interval_lines,
+        "cap_lines": cap_lines,
+        "connect_line": connect_line,
+        "point": point,
+    }
+
 def plot_balance_love(
     balance_detail_path: str | Path,
     output_base: str | Path,
@@ -5900,10 +6024,13 @@ def plot_pretrend_battery(
     axes = np.atleast_1d(axes).ravel()
     for ax, (key, result) in zip(axes, pretrends.items()):
         data = pl.read_csv(result["estimates_path"]).sort("event_time").to_pandas()
-        ax.errorbar(
-            data["event_time"], data["estimate"],
-            yerr=[data["estimate"] - data["ci_low"], data["ci_high"] - data["estimate"]],
-            marker="o", capsize=3,
+        _plot_point_estimates_with_intervals(
+            ax,
+            estimate=data["estimate"].to_numpy(dtype=float),
+            ci_low=data["ci_low"].to_numpy(dtype=float),
+            ci_high=data["ci_high"].to_numpy(dtype=float),
+            positions=data["event_time"].to_numpy(dtype=float),
+            orientation="y", marker="o", capsize=3, connect=True,
         )
         ax.axhline(0, linewidth=1)
         ax.axvline(-0.5, linestyle="--", linewidth=1)
@@ -5933,7 +6060,10 @@ def plot_lag_comparison(
         estimate = part["risk_difference_per_1000"].to_numpy(float)
         low = part["risk_difference_per_1000_ci_low"].to_numpy(float)
         high = part["risk_difference_per_1000_ci_high"].to_numpy(float)
-        ax.errorbar(estimate, y, xerr=[estimate - low, high - estimate], fmt="o", capsize=4)
+        _plot_point_estimates_with_intervals(
+            ax, estimate=estimate, ci_low=low, ci_high=high, positions=y,
+            orientation="x", marker="o", capsize=4,
+        )
         ax.axvline(0, linewidth=1)
         ax.set_yticks(y)
         ax.set_yticklabels(part["specification_label"].tolist())
@@ -5961,7 +6091,10 @@ def plot_longitudinal_mediation_decomposition(
     if all(key in intervals for key, _ in keys):
         low = np.array([intervals[key]["ci_low"] * 1000 for key, _ in keys], dtype=float)
         high = np.array([intervals[key]["ci_high"] * 1000 for key, _ in keys], dtype=float)
-        ax.errorbar(estimates, y, xerr=[estimates - low, high - estimates], fmt="o", capsize=4)
+        _plot_point_estimates_with_intervals(
+            ax, estimate=estimates, ci_low=low, ci_high=high, positions=y,
+            orientation="x", marker="o", capsize=4,
+        )
     else:
         ax.plot(estimates, y, "o")
     ax.axvline(0, linewidth=1)
