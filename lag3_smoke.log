@@ -1,0 +1,44 @@
+Matplotlib created a temporary cache directory at /var/folders/h7/715ltv4n5ks00800sfsq3h4r0000gn/T/matplotlib-vzy92rcz because the default path (/Users/tankarman/.matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+2026-09-15 09:18:52,174 [INFO] psm_260915: Relabelling rehabilitation diagnosis codes in /Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/epc2026/lag3_smoke_panel/analysis_panel.parquet: {'msk_diagnosis_codes': [20], 'mental_health_diagnosis_codes': [30]} -> {'msk_diagnosis_codes': [20, 53, 56], 'mental_health_diagnosis_codes': [30]} (previous definition assumed from the pre-260914 script)
+2026-09-15 09:18:59,004 [INFO] psm_260915: Relabelled analysis panel in 7s: MSK starts 2,956 -> 2,956, mental-health starts 4,915 -> 4,915
+2026-09-15 09:18:59,035 [INFO] psm_260915: [harness timing] relabel_panel_rehab_codes 7.095 s
+2026-09-15 09:18:59,055 [INFO] psm_260915: Building lag-3 risk sets from 741,774 panel rows in 1 person-hash partition(s)
+/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/epc2026/psm_260915.py:2188: PerformanceWarning: Determining the column names of a LazyFrame requires resolving its schema, which is a potentially expensive operation. Use `LazyFrame.collect_schema().names()` to get the column names without this warning.
+  schema = set(panel.columns)
+2026-09-15 09:19:26,905 [INFO] psm_260915:   risk-set partition 1/1: 429 treated, 322,874 control person-years
+2026-09-15 09:19:27,039 [INFO] psm_260915: [harness timing] build_risk_sets 27.997 s
+2026-09-15 09:19:27,177 [INFO] psm_260915: Partitioned treated risk set (429 rows) into 5 treatment-year files under /Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/epc2026/lag3_scale_test_out/synthetic_20pct_smoke__lag3_common_2014_2018/_matching_temp/risk_sets_by_year
+2026-09-15 09:19:29,042 [INFO] psm_260915: Partitioned controls risk set (322,874 rows) into 5 treatment-year files under /Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/epc2026/lag3_scale_test_out/synthetic_20pct_smoke__lag3_common_2014_2018/_matching_temp/risk_sets_by_year
+2026-09-15 09:19:29,380 [INFO] psm_260915: Year 2014: fitting propensity model on 65,780 rows (90 treated, 65,690 sampled controls; 65,690 total eligible controls)
+2026-09-15 09:20:32,819 [INFO] psm_260915: Year 2014: propensity model converged with solver=lbfgs in 293 iterations (max_iter=1000000, tol=0.0001)
+2026-09-15 09:20:34,030 [INFO] psm_260915: Year 2014: scored 65,780 rows (90 treated + 65,690 controls)
+2026-09-15 09:20:36,804 [INFO] psm_260915: Year 2014: matched 90 of 90 treated (checkpoint written)
+2026-09-15 09:20:37,320 [INFO] psm_260915: Year 2015: fitting propensity model on 65,233 rows (107 treated, 65,126 sampled controls; 65,126 total eligible controls)
+2026-09-15 09:21:44,187 [INFO] psm_260915: Year 2015: propensity model converged with solver=lbfgs in 241 iterations (max_iter=1000000, tol=0.0001)
+2026-09-15 09:21:45,194 [INFO] psm_260915: Year 2015: scored 65,233 rows (107 treated + 65,126 controls)
+2026-09-15 09:21:46,664 [INFO] psm_260915: Year 2015: matched 107 of 107 treated (checkpoint written)
+2026-09-15 09:21:46,885 [INFO] psm_260915: Year 2016: fitting propensity model on 64,638 rows (102 treated, 64,536 sampled controls; 64,536 total eligible controls)
+2026-09-15 09:22:38,765 [INFO] psm_260915: Year 2016: propensity model converged with solver=lbfgs in 224 iterations (max_iter=1000000, tol=0.0001)
+2026-09-15 09:22:39,823 [INFO] psm_260915: Year 2016: scored 64,638 rows (102 treated + 64,536 controls)
+2026-09-15 09:22:40,885 [INFO] psm_260915: Year 2016: matched 97 of 102 treated (checkpoint written)
+2026-09-15 09:22:41,115 [INFO] psm_260915: Year 2017: fitting propensity model on 64,090 rows (70 treated, 64,020 sampled controls; 64,020 total eligible controls)
+2026-09-15 09:23:50,218 [INFO] psm_260915: Year 2017: propensity model converged with solver=lbfgs in 248 iterations (max_iter=1000000, tol=0.0001)
+2026-09-15 09:23:51,329 [INFO] psm_260915: Year 2017: scored 64,090 rows (70 treated + 64,020 controls)
+2026-09-15 09:23:53,797 [INFO] psm_260915: Year 2017: matched 67 of 70 treated (checkpoint written)
+2026-09-15 09:23:54,128 [INFO] psm_260915: Year 2018: fitting propensity model on 63,562 rows (60 treated, 63,502 sampled controls; 63,502 total eligible controls)
+2026-09-15 09:24:36,106 [INFO] psm_260915: Year 2018: propensity model converged with solver=lbfgs in 177 iterations (max_iter=1000000, tol=0.0001)
+2026-09-15 09:24:37,380 [INFO] psm_260915: Year 2018: scored 63,562 rows (60 treated + 63,502 controls)
+2026-09-15 09:24:39,710 [INFO] psm_260915: Year 2018: matched 58 of 60 treated (checkpoint written)
+2026-09-15 09:24:40,042 [INFO] psm_260915: [harness timing] fit_and_match 312.994 s
+2026-09-15 09:24:40,312 [INFO] psm_260915: [harness timing] audit_matched_sample_rehab_definition 0.262 s
+2026-09-15 09:24:43,803 [INFO] psm_260915: [harness timing] build_balance_tables 3.488 s
+2026-09-15 09:24:45,477 [INFO] psm_260915: [harness timing] build_marital_status_tables 1.671 s
+2026-09-15 09:24:46,947 [INFO] psm_260915: [harness timing] build_paper_summary_tables 1.466 s
+2026-09-15 09:24:47,040 [INFO] psm_260915: [harness timing] build_pair_event_study_panel 0.087 s
+/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/epc2026/psm_260915.py:4888: PerformanceWarning: Determining the column names of a LazyFrame requires resolving its schema, which is a potentially expensive operation. Use `LazyFrame.collect_schema().names()` to get the column names without this warning.
+  column for column in baseline.columns
+2026-09-15 09:24:49,574 [INFO] psm_260915: [harness timing] build_msk_followup 0.856 s
+/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/epc2026/psm_260915.py:5057: PerformanceWarning: Determining the column names of a LazyFrame requires resolving its schema, which is a potentially expensive operation. Use `LazyFrame.collect_schema().names()` to get the column names without this warning.
+  column for column in baseline.columns
+2026-09-15 09:24:50,371 [INFO] psm_260915: [harness timing] build_mortality_followup 0.791 s
+completed 373.3 s
