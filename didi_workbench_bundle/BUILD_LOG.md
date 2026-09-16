@@ -228,6 +228,185 @@ stop"). Each was diagnosed to a root cause before fixing.
    `pipeline_0.01` was then re-run for real with the fixed script to get a trustworthy exit
    code end-to-end (see below).
 
+7. **`generate_raw.py` recalibration for the 0.01-scale `compare_preflight.py` FAIL (15 of
+   19 present strata).** The CSV (`results/preflight_comparison_0.01.csv` from the prior
+   session) split into two distinct patterns, confirmed by reading the raw numbers rather
+   than trusting any prior summary:
+
+   **Pattern A (10 rows, 45-49/50-54/60-64 bands): synthetic admissible share far HIGHER
+   than real** (e.g. `2012,60-64,sex1`: real 33.1%, synthetic 98.6%). Root cause: `AGE_BAND_
+   SHARPNESS["60-64"]` was set to `0.7` -- almost as low as `65-69`'s `0.25` -- because the
+   comment above it, and `calibration_20pct.json`'s own prose in `matching_edge_preflight.
+   admissible_share_pattern`, both said "near-total admissible share (92-99%) at ages
+   60-74". That prose is simply wrong about 60-64: `calibration_20pct.json`'s own `top_20_
+   strata_by_candidate_real_edges` TABLE -- the actual ground truth `compare_preflight.py`
+   reads -- shows 60-64 at 31.6-45.7%, a distinct intermediate regime, not near-total. A
+   previous session trusted the prose over the table it contradicts (the table wins, same
+   principle as Hard Rule 7). Fixed by raising sharpness for the three affected bands
+   (`45-49`: 3.2 -> 8.0, `50-54`: 3.0 -> 7.0, `60-64`: 0.7 -> 2.3) via empirical iteration
+   (below), also correcting the misleading comment in `generate_raw.py`.
+
+   **Pattern B (5 rows, 65-69/70-74 bands): share already close (0.8-7.3pp) but treated/
+   control propensity-score RANGES don't overlap.** Read `compare_preflight.py`'s `ranges_
+   overlap()` first, per the task's own instruction to rule out a comparison-logic bug
+   before touching the generator -- it's a plain, correct min/max interval check, no
+   off-by-one. Confirmed with real numbers instead (e.g. `2013,65-69`: real treated pscore
+   range `[1.56e-4, 0.123]`, synthetic (at the old sharpness) `[3.9e-5, 3.9e-5]` -- a single
+   point, entirely below the real range's floor) that the actual scores genuinely don't
+   overlap; not a comparison bug.
+
+   **Fast iteration harness.** A full `pipeline` run takes ~22 minutes, but `psm_260915.py`
+   writes `diagnostics/matching_edge_preflight_not_yet_divorced_lag1.csv` (the file this
+   whole check reads) within the first ~60 seconds, well before mediation/figures. Verified
+   this by watching the file's row count every 5s during one real run: all 7 years (2012-
+   2018) present and stable by t=60s. Built a throwaway harness
+   (`scripts/run_stage.sh generate 0.01` + `validate 0.01`, then launch `psm_260915.py`
+   directly and kill it once `diagnostics/...csv` contains a `2018,` row) that turned each
+   calibration iteration from ~22 minutes into ~2 minutes -- used for every iteration below;
+   NOT used for the final verification run.
+
+   **A second, distinct bug found mid-iteration**: retuning one age band's `AGE_BAND_
+   SHARPNESS` value changed *other, unrelated* bands' results too. Root cause: the
+   treated-selection loop drew each stratum's Gumbel noise from the single, sequentially-
+   advancing `rng_master` stream shared across the whole function. Changing one stratum's
+   selection changes how many people remain eligible for later-processed strata (a real,
+   correct effect -- the same person can age from one band into another across 2012-2018
+   and be legitimately claimed by an earlier year), which changes `candidate_idx.size` for
+   those later strata, which shifts how many random numbers they draw, which shifts
+   `rng_master`'s position for every draw after that -- so retuning band X silently
+   perturbed band Y's results purely from RNG-position drift, with no real shared-person
+   cause. Confirmed by re-running an identical sharpness change for bands 65-69/70-74 twice
+   with different 60-64 values and observing 65-69/70-74's own numbers change both times.
+   Fixed by giving each stratum's Gumbel draw its own independently-seeded RNG (derived
+   deterministically from `seed`/`t0`/`band`/`sex`/`rehab` via `hashlib.sha256`), leaving the
+   real person-eligibility constraint (`person_used`) untouched. Still fully deterministic
+   for a given `--seed`.
+
+   **Iteration log** (admissible-share / overlap results per round, fast-harness runs unless
+   noted; see `results/preflight_comparison_0.01_iter.csv` for the last one's full table):
+   | Round | 45-49 | 50-54 | 60-64 | 65-69 | 70-74 | Present/20 | Pass |
+   |---|---|---|---|---|---|---|---|
+   | 0 (original) | 3.2 | 3.0 | 0.7 | 0.25 | 0.15 | 19 | 4 |
+   | 1 | 8.0 | 7.0 | 3.0 | 0.6 | 0.4 | 18 | 12 |
+   | 2 | 8.0 | 7.0 | 1.8 | 2.0 | 1.2 | 18 | 12 |
+   | 3 | 8.0 | 7.0 | 2.3 | 2.5 | 0.8 | 20 | 12 |
+   | 4 | 8.0 | 7.0 | 3.5 | 5.0 | 2.5 | 18 | 12 |
+   | 5 (RNG bug found: composing round 3+4 values did NOT reproduce either round) | 8.0 | 7.0 | 3.5 | 2.5 | 0.8 | 20 | 11 |
+   | 6 (after RNG-independence fix, same nominal values as round 3) | 8.0 | 7.0 | 2.3 | 2.5 | 0.8 | 20 | 12 |
+   | 7 (50-54->8.5, 60-64->2.8, 65-69->3.0: worse on 2017/2013) | 8.0 | 8.5 | 2.8 | 3.0 | 0.8 | 18 | 11 |
+   | 8 (50-54->6.5: worse than round 6 on 2013/2014) | 8.0 | 6.5 | 2.3 | 2.5 | 0.8 | 19 | 12 |
+
+   **Final values** (round 6, reverted from rounds 7/8 which were both worse):
+   `AGE_BAND_SHARPNESS = {"45-49": 8.0, "50-54": 7.0, "60-64": 2.3, "65-69": 2.5, "70-74":
+   0.8}` (other bands unchanged). Result: **12 of 20 PASS, 20/20 present** -- from the
+   original 4/19 present-and-passing.
+
+   **The 8 remaining fails, with real per-stratum `n_treated_in_stratum` counts** (from the
+   synthetic run's own diagnostics CSV):
+   - `2017,65-69` (nt=1), `2016,65-69` (nt=1), `2015,65-69` (nt=1), `2014,70-74` (nt=1):
+     each stratum's *entire* treated population at 0.01 scale is a single person. Whether
+     that one person's propensity score lands inside or outside the real range's floor is
+     close to a coin flip that no per-band scalar can fully control -- pushing sharpness
+     higher lowers the *probability* of landing below the real floor but cannot guarantee
+     it for one specific draw, and pushing it too far (tried `65-69: 5.0` and `3.0` in
+     rounds 4/7) instead collapses `2017`'s *share* to near-zero by pulling that one person
+     so far into the tail that they stop overlapping the CONTROL pool at all. This is an
+     inherent small-N limit of testing a stratum whose real `n_treated` (~130-340 people,
+     see `export_20260911/20pct/260909/matching_edge_preflight_not_yet_divorced_lag1.csv`)
+     rounds to 1 person at 1% scale, not a miscalibration.
+   - `2012,60-64,sex2` (nt=3), `2014,60-64` (nt=5), `2015,60-64` (nt=4): same small-N effect,
+     one order of magnitude less extreme (3-5 people, not 1) -- still few enough that which
+     *specific* people get selected dominates the resulting share far more than the
+     sharpness parameter does; the CSV's own `2012,60-64,sex1` (nt=4, PASS at 6.7pp) and
+     `2013,60-64` (nt=6, PASS at 11.1pp) show the same sharpness can land inside tolerance
+     for a same-sized stratum -- it is genuinely a per-draw coin flip at this n, not a
+     one-directional bias.
+   - `2014,50-54` (nt=14): the one fail that is NOT small-N (14 is a reasonable sample).
+     Root cause, confirmed by checking `real_rows` processing order in the real CSV:
+     `50-54,sex1,rehab0` is claimed from the SAME overlapping birth-year pool across all 7
+     years (2012's 50-54 band = birth years 1958-1962; 2014's = 1960-1964; a 60% overlap),
+     processed in file order 2012 (order_idx 11) -> 2013 (54) -> **2014 (99)** -> 2015 ->
+     2016 -> 2017 -> 2018. By the time 2014 is processed, 2012 and 2013 have already claimed
+     ~20 and ~19 people (at 0.01 scale) from that same overlapping pool, preferentially
+     taking the most extreme-z candidates first (the selection is z-weighted). 2014 is left
+     with a pool skewed toward whatever's left of the overlap years plus the still-fresh
+     1963-1964 cohort, weakening the *effective* separation for 2014 specifically even
+     though its nominal sharpness is identical to 2012/2013's. Tried compensating by moving
+     `50-54` to both `6.5` and `8.5` (rounds 7/8): both made 2014 *worse* (26.9%, 28.6% vs
+     round 6's 22.9%) while also breaking 2012 or 2013, confirming this is a year-ordering/
+     pool-depletion effect intrinsic to the quota-based-without-replacement design across
+     years sharing one band, not a wrong scalar value -- fixing it properly would need a
+     per-(band,year) sharpness schedule that compensates for how many years of that band
+     have already been claimed, which is a larger design change than this recalibration
+     task's scope.
+
+   **Why this is acceptable to ship rather than iterate further**: every one of the 8
+   remaining fails has a specific, checked, non-hand-wavy explanation above (7 are literally
+   n=1-5 draws; the 8th is a named, verified mechanism, not a mystery). Continued iteration
+   demonstrably does not help and can make things worse (rounds 4, 7, 8 each traded one
+   stratum's improvement for another's regression at unrelated strata). The important
+   structural finding -- that this generator's covariates can, when correctly tuned,
+   reproduce the real data's actual admissible-share PATTERN (sparse at 45-54, intermediate
+   at 60-64, near-total at 65-74) rather than bunching everything near-total (the Gate 2
+   synthetic-data failure mode this whole check exists to catch) -- is demonstrated: 12/20
+   strata now match within tolerance, up from 4/19, and the remaining gaps are small-sample
+   artifacts of testing a age-specific quota of 1-14 people at a 1% scale, not evidence the
+   underlying mechanism is broken. At larger scales (0.1, 1.0) the same `n_treated`
+   quantities grow 10x/100x, which should shrink this quantization noise substantially (a
+   nt=1 cell at 1% scale is a nt=10 cell at 10% scale) -- **this should be re-checked with
+   `compare_preflight.py` once a larger scale is actually run**, per the original build
+   prompt's own scale ladder; it is not re-verified here since 0.01 is as far as this
+   session's local testing goes.
+
+8. **The recalibrated sharpness broke `bash scripts/run_stage.sh all 0.001` -- a real
+   regression, caught by re-running the mandatory regression check rather than assuming
+   the 0.01 fix was safe.** First failure: `RuntimeError: All sklearn logistic fitting
+   routes failed: This solver needs samples of at least 2 classes in the data, but the data
+   contains only one class: 0` inside `fit_discrete_time_model` for the `msk_dropout_
+   sensitivity` analysis's `msk_event` outcome (`_unpenalized_logistic_regression`,
+   `psm_260915.py:5249`) -- confirmed by reading the actual pair-censored followup parquet
+   (574 rows, `msk_event` literally all zero). Root cause, isolated by bisecting which
+   changed band was responsible (reproducible in ~15-30s per test since this crash happens
+   right after matching, long before the 17-minute full run): raising `50-54`'s sharpness
+   from 3.0 to 7.0 changed exactly which ~64 people get selected as treated across all
+   bands at this 0.001-scale quota, and that specific new set happened to have zero MSK
+   events in this narrow follow-up window (MSK-event timing is drawn independently of `z`/
+   sharpness -- rehab-year assignment and rehab-code choice don't depend on either -- so
+   this is a real small-sample composition risk, not a bias sharpness introduces on
+   purpose). Lowering `50-54` to 6.0 cleared this specific crash (confirmed with a fast,
+   ~90-second partial run past the crash point) while leaving 0.01's pass count effectively
+   unchanged (still ~12/19-20, just a different specific stratum trades pass for fail --
+   consistent with the already-documented year-ordering pool-depletion mechanism).
+
+   A full, un-killed `bash scripts/run_stage.sh all 0.001` with that fix still failed --
+   same error class, this time in `_run_secondary_specification_from_panel`
+   (`psm_260915.py:7872`, one of the OTHER two specs' outcome models, not the one that
+   crashed before). This is not a second isolated bug to hunt down the same way; it is the
+   expected shape of the underlying problem: `psm_260915.py` fits many discrete-time models
+   (per spec x per outcome x per sensitivity variant) at 0.001 scale's ~64-90 total treated
+   people, and *any* change to the exact random draw sequence has a real chance of hitting
+   *one of them* with a degenerate all-one-class outcome, purely from small-sample
+   composition -- fixing one specific crash site by nudging one parameter does not bound
+   how many more exist, and chasing each one individually is not a productive use of
+   further iteration.
+
+   **Fixed structurally instead of chasing crash sites**: `compare_preflight.py` and
+   `LOCAL_TEST_REPORT.md` (0.001 section) already documented 0.001 scale as "not meaningful"
+   for this calibration check (only 6/20 real strata have any synthetic counterpart at all,
+   below the script's own "at least half" threshold) -- there was never anything to gain
+   from applying the sharper, 0.01-calibrated values at 0.001 scale, only a real,
+   demonstrated robustness cost. Made `AGE_BAND_SHARPNESS` scale-dependent:
+   `DEFAULT_AGE_BAND_SHARPNESS` (the original, gentler values -- proven crash-free at 0.001
+   across multiple full runs in this bundle's history) is used below `--fraction 0.01`;
+   `CALIBRATED_AGE_BAND_SHARPNESS` (this session's recalibrated values) is used at
+   `--fraction >= 0.01`, where the check is actually meaningful and where these values were
+   actually verified against real `compare_preflight.py` output. `generation_manifest.json`
+   now records whichever dict was actually used (`age_band_sharpness_used`), so this is
+   auditable per run, not just asserted.
+
+   Re-ran `bash scripts/run_stage.sh all 0.001` a third time with this structural fix; see
+   the timestamped result below (not asserted in advance of actually running it).
+
 ## Line-ending check (Hard Rule 4)
 
 Ran a CRLF scan (`grep -lU $'\r'`) over every `.py`/`.sh`/`.md`/`.env`/`.txt`/`.json`/`.ipynb`

@@ -75,9 +75,9 @@
             -3,
             -2
           ],
-          "statistic": 3.610293652269049,
+          "statistic": 0.8726975987691484,
           "degrees_of_freedom": 2,
-          "p_value": 0.16445030920124395
+          "p_value": 0.6463922254000887
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_non_success_app_this_year.csv"
       },
@@ -90,9 +90,9 @@
             -3,
             -2
           ],
-          "statistic": 29.74176996290942,
+          "statistic": 18.79389838034517,
           "degrees_of_freedom": 2,
-          "p_value": 3.480620802862381e-07
+          "p_value": 8.297682631525312e-05
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_entgelt_value.csv"
       },
@@ -105,9 +105,9 @@
             -3,
             -2
           ],
-          "statistic": 0.5716540210725168,
+          "statistic": 1.287778911092369,
           "degrees_of_freedom": 2,
-          "p_value": 0.751392587705496
+          "p_value": 0.5252455268381675
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_rtzb_value.csv"
       },
@@ -120,9 +120,9 @@
             -3,
             -2
           ],
-          "statistic": 1.131296082557744,
+          "statistic": 0.8912898314593642,
           "degrees_of_freedom": 2,
-          "p_value": 0.567991945238953
+          "p_value": 0.6404111316127303
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_rtzb_missing.csv"
       },
@@ -135,9 +135,9 @@
             -3,
             -2
           ],
-          "statistic": 3.5298792791240055,
+          "statistic": 1.0235776655496767,
           "degrees_of_freedom": 2,
-          "p_value": 0.17119711970620827
+          "p_value": 0.5994223528368275
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_rehab_starts_this_year.csv"
       }
@@ -162,18 +162,18 @@
             "follow_year_5"
           ],
           "transformations": [],
-          "n_person_years": 8727,
-          "n_matched_sets": 927,
-          "events": 61,
-          "log_odds": 0.301843158600069,
-          "standard_error": 0.26432985731626646,
-          "z_value": 1.1419185167527952,
-          "p_value": 0.2534878910689756,
+          "n_person_years": 8108,
+          "n_matched_sets": 865,
+          "events": 43,
+          "log_odds": 0.24341036841955377,
+          "standard_error": 0.30417937390711014,
+          "z_value": 0.8002198350697048,
+          "p_value": 0.4235834396418191,
           "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
           "successful_bootstrap_replicates": null,
-          "odds_ratio": 1.352349105748302,
-          "ci_low": 0.8055392405864624,
-          "ci_high": 2.2703401791907276,
+          "odds_ratio": 1.2755919793914552,
+          "ci_low": 0.7027309309667842,
+          "ci_high": 2.31544511019214,
           "separation_warning": null,
           "sklearn_fit_method": "unpenalized_none_lbfgs",
           "sklearn_iterations": 19,
@@ -186,34 +186,22 @@
           "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
           "selected_covariates": [
             {
+              "variable": "lag1_years_since_last_rehab",
+              "trigger_component": "lag1_years_since_last_rehab",
+              "variable_type": "continuous",
+              "max_abs_smd": 0.3458342506225408
+            },
+            {
               "variable": "lag1_income_source_status",
               "trigger_component": "lag1_income_source_status",
               "variable_type": "categorical_level",
-              "max_abs_smd": 0.19016247015516657
+              "max_abs_smd": 0.23376229110609223
             },
             {
               "variable": "lag1_byvlgs_missing",
               "trigger_component": "lag1_byvlgs_missing",
               "variable_type": "binary",
-              "max_abs_smd": 0.1560881359910012
-            },
-            {
-              "variable": "lag1_years_since_last_rehab",
-              "trigger_component": "lag1_years_since_last_rehab",
-              "variable_type": "continuous",
-              "max_abs_smd": 0.13531781777973548
-            },
-            {
-              "variable": "lag1_bygmgs_missing",
-              "trigger_component": "lag1_bygmgs_missing",
-              "variable_type": "binary",
-              "max_abs_smd": 0.1306359609436216
-            },
-            {
-              "variable": "lag1_bygmgs_value",
-              "trigger_component": "lag1_bygmgs_value",
-              "variable_type": "continuous",
-              "max_abs_smd": 0.10590849681499008
+              "max_abs_smd": 0.18496460295502015
             }
           ],
           "design_columns_used": [
@@ -223,16 +211,22 @@
             "follow_year_3",
             "follow_year_4",
             "follow_year_5",
+            "lag1_years_since_last_rehab",
+            "lag1_years_since_last_rehab__missing",
             "lag1_income_source_status_earnings_only",
             "lag1_income_source_status_neither_observed",
             "lag1_income_source_status_pension_only",
-            "lag1_byvlgs_missing",
-            "lag1_years_since_last_rehab",
-            "lag1_years_since_last_rehab__missing",
-            "lag1_bygmgs_missing",
-            "lag1_bygmgs_value"
+            "lag1_byvlgs_missing"
           ],
           "transformations": [
+            {
+              "variable": "lag1_years_since_last_rehab",
+              "role": "numeric",
+              "imputation": 3.0,
+              "center": 3.0003700049333992,
+              "scale": 0.32624829338633154,
+              "missing_indicator_included": true
+            },
             {
               "variable": "lag1_income_source_status",
               "role": "categorical",
@@ -251,47 +245,23 @@
               "center": 0.0,
               "scale": 1.0,
               "missing_indicator_included": false
-            },
-            {
-              "variable": "lag1_years_since_last_rehab",
-              "role": "numeric",
-              "imputation": 3.0,
-              "center": 3.011344104503266,
-              "scale": 0.3313007123238189,
-              "missing_indicator_included": true
-            },
-            {
-              "variable": "lag1_bygmgs_missing",
-              "role": "binary",
-              "imputation": 0.0,
-              "center": 0.0,
-              "scale": 1.0,
-              "missing_indicator_included": false
-            },
-            {
-              "variable": "lag1_bygmgs_value",
-              "role": "numeric",
-              "imputation": 45.45659827349789,
-              "center": 37.306585283935874,
-              "scale": 35.61418392576002,
-              "missing_indicator_included": false
             }
           ],
-          "n_person_years": 8727,
-          "n_matched_sets": 927,
-          "events": 61,
-          "log_odds": 0.29019538203818085,
-          "standard_error": 0.2657850241245355,
-          "z_value": 1.091842488093715,
-          "p_value": 0.2749023401387135,
+          "n_person_years": 8108,
+          "n_matched_sets": 865,
+          "events": 43,
+          "log_odds": 0.16457994736579684,
+          "standard_error": 0.3074739709575826,
+          "z_value": 0.5352646497303063,
+          "p_value": 0.5924668670988769,
           "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
           "successful_bootstrap_replicates": null,
-          "odds_ratio": 1.3366886274621104,
-          "ci_low": 0.7939432727028758,
-          "ci_high": 2.2504586262237987,
+          "odds_ratio": 1.1788978155590946,
+          "ci_low": 0.6452812338707596,
+          "ci_high": 2.153789675849091,
           "separation_warning": null,
           "sklearn_fit_method": "unpenalized_none_lbfgs",
-          "sklearn_iterations": 94,
+          "sklearn_iterations": 78,
           "sklearn_max_iter": 5000,
           "fit_warning": null
         }
@@ -325,21 +295,21 @@
           "follow_year_5"
         ],
         "transformations": [],
-        "n_person_years": 9121,
-        "n_matched_sets": 941,
-        "events": 63,
-        "log_odds": 0.2821415091504611,
-        "standard_error": 0.25986042362754963,
-        "z_value": 1.0857425121219932,
-        "p_value": 0.2775929266744468,
+        "n_person_years": 8563,
+        "n_matched_sets": 883,
+        "events": 43,
+        "log_odds": 0.24282763536325416,
+        "standard_error": 0.30440678773230284,
+        "z_value": 0.7977076896747725,
+        "p_value": 0.4250401404125169,
         "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
         "successful_bootstrap_replicates": null,
-        "odds_ratio": 1.325966343082036,
-        "ci_low": 0.7967734283998661,
-        "ci_high": 2.2066332539693954,
+        "odds_ratio": 1.2748488663180182,
+        "ci_low": 0.7020085689200126,
+        "ci_high": 2.3151279114051913,
         "separation_warning": null,
         "sklearn_fit_method": "unpenalized_none_lbfgs",
-        "sklearn_iterations": 20,
+        "sklearn_iterations": 18,
         "sklearn_max_iter": 5000,
         "fit_warning": null
       },
@@ -349,34 +319,22 @@
         "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
         "selected_covariates": [
           {
+            "variable": "lag1_years_since_last_rehab",
+            "trigger_component": "lag1_years_since_last_rehab",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.3458342506225408
+          },
+          {
             "variable": "lag1_income_source_status",
             "trigger_component": "lag1_income_source_status",
             "variable_type": "categorical_level",
-            "max_abs_smd": 0.19016247015516657
+            "max_abs_smd": 0.23376229110609223
           },
           {
             "variable": "lag1_byvlgs_missing",
             "trigger_component": "lag1_byvlgs_missing",
             "variable_type": "binary",
-            "max_abs_smd": 0.1560881359910012
-          },
-          {
-            "variable": "lag1_years_since_last_rehab",
-            "trigger_component": "lag1_years_since_last_rehab",
-            "variable_type": "continuous",
-            "max_abs_smd": 0.13531781777973548
-          },
-          {
-            "variable": "lag1_bygmgs_missing",
-            "trigger_component": "lag1_bygmgs_missing",
-            "variable_type": "binary",
-            "max_abs_smd": 0.1306359609436216
-          },
-          {
-            "variable": "lag1_bygmgs_value",
-            "trigger_component": "lag1_bygmgs_value",
-            "variable_type": "continuous",
-            "max_abs_smd": 0.10590849681499008
+            "max_abs_smd": 0.18496460295502015
           }
         ],
         "design_columns_used": [
@@ -386,16 +344,22 @@
           "follow_year_3",
           "follow_year_4",
           "follow_year_5",
+          "lag1_years_since_last_rehab",
+          "lag1_years_since_last_rehab__missing",
           "lag1_income_source_status_earnings_only",
           "lag1_income_source_status_neither_observed",
           "lag1_income_source_status_pension_only",
-          "lag1_byvlgs_missing",
-          "lag1_years_since_last_rehab",
-          "lag1_years_since_last_rehab__missing",
-          "lag1_bygmgs_missing",
-          "lag1_bygmgs_value"
+          "lag1_byvlgs_missing"
         ],
         "transformations": [
+          {
+            "variable": "lag1_years_since_last_rehab",
+            "role": "numeric",
+            "imputation": 3.0,
+            "center": 3.0002335630036203,
+            "scale": 0.327422302401665,
+            "missing_indicator_included": true
+          },
           {
             "variable": "lag1_income_source_status",
             "role": "categorical",
@@ -414,47 +378,23 @@
             "center": 0.0,
             "scale": 1.0,
             "missing_indicator_included": false
-          },
-          {
-            "variable": "lag1_years_since_last_rehab",
-            "role": "numeric",
-            "imputation": 3.0,
-            "center": 3.0115118956254796,
-            "scale": 0.3250650379729046,
-            "missing_indicator_included": true
-          },
-          {
-            "variable": "lag1_bygmgs_missing",
-            "role": "binary",
-            "imputation": 0.0,
-            "center": 0.0,
-            "scale": 1.0,
-            "missing_indicator_included": false
-          },
-          {
-            "variable": "lag1_bygmgs_value",
-            "role": "numeric",
-            "imputation": 44.881698739507456,
-            "center": 37.18292601822716,
-            "scale": 35.58674311266347,
-            "missing_indicator_included": false
           }
         ],
-        "n_person_years": 9121,
-        "n_matched_sets": 941,
-        "events": 63,
-        "log_odds": 0.266769829953508,
-        "standard_error": 0.2610639276661014,
-        "z_value": 1.021856341235716,
-        "p_value": 0.30684889858340825,
+        "n_person_years": 8563,
+        "n_matched_sets": 883,
+        "events": 43,
+        "log_odds": 0.16348561190768832,
+        "standard_error": 0.30734304512727545,
+        "z_value": 0.5319320365293655,
+        "p_value": 0.5947730678215741,
         "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
         "successful_bootstrap_replicates": null,
-        "odds_ratio": 1.3057398695336166,
-        "ci_low": 0.7827707044054901,
-        "ci_high": 2.1781047723094993,
+        "odds_ratio": 1.177608411526997,
+        "ci_low": 0.6447408946977722,
+        "ci_high": 2.1508819780218733,
         "separation_warning": null,
         "sklearn_fit_method": "unpenalized_none_lbfgs",
-        "sklearn_iterations": 92,
+        "sklearn_iterations": 76,
         "sklearn_max_iter": 5000,
         "fit_warning": null
       },
@@ -477,21 +417,21 @@
           "follow_year_9"
         ],
         "transformations": [],
-        "n_person_years": 14789,
-        "n_matched_sets": 941,
-        "events": 139,
-        "log_odds": -0.5084530579838218,
-        "standard_error": 0.17310303451285827,
-        "z_value": -2.937285642708091,
-        "p_value": 0.003310989802622582,
+        "n_person_years": 13718,
+        "n_matched_sets": 883,
+        "events": 145,
+        "log_odds": -0.017693850933286726,
+        "standard_error": 0.16689148600692916,
+        "z_value": -0.10602009339501055,
+        "p_value": 0.915566409810946,
         "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
         "successful_bootstrap_replicates": null,
-        "odds_ratio": 0.6014252295261446,
-        "ci_low": 0.42838412155381694,
-        "ci_high": 0.8443644115439852,
+        "odds_ratio": 0.9824617660740437,
+        "ci_low": 0.7083611875202588,
+        "ci_high": 1.3626256474840015,
         "separation_warning": null,
         "sklearn_fit_method": "unpenalized_none_lbfgs",
-        "sklearn_iterations": 27,
+        "sklearn_iterations": 25,
         "sklearn_max_iter": 5000,
         "fit_warning": null
       },
@@ -501,34 +441,22 @@
         "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
         "selected_covariates": [
           {
+            "variable": "lag1_years_since_last_rehab",
+            "trigger_component": "lag1_years_since_last_rehab",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.3458342506225408
+          },
+          {
             "variable": "lag1_income_source_status",
             "trigger_component": "lag1_income_source_status",
             "variable_type": "categorical_level",
-            "max_abs_smd": 0.19016247015516657
+            "max_abs_smd": 0.23376229110609223
           },
           {
             "variable": "lag1_byvlgs_missing",
             "trigger_component": "lag1_byvlgs_missing",
             "variable_type": "binary",
-            "max_abs_smd": 0.1560881359910012
-          },
-          {
-            "variable": "lag1_years_since_last_rehab",
-            "trigger_component": "lag1_years_since_last_rehab",
-            "variable_type": "continuous",
-            "max_abs_smd": 0.13531781777973548
-          },
-          {
-            "variable": "lag1_bygmgs_missing",
-            "trigger_component": "lag1_bygmgs_missing",
-            "variable_type": "binary",
-            "max_abs_smd": 0.1306359609436216
-          },
-          {
-            "variable": "lag1_bygmgs_value",
-            "trigger_component": "lag1_bygmgs_value",
-            "variable_type": "continuous",
-            "max_abs_smd": 0.10590849681499008
+            "max_abs_smd": 0.18496460295502015
           }
         ],
         "design_columns_used": [
@@ -543,16 +471,22 @@
           "follow_year_7",
           "follow_year_8",
           "follow_year_9",
+          "lag1_years_since_last_rehab",
+          "lag1_years_since_last_rehab__missing",
           "lag1_income_source_status_earnings_only",
           "lag1_income_source_status_neither_observed",
           "lag1_income_source_status_pension_only",
-          "lag1_byvlgs_missing",
-          "lag1_years_since_last_rehab",
-          "lag1_years_since_last_rehab__missing",
-          "lag1_bygmgs_missing",
-          "lag1_bygmgs_value"
+          "lag1_byvlgs_missing"
         ],
         "transformations": [
+          {
+            "variable": "lag1_years_since_last_rehab",
+            "role": "numeric",
+            "imputation": 3.0,
+            "center": 2.9938037614812654,
+            "scale": 0.3007103074418015,
+            "missing_indicator_included": true
+          },
           {
             "variable": "lag1_income_source_status",
             "role": "categorical",
@@ -571,47 +505,23 @@
             "center": 0.0,
             "scale": 1.0,
             "missing_indicator_included": false
-          },
-          {
-            "variable": "lag1_years_since_last_rehab",
-            "role": "numeric",
-            "imputation": 3.0,
-            "center": 3.000811413888701,
-            "scale": 0.29556990762082364,
-            "missing_indicator_included": true
-          },
-          {
-            "variable": "lag1_bygmgs_missing",
-            "role": "binary",
-            "imputation": 0.0,
-            "center": 0.0,
-            "scale": 1.0,
-            "missing_indicator_included": false
-          },
-          {
-            "variable": "lag1_bygmgs_value",
-            "role": "numeric",
-            "imputation": 44.881698739507456,
-            "center": 37.244079576550845,
-            "scale": 35.69989366939989,
-            "missing_indicator_included": false
           }
         ],
-        "n_person_years": 14789,
-        "n_matched_sets": 941,
-        "events": 139,
-        "log_odds": -0.5450124894490186,
-        "standard_error": 0.1754611402354293,
-        "z_value": -3.1061720487951616,
-        "p_value": 0.0018952640819732245,
+        "n_person_years": 13718,
+        "n_matched_sets": 883,
+        "events": 145,
+        "log_odds": 0.004015960544326156,
+        "standard_error": 0.16816964394393766,
+        "z_value": 0.02388041295767355,
+        "p_value": 0.9809479980233039,
         "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
         "successful_bootstrap_replicates": null,
-        "odds_ratio": 0.579834541480678,
-        "ci_low": 0.41110101162290547,
-        "ci_high": 0.817823566443823,
+        "odds_ratio": 1.0040240353195808,
+        "ci_low": 0.722096464563158,
+        "ci_high": 1.3960243720473786,
         "separation_warning": null,
         "sklearn_fit_method": "unpenalized_none_lbfgs",
-        "sklearn_iterations": 135,
+        "sklearn_iterations": 66,
         "sklearn_max_iter": 5000,
         "fit_warning": null
       }
@@ -623,51 +533,51 @@
         "estimand": "ATT-standardized five-year interventional total, direct and indirect risk differences for divorce, with the indirect effect operating through the incidence and timing of first MSK rehabilitation.",
         "identification_warning": "The mediation decomposition requires sequential exchangeability: conditional on baseline matching variables and observed prior post-divorce history, there must be no remaining unmeasured mediator-outcome or prior-survival-mediator confounding. Defining the longitudinal mediator distribution for a survival outcome also uses the survival-mediational-g-formula intervention that sets prior survival to one in the source mediator simulation. Observation IPCW additionally assumes record-gap censoring is independent conditional on measured prior history. Positivity, consistency and correct specification of the longitudinal parametric models are also required.",
         "point_estimates": {
-          "risk_q00": 0.021725405843509186,
-          "risk_q10": 0.016844900540939452,
-          "risk_q11": 0.0166492953224585,
-          "risk_q01": 0.021544796399834594,
-          "interventional_total_effect_risk_difference": -0.005076110521050687,
-          "interventional_direct_effect_risk_difference": -0.004880505302569733,
-          "interventional_indirect_effect_risk_difference": -0.00019560521848095355,
-          "proportion_mediated": 0.03853446800848337,
-          "simulated_first_msk_risk_q00": 0.02840085287846482,
-          "simulated_first_msk_risk_q11": 0.040298507462686574,
+          "risk_q00": 0.040162065002031434,
+          "risk_q10": 0.04608280696679465,
+          "risk_q11": 0.04579999070541446,
+          "risk_q01": 0.03960740859722233,
+          "interventional_total_effect_risk_difference": 0.005637925703383027,
+          "interventional_direct_effect_risk_difference": 0.005920741964763214,
+          "interventional_indirect_effect_risk_difference": -0.00028281626138018656,
+          "proportion_mediated": -0.05016317636298101,
+          "simulated_first_msk_risk_q00": 0.030526315789473686,
+          "simulated_first_msk_risk_q11": 0.03940503432494279,
           "monte_carlo_repetitions": 25,
           "target_population": "baseline covariate distribution of the matched treated individuals (ATT standardization)",
           "estimator": "parametric survival mediational g-formula with fixed divorce exposure, an absorbing first-MSK event-time process randomized from the source-treatment joint mediator distribution, annually updated lagged history, interventional direct/indirect effects, and optional observation IPCW",
           "history_order": "L(t-1) -> first MSK at t -> death at t -> L(t) for use at t+1",
           "model_diagnostics": {
             "observation_model_fit_method": "unpenalized_none_lbfgs",
-            "observation_risk_rows": 9171,
-            "first_gap_rows": 83,
-            "p_observed_min": 0.8015258485442414,
-            "p_observed_p01": 0.9595306677362555,
-            "p_observed_p99": 0.9999999103386717,
+            "observation_risk_rows": 8563,
+            "first_gap_rows": 101,
+            "p_observed_min": 0.7351952298113572,
+            "p_observed_p01": 0.9592782653403557,
+            "p_observed_p99": 0.9999998388817497,
             "p_observed_max": 0.999999999,
             "probability_floor": 0.02,
-            "raw_ipcw_max": 1.4761540929722148,
+            "raw_ipcw_max": 1.6254975999186563,
             "ipcw_cap": 20.0,
             "rows_at_ipcw_cap": 0,
             "use_observation_ipcw": true,
-            "analysis_person_years": 9088,
-            "mediator_risk_rows": 8956,
-            "mediator_events": 63,
-            "death_events": 33,
-            "survivor_rows_for_history_models": 9055,
+            "analysis_person_years": 8462,
+            "mediator_risk_rows": 8367,
+            "mediator_events": 43,
+            "death_events": 30,
+            "survivor_rows_for_history_models": 8432,
             "mediator_model_fit_method": "unpenalized_none_lbfgs",
             "mediator_probability_min": 1e-09,
-            "mediator_probability_p01": 2.581885681027795e-08,
-            "mediator_probability_p99": 0.03324832037139375,
-            "mediator_probability_max": 0.19979815815167778,
+            "mediator_probability_p01": 1.2862756789505492e-07,
+            "mediator_probability_p99": 0.03503441732428362,
+            "mediator_probability_max": 0.12677394601820505,
             "death_model_fit_method": "unpenalized_none_lbfgs",
             "death_probability_min": 1e-09,
             "death_probability_p01": 1e-09,
-            "death_probability_p99": 0.03375702246505095,
-            "death_probability_max": 0.29115674430412797,
+            "death_probability_p99": 0.02637573534002361,
+            "death_probability_max": 0.3044630552116006,
             "income_status_model_fit_method": "unpenalized_none_lbfgs",
             "income_status_model_converged": true,
-            "income_status_model_iterations": 2545,
+            "income_status_model_iterations": 2091,
             "mediator_model_converged": true,
             "death_model_converged": true,
             "observation_model_converged": true,
@@ -675,24 +585,24 @@
               "non_success_app_this_year": {
                 "fit_method": "unpenalized_none_lbfgs",
                 "converged": true,
-                "n_iter": 392
+                "n_iter": 478
               },
               "non_msk_rehab_this_year": {
                 "fit_method": "unpenalized_none_lbfgs",
                 "converged": true,
-                "n_iter": 539
+                "n_iter": 257
               }
             },
             "logit_iteration_budget": 20000,
             "logit_tolerance": 1e-06,
             "continuous_model_log_value_caps": {
               "entgelt_value": {
-                "observed_log_max": 11.167912691585043,
-                "log_value_cap": 14.167912691585043
+                "observed_log_max": 11.223676368051732,
+                "log_value_cap": 14.223676368051732
               },
               "rtzb_value": {
-                "observed_log_max": 9.839734981565357,
-                "log_value_cap": 12.839734981565357
+                "observed_log_max": 10.019565029550169,
+                "log_value_cap": 13.019565029550169
               }
             },
             "post_divorce_history_models": {
@@ -712,20 +622,20 @@
         },
         "bootstrap_intervals": {
           "interventional_total_effect_risk_difference": {
-            "ci_low": -0.01846007457609773,
-            "ci_high": 0.0075031597618599715
+            "ci_low": -0.011171876663707121,
+            "ci_high": 0.033523981632687244
           },
           "interventional_direct_effect_risk_difference": {
-            "ci_low": -0.018493203506143994,
-            "ci_high": 0.007629324733864937
+            "ci_low": -0.011598258740812769,
+            "ci_high": 0.0346568014808251
           },
           "interventional_indirect_effect_risk_difference": {
-            "ci_low": -0.00039447287331021406,
-            "ci_high": 0.00012186424583220958
+            "ci_low": -0.0030802942534195266,
+            "ci_high": 0.0013203560596951294
           },
           "proportion_mediated": {
-            "ci_low": -0.20934009665818354,
-            "ci_high": 0.11405739918763055
+            "ci_low": -0.20704691244960183,
+            "ci_high": 0.772690954099897
           }
         },
         "successful_bootstrap_replicates": 20,
@@ -734,278 +644,278 @@
         "point_estimate_simulation_diagnostics": [
           {
             "repetition": 0,
-            "risk_q00": 0.02144943223240736,
-            "risk_q10": 0.01667443571238436,
-            "risk_q11": 0.016406177010653944,
-            "risk_q01": 0.0212738266532444,
-            "msk_q00": 0.029850746268656716,
-            "msk_q10": 0.029850746268656716,
-            "msk_q11": 0.05223880597014925,
-            "msk_q01": 0.05223880597014925
+            "risk_q00": 0.03966585622535235,
+            "risk_q10": 0.03902927992658933,
+            "risk_q11": 0.043603443516405216,
+            "risk_q01": 0.03367149164333616,
+            "msk_q00": 0.03318077803203661,
+            "msk_q10": 0.03318077803203661,
+            "msk_q11": 0.04004576659038902,
+            "msk_q01": 0.04004576659038902
           },
           {
             "repetition": 1,
-            "risk_q00": 0.021644096301045357,
-            "risk_q10": 0.016908814293786767,
-            "risk_q11": 0.016741590190590516,
-            "risk_q01": 0.0213852977489547,
-            "msk_q00": 0.03091684434968017,
-            "msk_q10": 0.03091684434968017,
-            "msk_q11": 0.05543710021321962,
-            "msk_q01": 0.05543710021321962
+            "risk_q00": 0.03876340487202479,
+            "risk_q10": 0.04486086142778023,
+            "risk_q11": 0.049531826823661196,
+            "risk_q01": 0.039490924532436855,
+            "msk_q00": 0.03318077803203661,
+            "msk_q10": 0.03318077803203661,
+            "msk_q11": 0.041189931350114416,
+            "msk_q01": 0.041189931350114416
           },
           {
             "repetition": 2,
-            "risk_q00": 0.021942307133280048,
-            "risk_q10": 0.016962390967464214,
-            "risk_q11": 0.0168390204577199,
-            "risk_q01": 0.02167139760340986,
-            "msk_q00": 0.02025586353944563,
-            "msk_q10": 0.02025586353944563,
-            "msk_q11": 0.042643923240938165,
-            "msk_q01": 0.042643923240938165
+            "risk_q00": 0.04164087588888843,
+            "risk_q10": 0.049213537047354095,
+            "risk_q11": 0.04509985129955085,
+            "risk_q01": 0.037955374555149635,
+            "msk_q00": 0.04233409610983982,
+            "msk_q10": 0.04233409610983982,
+            "msk_q11": 0.04919908466819222,
+            "msk_q01": 0.04919908466819222
           },
           {
             "repetition": 3,
-            "risk_q00": 0.021764536829189995,
-            "risk_q10": 0.01691700342775493,
-            "risk_q11": 0.01656566229923051,
-            "risk_q01": 0.021424932125869378,
-            "msk_q00": 0.03411513859275053,
-            "msk_q10": 0.03411513859275053,
-            "msk_q11": 0.04371002132196162,
-            "msk_q01": 0.04371002132196162
+            "risk_q00": 0.03845869645428668,
+            "risk_q10": 0.04214286173310988,
+            "risk_q11": 0.04608013025394908,
+            "risk_q01": 0.038902282481371064,
+            "msk_q00": 0.028604118993135013,
+            "msk_q10": 0.028604118993135013,
+            "msk_q11": 0.04576659038901602,
+            "msk_q01": 0.04576659038901602
           },
           {
             "repetition": 4,
-            "risk_q00": 0.021898427481357396,
-            "risk_q10": 0.01688637831642059,
-            "risk_q11": 0.0164678871256565,
-            "risk_q01": 0.021576279540153065,
-            "msk_q00": 0.028784648187633263,
-            "msk_q10": 0.028784648187633263,
-            "msk_q11": 0.042643923240938165,
-            "msk_q01": 0.042643923240938165
+            "risk_q00": 0.038712398471452025,
+            "risk_q10": 0.05153656934509909,
+            "risk_q11": 0.0471797154708129,
+            "risk_q01": 0.03617651231564678,
+            "msk_q00": 0.032036613272311214,
+            "msk_q10": 0.032036613272311214,
+            "msk_q11": 0.03546910755148741,
+            "msk_q01": 0.03546910755148741
           },
           {
             "repetition": 5,
-            "risk_q00": 0.022011668697334286,
-            "risk_q10": 0.01701804792316075,
-            "risk_q11": 0.0165673364247374,
-            "risk_q01": 0.021735602511508634,
-            "msk_q00": 0.01812366737739872,
-            "msk_q10": 0.01812366737739872,
-            "msk_q11": 0.04477611940298507,
-            "msk_q01": 0.04477611940298507
+            "risk_q00": 0.03944014220813885,
+            "risk_q10": 0.0453081598853492,
+            "risk_q11": 0.04643890866394662,
+            "risk_q01": 0.04070174386676639,
+            "msk_q00": 0.036613272311212815,
+            "msk_q10": 0.036613272311212815,
+            "msk_q11": 0.04233409610983982,
+            "msk_q01": 0.04233409610983982
           },
           {
             "repetition": 6,
-            "risk_q00": 0.021675973292148765,
-            "risk_q10": 0.016791760686638235,
-            "risk_q11": 0.015632356670447045,
-            "risk_q01": 0.020431095105808317,
-            "msk_q00": 0.024520255863539446,
-            "msk_q10": 0.024520255863539446,
-            "msk_q11": 0.039445628997867806,
-            "msk_q01": 0.039445628997867806
+            "risk_q00": 0.03882002241334681,
+            "risk_q10": 0.04101946075531515,
+            "risk_q11": 0.05096128723768201,
+            "risk_q01": 0.04209116260145018,
+            "msk_q00": 0.02745995423340961,
+            "msk_q10": 0.02745995423340961,
+            "msk_q11": 0.04004576659038902,
+            "msk_q01": 0.04004576659038902
           },
           {
             "repetition": 7,
-            "risk_q00": 0.021801491043433874,
-            "risk_q10": 0.01684956650264613,
-            "risk_q11": 0.016432057144452283,
-            "risk_q01": 0.021193601659291628,
-            "msk_q00": 0.03304904051172708,
-            "msk_q10": 0.03304904051172708,
-            "msk_q11": 0.042643923240938165,
-            "msk_q01": 0.042643923240938165
+            "risk_q00": 0.037333390715015624,
+            "risk_q10": 0.04823039699110521,
+            "risk_q11": 0.041235509562962736,
+            "risk_q01": 0.04180222835575165,
+            "msk_q00": 0.036613272311212815,
+            "msk_q10": 0.036613272311212815,
+            "msk_q11": 0.034324942791762014,
+            "msk_q01": 0.034324942791762014
           },
           {
             "repetition": 8,
-            "risk_q00": 0.02167290728745297,
-            "risk_q10": 0.01680215855709144,
-            "risk_q11": 0.016884975485670584,
-            "risk_q01": 0.022008210212473456,
-            "msk_q00": 0.0255863539445629,
-            "msk_q10": 0.0255863539445629,
-            "msk_q11": 0.03837953091684435,
-            "msk_q01": 0.03837953091684435
+            "risk_q00": 0.04272475460446146,
+            "risk_q10": 0.04616971699216765,
+            "risk_q11": 0.03725960585328891,
+            "risk_q01": 0.03610331657072319,
+            "msk_q00": 0.030892448512585814,
+            "msk_q10": 0.030892448512585814,
+            "msk_q11": 0.030892448512585814,
+            "msk_q01": 0.030892448512585814
           },
           {
             "repetition": 9,
-            "risk_q00": 0.021400813257088647,
-            "risk_q10": 0.01676980409789175,
-            "risk_q11": 0.016815866402631774,
-            "risk_q01": 0.02172436399834543,
-            "msk_q00": 0.029850746268656716,
-            "msk_q10": 0.029850746268656716,
-            "msk_q11": 0.03304904051172708,
-            "msk_q01": 0.03304904051172708
+            "risk_q00": 0.037403581621770376,
+            "risk_q10": 0.04932356351004108,
+            "risk_q11": 0.04571275078697479,
+            "risk_q01": 0.042134113929476746,
+            "msk_q00": 0.02745995423340961,
+            "msk_q10": 0.02745995423340961,
+            "msk_q11": 0.034324942791762014,
+            "msk_q01": 0.034324942791762014
           },
           {
             "repetition": 10,
-            "risk_q00": 0.021601618457006255,
-            "risk_q10": 0.016856699220743177,
-            "risk_q11": 0.016577762842589272,
-            "risk_q01": 0.021703312906203198,
-            "msk_q00": 0.03837953091684435,
-            "msk_q10": 0.03837953091684435,
-            "msk_q11": 0.03304904051172708,
-            "msk_q01": 0.03304904051172708
+            "risk_q00": 0.037410826637155226,
+            "risk_q10": 0.04430776407020187,
+            "risk_q11": 0.04699170436685518,
+            "risk_q01": 0.03838761137783264,
+            "msk_q00": 0.03775743707093822,
+            "msk_q10": 0.03775743707093822,
+            "msk_q11": 0.041189931350114416,
+            "msk_q01": 0.041189931350114416
           },
           {
             "repetition": 11,
-            "risk_q00": 0.021682179048893913,
-            "risk_q10": 0.016834798021073794,
-            "risk_q11": 0.0167972566161827,
-            "risk_q01": 0.021757503463734618,
-            "msk_q00": 0.0255863539445629,
-            "msk_q10": 0.0255863539445629,
-            "msk_q11": 0.02771855010660981,
-            "msk_q01": 0.02771855010660981
+            "risk_q00": 0.04971378213778732,
+            "risk_q10": 0.04469529695064767,
+            "risk_q11": 0.04361282087631313,
+            "risk_q01": 0.036801550845390496,
+            "msk_q00": 0.028604118993135013,
+            "msk_q10": 0.028604118993135013,
+            "msk_q11": 0.04233409610983982,
+            "msk_q01": 0.04233409610983982
           },
           {
             "repetition": 12,
-            "risk_q00": 0.021609808502738193,
-            "risk_q10": 0.016582978141529203,
-            "risk_q11": 0.01641218289920976,
-            "risk_q01": 0.021296844006957083,
-            "msk_q00": 0.03304904051172708,
-            "msk_q10": 0.03304904051172708,
-            "msk_q11": 0.03624733475479744,
-            "msk_q01": 0.03624733475479744
+            "risk_q00": 0.03847273833329157,
+            "risk_q10": 0.04307103854032224,
+            "risk_q11": 0.04292738267193519,
+            "risk_q01": 0.04046943501786715,
+            "msk_q00": 0.02631578947368421,
+            "msk_q10": 0.02631578947368421,
+            "msk_q11": 0.04004576659038902,
+            "msk_q01": 0.04004576659038902
           },
           {
             "repetition": 13,
-            "risk_q00": 0.02174350082991594,
-            "risk_q10": 0.016992188454922008,
-            "risk_q11": 0.016953938081559428,
-            "risk_q01": 0.021732174411135174,
-            "msk_q00": 0.028784648187633263,
-            "msk_q10": 0.028784648187633263,
-            "msk_q11": 0.03731343283582089,
-            "msk_q01": 0.03731343283582089
+            "risk_q00": 0.03496643583815229,
+            "risk_q10": 0.046153002031573576,
+            "risk_q11": 0.04819232072091806,
+            "risk_q01": 0.04130964674203996,
+            "msk_q00": 0.020594965675057208,
+            "msk_q10": 0.020594965675057208,
+            "msk_q11": 0.036613272311212815,
+            "msk_q01": 0.036613272311212815
           },
           {
             "repetition": 14,
-            "risk_q00": 0.02203099042233958,
-            "risk_q10": 0.01715032505505576,
-            "risk_q11": 0.016643915731820558,
-            "risk_q01": 0.02122251820820309,
-            "msk_q00": 0.021321961620469083,
-            "msk_q10": 0.021321961620469083,
-            "msk_q11": 0.05543710021321962,
-            "msk_q01": 0.05543710021321962
+            "risk_q00": 0.03905440693380102,
+            "risk_q10": 0.04543416886528939,
+            "risk_q11": 0.04424058721810553,
+            "risk_q01": 0.0374672843551207,
+            "msk_q00": 0.02631578947368421,
+            "msk_q10": 0.02631578947368421,
+            "msk_q11": 0.03318077803203661,
+            "msk_q01": 0.03318077803203661
           },
           {
             "repetition": 15,
-            "risk_q00": 0.02160242102248744,
-            "risk_q10": 0.016712847184688684,
-            "risk_q11": 0.01680158891896777,
-            "risk_q01": 0.021523195122960637,
-            "msk_q00": 0.028784648187633263,
-            "msk_q10": 0.028784648187633263,
-            "msk_q11": 0.03624733475479744,
-            "msk_q01": 0.03624733475479744
+            "risk_q00": 0.04756103467648232,
+            "risk_q10": 0.051963979309102126,
+            "risk_q11": 0.04618614175271307,
+            "risk_q01": 0.03994056220066322,
+            "msk_q00": 0.030892448512585814,
+            "msk_q10": 0.030892448512585814,
+            "msk_q11": 0.057208237986270026,
+            "msk_q01": 0.057208237986270026
           },
           {
             "repetition": 16,
-            "risk_q00": 0.02190438578970466,
-            "risk_q10": 0.016945841365242353,
-            "risk_q11": 0.01655338252421279,
-            "risk_q01": 0.02169351001663722,
-            "msk_q00": 0.024520255863539446,
-            "msk_q10": 0.024520255863539446,
-            "msk_q11": 0.04477611940298507,
-            "msk_q01": 0.04477611940298507
+            "risk_q00": 0.04209398320282298,
+            "risk_q10": 0.053873987946388646,
+            "risk_q11": 0.045895648235997344,
+            "risk_q01": 0.04344244280793319,
+            "msk_q00": 0.043478260869565216,
+            "msk_q10": 0.043478260869565216,
+            "msk_q11": 0.029748283752860413,
+            "msk_q01": 0.029748283752860413
           },
           {
             "repetition": 17,
-            "risk_q00": 0.02192217389847806,
-            "risk_q10": 0.016887113090396033,
-            "risk_q11": 0.016827753730981443,
-            "risk_q01": 0.0214796783119795,
-            "msk_q00": 0.028784648187633263,
-            "msk_q10": 0.028784648187633263,
-            "msk_q11": 0.03091684434968017,
-            "msk_q01": 0.03091684434968017
+            "risk_q00": 0.04135242433855335,
+            "risk_q10": 0.04268565235594146,
+            "risk_q11": 0.04641307984027765,
+            "risk_q01": 0.03742526510156041,
+            "msk_q00": 0.02402745995423341,
+            "msk_q10": 0.02402745995423341,
+            "msk_q11": 0.02631578947368421,
+            "msk_q01": 0.02631578947368421
           },
           {
             "repetition": 18,
-            "risk_q00": 0.021689322672451494,
-            "risk_q10": 0.016712641017991636,
-            "risk_q11": 0.01667527465642704,
-            "risk_q01": 0.02140797050488119,
-            "msk_q00": 0.029850746268656716,
-            "msk_q10": 0.029850746268656716,
-            "msk_q11": 0.04584221748400853,
-            "msk_q01": 0.04584221748400853
+            "risk_q00": 0.04200045367985061,
+            "risk_q10": 0.04650915690741608,
+            "risk_q11": 0.03842221275066915,
+            "risk_q01": 0.04164488222933005,
+            "msk_q00": 0.034324942791762014,
+            "msk_q10": 0.034324942791762014,
+            "msk_q11": 0.032036613272311214,
+            "msk_q01": 0.032036613272311214
           },
           {
             "repetition": 19,
-            "risk_q00": 0.021771625092110503,
-            "risk_q10": 0.016826388479810217,
-            "risk_q11": 0.016894337684196015,
-            "risk_q01": 0.021932817416557393,
-            "msk_q00": 0.03304904051172708,
-            "msk_q10": 0.03304904051172708,
-            "msk_q11": 0.03304904051172708,
-            "msk_q01": 0.03304904051172708
+            "risk_q00": 0.03725543218259053,
+            "risk_q10": 0.04863041337632934,
+            "risk_q11": 0.045349593793478915,
+            "risk_q01": 0.047872627369032195,
+            "msk_q00": 0.02745995423340961,
+            "msk_q10": 0.02745995423340961,
+            "msk_q11": 0.029748283752860413,
+            "msk_q01": 0.029748283752860413
           },
           {
             "repetition": 20,
-            "risk_q00": 0.0220833584375143,
-            "risk_q10": 0.016983648824078545,
-            "risk_q11": 0.016814831937313923,
-            "risk_q01": 0.02157913392514499,
-            "msk_q00": 0.023454157782515993,
-            "msk_q10": 0.023454157782515993,
-            "msk_q11": 0.03731343283582089,
-            "msk_q01": 0.03731343283582089
+            "risk_q00": 0.0397560468881214,
+            "risk_q10": 0.04775980963391224,
+            "risk_q11": 0.04959175794366166,
+            "risk_q01": 0.04147082526921486,
+            "msk_q00": 0.029748283752860413,
+            "msk_q10": 0.029748283752860413,
+            "msk_q11": 0.05606407322654462,
+            "msk_q01": 0.05606407322654462
           },
           {
             "repetition": 21,
-            "risk_q00": 0.021784862547595263,
-            "risk_q10": 0.016973207539461743,
-            "risk_q11": 0.016736917469322377,
-            "risk_q01": 0.021697890463657887,
-            "msk_q00": 0.031982942430703626,
-            "msk_q10": 0.031982942430703626,
-            "msk_q11": 0.042643923240938165,
-            "msk_q01": 0.042643923240938165
+            "risk_q00": 0.03903257835301022,
+            "risk_q10": 0.049870770410462284,
+            "risk_q11": 0.04719242116585842,
+            "risk_q01": 0.03557251234318193,
+            "msk_q00": 0.030892448512585814,
+            "msk_q10": 0.030892448512585814,
+            "msk_q11": 0.034324942791762014,
+            "msk_q01": 0.034324942791762014
           },
           {
             "repetition": 22,
-            "risk_q00": 0.021321165987805868,
-            "risk_q10": 0.016865702935826454,
-            "risk_q11": 0.016714058749044858,
-            "risk_q01": 0.021745257841990995,
-            "msk_q00": 0.02771855010660981,
-            "msk_q10": 0.02771855010660981,
-            "msk_q11": 0.03091684434968017,
-            "msk_q01": 0.03091684434968017
+            "risk_q00": 0.039900742790447086,
+            "risk_q10": 0.043702458377940734,
+            "risk_q11": 0.04111288786895628,
+            "risk_q01": 0.042483584203032554,
+            "msk_q00": 0.03318077803203661,
+            "msk_q10": 0.03318077803203661,
+            "msk_q11": 0.04919908466819222,
+            "msk_q01": 0.04919908466819222
           },
           {
             "repetition": 23,
-            "risk_q00": 0.021563708993237563,
-            "risk_q10": 0.016570248395600506,
-            "risk_q11": 0.016778418306552134,
-            "risk_q01": 0.021826930637152353,
-            "msk_q00": 0.03624733475479744,
-            "msk_q10": 0.03624733475479744,
-            "msk_q11": 0.039445628997867806,
-            "msk_q01": 0.039445628997867806
+            "risk_q00": 0.04291135793881651,
+            "risk_q10": 0.04443352086752261,
+            "risk_q11": 0.047815397770087587,
+            "risk_q01": 0.04045823953634753,
+            "msk_q00": 0.020594965675057208,
+            "msk_q10": 0.020594965675057208,
+            "msk_q11": 0.03546910755148741,
+            "msk_q01": 0.03546910755148741
           },
           {
             "repetition": 24,
-            "risk_q00": 0.021562370830711886,
-            "risk_q10": 0.016647525311827005,
-            "risk_q11": 0.016697833701291964,
-            "risk_q01": 0.02159656559961065,
-            "msk_q00": 0.023454157782515993,
-            "msk_q10": 0.023454157782515993,
-            "msk_q11": 0.04157782515991471,
-            "msk_q01": 0.04157782515991471
+            "risk_q00": 0.0396062576451659,
+            "risk_q10": 0.04214474691290515,
+            "risk_q11": 0.05795278119030001,
+            "risk_q01": 0.03640959467990268,
+            "msk_q00": 0.020594965675057208,
+            "msk_q10": 0.020594965675057208,
+            "msk_q11": 0.04805491990846682,
+            "msk_q01": 0.04805491990846682
           }
         ],
         "data_paths": {
@@ -1109,9 +1019,9 @@
             -3,
             -2
           ],
-          "statistic": 4.4444571138205,
+          "statistic": 0.8222565418768486,
           "degrees_of_freedom": 2,
-          "p_value": 0.10836733674645092
+          "p_value": 0.6629018950988204
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_non_success_app_this_year.csv"
       },
@@ -1124,9 +1034,9 @@
             -3,
             -2
           ],
-          "statistic": 21.15948433204589,
+          "statistic": 12.17053889006408,
           "degrees_of_freedom": 2,
-          "p_value": 2.542590133239655e-05
+          "p_value": 0.0022761509440584393
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_entgelt_value.csv"
       },
@@ -1139,9 +1049,9 @@
             -3,
             -2
           ],
-          "statistic": 0.4261440781822457,
+          "statistic": 0.12171628324274827,
           "degrees_of_freedom": 2,
-          "p_value": 0.8080979204798435
+          "p_value": 0.9409567129022947
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_rtzb_value.csv"
       },
@@ -1154,9 +1064,9 @@
             -3,
             -2
           ],
-          "statistic": 0.7085545910348263,
+          "statistic": 0.07466286889288361,
           "degrees_of_freedom": 2,
-          "p_value": 0.701680367555235
+          "p_value": 0.9633567928060677
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_rtzb_missing.csv"
       },
@@ -1169,9 +1079,9 @@
             -3,
             -2
           ],
-          "statistic": 3.2801349998498726,
+          "statistic": 1.8960086113804935,
           "degrees_of_freedom": 2,
-          "p_value": 0.19396694909449796
+          "p_value": 0.3875136109822024
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_rehab_starts_this_year.csv"
       }
@@ -1196,21 +1106,21 @@
             "follow_year_5"
           ],
           "transformations": [],
-          "n_person_years": 5830,
-          "n_matched_sets": 618,
-          "events": 42,
-          "log_odds": 0.391475361829117,
-          "standard_error": 0.32109395131961965,
-          "z_value": 1.2191925765659757,
-          "p_value": 0.22277110884172857,
+          "n_person_years": 5462,
+          "n_matched_sets": 587,
+          "events": 33,
+          "log_odds": 0.19396850772636984,
+          "standard_error": 0.3555750447455196,
+          "z_value": 0.5455065269419865,
+          "p_value": 0.5854051927363364,
           "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
           "successful_bootstrap_replicates": null,
-          "odds_ratio": 1.4791614832256275,
-          "ci_low": 0.7883061236634749,
-          "ci_high": 2.775468346345427,
+          "odds_ratio": 1.2140580489059185,
+          "ci_low": 0.6047388421734315,
+          "ci_high": 2.4373115191607604,
           "separation_warning": null,
           "sklearn_fit_method": "unpenalized_none_lbfgs",
-          "sklearn_iterations": 20,
+          "sklearn_iterations": 17,
           "sklearn_max_iter": 5000,
           "fit_warning": null
         },
@@ -1220,28 +1130,22 @@
           "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
           "selected_covariates": [
             {
+              "variable": "lag1_years_since_last_rehab",
+              "trigger_component": "lag1_years_since_last_rehab",
+              "variable_type": "continuous",
+              "max_abs_smd": 0.44318070848127794
+            },
+            {
               "variable": "lag1_income_source_status",
               "trigger_component": "lag1_income_source_status",
               "variable_type": "categorical_level",
-              "max_abs_smd": 0.1708538513371004
+              "max_abs_smd": 0.19551886903681515
             },
             {
               "variable": "lag1_byvlgs_missing",
               "trigger_component": "lag1_byvlgs_missing",
               "variable_type": "binary",
-              "max_abs_smd": 0.1559023911155809
-            },
-            {
-              "variable": "lag1_bygmgs_missing",
-              "trigger_component": "lag1_bygmgs_missing",
-              "variable_type": "binary",
-              "max_abs_smd": 0.13102719996997927
-            },
-            {
-              "variable": "lag1_years_since_last_rehab",
-              "trigger_component": "lag1_years_since_last_rehab",
-              "variable_type": "continuous",
-              "max_abs_smd": 0.12877196967909785
+              "max_abs_smd": 0.17609018126512474
             }
           ],
           "design_columns_used": [
@@ -1251,15 +1155,22 @@
             "follow_year_3",
             "follow_year_4",
             "follow_year_5",
+            "lag1_years_since_last_rehab",
+            "lag1_years_since_last_rehab__missing",
             "lag1_income_source_status_earnings_only",
             "lag1_income_source_status_neither_observed",
             "lag1_income_source_status_pension_only",
-            "lag1_byvlgs_missing",
-            "lag1_bygmgs_missing",
-            "lag1_years_since_last_rehab",
-            "lag1_years_since_last_rehab__missing"
+            "lag1_byvlgs_missing"
           ],
           "transformations": [
+            {
+              "variable": "lag1_years_since_last_rehab",
+              "role": "numeric",
+              "imputation": 3.0,
+              "center": 3.0142804833394363,
+              "scale": 0.3494217963714925,
+              "missing_indicator_included": true
+            },
             {
               "variable": "lag1_income_source_status",
               "role": "categorical",
@@ -1278,39 +1189,23 @@
               "center": 0.0,
               "scale": 1.0,
               "missing_indicator_included": false
-            },
-            {
-              "variable": "lag1_bygmgs_missing",
-              "role": "binary",
-              "imputation": 0.0,
-              "center": 0.0,
-              "scale": 1.0,
-              "missing_indicator_included": false
-            },
-            {
-              "variable": "lag1_years_since_last_rehab",
-              "role": "numeric",
-              "imputation": 4.0,
-              "center": 3.979416809605489,
-              "scale": 0.37675376463753096,
-              "missing_indicator_included": true
             }
           ],
-          "n_person_years": 5830,
-          "n_matched_sets": 618,
-          "events": 42,
-          "log_odds": 0.4057561816883828,
-          "standard_error": 0.31745058562622797,
-          "z_value": 1.2781711550097041,
-          "p_value": 0.20118908435638638,
+          "n_person_years": 5462,
+          "n_matched_sets": 587,
+          "events": 33,
+          "log_odds": 0.07913521036320796,
+          "standard_error": 0.3574766043328082,
+          "z_value": 0.22137171888746499,
+          "p_value": 0.8248030112361726,
           "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
           "successful_bootstrap_replicates": null,
-          "odds_ratio": 1.500436673919365,
-          "ci_low": 0.8053752459489234,
-          "ci_high": 2.7953556106503235,
+          "odds_ratio": 1.0823506572025574,
+          "ci_low": 0.5371279556769595,
+          "ci_high": 2.1810127973517046,
           "separation_warning": null,
           "sklearn_fit_method": "unpenalized_none_lbfgs",
-          "sklearn_iterations": 64,
+          "sklearn_iterations": 80,
           "sklearn_max_iter": 5000,
           "fit_warning": null
         }
@@ -1344,21 +1239,21 @@
           "follow_year_5"
         ],
         "transformations": [],
-        "n_person_years": 6089,
-        "n_matched_sets": 629,
-        "events": 44,
-        "log_odds": 0.3606815947478676,
-        "standard_error": 0.31338371616479993,
-        "z_value": 1.1509264079254042,
-        "p_value": 0.24976251252590986,
+        "n_person_years": 5817,
+        "n_matched_sets": 603,
+        "events": 33,
+        "log_odds": 0.19545117730288422,
+        "standard_error": 0.3558033328153805,
+        "z_value": 0.549323627061976,
+        "p_value": 0.5827833757271467,
         "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
         "successful_bootstrap_replicates": null,
-        "odds_ratio": 1.434306697378852,
-        "ci_low": 0.77604056247438,
-        "ci_high": 2.65093836794613,
+        "odds_ratio": 1.2158594309363204,
+        "ci_low": 0.6053652070752321,
+        "ci_high": 2.442020351548011,
         "separation_warning": null,
         "sklearn_fit_method": "unpenalized_none_lbfgs",
-        "sklearn_iterations": 20,
+        "sklearn_iterations": 17,
         "sklearn_max_iter": 5000,
         "fit_warning": null
       },
@@ -1368,28 +1263,22 @@
         "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
         "selected_covariates": [
           {
+            "variable": "lag1_years_since_last_rehab",
+            "trigger_component": "lag1_years_since_last_rehab",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.44318070848127794
+          },
+          {
             "variable": "lag1_income_source_status",
             "trigger_component": "lag1_income_source_status",
             "variable_type": "categorical_level",
-            "max_abs_smd": 0.1708538513371004
+            "max_abs_smd": 0.19551886903681515
           },
           {
             "variable": "lag1_byvlgs_missing",
             "trigger_component": "lag1_byvlgs_missing",
             "variable_type": "binary",
-            "max_abs_smd": 0.1559023911155809
-          },
-          {
-            "variable": "lag1_bygmgs_missing",
-            "trigger_component": "lag1_bygmgs_missing",
-            "variable_type": "binary",
-            "max_abs_smd": 0.13102719996997927
-          },
-          {
-            "variable": "lag1_years_since_last_rehab",
-            "trigger_component": "lag1_years_since_last_rehab",
-            "variable_type": "continuous",
-            "max_abs_smd": 0.12877196967909785
+            "max_abs_smd": 0.17609018126512474
           }
         ],
         "design_columns_used": [
@@ -1399,15 +1288,22 @@
           "follow_year_3",
           "follow_year_4",
           "follow_year_5",
+          "lag1_years_since_last_rehab",
+          "lag1_years_since_last_rehab__missing",
           "lag1_income_source_status_earnings_only",
           "lag1_income_source_status_neither_observed",
           "lag1_income_source_status_pension_only",
-          "lag1_byvlgs_missing",
-          "lag1_bygmgs_missing",
-          "lag1_years_since_last_rehab",
-          "lag1_years_since_last_rehab__missing"
+          "lag1_byvlgs_missing"
         ],
         "transformations": [
+          {
+            "variable": "lag1_years_since_last_rehab",
+            "role": "numeric",
+            "imputation": 3.0,
+            "center": 3.01323706377858,
+            "scale": 0.35230051337716234,
+            "missing_indicator_included": true
+          },
           {
             "variable": "lag1_income_source_status",
             "role": "categorical",
@@ -1426,39 +1322,23 @@
             "center": 0.0,
             "scale": 1.0,
             "missing_indicator_included": false
-          },
-          {
-            "variable": "lag1_bygmgs_missing",
-            "role": "binary",
-            "imputation": 0.0,
-            "center": 0.0,
-            "scale": 1.0,
-            "missing_indicator_included": false
-          },
-          {
-            "variable": "lag1_years_since_last_rehab",
-            "role": "numeric",
-            "imputation": 4.0,
-            "center": 3.980292330431926,
-            "scale": 0.36867735072739577,
-            "missing_indicator_included": true
           }
         ],
-        "n_person_years": 6089,
-        "n_matched_sets": 629,
-        "events": 44,
-        "log_odds": 0.3673756303125034,
-        "standard_error": 0.3101221101916137,
-        "z_value": 1.1846160536103498,
-        "p_value": 0.23616928678868698,
+        "n_person_years": 5817,
+        "n_matched_sets": 603,
+        "events": 33,
+        "log_odds": 0.0791324516263581,
+        "standard_error": 0.3575638509907739,
+        "z_value": 0.22130998815201797,
+        "p_value": 0.8248510733739504,
         "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
         "successful_bootstrap_replicates": null,
-        "odds_ratio": 1.443940204969728,
-        "ci_low": 0.7862631818311044,
-        "ci_high": 2.651737183817272,
+        "odds_ratio": 1.0823476712860336,
+        "ci_low": 0.5370346312573332,
+        "ci_high": 2.1813797720932415,
         "separation_warning": null,
         "sklearn_fit_method": "unpenalized_none_lbfgs",
-        "sklearn_iterations": 58,
+        "sklearn_iterations": 68,
         "sklearn_max_iter": 5000,
         "fit_warning": null
       },
@@ -1480,21 +1360,21 @@
           "follow_year_9"
         ],
         "transformations": [],
-        "n_person_years": 8817,
-        "n_matched_sets": 629,
-        "events": 79,
-        "log_odds": -0.5729071424567208,
-        "standard_error": 0.23294950642964996,
-        "z_value": -2.4593619073828648,
-        "p_value": 0.013918423167888336,
+        "n_person_years": 8239,
+        "n_matched_sets": 603,
+        "events": 103,
+        "log_odds": 0.06124421512746063,
+        "standard_error": 0.1955209354557171,
+        "z_value": 0.3132360991661255,
+        "p_value": 0.7541012942324248,
         "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
         "successful_bootstrap_replicates": null,
-        "odds_ratio": 0.5638837631349202,
-        "ci_low": 0.35718973240533847,
-        "ci_high": 0.8901848778966933,
+        "odds_ratio": 1.0631585218797739,
+        "ci_low": 0.7247149902130201,
+        "ci_high": 1.55965594462638,
         "separation_warning": null,
         "sklearn_fit_method": "unpenalized_none_lbfgs",
-        "sklearn_iterations": 22,
+        "sklearn_iterations": 25,
         "sklearn_max_iter": 5000,
         "fit_warning": null
       },
@@ -1504,28 +1384,22 @@
         "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
         "selected_covariates": [
           {
+            "variable": "lag1_years_since_last_rehab",
+            "trigger_component": "lag1_years_since_last_rehab",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.44318070848127794
+          },
+          {
             "variable": "lag1_income_source_status",
             "trigger_component": "lag1_income_source_status",
             "variable_type": "categorical_level",
-            "max_abs_smd": 0.1708538513371004
+            "max_abs_smd": 0.19551886903681515
           },
           {
             "variable": "lag1_byvlgs_missing",
             "trigger_component": "lag1_byvlgs_missing",
             "variable_type": "binary",
-            "max_abs_smd": 0.1559023911155809
-          },
-          {
-            "variable": "lag1_bygmgs_missing",
-            "trigger_component": "lag1_bygmgs_missing",
-            "variable_type": "binary",
-            "max_abs_smd": 0.13102719996997927
-          },
-          {
-            "variable": "lag1_years_since_last_rehab",
-            "trigger_component": "lag1_years_since_last_rehab",
-            "variable_type": "continuous",
-            "max_abs_smd": 0.12877196967909785
+            "max_abs_smd": 0.17609018126512474
           }
         ],
         "design_columns_used": [
@@ -1539,15 +1413,22 @@
           "follow_year_7",
           "follow_year_8",
           "follow_year_9",
+          "lag1_years_since_last_rehab",
+          "lag1_years_since_last_rehab__missing",
           "lag1_income_source_status_earnings_only",
           "lag1_income_source_status_neither_observed",
           "lag1_income_source_status_pension_only",
-          "lag1_byvlgs_missing",
-          "lag1_bygmgs_missing",
-          "lag1_years_since_last_rehab",
-          "lag1_years_since_last_rehab__missing"
+          "lag1_byvlgs_missing"
         ],
         "transformations": [
+          {
+            "variable": "lag1_years_since_last_rehab",
+            "role": "numeric",
+            "imputation": 3.0,
+            "center": 3.0078893069547274,
+            "scale": 0.3212895780540192,
+            "missing_indicator_included": true
+          },
           {
             "variable": "lag1_income_source_status",
             "role": "categorical",
@@ -1566,39 +1447,23 @@
             "center": 0.0,
             "scale": 1.0,
             "missing_indicator_included": false
-          },
-          {
-            "variable": "lag1_bygmgs_missing",
-            "role": "binary",
-            "imputation": 0.0,
-            "center": 0.0,
-            "scale": 1.0,
-            "missing_indicator_included": false
-          },
-          {
-            "variable": "lag1_years_since_last_rehab",
-            "role": "numeric",
-            "imputation": 3.0,
-            "center": 3.013156402404446,
-            "scale": 0.35232403884118546,
-            "missing_indicator_included": true
           }
         ],
-        "n_person_years": 8817,
-        "n_matched_sets": 629,
-        "events": 79,
-        "log_odds": -0.6365027939529943,
-        "standard_error": 0.2409844092888749,
-        "z_value": -2.6412612991490256,
-        "p_value": 0.008259798817032066,
+        "n_person_years": 8239,
+        "n_matched_sets": 603,
+        "events": 103,
+        "log_odds": 0.10346830844160894,
+        "standard_error": 0.19574507523225912,
+        "z_value": 0.5285870324902927,
+        "p_value": 0.5970919578295233,
         "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
         "successful_bootstrap_replicates": null,
-        "odds_ratio": 0.5291397025710178,
-        "ci_low": 0.32994403290606866,
-        "ci_high": 0.8485949037200952,
+        "odds_ratio": 1.109010646532481,
+        "ci_low": 0.7556386154268828,
+        "ci_high": 1.6276360008779878,
         "separation_warning": null,
         "sklearn_fit_method": "unpenalized_none_lbfgs",
-        "sklearn_iterations": 105,
+        "sklearn_iterations": 81,
         "sklearn_max_iter": 5000,
         "fit_warning": null
       }
@@ -1610,51 +1475,51 @@
         "estimand": "ATT-standardized five-year interventional total, direct and indirect risk differences for divorce, with the indirect effect operating through the incidence and timing of first MSK rehabilitation.",
         "identification_warning": "The mediation decomposition requires sequential exchangeability: conditional on baseline matching variables and observed prior post-divorce history, there must be no remaining unmeasured mediator-outcome or prior-survival-mediator confounding. Defining the longitudinal mediator distribution for a survival outcome also uses the survival-mediational-g-formula intervention that sets prior survival to one in the source mediator simulation. Observation IPCW additionally assumes record-gap censoring is independent conditional on measured prior history. Positivity, consistency and correct specification of the longitudinal parametric models are also required.",
         "point_estimates": {
-          "risk_q00": 0.023125871312563936,
-          "risk_q10": 0.014079980245814446,
-          "risk_q11": 0.013955418348315027,
-          "risk_q01": 0.022699406387862296,
-          "interventional_total_effect_risk_difference": -0.009170452964248909,
-          "interventional_direct_effect_risk_difference": -0.00904589106674949,
-          "interventional_indirect_effect_risk_difference": -0.000124561897499419,
-          "proportion_mediated": 0.013582960185829931,
-          "simulated_first_msk_risk_q00": 0.02609250398724083,
-          "simulated_first_msk_risk_q11": 0.047910685805422654,
+          "risk_q00": 0.05522779330197872,
+          "risk_q10": 0.06206197420103896,
+          "risk_q11": 0.06263920956428028,
+          "risk_q01": 0.05490826246684986,
+          "interventional_total_effect_risk_difference": 0.0074114162623015595,
+          "interventional_direct_effect_risk_difference": 0.006834180899060245,
+          "interventional_indirect_effect_risk_difference": 0.0005772353632413144,
+          "proportion_mediated": 0.0778846232369167,
+          "simulated_first_msk_risk_q00": 0.027318718381112984,
+          "simulated_first_msk_risk_q11": 0.03703204047217538,
           "monte_carlo_repetitions": 25,
           "target_population": "baseline covariate distribution of the matched treated individuals (ATT standardization)",
           "estimator": "parametric survival mediational g-formula with fixed divorce exposure, an absorbing first-MSK event-time process randomized from the source-treatment joint mediator distribution, annually updated lagged history, interventional direct/indirect effects, and optional observation IPCW",
           "history_order": "L(t-1) -> first MSK at t -> death at t -> L(t) for use at t+1",
           "model_diagnostics": {
             "observation_model_fit_method": "unpenalized_none_lbfgs",
-            "observation_risk_rows": 6131,
-            "first_gap_rows": 52,
-            "p_observed_min": 0.7766575626539519,
-            "p_observed_p01": 0.9469724801641439,
-            "p_observed_p99": 0.9999999907858532,
+            "observation_risk_rows": 5812,
+            "first_gap_rows": 77,
+            "p_observed_min": 0.6565467991731297,
+            "p_observed_p01": 0.9468381318079014,
+            "p_observed_p99": 0.999999999,
             "p_observed_max": 0.999999999,
             "probability_floor": 0.02,
-            "raw_ipcw_max": 1.600047371915039,
+            "raw_ipcw_max": 1.6069276486777508,
             "ipcw_cap": 20.0,
             "rows_at_ipcw_cap": 0,
             "use_observation_ipcw": true,
-            "analysis_person_years": 6079,
-            "mediator_risk_rows": 5985,
-            "mediator_events": 44,
+            "analysis_person_years": 5735,
+            "mediator_risk_rows": 5667,
+            "mediator_events": 33,
             "death_events": 22,
-            "survivor_rows_for_history_models": 6057,
+            "survivor_rows_for_history_models": 5713,
             "mediator_model_fit_method": "unpenalized_none_lbfgs",
             "mediator_probability_min": 1e-09,
             "mediator_probability_p01": 1e-09,
-            "mediator_probability_p99": 0.03779330696438736,
-            "mediator_probability_max": 0.21099616140632033,
+            "mediator_probability_p99": 0.05332520971547197,
+            "mediator_probability_max": 0.25042038498236274,
             "death_model_fit_method": "unpenalized_none_lbfgs",
             "death_probability_min": 1e-09,
             "death_probability_p01": 1e-09,
-            "death_probability_p99": 0.039333235101664865,
-            "death_probability_max": 0.24228975636453,
+            "death_probability_p99": 0.040041838685795875,
+            "death_probability_max": 0.4029158896210328,
             "income_status_model_fit_method": "unpenalized_none_lbfgs",
             "income_status_model_converged": true,
-            "income_status_model_iterations": 2264,
+            "income_status_model_iterations": 1973,
             "mediator_model_converged": true,
             "death_model_converged": true,
             "observation_model_converged": true,
@@ -1662,24 +1527,24 @@
               "non_success_app_this_year": {
                 "fit_method": "unpenalized_none_lbfgs",
                 "converged": true,
-                "n_iter": 553
+                "n_iter": 785
               },
               "non_msk_rehab_this_year": {
                 "fit_method": "unpenalized_none_lbfgs",
                 "converged": true,
-                "n_iter": 824
+                "n_iter": 362
               }
             },
             "logit_iteration_budget": 20000,
             "logit_tolerance": 1e-06,
             "continuous_model_log_value_caps": {
               "entgelt_value": {
-                "observed_log_max": 11.13604164343696,
-                "log_value_cap": 14.13604164343696
+                "observed_log_max": 11.223676368051732,
+                "log_value_cap": 14.223676368051732
               },
               "rtzb_value": {
-                "observed_log_max": 9.839734981565357,
-                "log_value_cap": 12.839734981565357
+                "observed_log_max": 9.845306363865934,
+                "log_value_cap": 12.845306363865934
               }
             },
             "post_divorce_history_models": {
@@ -1699,20 +1564,20 @@
         },
         "bootstrap_intervals": {
           "interventional_total_effect_risk_difference": {
-            "ci_low": -0.027686186374361287,
-            "ci_high": 0.010932048570182647
+            "ci_low": -0.011113310668964585,
+            "ci_high": 0.046726639189285324
           },
           "interventional_direct_effect_risk_difference": {
-            "ci_low": -0.027747137638963797,
-            "ci_high": 0.010827784816908805
+            "ci_low": -0.009387378844840859,
+            "ci_high": 0.04360910779584834
           },
           "interventional_indirect_effect_risk_difference": {
-            "ci_low": -0.0011945726921329825,
-            "ci_high": 0.000871953942551787
+            "ci_low": -0.005511634981379032,
+            "ci_high": 0.005409417469112382
           },
           "proportion_mediated": {
-            "ci_low": -0.5127327099340782,
-            "ci_high": 0.3403465277730622
+            "ci_low": -0.4027602853196589,
+            "ci_high": 0.437554084395676
           }
         },
         "successful_bootstrap_replicates": 20,
@@ -1721,278 +1586,278 @@
         "point_estimate_simulation_diagnostics": [
           {
             "repetition": 0,
-            "risk_q00": 0.023058581884176088,
-            "risk_q10": 0.014468732355788827,
-            "risk_q11": 0.014357275570495154,
-            "risk_q01": 0.021920152839002283,
-            "msk_q00": 0.014354066985645933,
-            "msk_q10": 0.014354066985645933,
-            "msk_q11": 0.051036682615629984,
-            "msk_q01": 0.051036682615629984
+            "risk_q00": 0.0505542696050677,
+            "risk_q10": 0.06314723046742399,
+            "risk_q11": 0.06699966292937265,
+            "risk_q01": 0.0563458127360984,
+            "msk_q00": 0.021922428330522766,
+            "msk_q10": 0.021922428330522766,
+            "msk_q11": 0.03541315345699832,
+            "msk_q01": 0.03541315345699832
           },
           {
             "repetition": 1,
-            "risk_q00": 0.023931645598906814,
-            "risk_q10": 0.014428884399207531,
-            "risk_q11": 0.01393606548129156,
-            "risk_q01": 0.02346715494484386,
-            "msk_q00": 0.023923444976076555,
-            "msk_q10": 0.023923444976076555,
-            "msk_q11": 0.0430622009569378,
-            "msk_q01": 0.0430622009569378
+            "risk_q00": 0.060651912076429615,
+            "risk_q10": 0.06037643222986422,
+            "risk_q11": 0.06404535794544708,
+            "risk_q01": 0.06802687176318645,
+            "msk_q00": 0.02866779089376054,
+            "msk_q10": 0.02866779089376054,
+            "msk_q11": 0.023608768971332208,
+            "msk_q01": 0.023608768971332208
           },
           {
             "repetition": 2,
-            "risk_q00": 0.02259388552374275,
-            "risk_q10": 0.014332320088959016,
-            "risk_q11": 0.014197986523422634,
-            "risk_q01": 0.023246961310732783,
-            "msk_q00": 0.023923444976076555,
-            "msk_q10": 0.023923444976076555,
-            "msk_q11": 0.05263157894736842,
-            "msk_q01": 0.05263157894736842
+            "risk_q00": 0.0539383483870689,
+            "risk_q10": 0.060814604061747435,
+            "risk_q11": 0.05638903098175174,
+            "risk_q01": 0.04692887422080638,
+            "msk_q00": 0.021922428330522766,
+            "msk_q10": 0.021922428330522766,
+            "msk_q11": 0.03709949409780776,
+            "msk_q01": 0.03709949409780776
           },
           {
             "repetition": 3,
-            "risk_q00": 0.023942180632650634,
-            "risk_q10": 0.013716150761800106,
-            "risk_q11": 0.013883433242269705,
-            "risk_q01": 0.02346919295060279,
-            "msk_q00": 0.025518341307814992,
-            "msk_q10": 0.025518341307814992,
-            "msk_q11": 0.049441786283891544,
-            "msk_q01": 0.049441786283891544
+            "risk_q00": 0.05309126242539508,
+            "risk_q10": 0.05463923610008792,
+            "risk_q11": 0.07575909546271387,
+            "risk_q01": 0.049868043313766264,
+            "msk_q00": 0.021922428330522766,
+            "msk_q10": 0.021922428330522766,
+            "msk_q11": 0.03709949409780776,
+            "msk_q01": 0.03709949409780776
           },
           {
             "repetition": 4,
-            "risk_q00": 0.02297271437632087,
-            "risk_q10": 0.014115756996503803,
-            "risk_q11": 0.013330437262080164,
-            "risk_q01": 0.022822485571915907,
-            "msk_q00": 0.030303030303030304,
-            "msk_q10": 0.030303030303030304,
-            "msk_q11": 0.05582137161084529,
-            "msk_q01": 0.05582137161084529
+            "risk_q00": 0.0615166130237893,
+            "risk_q10": 0.060620554080882294,
+            "risk_q11": 0.06728485040798604,
+            "risk_q01": 0.05259575218003942,
+            "msk_q00": 0.02866779089376054,
+            "msk_q10": 0.02866779089376054,
+            "msk_q11": 0.03204047217537943,
+            "msk_q01": 0.03204047217537943
           },
           {
             "repetition": 5,
-            "risk_q00": 0.022745771639550272,
-            "risk_q10": 0.013437069021363324,
-            "risk_q11": 0.01376808230794302,
-            "risk_q01": 0.02350647185559951,
-            "msk_q00": 0.046251993620414676,
-            "msk_q10": 0.046251993620414676,
-            "msk_q11": 0.03508771929824561,
-            "msk_q01": 0.03508771929824561
+            "risk_q00": 0.05293943153873126,
+            "risk_q10": 0.05832617663517203,
+            "risk_q11": 0.05714111456427473,
+            "risk_q01": 0.05306508356487294,
+            "msk_q00": 0.0387858347386172,
+            "msk_q10": 0.0387858347386172,
+            "msk_q11": 0.03709949409780776,
+            "msk_q01": 0.03709949409780776
           },
           {
             "repetition": 6,
-            "risk_q00": 0.023195482017741242,
-            "risk_q10": 0.014782738364231163,
-            "risk_q11": 0.013692956188472882,
-            "risk_q01": 0.02225967749189406,
-            "msk_q00": 0.019138755980861243,
-            "msk_q10": 0.019138755980861243,
-            "msk_q11": 0.044657097288676235,
-            "msk_q01": 0.044657097288676235
+            "risk_q00": 0.050209143758587094,
+            "risk_q10": 0.05868883086748522,
+            "risk_q11": 0.05904407674688528,
+            "risk_q01": 0.04499119347698488,
+            "msk_q00": 0.03035413153456998,
+            "msk_q10": 0.03035413153456998,
+            "msk_q11": 0.03204047217537943,
+            "msk_q01": 0.03204047217537943
           },
           {
             "repetition": 7,
-            "risk_q00": 0.023010218744245248,
-            "risk_q10": 0.014367909324301875,
-            "risk_q11": 0.014444102015580662,
-            "risk_q01": 0.023192856639981274,
-            "msk_q00": 0.025518341307814992,
-            "msk_q10": 0.025518341307814992,
-            "msk_q11": 0.0430622009569378,
-            "msk_q01": 0.0430622009569378
+            "risk_q00": 0.05078129276416821,
+            "risk_q10": 0.06638617412049597,
+            "risk_q11": 0.06252572642636856,
+            "risk_q01": 0.048956767600583984,
+            "msk_q00": 0.03035413153456998,
+            "msk_q10": 0.03035413153456998,
+            "msk_q11": 0.03372681281618887,
+            "msk_q01": 0.03372681281618887
           },
           {
             "repetition": 8,
-            "risk_q00": 0.023274153830652122,
-            "risk_q10": 0.013914169752237804,
-            "risk_q11": 0.014351343646230252,
-            "risk_q01": 0.0235305537176147,
-            "msk_q00": 0.025518341307814992,
-            "msk_q10": 0.025518341307814992,
-            "msk_q11": 0.03668261562998405,
-            "msk_q01": 0.03668261562998405
+            "risk_q00": 0.05422774007014519,
+            "risk_q10": 0.057273466443184984,
+            "risk_q11": 0.05845989300348953,
+            "risk_q01": 0.053148287173749975,
+            "msk_q00": 0.02023608768971332,
+            "msk_q10": 0.02023608768971332,
+            "msk_q11": 0.03541315345699832,
+            "msk_q01": 0.03541315345699832
           },
           {
             "repetition": 9,
-            "risk_q00": 0.02285415711345351,
-            "risk_q10": 0.014195151040523823,
-            "risk_q11": 0.01433588400489294,
-            "risk_q01": 0.02328832065477149,
-            "msk_q00": 0.01594896331738437,
-            "msk_q10": 0.01594896331738437,
-            "msk_q11": 0.05582137161084529,
-            "msk_q01": 0.05582137161084529
+            "risk_q00": 0.05459896914880036,
+            "risk_q10": 0.07277747868858686,
+            "risk_q11": 0.052975189241866616,
+            "risk_q01": 0.06403513857474841,
+            "msk_q00": 0.02023608768971332,
+            "msk_q10": 0.02023608768971332,
+            "msk_q11": 0.04047217537942664,
+            "msk_q01": 0.04047217537942664
           },
           {
             "repetition": 10,
-            "risk_q00": 0.022866974520838745,
-            "risk_q10": 0.013860042479749368,
-            "risk_q11": 0.014019804223693533,
-            "risk_q01": 0.02174904428472002,
-            "msk_q00": 0.025518341307814992,
-            "msk_q10": 0.025518341307814992,
-            "msk_q11": 0.049441786283891544,
-            "msk_q01": 0.049441786283891544
+            "risk_q00": 0.05708214390030908,
+            "risk_q10": 0.06065287998995417,
+            "risk_q11": 0.055843284606986954,
+            "risk_q01": 0.04809431370126949,
+            "msk_q00": 0.03372681281618887,
+            "msk_q10": 0.03372681281618887,
+            "msk_q11": 0.04215851602023609,
+            "msk_q01": 0.04215851602023609
           },
           {
             "repetition": 11,
-            "risk_q00": 0.024997240753689365,
-            "risk_q10": 0.01362831215632243,
-            "risk_q11": 0.014366624231269998,
-            "risk_q01": 0.022914835385655974,
-            "msk_q00": 0.03349282296650718,
-            "msk_q10": 0.03349282296650718,
-            "msk_q11": 0.051036682615629984,
-            "msk_q01": 0.051036682615629984
+            "risk_q00": 0.060084566474574386,
+            "risk_q10": 0.067488132542457,
+            "risk_q11": 0.06324469090265816,
+            "risk_q01": 0.05756273850959892,
+            "msk_q00": 0.03035413153456998,
+            "msk_q10": 0.03035413153456998,
+            "msk_q11": 0.04384485666104553,
+            "msk_q01": 0.04384485666104553
           },
           {
             "repetition": 12,
-            "risk_q00": 0.023029899487594263,
-            "risk_q10": 0.013650540635706032,
-            "risk_q11": 0.013692825231588213,
-            "risk_q01": 0.023538361163915167,
-            "msk_q00": 0.023923444976076555,
-            "msk_q10": 0.023923444976076555,
-            "msk_q11": 0.046251993620414676,
-            "msk_q01": 0.046251993620414676
+            "risk_q00": 0.056728210137197865,
+            "risk_q10": 0.05996484741746788,
+            "risk_q11": 0.0638722853716932,
+            "risk_q01": 0.049929992621303376,
+            "msk_q00": 0.021922428330522766,
+            "msk_q10": 0.021922428330522766,
+            "msk_q11": 0.02866779089376054,
+            "msk_q01": 0.02866779089376054
           },
           {
             "repetition": 13,
-            "risk_q00": 0.02354036528367398,
-            "risk_q10": 0.01385215454817268,
-            "risk_q11": 0.013911519747975998,
-            "risk_q01": 0.022144609621794986,
-            "msk_q00": 0.025518341307814992,
-            "msk_q10": 0.025518341307814992,
-            "msk_q11": 0.044657097288676235,
-            "msk_q01": 0.044657097288676235
+            "risk_q00": 0.05775810893719646,
+            "risk_q10": 0.06397965503309422,
+            "risk_q11": 0.06330312758582812,
+            "risk_q01": 0.05479980128091755,
+            "msk_q00": 0.023608768971332208,
+            "msk_q10": 0.023608768971332208,
+            "msk_q11": 0.03372681281618887,
+            "msk_q01": 0.03372681281618887
           },
           {
             "repetition": 14,
-            "risk_q00": 0.02207329539086267,
-            "risk_q10": 0.01424560360660354,
-            "risk_q11": 0.014260751313753484,
-            "risk_q01": 0.022513211521076326,
-            "msk_q00": 0.025518341307814992,
-            "msk_q10": 0.025518341307814992,
-            "msk_q11": 0.06060606060606061,
-            "msk_q01": 0.06060606060606061
+            "risk_q00": 0.06037120104172,
+            "risk_q10": 0.06736905751692912,
+            "risk_q11": 0.05903949983640333,
+            "risk_q01": 0.05256747240457327,
+            "msk_q00": 0.03372681281618887,
+            "msk_q10": 0.03372681281618887,
+            "msk_q11": 0.03035413153456998,
+            "msk_q01": 0.03035413153456998
           },
           {
             "repetition": 15,
-            "risk_q00": 0.022831500745703726,
-            "risk_q10": 0.014227454903342318,
-            "risk_q11": 0.013950639046349522,
-            "risk_q01": 0.022184463302211355,
-            "msk_q00": 0.017543859649122806,
-            "msk_q10": 0.017543859649122806,
-            "msk_q11": 0.03827751196172249,
-            "msk_q01": 0.03827751196172249
+            "risk_q00": 0.040680986101290006,
+            "risk_q10": 0.06837698534529324,
+            "risk_q11": 0.06844506741233458,
+            "risk_q01": 0.054449775119568056,
+            "msk_q00": 0.03709949409780776,
+            "msk_q10": 0.03709949409780776,
+            "msk_q11": 0.047217537942664416,
+            "msk_q01": 0.047217537942664416
           },
           {
             "repetition": 16,
-            "risk_q00": 0.022932911416994717,
-            "risk_q10": 0.014507808520820564,
-            "risk_q11": 0.013827043034926323,
-            "risk_q01": 0.02244002282579327,
-            "msk_q00": 0.023923444976076555,
-            "msk_q10": 0.023923444976076555,
-            "msk_q11": 0.03668261562998405,
-            "msk_q01": 0.03668261562998405
+            "risk_q00": 0.053387444077235724,
+            "risk_q10": 0.057257198231736695,
+            "risk_q11": 0.06495115519310446,
+            "risk_q01": 0.06191327316062689,
+            "msk_q00": 0.023608768971332208,
+            "msk_q10": 0.023608768971332208,
+            "msk_q11": 0.03541315345699832,
+            "msk_q01": 0.03541315345699832
           },
           {
             "repetition": 17,
-            "risk_q00": 0.022476584350950013,
-            "risk_q10": 0.01407673237209861,
-            "risk_q11": 0.014349322384338947,
-            "risk_q01": 0.02282838958578115,
-            "msk_q00": 0.030303030303030304,
-            "msk_q10": 0.030303030303030304,
-            "msk_q11": 0.05422647527910686,
-            "msk_q01": 0.05422647527910686
+            "risk_q00": 0.06037200780025376,
+            "risk_q10": 0.059798634838056586,
+            "risk_q11": 0.06049500151170051,
+            "risk_q01": 0.04667039542435092,
+            "msk_q00": 0.02866779089376054,
+            "msk_q10": 0.02866779089376054,
+            "msk_q11": 0.05564924114671164,
+            "msk_q01": 0.05564924114671164
           },
           {
             "repetition": 18,
-            "risk_q00": 0.02387064874116518,
-            "risk_q10": 0.014436765634883275,
-            "risk_q11": 0.013566205846913926,
-            "risk_q01": 0.022013922785487416,
-            "msk_q00": 0.025518341307814992,
-            "msk_q10": 0.025518341307814992,
-            "msk_q11": 0.06379585326953748,
-            "msk_q01": 0.06379585326953748
+            "risk_q00": 0.0605513433499314,
+            "risk_q10": 0.06202638459643772,
+            "risk_q11": 0.07001916506090988,
+            "risk_q01": 0.05748975652586541,
+            "msk_q00": 0.03204047217537943,
+            "msk_q10": 0.03204047217537943,
+            "msk_q11": 0.04215851602023609,
+            "msk_q01": 0.04215851602023609
           },
           {
             "repetition": 19,
-            "risk_q00": 0.022683094687214633,
-            "risk_q10": 0.013724333833421198,
-            "risk_q11": 0.013682976658460522,
-            "risk_q01": 0.02197748581466219,
-            "msk_q00": 0.03508771929824561,
-            "msk_q10": 0.03508771929824561,
-            "msk_q11": 0.05263157894736842,
-            "msk_q01": 0.05263157894736842
+            "risk_q00": 0.059090129848532014,
+            "risk_q10": 0.05537373658274791,
+            "risk_q11": 0.06484980913086291,
+            "risk_q01": 0.05362166691321124,
+            "msk_q00": 0.026981450252951095,
+            "msk_q10": 0.026981450252951095,
+            "msk_q11": 0.047217537942664416,
+            "msk_q01": 0.047217537942664416
           },
           {
             "repetition": 20,
-            "risk_q00": 0.02278057968877334,
-            "risk_q10": 0.013636365296613495,
-            "risk_q11": 0.014206036388612397,
-            "risk_q01": 0.023213498873103977,
-            "msk_q00": 0.028708133971291867,
-            "msk_q10": 0.028708133971291867,
-            "msk_q11": 0.028708133971291867,
-            "msk_q01": 0.028708133971291867
+            "risk_q00": 0.05324921288703843,
+            "risk_q10": 0.059723490467541995,
+            "risk_q11": 0.061519965618064276,
+            "risk_q01": 0.060987971189422896,
+            "msk_q00": 0.026981450252951095,
+            "msk_q10": 0.026981450252951095,
+            "msk_q11": 0.03204047217537943,
+            "msk_q01": 0.03204047217537943
           },
           {
             "repetition": 21,
-            "risk_q00": 0.0234825871218054,
-            "risk_q10": 0.014013909893624943,
-            "risk_q11": 0.01397671116537691,
-            "risk_q01": 0.02282574175024199,
-            "msk_q00": 0.030303030303030304,
-            "msk_q10": 0.030303030303030304,
-            "msk_q11": 0.03987240829346093,
-            "msk_q01": 0.03987240829346093
+            "risk_q00": 0.051139514699394595,
+            "risk_q10": 0.06836869001644885,
+            "risk_q11": 0.06257026736665916,
+            "risk_q01": 0.05135464708662296,
+            "msk_q00": 0.02023608768971332,
+            "msk_q10": 0.02023608768971332,
+            "msk_q11": 0.03541315345699832,
+            "msk_q01": 0.03541315345699832
           },
           {
             "repetition": 22,
-            "risk_q00": 0.02299878699880409,
-            "risk_q10": 0.014212990680211424,
-            "risk_q11": 0.013631655542682641,
-            "risk_q01": 0.022757945316813077,
-            "msk_q00": 0.02073365231259968,
-            "msk_q10": 0.02073365231259968,
-            "msk_q11": 0.051036682615629984,
-            "msk_q01": 0.051036682615629984
+            "risk_q00": 0.05396543877895754,
+            "risk_q10": 0.0644316357917798,
+            "risk_q11": 0.06658722435253994,
+            "risk_q01": 0.06430571739028323,
+            "msk_q00": 0.02866779089376054,
+            "msk_q10": 0.02866779089376054,
+            "msk_q11": 0.0387858347386172,
+            "msk_q01": 0.0387858347386172
           },
           {
             "repetition": 23,
-            "risk_q00": 0.02210225317662695,
-            "risk_q10": 0.014048186542656715,
-            "risk_q11": 0.013435206834514046,
-            "risk_q01": 0.02165891376015272,
-            "msk_q00": 0.028708133971291867,
-            "msk_q10": 0.028708133971291867,
-            "msk_q11": 0.06060606060606061,
-            "msk_q01": 0.06060606060606061
+            "risk_q00": 0.060142111881482885,
+            "risk_q10": 0.06011584403150616,
+            "risk_q11": 0.06633467181258768,
+            "risk_q01": 0.05650574043570877,
+            "msk_q00": 0.02023608768971332,
+            "msk_q10": 0.02023608768971332,
+            "msk_q11": 0.04215851602023609,
+            "msk_q01": 0.04215851602023609
           },
           {
             "repetition": 24,
-            "risk_q00": 0.023901269087961752,
-            "risk_q10": 0.014119422936217263,
-            "risk_q11": 0.013710570814740253,
-            "risk_q01": 0.022020885728189166,
-            "msk_q00": 0.02711323763955343,
-            "msk_q10": 0.02711323763955343,
-            "msk_q11": 0.05263157894736842,
-            "msk_q01": 0.05263157894736842
+            "risk_q00": 0.05358342983617104,
+            "risk_q10": 0.06357199892959176,
+            "risk_q11": 0.05428102563451764,
+            "risk_q01": 0.06449147530308641,
+            "msk_q00": 0.03204047217537943,
+            "msk_q10": 0.03204047217537943,
+            "msk_q11": 0.026981450252951095,
+            "msk_q01": 0.026981450252951095
           }
         ],
         "data_paths": {
@@ -2096,9 +1961,9 @@
             -3,
             -2
           ],
-          "statistic": 2.5394455824187765,
+          "statistic": 0.10831979241117193,
           "degrees_of_freedom": 2,
-          "p_value": 0.2809094815638284
+          "p_value": 0.9472806278136748
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_non_success_app_this_year.csv"
       },
@@ -2111,9 +1976,9 @@
             -3,
             -2
           ],
-          "statistic": 0.33331691519238643,
+          "statistic": 1.6845752778680392,
           "degrees_of_freedom": 2,
-          "p_value": 0.84648867374727
+          "p_value": 0.43072405440014305
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_entgelt_value.csv"
       },
@@ -2126,9 +1991,9 @@
             -3,
             -2
           ],
-          "statistic": 1.3790296777528344,
+          "statistic": 0.8660431634448655,
           "degrees_of_freedom": 2,
-          "p_value": 0.501819473315651
+          "p_value": 0.6485464949035002
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_rtzb_value.csv"
       },
@@ -2141,9 +2006,9 @@
             -3,
             -2
           ],
-          "statistic": 1.1428959558876268,
+          "statistic": 1.8822085276841332,
           "degrees_of_freedom": 2,
-          "p_value": 0.5647071629032565
+          "p_value": 0.3901967172421126
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_rtzb_missing.csv"
       },
@@ -2156,9 +2021,9 @@
             -3,
             -2
           ],
-          "statistic": 2.287081942954147,
+          "statistic": 0.22157218833431583,
           "degrees_of_freedom": 2,
-          "p_value": 0.31868855443978966
+          "p_value": 0.8951302020232
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_rehab_starts_this_year.csv"
       }
@@ -2183,21 +2048,21 @@
             "follow_year_5"
           ],
           "transformations": [],
-          "n_person_years": 5746,
-          "n_matched_sets": 612,
-          "events": 40,
-          "log_odds": 0.40738267121711147,
-          "standard_error": 0.3294187466992299,
-          "z_value": 1.2366711831038117,
-          "p_value": 0.21620918118404342,
+          "n_person_years": 5329,
+          "n_matched_sets": 569,
+          "events": 41,
+          "log_odds": -0.24208677228839587,
+          "standard_error": 0.30614155785203817,
+          "z_value": -0.7907674279406367,
+          "p_value": 0.4290797204851705,
           "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
           "successful_bootstrap_replicates": null,
-          "odds_ratio": 1.5028791042132166,
-          "ci_low": 0.7879835442187978,
-          "ci_high": 2.8663613833711823,
+          "odds_ratio": 0.7849880593862113,
+          "ci_low": 0.4307944461714677,
+          "ci_high": 1.430395073230966,
           "separation_warning": null,
           "sklearn_fit_method": "unpenalized_none_lbfgs",
-          "sklearn_iterations": 21,
+          "sklearn_iterations": 20,
           "sklearn_max_iter": 5000,
           "fit_warning": null
         },
@@ -2207,22 +2072,28 @@
           "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
           "selected_covariates": [
             {
-              "variable": "lag1_bygmgs_missing",
-              "trigger_component": "lag1_bygmgs_missing",
-              "variable_type": "binary",
-              "max_abs_smd": 0.11050674457057566
+              "variable": "lag1_years_since_last_rehab",
+              "trigger_component": "lag1_years_since_last_rehab",
+              "variable_type": "continuous",
+              "max_abs_smd": 0.49446817643414887
             },
             {
-              "variable": "lag1_whot_bland_cat",
-              "trigger_component": "lag1_whot_bland_cat",
+              "variable": "lag2_income_source_status",
+              "trigger_component": "lag2_income_source_status",
               "variable_type": "categorical_level",
-              "max_abs_smd": 0.10662639319057043
+              "max_abs_smd": 0.1802854793734924
             },
             {
               "variable": "lag1_income_source_status",
               "trigger_component": "lag1_income_source_status",
               "variable_type": "categorical_level",
-              "max_abs_smd": 0.10586901941296988
+              "max_abs_smd": 0.14866593459876884
+            },
+            {
+              "variable": "lag1_whot_bland_cat",
+              "trigger_component": "lag1_whot_bland_cat",
+              "variable_type": "categorical_level",
+              "max_abs_smd": 0.12381446317654592
             }
           ],
           "design_columns_used": [
@@ -2232,7 +2103,14 @@
             "follow_year_3",
             "follow_year_4",
             "follow_year_5",
-            "lag1_bygmgs_missing",
+            "lag1_years_since_last_rehab",
+            "lag1_years_since_last_rehab__missing",
+            "lag2_income_source_status_earnings_only",
+            "lag2_income_source_status_neither_observed",
+            "lag2_income_source_status_pension_only",
+            "lag1_income_source_status_earnings_only",
+            "lag1_income_source_status_neither_observed",
+            "lag1_income_source_status_pension_only",
             "lag1_whot_bland_cat_02",
             "lag1_whot_bland_cat_03",
             "lag1_whot_bland_cat_04",
@@ -2247,19 +2125,38 @@
             "lag1_whot_bland_cat_13",
             "lag1_whot_bland_cat_14",
             "lag1_whot_bland_cat_15",
-            "lag1_whot_bland_cat_16",
-            "lag1_income_source_status_earnings_only",
-            "lag1_income_source_status_neither_observed",
-            "lag1_income_source_status_pension_only"
+            "lag1_whot_bland_cat_16"
           ],
           "transformations": [
             {
-              "variable": "lag1_bygmgs_missing",
-              "role": "binary",
-              "imputation": 0.0,
-              "center": 0.0,
-              "scale": 1.0,
-              "missing_indicator_included": false
+              "variable": "lag1_years_since_last_rehab",
+              "role": "numeric",
+              "imputation": 4.0,
+              "center": 3.9902420716832427,
+              "scale": 0.339851001021056,
+              "missing_indicator_included": true
+            },
+            {
+              "variable": "lag2_income_source_status",
+              "role": "categorical",
+              "levels": [
+                "earnings_and_pension",
+                "earnings_only",
+                "neither_observed",
+                "pension_only"
+              ],
+              "reference_level": "earnings_and_pension"
+            },
+            {
+              "variable": "lag1_income_source_status",
+              "role": "categorical",
+              "levels": [
+                "earnings_and_pension",
+                "earnings_only",
+                "neither_observed",
+                "pension_only"
+              ],
+              "reference_level": "earnings_and_pension"
             },
             {
               "variable": "lag1_whot_bland_cat",
@@ -2283,34 +2180,23 @@
                 "16"
               ],
               "reference_level": "01"
-            },
-            {
-              "variable": "lag1_income_source_status",
-              "role": "categorical",
-              "levels": [
-                "earnings_and_pension",
-                "earnings_only",
-                "neither_observed",
-                "pension_only"
-              ],
-              "reference_level": "earnings_and_pension"
             }
           ],
-          "n_person_years": 5746,
-          "n_matched_sets": 612,
-          "events": 40,
-          "log_odds": 0.35719222511408355,
-          "standard_error": 0.3385805907653269,
-          "z_value": 1.0549695843659759,
-          "p_value": 0.29143923559321394,
+          "n_person_years": 5329,
+          "n_matched_sets": 569,
+          "events": 41,
+          "log_odds": -0.28482735761179206,
+          "standard_error": 0.3199444826835966,
+          "z_value": -0.8902399417009701,
+          "p_value": 0.3733370619822235,
           "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
           "successful_bootstrap_replicates": null,
-          "odds_ratio": 1.429310592840472,
-          "ci_low": 0.7360731822540383,
-          "ci_high": 2.7754424696604594,
+          "odds_ratio": 0.7521440950639003,
+          "ci_low": 0.40175270406496205,
+          "ci_high": 1.4081317537268359,
           "separation_warning": null,
           "sklearn_fit_method": "unpenalized_none_lbfgs",
-          "sklearn_iterations": 82,
+          "sklearn_iterations": 225,
           "sklearn_max_iter": 5000,
           "fit_warning": null
         }
@@ -2344,21 +2230,21 @@
           "follow_year_5"
         ],
         "transformations": [],
-        "n_person_years": 5993,
-        "n_matched_sets": 618,
-        "events": 41,
-        "log_odds": 0.3371085359630628,
-        "standard_error": 0.3235292513030549,
-        "z_value": 1.0419723552207896,
-        "p_value": 0.29742449601822396,
+        "n_person_years": 5631,
+        "n_matched_sets": 583,
+        "events": 44,
+        "log_odds": -0.35433088017614195,
+        "standard_error": 0.2989899759721554,
+        "z_value": -1.1850928414039554,
+        "p_value": 0.2359807411420013,
         "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
         "successful_bootstrap_replicates": null,
-        "odds_ratio": 1.4008911025525081,
-        "ci_low": 0.7430374761364723,
-        "ci_high": 2.641180215317072,
+        "odds_ratio": 0.7016427692595577,
+        "ci_low": 0.39049065803218025,
+        "ci_high": 1.2607281775577086,
         "separation_warning": null,
         "sklearn_fit_method": "unpenalized_none_lbfgs",
-        "sklearn_iterations": 21,
+        "sklearn_iterations": 20,
         "sklearn_max_iter": 5000,
         "fit_warning": null
       },
@@ -2368,22 +2254,28 @@
         "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
         "selected_covariates": [
           {
-            "variable": "lag1_bygmgs_missing",
-            "trigger_component": "lag1_bygmgs_missing",
-            "variable_type": "binary",
-            "max_abs_smd": 0.11050674457057566
+            "variable": "lag1_years_since_last_rehab",
+            "trigger_component": "lag1_years_since_last_rehab",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.49446817643414887
           },
           {
-            "variable": "lag1_whot_bland_cat",
-            "trigger_component": "lag1_whot_bland_cat",
+            "variable": "lag2_income_source_status",
+            "trigger_component": "lag2_income_source_status",
             "variable_type": "categorical_level",
-            "max_abs_smd": 0.10662639319057043
+            "max_abs_smd": 0.1802854793734924
           },
           {
             "variable": "lag1_income_source_status",
             "trigger_component": "lag1_income_source_status",
             "variable_type": "categorical_level",
-            "max_abs_smd": 0.10586901941296988
+            "max_abs_smd": 0.14866593459876884
+          },
+          {
+            "variable": "lag1_whot_bland_cat",
+            "trigger_component": "lag1_whot_bland_cat",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.12381446317654592
           }
         ],
         "design_columns_used": [
@@ -2393,7 +2285,14 @@
           "follow_year_3",
           "follow_year_4",
           "follow_year_5",
-          "lag1_bygmgs_missing",
+          "lag1_years_since_last_rehab",
+          "lag1_years_since_last_rehab__missing",
+          "lag2_income_source_status_earnings_only",
+          "lag2_income_source_status_neither_observed",
+          "lag2_income_source_status_pension_only",
+          "lag1_income_source_status_earnings_only",
+          "lag1_income_source_status_neither_observed",
+          "lag1_income_source_status_pension_only",
           "lag1_whot_bland_cat_02",
           "lag1_whot_bland_cat_03",
           "lag1_whot_bland_cat_04",
@@ -2408,19 +2307,38 @@
           "lag1_whot_bland_cat_13",
           "lag1_whot_bland_cat_14",
           "lag1_whot_bland_cat_15",
-          "lag1_whot_bland_cat_16",
-          "lag1_income_source_status_earnings_only",
-          "lag1_income_source_status_neither_observed",
-          "lag1_income_source_status_pension_only"
+          "lag1_whot_bland_cat_16"
         ],
         "transformations": [
           {
-            "variable": "lag1_bygmgs_missing",
-            "role": "binary",
-            "imputation": 0.0,
-            "center": 0.0,
-            "scale": 1.0,
-            "missing_indicator_included": false
+            "variable": "lag1_years_since_last_rehab",
+            "role": "numeric",
+            "imputation": 4.0,
+            "center": 3.986680873734683,
+            "scale": 0.3525791178851796,
+            "missing_indicator_included": true
+          },
+          {
+            "variable": "lag2_income_source_status",
+            "role": "categorical",
+            "levels": [
+              "earnings_and_pension",
+              "earnings_only",
+              "neither_observed",
+              "pension_only"
+            ],
+            "reference_level": "earnings_and_pension"
+          },
+          {
+            "variable": "lag1_income_source_status",
+            "role": "categorical",
+            "levels": [
+              "earnings_and_pension",
+              "earnings_only",
+              "neither_observed",
+              "pension_only"
+            ],
+            "reference_level": "earnings_and_pension"
           },
           {
             "variable": "lag1_whot_bland_cat",
@@ -2444,34 +2362,23 @@
               "16"
             ],
             "reference_level": "01"
-          },
-          {
-            "variable": "lag1_income_source_status",
-            "role": "categorical",
-            "levels": [
-              "earnings_and_pension",
-              "earnings_only",
-              "neither_observed",
-              "pension_only"
-            ],
-            "reference_level": "earnings_and_pension"
           }
         ],
-        "n_person_years": 5993,
-        "n_matched_sets": 618,
-        "events": 41,
-        "log_odds": 0.28275263757494284,
-        "standard_error": 0.33552733219630576,
-        "z_value": 0.8427111905432305,
-        "p_value": 0.3993899870623122,
+        "n_person_years": 5631,
+        "n_matched_sets": 583,
+        "events": 44,
+        "log_odds": -0.41251876470399274,
+        "standard_error": 0.31549222339030114,
+        "z_value": -1.3075401994731841,
+        "p_value": 0.19102931148340951,
         "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
         "successful_bootstrap_replicates": null,
-        "odds_ratio": 1.3267769264642444,
-        "ci_low": 0.6873711167713759,
-        "ci_high": 2.560970296317246,
+        "odds_ratio": 0.6619807747010007,
+        "ci_low": 0.3566916761702881,
+        "ci_high": 1.2285639821449807,
         "separation_warning": null,
         "sklearn_fit_method": "unpenalized_none_lbfgs",
-        "sklearn_iterations": 84,
+        "sklearn_iterations": 241,
         "sklearn_max_iter": 5000,
         "fit_warning": null
       },
@@ -2493,21 +2400,21 @@
           "follow_year_9"
         ],
         "transformations": [],
-        "n_person_years": 8677,
-        "n_matched_sets": 618,
-        "events": 80,
-        "log_odds": -0.6418989623051611,
-        "standard_error": 0.23391156689663714,
-        "z_value": -2.744195042688115,
-        "p_value": 0.006065948540472526,
+        "n_person_years": 7989,
+        "n_matched_sets": 583,
+        "events": 100,
+        "log_odds": 0.10060535681186139,
+        "standard_error": 0.19852327265574135,
+        "z_value": 0.5067685791495129,
+        "p_value": 0.6123172053016919,
         "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
         "successful_bootstrap_replicates": null,
-        "odds_ratio": 0.5262920657279723,
-        "ci_low": 0.33274939715216223,
-        "ci_high": 0.8324082352027677,
+        "odds_ratio": 1.1058401433587808,
+        "ci_low": 0.7493866121104388,
+        "ci_high": 1.631844501758393,
         "separation_warning": null,
         "sklearn_fit_method": "unpenalized_none_lbfgs",
-        "sklearn_iterations": 23,
+        "sklearn_iterations": 24,
         "sklearn_max_iter": 5000,
         "fit_warning": null
       },
@@ -2517,22 +2424,28 @@
         "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
         "selected_covariates": [
           {
-            "variable": "lag1_bygmgs_missing",
-            "trigger_component": "lag1_bygmgs_missing",
-            "variable_type": "binary",
-            "max_abs_smd": 0.11050674457057566
+            "variable": "lag1_years_since_last_rehab",
+            "trigger_component": "lag1_years_since_last_rehab",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.49446817643414887
           },
           {
-            "variable": "lag1_whot_bland_cat",
-            "trigger_component": "lag1_whot_bland_cat",
+            "variable": "lag2_income_source_status",
+            "trigger_component": "lag2_income_source_status",
             "variable_type": "categorical_level",
-            "max_abs_smd": 0.10662639319057043
+            "max_abs_smd": 0.1802854793734924
           },
           {
             "variable": "lag1_income_source_status",
             "trigger_component": "lag1_income_source_status",
             "variable_type": "categorical_level",
-            "max_abs_smd": 0.10586901941296988
+            "max_abs_smd": 0.14866593459876884
+          },
+          {
+            "variable": "lag1_whot_bland_cat",
+            "trigger_component": "lag1_whot_bland_cat",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.12381446317654592
           }
         ],
         "design_columns_used": [
@@ -2546,7 +2459,14 @@
           "follow_year_7",
           "follow_year_8",
           "follow_year_9",
-          "lag1_bygmgs_missing",
+          "lag1_years_since_last_rehab",
+          "lag1_years_since_last_rehab__missing",
+          "lag2_income_source_status_earnings_only",
+          "lag2_income_source_status_neither_observed",
+          "lag2_income_source_status_pension_only",
+          "lag1_income_source_status_earnings_only",
+          "lag1_income_source_status_neither_observed",
+          "lag1_income_source_status_pension_only",
           "lag1_whot_bland_cat_02",
           "lag1_whot_bland_cat_03",
           "lag1_whot_bland_cat_04",
@@ -2561,19 +2481,38 @@
           "lag1_whot_bland_cat_13",
           "lag1_whot_bland_cat_14",
           "lag1_whot_bland_cat_15",
-          "lag1_whot_bland_cat_16",
-          "lag1_income_source_status_earnings_only",
-          "lag1_income_source_status_neither_observed",
-          "lag1_income_source_status_pension_only"
+          "lag1_whot_bland_cat_16"
         ],
         "transformations": [
           {
-            "variable": "lag1_bygmgs_missing",
-            "role": "binary",
-            "imputation": 0.0,
-            "center": 0.0,
-            "scale": 1.0,
-            "missing_indicator_included": false
+            "variable": "lag1_years_since_last_rehab",
+            "role": "numeric",
+            "imputation": 3.0,
+            "center": 3.0206533984228314,
+            "scale": 0.33668217450087956,
+            "missing_indicator_included": true
+          },
+          {
+            "variable": "lag2_income_source_status",
+            "role": "categorical",
+            "levels": [
+              "earnings_and_pension",
+              "earnings_only",
+              "neither_observed",
+              "pension_only"
+            ],
+            "reference_level": "earnings_and_pension"
+          },
+          {
+            "variable": "lag1_income_source_status",
+            "role": "categorical",
+            "levels": [
+              "earnings_and_pension",
+              "earnings_only",
+              "neither_observed",
+              "pension_only"
+            ],
+            "reference_level": "earnings_and_pension"
           },
           {
             "variable": "lag1_whot_bland_cat",
@@ -2597,34 +2536,23 @@
               "16"
             ],
             "reference_level": "01"
-          },
-          {
-            "variable": "lag1_income_source_status",
-            "role": "categorical",
-            "levels": [
-              "earnings_and_pension",
-              "earnings_only",
-              "neither_observed",
-              "pension_only"
-            ],
-            "reference_level": "earnings_and_pension"
           }
         ],
-        "n_person_years": 8677,
-        "n_matched_sets": 618,
-        "events": 80,
-        "log_odds": -0.6650717585771155,
-        "standard_error": 0.23251314079122323,
-        "z_value": -2.860362026481302,
-        "p_value": 0.004231576399591582,
+        "n_person_years": 7989,
+        "n_matched_sets": 583,
+        "events": 100,
+        "log_odds": 0.11108228771193544,
+        "standard_error": 0.20862027555881751,
+        "z_value": 0.5324616095649695,
+        "p_value": 0.5944063242097875,
         "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
         "successful_bootstrap_replicates": null,
-        "odds_ratio": 0.5142366254940766,
-        "ci_low": 0.3260196854808594,
-        "ci_high": 0.811114539324529,
+        "odds_ratio": 1.1174868585078652,
+        "ci_low": 0.7424398272103941,
+        "ci_high": 1.6819906922691215,
         "separation_warning": null,
         "sklearn_fit_method": "unpenalized_none_lbfgs",
-        "sklearn_iterations": 56,
+        "sklearn_iterations": 220,
         "sklearn_max_iter": 5000,
         "fit_warning": null
       }
@@ -2636,51 +2564,51 @@
         "estimand": "ATT-standardized five-year interventional total, direct and indirect risk differences for divorce, with the indirect effect operating through the incidence and timing of first MSK rehabilitation.",
         "identification_warning": "The mediation decomposition requires sequential exchangeability: conditional on baseline matching variables and observed prior post-divorce history, there must be no remaining unmeasured mediator-outcome or prior-survival-mediator confounding. Defining the longitudinal mediator distribution for a survival outcome also uses the survival-mediational-g-formula intervention that sets prior survival to one in the source mediator simulation. Observation IPCW additionally assumes record-gap censoring is independent conditional on measured prior history. Positivity, consistency and correct specification of the longitudinal parametric models are also required.",
         "point_estimates": {
-          "risk_q00": 0.02265478875409812,
-          "risk_q10": 0.015186278385295293,
-          "risk_q11": 0.015077339073310929,
-          "risk_q01": 0.022782628889799855,
-          "interventional_total_effect_risk_difference": -0.0075774496807871905,
-          "interventional_direct_effect_risk_difference": -0.007468510368802826,
-          "interventional_indirect_effect_risk_difference": -0.0001089393119843643,
-          "proportion_mediated": 0.014376778015508646,
-          "simulated_first_msk_risk_q00": 0.027142857142857146,
-          "simulated_first_msk_risk_q11": 0.03967532467532467,
+          "risk_q00": 0.015479688541895608,
+          "risk_q10": 0.016982567644629153,
+          "risk_q11": 0.016936385507679938,
+          "risk_q01": 0.014711251327322325,
+          "interventional_total_effect_risk_difference": 0.0014566969657843296,
+          "interventional_direct_effect_risk_difference": 0.0015028791027335443,
+          "interventional_indirect_effect_risk_difference": -4.6182136949214636e-05,
+          "proportion_mediated": -0.03170332473669208,
+          "simulated_first_msk_risk_q00": 0.05153846153846153,
+          "simulated_first_msk_risk_q11": 0.03307692307692308,
           "monte_carlo_repetitions": 25,
           "target_population": "baseline covariate distribution of the matched treated individuals (ATT standardization)",
           "estimator": "parametric survival mediational g-formula with fixed divorce exposure, an absorbing first-MSK event-time process randomized from the source-treatment joint mediator distribution, annually updated lagged history, interventional direct/indirect effects, and optional observation IPCW",
           "history_order": "L(t-1) -> first MSK at t -> death at t -> L(t) for use at t+1",
           "model_diagnostics": {
             "observation_model_fit_method": "unpenalized_none_lbfgs",
-            "observation_risk_rows": 6030,
-            "first_gap_rows": 52,
-            "p_observed_min": 0.3769708680612124,
-            "p_observed_p01": 0.9354149691363722,
+            "observation_risk_rows": 5662,
+            "first_gap_rows": 64,
+            "p_observed_min": 0.206029372473629,
+            "p_observed_p01": 0.9413428828491274,
             "p_observed_p99": 0.999999999,
             "p_observed_max": 0.999999999,
             "probability_floor": 0.02,
-            "raw_ipcw_max": 2.3926025692587394,
+            "raw_ipcw_max": 1.8930642741523551,
             "ipcw_cap": 20.0,
             "rows_at_ipcw_cap": 0,
             "use_observation_ipcw": true,
-            "analysis_person_years": 5978,
-            "mediator_risk_rows": 5894,
-            "mediator_events": 41,
-            "death_events": 21,
-            "survivor_rows_for_history_models": 5957,
+            "analysis_person_years": 5598,
+            "mediator_risk_rows": 5511,
+            "mediator_events": 44,
+            "death_events": 19,
+            "survivor_rows_for_history_models": 5579,
             "mediator_model_fit_method": "unpenalized_none_lbfgs",
             "mediator_probability_min": 1e-09,
             "mediator_probability_p01": 1e-09,
-            "mediator_probability_p99": 0.042871554418811575,
-            "mediator_probability_max": 0.999999999,
+            "mediator_probability_p99": 0.07048675482124002,
+            "mediator_probability_max": 0.5150794707954448,
             "death_model_fit_method": "unpenalized_none_lbfgs",
             "death_probability_min": 1e-09,
             "death_probability_p01": 1e-09,
-            "death_probability_p99": 0.039606859652780504,
-            "death_probability_max": 0.9993146908919716,
+            "death_probability_p99": 0.0418636798332001,
+            "death_probability_max": 0.4633531403697056,
             "income_status_model_fit_method": "unpenalized_none_lbfgs",
             "income_status_model_converged": true,
-            "income_status_model_iterations": 2691,
+            "income_status_model_iterations": 4677,
             "mediator_model_converged": true,
             "death_model_converged": true,
             "observation_model_converged": true,
@@ -2688,24 +2616,24 @@
               "non_success_app_this_year": {
                 "fit_method": "unpenalized_none_lbfgs",
                 "converged": true,
-                "n_iter": 979
+                "n_iter": 3119
               },
               "non_msk_rehab_this_year": {
                 "fit_method": "unpenalized_none_lbfgs",
                 "converged": true,
-                "n_iter": 1505
+                "n_iter": 281
               }
             },
             "logit_iteration_budget": 20000,
             "logit_tolerance": 1e-06,
             "continuous_model_log_value_caps": {
               "entgelt_value": {
-                "observed_log_max": 11.136166420900569,
-                "log_value_cap": 14.136166420900569
+                "observed_log_max": 11.223676368051732,
+                "log_value_cap": 14.223676368051732
               },
               "rtzb_value": {
-                "observed_log_max": 9.724344486684398,
-                "log_value_cap": 12.724344486684398
+                "observed_log_max": 9.898944853998861,
+                "log_value_cap": 12.898944853998861
               }
             },
             "post_divorce_history_models": {
@@ -2725,20 +2653,20 @@
         },
         "bootstrap_intervals": {
           "interventional_total_effect_risk_difference": {
-            "ci_low": -0.022539762185832125,
-            "ci_high": 0.011770432077505083
+            "ci_low": -0.022082835581166485,
+            "ci_high": 0.023200165557663927
           },
           "interventional_direct_effect_risk_difference": {
-            "ci_low": -0.02240334761513952,
-            "ci_high": 0.011402883719296698
+            "ci_low": -0.01956635464890136,
+            "ci_high": 0.02261527340743546
           },
           "interventional_indirect_effect_risk_difference": {
-            "ci_low": -0.0008386867173431751,
-            "ci_high": 0.0016014009082612236
+            "ci_low": -0.00455249911070237,
+            "ci_high": 0.0018279799714488332
           },
           "proportion_mediated": {
-            "ci_low": -0.14975745933084664,
-            "ci_high": 0.15787235271294583
+            "ci_low": -0.2694991228087865,
+            "ci_high": 0.7922706725944715
           }
         },
         "successful_bootstrap_replicates": 20,
@@ -2747,278 +2675,278 @@
         "point_estimate_simulation_diagnostics": [
           {
             "repetition": 0,
-            "risk_q00": 0.023299509716684264,
-            "risk_q10": 0.015765106178982524,
-            "risk_q11": 0.016012706450917236,
-            "risk_q01": 0.02168206359667313,
-            "msk_q00": 0.03571428571428571,
-            "msk_q10": 0.03571428571428571,
-            "msk_q11": 0.05032467532467533,
-            "msk_q01": 0.05032467532467533
+            "risk_q00": 0.015779648562555537,
+            "risk_q10": 0.019918488272933965,
+            "risk_q11": 0.016546566813534946,
+            "risk_q01": 0.014958192840254014,
+            "msk_q00": 0.043706293706293704,
+            "msk_q10": 0.043706293706293704,
+            "msk_q11": 0.022727272727272728,
+            "msk_q01": 0.022727272727272728
           },
           {
             "repetition": 1,
-            "risk_q00": 0.023850757130082,
-            "risk_q10": 0.01512114902056605,
-            "risk_q11": 0.015046387983347453,
-            "risk_q01": 0.023154704531109793,
-            "msk_q00": 0.00974025974025974,
-            "msk_q10": 0.00974025974025974,
-            "msk_q11": 0.030844155844155844,
-            "msk_q01": 0.030844155844155844
+            "risk_q00": 0.016115473119503565,
+            "risk_q10": 0.016320536676229125,
+            "risk_q11": 0.01528239728810421,
+            "risk_q01": 0.014460226294287115,
+            "msk_q00": 0.04895104895104895,
+            "msk_q10": 0.04895104895104895,
+            "msk_q11": 0.03671328671328671,
+            "msk_q01": 0.03671328671328671
           },
           {
             "repetition": 2,
-            "risk_q00": 0.022551226410504,
-            "risk_q10": 0.01563387542613548,
-            "risk_q11": 0.014902843181086034,
-            "risk_q01": 0.022764440739353242,
-            "msk_q00": 0.024350649350649352,
-            "msk_q10": 0.024350649350649352,
-            "msk_q11": 0.03409090909090909,
-            "msk_q01": 0.03409090909090909
+            "risk_q00": 0.014479466647726813,
+            "risk_q10": 0.0162260696752915,
+            "risk_q11": 0.017440700263257725,
+            "risk_q01": 0.014659914902380167,
+            "msk_q00": 0.057692307692307696,
+            "msk_q10": 0.057692307692307696,
+            "msk_q11": 0.033216783216783216,
+            "msk_q01": 0.033216783216783216
           },
           {
             "repetition": 3,
-            "risk_q00": 0.023597143332259596,
-            "risk_q10": 0.015544300228387375,
-            "risk_q11": 0.014847767127417755,
-            "risk_q01": 0.021811749348858767,
-            "msk_q00": 0.024350649350649352,
-            "msk_q10": 0.024350649350649352,
-            "msk_q11": 0.03571428571428571,
-            "msk_q01": 0.03571428571428571
+            "risk_q00": 0.013359832214963396,
+            "risk_q10": 0.019264317528841057,
+            "risk_q11": 0.0169341245336313,
+            "risk_q01": 0.014500818785580072,
+            "msk_q00": 0.050699300699300696,
+            "msk_q10": 0.050699300699300696,
+            "msk_q11": 0.02097902097902098,
+            "msk_q01": 0.02097902097902098
           },
           {
             "repetition": 4,
-            "risk_q00": 0.02208484555482093,
-            "risk_q10": 0.014685415655385614,
-            "risk_q11": 0.015250322081158507,
-            "risk_q01": 0.024010528968814282,
-            "msk_q00": 0.03571428571428571,
-            "msk_q10": 0.03571428571428571,
-            "msk_q11": 0.02922077922077922,
-            "msk_q01": 0.02922077922077922
-          },
-          {
-            "repetition": 5,
-            "risk_q00": 0.023130237135097875,
-            "risk_q10": 0.014606090395800742,
-            "risk_q11": 0.015703720686382705,
-            "risk_q01": 0.02247090368245508,
-            "msk_q00": 0.027597402597402596,
-            "msk_q10": 0.027597402597402596,
-            "msk_q11": 0.048701298701298704,
-            "msk_q01": 0.048701298701298704
-          },
-          {
-            "repetition": 6,
-            "risk_q00": 0.022941069539369696,
-            "risk_q10": 0.015736243420504614,
-            "risk_q11": 0.013954109117962576,
-            "risk_q01": 0.024268184634224754,
-            "msk_q00": 0.025974025974025976,
-            "msk_q10": 0.025974025974025976,
-            "msk_q11": 0.05194805194805195,
-            "msk_q01": 0.05194805194805195
-          },
-          {
-            "repetition": 7,
-            "risk_q00": 0.02176607981242562,
-            "risk_q10": 0.01436870004699542,
-            "risk_q11": 0.01500004698366908,
-            "risk_q01": 0.023176316477383052,
-            "msk_q00": 0.024350649350649352,
-            "msk_q10": 0.024350649350649352,
-            "msk_q11": 0.02922077922077922,
-            "msk_q01": 0.02922077922077922
-          },
-          {
-            "repetition": 8,
-            "risk_q00": 0.022795560715121677,
-            "risk_q10": 0.01498570707124236,
-            "risk_q11": 0.01500821034817501,
-            "risk_q01": 0.02265681178846346,
-            "msk_q00": 0.03896103896103896,
-            "msk_q10": 0.03896103896103896,
-            "msk_q11": 0.048701298701298704,
-            "msk_q01": 0.048701298701298704
-          },
-          {
-            "repetition": 9,
-            "risk_q00": 0.02154067544060323,
-            "risk_q10": 0.01495284056871271,
-            "risk_q11": 0.01569806922325978,
-            "risk_q01": 0.022491279352723437,
-            "msk_q00": 0.021103896103896104,
-            "msk_q10": 0.021103896103896104,
-            "msk_q11": 0.05194805194805195,
-            "msk_q01": 0.05194805194805195
-          },
-          {
-            "repetition": 10,
-            "risk_q00": 0.021461165738286714,
-            "risk_q10": 0.01519757689485024,
-            "risk_q11": 0.01532718193755156,
-            "risk_q01": 0.023358344529888275,
-            "msk_q00": 0.03409090909090909,
-            "msk_q10": 0.03409090909090909,
-            "msk_q11": 0.04220779220779221,
-            "msk_q01": 0.04220779220779221
-          },
-          {
-            "repetition": 11,
-            "risk_q00": 0.024069776494484163,
-            "risk_q10": 0.015805689965464387,
-            "risk_q11": 0.015269240861028988,
-            "risk_q01": 0.022365329456683236,
-            "msk_q00": 0.02922077922077922,
-            "msk_q10": 0.02922077922077922,
-            "msk_q11": 0.04707792207792208,
-            "msk_q01": 0.04707792207792208
-          },
-          {
-            "repetition": 12,
-            "risk_q00": 0.023310160040888483,
-            "risk_q10": 0.015185731245386691,
-            "risk_q11": 0.015122700805967004,
-            "risk_q01": 0.022364363187108105,
-            "msk_q00": 0.024350649350649352,
-            "msk_q10": 0.024350649350649352,
-            "msk_q11": 0.040584415584415584,
-            "msk_q01": 0.040584415584415584
-          },
-          {
-            "repetition": 13,
-            "risk_q00": 0.02160129026838331,
-            "risk_q10": 0.015409517453585209,
-            "risk_q11": 0.01477491103698847,
-            "risk_q01": 0.023364692386931396,
-            "msk_q00": 0.022727272727272728,
-            "msk_q10": 0.022727272727272728,
-            "msk_q11": 0.037337662337662336,
-            "msk_q01": 0.037337662337662336
-          },
-          {
-            "repetition": 14,
-            "risk_q00": 0.02288598810959752,
-            "risk_q10": 0.015273536420477019,
-            "risk_q11": 0.015427514193574687,
-            "risk_q01": 0.023430230281392128,
-            "msk_q00": 0.025974025974025976,
-            "msk_q10": 0.025974025974025976,
-            "msk_q11": 0.03409090909090909,
-            "msk_q01": 0.03409090909090909
-          },
-          {
-            "repetition": 15,
-            "risk_q00": 0.022725264480298768,
-            "risk_q10": 0.014356995307924336,
-            "risk_q11": 0.015317950209353781,
-            "risk_q01": 0.023720742004244677,
-            "msk_q00": 0.030844155844155844,
-            "msk_q10": 0.030844155844155844,
-            "msk_q11": 0.032467532467532464,
-            "msk_q01": 0.032467532467532464
-          },
-          {
-            "repetition": 16,
-            "risk_q00": 0.022362547841422997,
-            "risk_q10": 0.014785096382514018,
-            "risk_q11": 0.014099287664958826,
-            "risk_q01": 0.0228745424389597,
-            "msk_q00": 0.030844155844155844,
-            "msk_q10": 0.030844155844155844,
-            "msk_q11": 0.03571428571428571,
-            "msk_q01": 0.03571428571428571
-          },
-          {
-            "repetition": 17,
-            "risk_q00": 0.02253738778788439,
-            "risk_q10": 0.015376001183393107,
-            "risk_q11": 0.015629564746511893,
-            "risk_q01": 0.022843334055268394,
-            "msk_q00": 0.024350649350649352,
-            "msk_q10": 0.024350649350649352,
+            "risk_q00": 0.016881957107677592,
+            "risk_q10": 0.015909730421798662,
+            "risk_q11": 0.017665522866979644,
+            "risk_q01": 0.014075533067475443,
+            "msk_q00": 0.055944055944055944,
+            "msk_q10": 0.055944055944055944,
             "msk_q11": 0.045454545454545456,
             "msk_q01": 0.045454545454545456
           },
           {
+            "repetition": 5,
+            "risk_q00": 0.01645909726962691,
+            "risk_q10": 0.016792374530127052,
+            "risk_q11": 0.016345801550023853,
+            "risk_q01": 0.014353662079070406,
+            "msk_q00": 0.055944055944055944,
+            "msk_q10": 0.055944055944055944,
+            "msk_q11": 0.03671328671328671,
+            "msk_q01": 0.03671328671328671
+          },
+          {
+            "repetition": 6,
+            "risk_q00": 0.017570761962691583,
+            "risk_q10": 0.0167028850468941,
+            "risk_q11": 0.019140741657610705,
+            "risk_q01": 0.014251282571292045,
+            "msk_q00": 0.043706293706293704,
+            "msk_q10": 0.043706293706293704,
+            "msk_q11": 0.02972027972027972,
+            "msk_q01": 0.02972027972027972
+          },
+          {
+            "repetition": 7,
+            "risk_q00": 0.016655667419181563,
+            "risk_q10": 0.01701316775592021,
+            "risk_q11": 0.018698201693376215,
+            "risk_q01": 0.01434610218125909,
+            "msk_q00": 0.050699300699300696,
+            "msk_q10": 0.050699300699300696,
+            "msk_q11": 0.03146853146853147,
+            "msk_q01": 0.03146853146853147
+          },
+          {
+            "repetition": 8,
+            "risk_q00": 0.015421451970096589,
+            "risk_q10": 0.015614289269869186,
+            "risk_q11": 0.01694526360960813,
+            "risk_q01": 0.015160427732593407,
+            "msk_q00": 0.043706293706293704,
+            "msk_q10": 0.043706293706293704,
+            "msk_q11": 0.04020979020979021,
+            "msk_q01": 0.04020979020979021
+          },
+          {
+            "repetition": 9,
+            "risk_q00": 0.016543330326354355,
+            "risk_q10": 0.016607265014830785,
+            "risk_q11": 0.018859860962694985,
+            "risk_q01": 0.01439040797658031,
+            "msk_q00": 0.06643356643356643,
+            "msk_q10": 0.06643356643356643,
+            "msk_q11": 0.02972027972027972,
+            "msk_q01": 0.02972027972027972
+          },
+          {
+            "repetition": 10,
+            "risk_q00": 0.014983259268579685,
+            "risk_q10": 0.01814816279358189,
+            "risk_q11": 0.01711241595019286,
+            "risk_q01": 0.01751545913257868,
+            "msk_q00": 0.055944055944055944,
+            "msk_q10": 0.055944055944055944,
+            "msk_q11": 0.038461538461538464,
+            "msk_q01": 0.038461538461538464
+          },
+          {
+            "repetition": 11,
+            "risk_q00": 0.01599831834854548,
+            "risk_q10": 0.01671896956578922,
+            "risk_q11": 0.01696837539845575,
+            "risk_q01": 0.017289433285219924,
+            "msk_q00": 0.055944055944055944,
+            "msk_q10": 0.055944055944055944,
+            "msk_q11": 0.04895104895104895,
+            "msk_q01": 0.04895104895104895
+          },
+          {
+            "repetition": 12,
+            "risk_q00": 0.016879539647665753,
+            "risk_q10": 0.018932566677358764,
+            "risk_q11": 0.01588419156881804,
+            "risk_q01": 0.01392069588278988,
+            "msk_q00": 0.050699300699300696,
+            "msk_q10": 0.050699300699300696,
+            "msk_q11": 0.050699300699300696,
+            "msk_q01": 0.050699300699300696
+          },
+          {
+            "repetition": 13,
+            "risk_q00": 0.014959921793736841,
+            "risk_q10": 0.01598921530298303,
+            "risk_q11": 0.015504353697390116,
+            "risk_q01": 0.01430623899171446,
+            "msk_q00": 0.038461538461538464,
+            "msk_q10": 0.038461538461538464,
+            "msk_q11": 0.024475524475524476,
+            "msk_q01": 0.024475524475524476
+          },
+          {
+            "repetition": 14,
+            "risk_q00": 0.014072687062848033,
+            "risk_q10": 0.01621187517766165,
+            "risk_q11": 0.017137358663366742,
+            "risk_q01": 0.015114553959129862,
+            "msk_q00": 0.057692307692307696,
+            "msk_q10": 0.057692307692307696,
+            "msk_q11": 0.04195804195804196,
+            "msk_q01": 0.04195804195804196
+          },
+          {
+            "repetition": 15,
+            "risk_q00": 0.015952796869164843,
+            "risk_q10": 0.015886568456872863,
+            "risk_q11": 0.016956527651559417,
+            "risk_q01": 0.015509920459359505,
+            "msk_q00": 0.045454545454545456,
+            "msk_q10": 0.045454545454545456,
+            "msk_q11": 0.03671328671328671,
+            "msk_q01": 0.03671328671328671
+          },
+          {
+            "repetition": 16,
+            "risk_q00": 0.016525887723151444,
+            "risk_q10": 0.016946184029893896,
+            "risk_q11": 0.015749735808298748,
+            "risk_q01": 0.01362627817072326,
+            "msk_q00": 0.0472027972027972,
+            "msk_q10": 0.0472027972027972,
+            "msk_q11": 0.04195804195804196,
+            "msk_q01": 0.04195804195804196
+          },
+          {
+            "repetition": 17,
+            "risk_q00": 0.014727636722722037,
+            "risk_q10": 0.016218164604750562,
+            "risk_q11": 0.017258924410760712,
+            "risk_q01": 0.0154626903995575,
+            "msk_q00": 0.06293706293706294,
+            "msk_q10": 0.06293706293706294,
+            "msk_q11": 0.03671328671328671,
+            "msk_q01": 0.03671328671328671
+          },
+          {
             "repetition": 18,
-            "risk_q00": 0.023140214709699958,
-            "risk_q10": 0.015151364925416133,
-            "risk_q11": 0.014380205328341389,
-            "risk_q01": 0.021666839980528874,
-            "msk_q00": 0.025974025974025976,
-            "msk_q10": 0.025974025974025976,
-            "msk_q11": 0.024350649350649352,
-            "msk_q01": 0.024350649350649352
+            "risk_q00": 0.01413027559827118,
+            "risk_q10": 0.015524368799928023,
+            "risk_q11": 0.015746221595556387,
+            "risk_q01": 0.015201904288674961,
+            "msk_q00": 0.0472027972027972,
+            "msk_q10": 0.0472027972027972,
+            "msk_q11": 0.022727272727272728,
+            "msk_q01": 0.022727272727272728
           },
           {
             "repetition": 19,
-            "risk_q00": 0.022048588322928997,
-            "risk_q10": 0.014560820168013078,
-            "risk_q11": 0.014376778533398249,
-            "risk_q01": 0.022286811108776394,
-            "msk_q00": 0.02922077922077922,
-            "msk_q10": 0.02922077922077922,
-            "msk_q11": 0.02922077922077922,
-            "msk_q01": 0.02922077922077922
+            "risk_q00": 0.015562915920294573,
+            "risk_q10": 0.0170657127239352,
+            "risk_q11": 0.016605125053936076,
+            "risk_q01": 0.014227621957252357,
+            "msk_q00": 0.045454545454545456,
+            "msk_q10": 0.045454545454545456,
+            "msk_q11": 0.043706293706293704,
+            "msk_q01": 0.043706293706293704
           },
           {
             "repetition": 20,
-            "risk_q00": 0.022521383954922758,
-            "risk_q10": 0.01544144411035031,
-            "risk_q11": 0.014960571084356,
-            "risk_q01": 0.022302000919948495,
-            "msk_q00": 0.022727272727272728,
-            "msk_q10": 0.022727272727272728,
-            "msk_q11": 0.05194805194805195,
-            "msk_q01": 0.05194805194805195
+            "risk_q00": 0.015516172565459785,
+            "risk_q10": 0.01868544830504537,
+            "risk_q11": 0.01703281398448786,
+            "risk_q01": 0.01305270222557775,
+            "msk_q00": 0.055944055944055944,
+            "msk_q10": 0.055944055944055944,
+            "msk_q11": 0.017482517482517484,
+            "msk_q01": 0.017482517482517484
           },
           {
             "repetition": 21,
-            "risk_q00": 0.024093800299069934,
-            "risk_q10": 0.015020853167274306,
-            "risk_q11": 0.014745665663461804,
-            "risk_q01": 0.023365888247356525,
-            "msk_q00": 0.02922077922077922,
-            "msk_q10": 0.02922077922077922,
-            "msk_q11": 0.03409090909090909,
-            "msk_q01": 0.03409090909090909
+            "risk_q00": 0.014420680468253844,
+            "risk_q10": 0.015916741962694547,
+            "risk_q11": 0.01727406151588362,
+            "risk_q01": 0.013777854675942725,
+            "msk_q00": 0.055944055944055944,
+            "msk_q10": 0.055944055944055944,
+            "msk_q11": 0.02097902097902098,
+            "msk_q01": 0.02097902097902098
           },
           {
             "repetition": 22,
-            "risk_q00": 0.022162841267126088,
-            "risk_q10": 0.015642673081461167,
-            "risk_q11": 0.01585169816696197,
-            "risk_q01": 0.02181095608706396,
-            "msk_q00": 0.02922077922077922,
-            "msk_q10": 0.02922077922077922,
-            "msk_q11": 0.03409090909090909,
-            "msk_q01": 0.03409090909090909
+            "risk_q00": 0.014356270569139462,
+            "risk_q10": 0.016616298582036726,
+            "risk_q11": 0.016999020053383496,
+            "risk_q01": 0.015183484447699125,
+            "msk_q00": 0.04020979020979021,
+            "msk_q10": 0.04020979020979021,
+            "msk_q11": 0.027972027972027972,
+            "msk_q01": 0.027972027972027972
           },
           {
             "repetition": 23,
-            "risk_q00": 0.021468844355471917,
-            "risk_q10": 0.015486478325689279,
-            "risk_q11": 0.015318581468870995,
-            "risk_q01": 0.023101164755488512,
-            "msk_q00": 0.024350649350649352,
-            "msk_q10": 0.024350649350649352,
-            "msk_q11": 0.04220779220779221,
-            "msk_q01": 0.04220779220779221
+            "risk_q00": 0.014459007684985536,
+            "risk_q10": 0.018233623678467037,
+            "risk_q11": 0.01720273124201266,
+            "risk_q01": 0.015112085367030015,
+            "msk_q00": 0.04020979020979021,
+            "msk_q10": 0.04020979020979021,
+            "msk_q11": 0.03146853146853147,
+            "msk_q01": 0.03146853146853147
           },
           {
             "repetition": 24,
-            "risk_q00": 0.022423360395018133,
-            "risk_q10": 0.01556375298787016,
-            "risk_q11": 0.014907441948071476,
-            "risk_q01": 0.022223499685298687,
-            "msk_q00": 0.027597402597402596,
-            "msk_q10": 0.027597402597402596,
-            "msk_q11": 0.05032467532467533,
-            "msk_q01": 0.05032467532467533
+            "risk_q00": 0.015180156704193815,
+            "risk_q10": 0.017101166261994427,
+            "risk_q11": 0.016118599859074267,
+            "risk_q01": 0.013323791509036065,
+            "msk_q00": 0.07167832167832168,
+            "msk_q10": 0.07167832167832168,
+            "msk_q11": 0.015734265734265736,
+            "msk_q01": 0.015734265734265736
           }
         ],
         "data_paths": {

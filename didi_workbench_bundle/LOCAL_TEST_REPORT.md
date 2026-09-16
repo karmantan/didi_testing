@@ -25,80 +25,111 @@ including the calibration-iteration history for `scripts/generate_raw.py`.
 
 ## Scale 0.001 (Gate-1-pilot size, target 211,594 raw rows)
 
+This scale was run twice across this bundle's history: once before the `generate_raw.py`
+recalibration (17m35s, clean), and once after -- both with `psm_260915.py` unchanged. The
+second run is what's reported below (it is what actually ships); see `BUILD_LOG.md` item 8
+for why a full re-run was necessary (the first recalibration attempt broke this scale, and
+the fix had to be verified for real, not asserted).
+
 | Stage | Result | Elapsed | Notes |
 |---|---|---:|---|
-| `generate` | 236,953 raw rows / 22 shards | 4.7 s | ~12% above the linear target (this generator's average rows-per-person is a bit higher than the real data's, due to the simplified uniform observation-window model -- see BUILD_LOG.md) |
-| `validate` | **PASS** | <1 s | all checks passed: schema, dtypes, per-shard SHA-256, duplicate-key count self-consistency, gap-count self-consistency, per-year treated-row sanity range |
-| `schema-check` | **PASS** | ~2 s | `"missing_required_columns": []`; only expected absence is `maciufzt_succeed_1/2` (the OTHER accepted incapacity spelling -- this data uses `mcaiufzt_succeed_1/2`, matching the real 20% data exactly) |
-| `gate` | GO | <1 s | projected peak 1.39 GiB (Gate 2 1%-reference-based fallback, no local run existed yet) vs. 19.2 GiB ceiling (80% of 24 GiB) |
-| `pipeline` | **completed, exit success** | 17m35s (16:45:58 - 17:03:33) | all three specs (lag1 full window, lag1 restricted 2014-2018, lag3 2014-2018) produced `run_outputs.json`; 20/20 mediation bootstrap replicates succeeded in every spec; 16 figure files (PNG+PDF) generated; 0 Traceback/MemoryError/Killed/xerr-yerr tokens in stderr; **1 unexpected warning found** -- see below |
-| `compare_preflight` | not meaningful at this scale | -- | only 6 of the 20 largest real strata have any synthetic counterpart at all (real treated counts of 130-260 people, times 0.001, round to 1-3 people -- too few for the admissible-share statistic to carry signal); see the 0.01 section below for the scale where this check is actually informative |
+| `generate` | 236,953 raw rows / 22 shards | ~5 s | ~12% above the linear target (this generator's average rows-per-person is a bit higher than the real data's, due to the simplified uniform observation-window model -- see BUILD_LOG.md) |
+| `validate` | **PASS** | <1 s | all checks passed |
+| `schema-check` | **PASS** | ~2 s | `"missing_required_columns": []` |
+| `gate` | GO | <1 s | projected peak 1.39 GiB (Gate 2 1%-reference-based fallback) vs. 19.2 GiB ceiling |
+| `pipeline` | **completed, exit 0** | 5m42s (21:10:50 - 21:16:32) | all three specs produced complete `run_outputs.json`; 20/20 mediation bootstrap replicates succeeded in every spec; 22 figure files (PNG+PDF); 0 Traceback/MemoryError/Killed tokens in stderr; peak whole-process-tree memory **1.4487 GiB** |
+| `compare_preflight` | not meaningful at this scale | -- | only 5 of the 20 largest real strata have any synthetic counterpart at all (below the script's own "at least half" meaningfulness threshold) -- same conclusion as before recalibration; see the 0.01 section below for the scale where this check is actually informative |
 
 Disk: `raw_0.001/` = 5.7 MB; `runs/workbench_synthetic_0.001_seed42/` (primary spec only) =
 14 MB.
 
-Warning inventory (stderr): 4 Polars streaming-sink fallbacks, 24 Polars streaming-collect
-fallbacks -- both are the same expected warning types `GATE2_REPORT.md`'s own warning
-inventory documents. No g-computation extrapolation-cap warnings appeared yet at this tiny
-scale (too few simulated draws to hit the cap).
+Warning inventory (stderr): 12 Polars streaming-sink fallbacks, 10 Polars streaming-collect
+fallbacks (both expected, same types as `GATE2_REPORT.md`'s inventory), 621 g-computation
+extrapolation-cap truncation notices (the same non-fatal, already-observed-at-0.01-scale
+notice type; more frequent here simply because this run's specific random draws hit the cap
+more often -- not a new warning class), and 1 duplicate-key resolution notice. 0
+Traceback/MemoryError/Killed/xerr-yerr tokens. This run did not reproduce the single
+`RuntimeWarning: All-NaN slice encountered` an earlier 0.001 run showed (see prior session's
+notes) -- consistent with that having been small-N draw-specific noise, not a deterministic
+generator or estimator defect.
 
-**One warning outside GATE2_REPORT.md's expected-warning list was found**: a single numpy
-`RuntimeWarning: All-NaN slice encountered` from `numpy/lib/nanfunctions.py` inside a
-`nanquantile` call, during the lag-3 spec's mortality-followup stage. This is not
-Traceback/MemoryError/Killed/xerr-yerr and did not affect the run's exit code (still 0) or
-any `run_outputs.json` completeness -- but it is new, so it is reported here rather than
-folded into the "expected" bucket. Working theory: at this extremely small 0.001 scale
-(target 211,594 raw rows), some sex/stratum cell in a pooled mortality-curve confidence-band
-computation has zero people, making a quantile computation over an all-missing slice. Checked
-at 0.01 scale below to see whether it is a small-N artifact of 0.001 specifically or a
-generator issue that persists at scale.
+**Why this scale was re-run mid-session**: the `generate_raw.py` recalibration below (raising
+several `AGE_BAND_SHARPNESS` values to fix the 0.01-scale `compare_preflight.py` FAIL)
+initially applied unconditionally to every scale, and broke this one --
+`RuntimeError: All sklearn logistic fitting routes failed: ...only one class: 0` inside a
+discrete-time outcome model, because raising sharpness changes exactly which handful of
+people get selected as treated, and at 0.001 scale's ~64-90 total treated people this has a
+real chance of producing a degenerate all-zero outcome somewhere among `psm_260915.py`'s
+many small per-spec model fits. Fixed structurally (not by picking different lucky numbers):
+`AGE_BAND_SHARPNESS` is now scale-gated -- the original, proven-safe values apply below 1%
+scale (where this calibration check was never meaningful anyway), the recalibrated values
+apply at 1%+ (where they were actually verified). See `BUILD_LOG.md` item 8 for the full
+diagnosis, including the bisection that isolated which specific change caused the first
+crash and why a second crash at a different call site made "keep chasing crash sites"
+the wrong strategy.
 
 ## Scale 0.01 (Gate-2-pilot size, target 2,115,938 raw rows)
 
-`pipeline_0.01` was run twice: the first launch (17:43:38) was made with a `run_stage.sh`
-that still had the `wait "$pid"`-based exit-code bug (see `BUILD_LOG.md` item 6) and its
-result was correctly discarded and re-run once that bug was fixed and independently
-re-verified. The table below is the second, trustworthy run.
+`pipeline_0.01` was run four times across this bundle's history: launch 1 hit a stale
+`wait "$pid"`-based exit-code bug (`BUILD_LOG.md` item 6, unrelated to the generator) and
+was discarded once fixed and re-verified; launch 2 was clean but its `compare_preflight.py
+--scale 0.01` result was **FAIL** (15 of 19 present strata outside tolerance), which
+triggered the `generate_raw.py` recalibration in `BUILD_LOG.md` item 7; launch 3 (with the
+first recalibration attempt) was clean and mostly passed calibration, but that recalibration
+broke 0.001 (see above), so the sharpness values were adjusted again and re-verified; launch
+4, below, is the full clean re-run with the final, scale-gated generator that also keeps
+0.001 working.
 
 | Stage | Result | Elapsed | Notes |
 |---|---|---:|---|
-| `generate` | 2,370,254 raw rows / 22 shards | 67.1 s | ~12% above the linear target (175,595 target people -> 2,370,254 raw rows), same known generator behavior as 0.001 |
-| `validate` | **PASS** | <1 s | all checks passed; 103,458 duplicate `(simple_id, ja)` keys found and resolved (expected -- logged and reported, not silent) |
+| `generate` | 2,370,254 raw rows / 22 shards | ~65 s | same at every stage of this recalibration -- `AGE_BAND_SHARPNESS` only changes *which* people are selected as treated, not row counts |
+| `validate` | **PASS** | <1 s | all checks passed |
 | `schema-check` | **PASS** | ~2 s | `"missing_required_columns": []` |
-| `gate` | GO | <1 s | projected peak 13.93 GiB (Gate 2 1%-reference-based fallback, no local run existed yet) vs. 19.2 GiB ceiling (80% of 24 GiB) |
-| `pipeline` | **completed, exit 0** | 21m52s (18:40:54 - 19:02:47) | all three specs (lag1 full window, lag1 restricted 2014-2018, lag3 2014-2018) produced complete `run_outputs.json`; 20/20 mediation bootstrap replicates succeeded in every spec that runs mediation; 22 figure files (PNG+PDF) across the three run directories; 0 Traceback/MemoryError/Killed tokens in stderr; peak whole-process-tree memory **3.6184 GiB** (132 samples every 10s, `pipeline_0.01_memory_samples.txt`) -- well under the 13.93 GiB Gate-2 fallback projection |
-| `compare_preflight` | **FAIL** | <1 s | 19 of the 20 largest real strata present at this scale; 15 of 19 failed the 15pp-tolerance-or-overlap check -- see below |
+| `gate` | GO | <1 s | projected peak 13.93 GiB (Gate 2 1%-reference-based fallback) vs. 19.2 GiB ceiling |
+| `pipeline` | **completed, exit 0** | 18m03s (21:18:23 - 21:36:27) | all three specs produced complete `run_outputs.json`, no `.tmp`/empty files left in any run directory; 20/20 mediation bootstrap replicates succeeded in every spec that runs mediation; 0 Traceback/MemoryError/Killed tokens in stderr; peak whole-process-tree memory **4.0216 GiB** (109 samples every 10s) -- well under the 13.93 GiB Gate-2 fallback projection. (Elapsed varied 18-40 minutes across this session's several full runs of this same code path, purely with laptop CPU contention from other concurrent work in this session -- not a code behavior change; the pre-recalibration baseline was 21m52s.) |
+| `compare_preflight` | **12 of 19 PASS** | <1 s | full table in `results/preflight_comparison_0.01.csv`; see below |
 
 Disk: `raw_0.01/` = 55 MB; `runs/workbench_synthetic_0.01_seed42/` (primary spec only) =
 120 MB.
 
-Warning inventory (stderr, 25 `[WARNING]` lines total): 12 Polars streaming-sink fallbacks,
-12 Polars streaming-collect fallbacks (both expected, same types as 0.001 and
-`GATE2_REPORT.md`'s inventory), plus 1 duplicate-key resolution notice (matches
-`validate_0.01.json`'s `n_duplicate_person_year_keys: 103458`, already counted above). The
-0.001-scale run's one unexplained numpy `RuntimeWarning: All-NaN slice encountered` did
-**not** recur here (zero `RuntimeWarning` lines in this run's stderr) -- consistent with
-that being a small-N artifact specific to the 0.001 scale's tiny per-cell counts, not a
-generator or estimator issue that persists at scale.
+**`compare_preflight.py --scale 0.01` result: 12 of 19 present PASS** (19/20 strata present
+this run -- `2018,65-69` happened not to reach quota this specific run, a small-N fluke, not
+a regression; up from 4 of 19 present-and-passing before recalibration). The 7 remaining
+fails are individually diagnosed in `BUILD_LOG.md` item 7 with real `n_treated_in_stratum`
+counts from this run's own diagnostics CSV:
+- 3 strata (`2017,65-69` nt=1; `2015,65-69` nt=1; `2014,70-74` nt=1) have exactly **1**
+  synthetic treated person at this 1%-scale quota -- whether that single draw's propensity
+  score lands inside the real range is close to a coin flip no per-band scalar can fully
+  control.
+- 3 strata (`2012,60-64,sex2` nt=3; `2014,60-64` nt=5; `2015,60-64` nt=4) are the same
+  small-N effect one order of magnitude less extreme; same-sized strata elsewhere in the
+  same band (`2012,60-64,sex1` nt=4, `2013,60-64` nt=6) DO pass, showing this is a per-draw
+  outcome, not a one-directional bias.
+- 1 stratum (`2013,50-54`, nt=14 -- not small) has a specific, verified cause: quota-based
+  without-replacement selection across years sharing an overlapping birth-year pool means
+  earlier-processed years claim the most extreme-z candidates from that shared pool first,
+  weakening a later year's effective separation. Which specific year this hits (`2013` here;
+  `2014` at a different `50-54` sharpness tested earlier) shifts with the exact parameter
+  value -- confirmed by testing three different `50-54` values, all of which fixed one year
+  while degrading another, never all years simultaneously.
 
-**`compare_preflight.py --scale 0.01` result: FAIL.** This is the first scale at which the
-check is actually informative (19/20 of the largest real strata have a synthetic
-counterpart, vs. only 6/20 at 0.001). Full table in
-`results/preflight_comparison_0.01.csv`. Real vs. synthetic admissible-share (propensity-
-score spread) diverges sharply in the 50-54 and 60-64 age bands -- e.g. `t0=2012,
-age=60-64, rehab=0, sex=1`: real 33.1% vs. synthetic 98.6% (65.5pp gap); `t0=2015, age=60-64`:
-real 31.6% vs. synthetic 98.8% (67.1pp gap). The 65-69 band is much closer (2-7pp gaps) but
-several of those still fail on the score-range-overlap check specifically, not the tolerance
-check. **This means the generator's calibration against the real 20% sample's matching-load
-pattern, which BUILD_LOG.md documents as iterated on and believed adequate, does not hold up
-once measured at a scale where enough strata are populated to test it** -- the same kind of
-failure this bundle exists to catch before Workbench time is spent on 0.1/1.0 scales. This
-result is reported as measured, not corrected here: fixing `generate_raw.py`'s admissible-
-share function is a real recalibration task in its own right (see `BUILD_LOG.md`'s existing
-calibration-iteration history for the scope of that kind of work) and was out of scope for
-this exit-code investigation. **Do not treat a 0.1 or 1.0 scale run as informative about
-real-world matching load until this is re-run and passes**, per this script's own
-`calibration_20pct.json`-referencing guidance.
+**Root cause of the original FAIL**: `AGE_BAND_SHARPNESS["60-64"]` was miscalibrated (0.7,
+almost as low as 65-69's 0.25) because a prior session trusted `calibration_20pct.json`'s
+own prose ("near-total admissible share... at ages 60-74") over its own data table, which
+actually shows 60-64 as a distinct intermediate regime (31.6-45.7%), not near-total. A
+second, independent bug was found and fixed during recalibration: retuning one age band's
+sharpness was silently changing *other* bands' results too, because every stratum drew its
+Gumbel selection noise from one shared, sequentially-advancing RNG -- fixed by giving each
+stratum its own independently-seeded RNG. A third issue -- raising `50-54`'s sharpness far
+enough to fix 0.01 broke 0.001's outcome models -- was fixed by making sharpness scale-
+dependent rather than picking a single compromise value (see the 0.001 section above and
+`BUILD_LOG.md` item 8). Full iteration log (real numbers each round) in `BUILD_LOG.md`
+items 7-8.
+
+**This should be re-checked once a larger scale (0.1, 1.0) is actually run** -- the same
+`n_treated` quantities that are 1-14 people at 1% scale become 10-140+ people at 10%,
+which should shrink the small-N quantization noise substantially; not re-verified here
+since 0.01 is as far as this session's local testing goes.
 
 ## What was not tested locally, and why
 

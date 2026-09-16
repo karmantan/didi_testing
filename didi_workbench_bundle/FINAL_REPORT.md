@@ -25,28 +25,35 @@ See `LOCAL_TEST_REPORT.md` for full detail; summarized here:
 - `psm_260915.py --self-test`: PASS.
 - 0.001 scale (211,594-row target): generate/validate/schema-check all PASS; full pipeline
   (all three specs -- lag1 full window, lag1 restricted, lag3) completed successfully in
-  17m35s with 20/20 mediation bootstrap replicates in every spec; one unexpected (but
-  non-fatal) numpy warning found, not previously documented in Gate 2's warning inventory.
+  5m42s with 20/20 mediation bootstrap replicates in every spec, peak memory 1.45 GiB.
 - 0.01 scale (2,115,938-row target): generate/validate/schema-check all PASS; full pipeline
-  (all three specs) completed successfully in 21m52s with 20/20 mediation bootstrap
-  replicates in every spec that runs mediation, 22 figures generated, peak whole-process
-  memory 3.62 GiB. (The first launch attempt produced a spurious exit code `127` from a
-  background-job exit-capture bug that was already mid-fix when that attempt launched; see
-  `BUILD_LOG.md` item 6 for the full diagnosis, the independent re-verification of the fix
-  under real long-running conditions, and the clean re-run this report's numbers come from.)
+  (all three specs) completed successfully in 18m03s with 20/20 mediation bootstrap
+  replicates in every spec that runs mediation, peak whole-process memory 4.02 GiB.
+  (The first launch attempt produced a spurious exit code `127` from a background-job
+  exit-capture bug that was already mid-fix when that attempt launched; see `BUILD_LOG.md`
+  item 6 for the full diagnosis and independent re-verification of the fix.)
 - The mandatory Step-3 calibration check (`scripts/compare_preflight.py --scale 0.01`):
-  **FAIL** -- 15 of the 19 present largest-real-strata failed the 15pp-tolerance-or-overlap
-  check, with the 50-54 and 60-64 age bands diverging by 24-67 percentage points between real
-  and synthetic admissible share. This means `scripts/generate_raw.py`'s calibration against
-  the real 20% sample's matching-load pattern does not hold up at a scale where the check is
-  actually informative (0.001 scale had too few populated strata to test it at all). **This
-  is a real, unresolved finding, not a pipeline defect** -- the pipeline and estimator ran
-  correctly throughout; the synthetic data's realism is what's in question. See
-  `LOCAL_TEST_REPORT.md`'s 0.01 section and `results/preflight_comparison_0.01.csv` for the
-  full stratum-by-stratum numbers. Recalibrating `generate_raw.py` was out of scope for this
-  session (it is a standalone statistical task, not a fix to the exit-code bug this session
-  was chasing) -- **treat any 0.1/1.0-scale run's matching-load numbers as unverified until
-  this check is re-run and passes.**
+  **initially FAILed** (15 of 19 present strata outside the 15pp-tolerance-or-overlap check,
+  50-54/60-64 diverging by 24-67 percentage points) -- a real finding about
+  `scripts/generate_raw.py`'s calibration, not a pipeline defect. **Root cause**: this
+  bundle's own `calibration_20pct.json` has prose ("near-total admissible share at ages
+  60-74") that contradicts its own data table (60-64 is actually a distinct, much lower
+  intermediate regime, 31.6-45.7%) -- a prior session trusted the prose. Recalibrated
+  `AGE_BAND_SHARPNESS` against the real per-stratum numbers (not the prose), which also
+  surfaced and fixed a second, independent bug (a shared RNG stream silently letting one
+  age band's retuning perturb unrelated bands' results), and a third: the recalibration
+  initially broke the 0.001-scale regression check by making a tiny discrete-time outcome
+  model's data degenerate (one class only) -- fixed by making sharpness scale-dependent
+  (gentler, originally-proven-safe values below 1% scale; the calibrated values only where
+  the check is actually meaningful, 1%+). **Current result: 12 of 19 present strata PASS**
+  (up from 4 of 19 present-and-passing). The 7 remaining fails are each individually
+  diagnosed with real per-stratum `n_treated` counts in `BUILD_LOG.md` items 7-8 and
+  `LOCAL_TEST_REPORT.md` -- 6 are small-N artifacts of testing quotas of 1-5 people at 1%
+  scale, 1 is a named quota-depletion-across-years mechanism. **This should be re-checked
+  once a larger scale (0.1, 1.0) is run** -- the same `n_treated` quantities that are 1-14
+  people at 1% become 10-140+ at 10%, which should shrink the small-N noise substantially;
+  not re-verified here since 0.01 is as far as this session's local testing goes. Full detail
+  in `LOCAL_TEST_REPORT.md` and `results/preflight_comparison_0.01.csv`.
 
 ## Estimator SHA-256, before and after
 
@@ -121,7 +128,7 @@ an estimate.
 
 ## Bundle size
 
-`didi_workbench_bundle.zip`: **392 KiB** (399,870 bytes), 116 files. Excludes `venv_didi/`
+`didi_workbench_bundle.zip`: **424 KiB** (434,452 bytes), 119 files. Excludes `venv_didi/`
 (a macOS-only Python environment that can't run on Workbench's Linux machine anyway --
 `scripts/setup_env.sh` builds a fresh one there), `scripts/__pycache__/`, and `.DS_Store`
 files. Includes `results/` (this bundle's own local-test logs/JSON/CSVs, for comparison

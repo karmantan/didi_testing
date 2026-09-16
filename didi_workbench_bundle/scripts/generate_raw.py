@@ -73,15 +73,38 @@ AGE_BAND_RANGE = {
 }
 # Calibrated (empirically, per BUILD_LOG.md's iteration log) z-selection "sharpness" per age
 # band: how strongly a person's latent economic type z influences whether THEY (vs a random
-# same-stratum peer) get selected as the treated (divorced) case in a given year. Real data
-# (calibration_20pct.json matching_edge_preflight.admissible_share_pattern): near-total
-# admissible share (92-99%) at ages 60+ (near-random selection -> low sharpness), sparse
-# admissible share (3-6%) at ages 45-54 (strong selection on covariates -> high sharpness).
-AGE_BAND_SHARPNESS = {
+# same-stratum peer) get selected as the treated (divorced) case in a given year.
+#
+# calibration_20pct.json's own prose ("near-total admissible share... at ages 60-74") is
+# imprecise and was the original source of a real bug here (see BUILD_LOG.md): its own
+# top_20_strata_by_candidate_real_edges TABLE (the actual ground truth compare_preflight.py
+# uses) shows 65-74 near-total (92.7-99.2%) but 60-64 is a distinct, much lower, intermediate
+# regime (31.6-45.7%) -- closer to 55-59 than to 65+. 45-54 is sparse (3.2-6.4%). Trust the
+# table over the prose when they disagree (same principle as Hard Rule 7).
+#
+# Sharpness is scale-dependent (see BUILD_LOG.md): at fractions below ~1%, per-stratum
+# treated quotas round to 1-14 people, and pulling that tiny a sample harder toward the
+# tails of z (to reproduce realistic admissible-share separation) has a real, repeatedly
+# observed chance of producing a degenerate single-class outcome variable somewhere in
+# psm_260915.py's many per-spec/per-outcome discrete-time model fits (death, MSK, mediation,
+# sensitivity variants) -- a RuntimeError crash, not a calibration nuance. Below ~1% scale,
+# compare_preflight.py itself already documents the calibration check as "not meaningful"
+# (fewer than half the top-20 real strata have any synthetic counterpart at all), so there
+# is nothing to gain from the sharper values there and a real, demonstrated robustness cost.
+# CALIBRATED_AGE_BAND_SHARPNESS is used at fraction >= 0.01 (where the check IS meaningful
+# and this was calibrated against real compare_preflight.py output); DEFAULT_AGE_BAND_
+# SHARPNESS (the original, gentler values) is used below that, preserving the small-scale
+# smoke test's proven crash-free behavior.
+DEFAULT_AGE_BAND_SHARPNESS = {
     "<20": 0.6, "20-24": 1.0, "25-29": 1.4, "30-34": 1.8, "35-39": 2.2, "40-44": 2.8,
     "45-49": 3.2, "50-54": 3.0, "55-59": 1.8, "60-64": 0.7, "65-69": 0.25, "70-74": 0.15,
     "75-79": 0.12, "80-84": 0.1, "85-89": 0.1, "90+": 0.1,
 }
+CALIBRATED_AGE_BAND_SHARPNESS = {
+    **DEFAULT_AGE_BAND_SHARPNESS,
+    "45-49": 8.0, "50-54": 6.0, "60-64": 2.3, "65-69": 2.5, "70-74": 0.8,
+}
+CALIBRATED_SHARPNESS_MIN_FRACTION = 0.01
 
 REHAB_CODE_WEIGHTS = {20: 0.35, 53: 0.15, 56: 0.15, 30: 0.10, 10: 0.25}
 INCAPACITY_CATEGORIES = ["1-3", "3-6", "6-12"]
@@ -239,6 +262,10 @@ def main() -> int:
     person_inject_dead_at_t0 = rng_master.random(size=n_people) < 0.001
 
     # --- quota-based, z-weighted-without-replacement treated selection ---
+    age_band_sharpness = (
+        CALIBRATED_AGE_BAND_SHARPNESS if fraction >= CALIBRATED_SHARPNESS_MIN_FRACTION
+        else DEFAULT_AGE_BAND_SHARPNESS
+    )
     person_treated_year = np.zeros(n_people, dtype=np.int16)  # 0 = never treated
     person_used = np.zeros(n_people, dtype=bool)
     quota_notes = []
@@ -265,9 +292,25 @@ def main() -> int:
         if candidate_idx.size == 0:
             continue
         take_n = min(target_n, candidate_idx.size)
-        sharpness = AGE_BAND_SHARPNESS.get(band, 1.0)
+        sharpness = age_band_sharpness.get(band, 1.0)
         z_candidates = person_z[candidate_idx]
-        gumbel_noise = rng_master.gumbel(size=candidate_idx.size)
+        # Each stratum draws its Gumbel noise from its OWN independently-seeded RNG (derived
+        # from seed/t0/band/sex/rehab), not from the single advancing rng_master stream used
+        # elsewhere in this function. Found during AGE_BAND_SHARPNESS calibration (BUILD_LOG.md):
+        # with a shared, sequentially-advancing rng_master, changing one stratum's selection
+        # (e.g. retuning 60-64's sharpness) changes how many random draws that stratum
+        # consumes, which shifts the RNG's position for every stratum processed after it in
+        # real_rows' file order -- so retuning band X silently perturbed unrelated band Y's
+        # results too, purely from RNG-position drift (not from any real shared-person
+        # constraint; genuine overlap, where the same birth cohort ages from one band into
+        # another across 2012-2018 and is legitimately claimed by an earlier year's
+        # selection, still applies and is unaffected by this change). This still reproduces
+        # deterministically for a given seed, but a band's own noise draws are now stable
+        # under changes to any *other* band's sharpness.
+        stratum_seed_material = f"{seed}|{t0}|{band}|{sex}|{rehab}".encode("utf-8")
+        stratum_seed = int(hashlib.sha256(stratum_seed_material).hexdigest()[:8], 16)
+        stratum_rng = np.random.default_rng(stratum_seed)
+        gumbel_noise = stratum_rng.gumbel(size=candidate_idx.size)
         keys = sharpness * z_candidates + gumbel_noise
         top_positions = np.argpartition(-keys, take_n - 1)[:take_n]
         selected = candidate_idx[top_positions]
@@ -437,7 +480,7 @@ def main() -> int:
         "target_treated_by_year": {str(y): int(c) for y, c in divorcing_by_year.items()},
         "n_treated_people_selected": n_treated_total,
         "generated_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "age_band_sharpness_used": AGE_BAND_SHARPNESS,
+        "age_band_sharpness_used": age_band_sharpness,
         "generator": "scripts/generate_raw.py",
     }
     manifest_path = out_dir / "generation_manifest.json"

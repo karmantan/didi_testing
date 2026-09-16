@@ -1,19 +1,19 @@
 {
   "available_ram_gib": 24.0,
-  "basis_note": "NO local completed run yet -- falling back to Gate 2 1% reference point (13.93 GiB whole-container peak at 2,115,938 rows). GATE2_REPORT.md explicitly attributes the >100x edge growth from Gate 1 to Gate 2 (200,234 -> 20,707,718 for 10x rows) to the OLD generator's score-bunching artifact, not to the estimator or real data (the real 20% data's worst-stratum growth from the 1% synthetic worst stratum is under 5x: 20,707,718 -> 98,612,694). Once this bundle's generator passes the Step 3 admissible-share calibration check, its own 0.1%/1% memory peaks (measured locally and then on Workbench) supersede these Gate 2 numbers as the basis for projecting 10%/100% -- these are a fallback only for scripts/memory_gate.py when no local run yet exists.",
-  "basis_peak_gib": 13.93,
+  "basis_note": "projected from local run at scale 0.01 (results/pipeline_0.01_memory_samples.txt): 3.734 GiB at 2,115,938 rows",
+  "basis_peak_gib": 3.7343,
   "basis_rows": 2115938,
   "decision": "GO",
   "disk_needed_gib": 0.03,
   "disk_ok": true,
-  "free_disk_gib": 718.5059,
+  "free_disk_gib": 709.593,
   "memory_ceiling_gib": 19.2,
   "memory_gate_fraction": 0.8,
   "memory_ok": true,
   "note": "optimal_match_sparse_max_edges is never raised above 100,000,000 to force a GO, regardless of this gate's outcome.",
   "optimal_match_sparse_max_edges": 100000000,
   "projected_output_gib": 0.0039,
-  "projected_peak_gib": 1.393,
+  "projected_peak_gib": 0.3734,
   "scale": 0.001,
   "target_rows": 211594
 }

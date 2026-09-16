@@ -1,19 +1,19 @@
 {
   "divorcing_rows_by_year": {
-    "2012": 225,
-    "2013": 211,
-    "2014": 191,
-    "2015": 175,
-    "2016": 161,
-    "2017": 158,
-    "2018": 135
+    "2012": 219,
+    "2013": 204,
+    "2014": 185,
+    "2015": 179,
+    "2016": 162,
+    "2017": 152,
+    "2018": 138
   },
   "failures": [],
-  "n_conflicting_death_year_people": 1,
+  "n_conflicting_death_year_people": 0,
   "n_duplicate_person_year_keys": 103458,
   "n_excess_duplicate_rows": 103458,
-  "n_people_with_internal_gaps": 3192,
-  "n_raw_rows": 2370254,
+  "n_people_with_internal_gaps": 3191,
+  "n_raw_rows": 2370232,
   "n_shard_files_found": 22,
   "status": "PASS"
 }
