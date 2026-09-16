@@ -6,7 +6,7 @@
   "decision": "GO",
   "disk_needed_gib": 0.1165,
   "disk_ok": true,
-  "free_disk_gib": 707.3557,
+  "free_disk_gib": 700.5975,
   "memory_ceiling_gib": 19.2,
   "memory_gate_fraction": 0.8,
   "memory_ok": true,

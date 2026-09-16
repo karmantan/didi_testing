@@ -1,8 +1,5 @@
 # FINAL_REPORT.md
 
-<!-- DRAFT: sections marked PLACEHOLDER are completed after the 1%-scale local test and
-     packaging step finish. Written in plain language per the task's own request. -->
-
 ## What was built
 
 A self-contained folder, `didi_workbench_bundle/`, meant to be uploaded to Posit Workbench
@@ -23,16 +20,33 @@ assistant that built it to reach Workbench directly). It contains:
 
 ## What was run locally, and what it showed
 
-PLACEHOLDER -- filled in after the 0.01-scale run completes. See `LOCAL_TEST_REPORT.md` for
-full detail; summarized here:
+See `LOCAL_TEST_REPORT.md` for full detail; summarized here:
 
 - `psm_260915.py --self-test`: PASS.
 - 0.001 scale (211,594-row target): generate/validate/schema-check all PASS; full pipeline
   (all three specs -- lag1 full window, lag1 restricted, lag3) completed successfully in
   17m35s with 20/20 mediation bootstrap replicates in every spec; one unexpected (but
   non-fatal) numpy warning found, not previously documented in Gate 2's warning inventory.
-- 0.01 scale (2,115,938-row target): PLACEHOLDER.
-- The mandatory Step-3 calibration check (`scripts/compare_preflight.py`): PLACEHOLDER.
+- 0.01 scale (2,115,938-row target): generate/validate/schema-check all PASS; full pipeline
+  (all three specs) completed successfully in 21m52s with 20/20 mediation bootstrap
+  replicates in every spec that runs mediation, 22 figures generated, peak whole-process
+  memory 3.62 GiB. (The first launch attempt produced a spurious exit code `127` from a
+  background-job exit-capture bug that was already mid-fix when that attempt launched; see
+  `BUILD_LOG.md` item 6 for the full diagnosis, the independent re-verification of the fix
+  under real long-running conditions, and the clean re-run this report's numbers come from.)
+- The mandatory Step-3 calibration check (`scripts/compare_preflight.py --scale 0.01`):
+  **FAIL** -- 15 of the 19 present largest-real-strata failed the 15pp-tolerance-or-overlap
+  check, with the 50-54 and 60-64 age bands diverging by 24-67 percentage points between real
+  and synthetic admissible share. This means `scripts/generate_raw.py`'s calibration against
+  the real 20% sample's matching-load pattern does not hold up at a scale where the check is
+  actually informative (0.001 scale had too few populated strata to test it at all). **This
+  is a real, unresolved finding, not a pipeline defect** -- the pipeline and estimator ran
+  correctly throughout; the synthetic data's realism is what's in question. See
+  `LOCAL_TEST_REPORT.md`'s 0.01 section and `results/preflight_comparison_0.01.csv` for the
+  full stratum-by-stratum numbers. Recalibrating `generate_raw.py` was out of scope for this
+  session (it is a standalone statistical task, not a fix to the exit-code bug this session
+  was chasing) -- **treat any 0.1/1.0-scale run's matching-load numbers as unverified until
+  this check is re-run and passes.**
 
 ## Estimator SHA-256, before and after
 
@@ -107,4 +121,10 @@ an estimate.
 
 ## Bundle size
 
-PLACEHOLDER -- filled in at packaging (Step 10).
+`didi_workbench_bundle.zip`: **392 KiB** (399,870 bytes), 116 files. Excludes `venv_didi/`
+(a macOS-only Python environment that can't run on Workbench's Linux machine anyway --
+`scripts/setup_env.sh` builds a fresh one there), `scripts/__pycache__/`, and `.DS_Store`
+files. Includes `results/` (this bundle's own local-test logs/JSON/CSVs, for comparison
+against Workbench's numbers) -- the actual generated raw data and run *outputs* (parquet
+panels, figures) live under `../didi_data/` outside the bundle folder entirely and are
+never part of the zip.

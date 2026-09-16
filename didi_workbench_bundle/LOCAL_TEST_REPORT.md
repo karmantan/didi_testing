@@ -55,10 +55,50 @@ generator issue that persists at scale.
 
 ## Scale 0.01 (Gate-2-pilot size, target 2,115,938 raw rows)
 
-*(Filled in after the run below completed -- see the timestamped entry appended to
-BUILD_LOG.md for the exact figures; summarized here.)*
+`pipeline_0.01` was run twice: the first launch (17:43:38) was made with a `run_stage.sh`
+that still had the `wait "$pid"`-based exit-code bug (see `BUILD_LOG.md` item 6) and its
+result was correctly discarded and re-run once that bug was fixed and independently
+re-verified. The table below is the second, trustworthy run.
 
-<!-- LOCAL_TEST_0.01_PLACEHOLDER -->
+| Stage | Result | Elapsed | Notes |
+|---|---|---:|---|
+| `generate` | 2,370,254 raw rows / 22 shards | 67.1 s | ~12% above the linear target (175,595 target people -> 2,370,254 raw rows), same known generator behavior as 0.001 |
+| `validate` | **PASS** | <1 s | all checks passed; 103,458 duplicate `(simple_id, ja)` keys found and resolved (expected -- logged and reported, not silent) |
+| `schema-check` | **PASS** | ~2 s | `"missing_required_columns": []` |
+| `gate` | GO | <1 s | projected peak 13.93 GiB (Gate 2 1%-reference-based fallback, no local run existed yet) vs. 19.2 GiB ceiling (80% of 24 GiB) |
+| `pipeline` | **completed, exit 0** | 21m52s (18:40:54 - 19:02:47) | all three specs (lag1 full window, lag1 restricted 2014-2018, lag3 2014-2018) produced complete `run_outputs.json`; 20/20 mediation bootstrap replicates succeeded in every spec that runs mediation; 22 figure files (PNG+PDF) across the three run directories; 0 Traceback/MemoryError/Killed tokens in stderr; peak whole-process-tree memory **3.6184 GiB** (132 samples every 10s, `pipeline_0.01_memory_samples.txt`) -- well under the 13.93 GiB Gate-2 fallback projection |
+| `compare_preflight` | **FAIL** | <1 s | 19 of the 20 largest real strata present at this scale; 15 of 19 failed the 15pp-tolerance-or-overlap check -- see below |
+
+Disk: `raw_0.01/` = 55 MB; `runs/workbench_synthetic_0.01_seed42/` (primary spec only) =
+120 MB.
+
+Warning inventory (stderr, 25 `[WARNING]` lines total): 12 Polars streaming-sink fallbacks,
+12 Polars streaming-collect fallbacks (both expected, same types as 0.001 and
+`GATE2_REPORT.md`'s inventory), plus 1 duplicate-key resolution notice (matches
+`validate_0.01.json`'s `n_duplicate_person_year_keys: 103458`, already counted above). The
+0.001-scale run's one unexplained numpy `RuntimeWarning: All-NaN slice encountered` did
+**not** recur here (zero `RuntimeWarning` lines in this run's stderr) -- consistent with
+that being a small-N artifact specific to the 0.001 scale's tiny per-cell counts, not a
+generator or estimator issue that persists at scale.
+
+**`compare_preflight.py --scale 0.01` result: FAIL.** This is the first scale at which the
+check is actually informative (19/20 of the largest real strata have a synthetic
+counterpart, vs. only 6/20 at 0.001). Full table in
+`results/preflight_comparison_0.01.csv`. Real vs. synthetic admissible-share (propensity-
+score spread) diverges sharply in the 50-54 and 60-64 age bands -- e.g. `t0=2012,
+age=60-64, rehab=0, sex=1`: real 33.1% vs. synthetic 98.6% (65.5pp gap); `t0=2015, age=60-64`:
+real 31.6% vs. synthetic 98.8% (67.1pp gap). The 65-69 band is much closer (2-7pp gaps) but
+several of those still fail on the score-range-overlap check specifically, not the tolerance
+check. **This means the generator's calibration against the real 20% sample's matching-load
+pattern, which BUILD_LOG.md documents as iterated on and believed adequate, does not hold up
+once measured at a scale where enough strata are populated to test it** -- the same kind of
+failure this bundle exists to catch before Workbench time is spent on 0.1/1.0 scales. This
+result is reported as measured, not corrected here: fixing `generate_raw.py`'s admissible-
+share function is a real recalibration task in its own right (see `BUILD_LOG.md`'s existing
+calibration-iteration history for the scope of that kind of work) and was out of scope for
+this exit-code investigation. **Do not treat a 0.1 or 1.0 scale run as informative about
+real-world matching load until this is re-run and passes**, per this script's own
+`calibration_20pct.json`-referencing guidance.
 
 ## What was not tested locally, and why
 

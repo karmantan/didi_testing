@@ -75,9 +75,9 @@
             -3,
             -2
           ],
-          "statistic": 3.6102936522695503,
+          "statistic": 3.610293652269049,
           "degrees_of_freedom": 2,
-          "p_value": 0.16445030920120274
+          "p_value": 0.16445030920124395
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_non_success_app_this_year.csv"
       },
@@ -90,9 +90,9 @@
             -3,
             -2
           ],
-          "statistic": 29.7417699629108,
+          "statistic": 29.74176996290942,
           "degrees_of_freedom": 2,
-          "p_value": 3.480620802859976e-07
+          "p_value": 3.480620802862381e-07
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_entgelt_value.csv"
       },
@@ -105,9 +105,9 @@
             -3,
             -2
           ],
-          "statistic": 0.5716540210724788,
+          "statistic": 0.5716540210725168,
           "degrees_of_freedom": 2,
-          "p_value": 0.7513925877055103
+          "p_value": 0.751392587705496
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_rtzb_value.csv"
       },
@@ -120,9 +120,9 @@
             -3,
             -2
           ],
-          "statistic": 1.131296082557793,
+          "statistic": 1.131296082557744,
           "degrees_of_freedom": 2,
-          "p_value": 0.5679919452389394
+          "p_value": 0.567991945238953
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_rtzb_missing.csv"
       },
@@ -135,9 +135,9 @@
             -3,
             -2
           ],
-          "statistic": 3.529879279124002,
+          "statistic": 3.5298792791240055,
           "degrees_of_freedom": 2,
-          "p_value": 0.17119711970620854
+          "p_value": 0.17119711970620827
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_rehab_starts_this_year.csv"
       }
@@ -1109,9 +1109,9 @@
             -3,
             -2
           ],
-          "statistic": 4.4444571138196025,
+          "statistic": 4.4444571138205,
           "degrees_of_freedom": 2,
-          "p_value": 0.10836733674649951
+          "p_value": 0.10836733674645092
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_non_success_app_this_year.csv"
       },
@@ -1124,9 +1124,9 @@
             -3,
             -2
           ],
-          "statistic": 21.15948433204592,
+          "statistic": 21.15948433204589,
           "degrees_of_freedom": 2,
-          "p_value": 2.542590133239611e-05
+          "p_value": 2.542590133239655e-05
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_entgelt_value.csv"
       },
@@ -1139,9 +1139,9 @@
             -3,
             -2
           ],
-          "statistic": 0.42614407818241723,
+          "statistic": 0.4261440781822457,
           "degrees_of_freedom": 2,
-          "p_value": 0.8080979204797742
+          "p_value": 0.8080979204798435
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_rtzb_value.csv"
       },
@@ -1154,9 +1154,9 @@
             -3,
             -2
           ],
-          "statistic": 0.7085545910350367,
+          "statistic": 0.7085545910348263,
           "degrees_of_freedom": 2,
-          "p_value": 0.7016803675551612
+          "p_value": 0.701680367555235
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_rtzb_missing.csv"
       },
@@ -1169,9 +1169,9 @@
             -3,
             -2
           ],
-          "statistic": 3.280134999849111,
+          "statistic": 3.2801349998498726,
           "degrees_of_freedom": 2,
-          "p_value": 0.19396694909457185
+          "p_value": 0.19396694909449796
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_rehab_starts_this_year.csv"
       }
@@ -2096,9 +2096,9 @@
             -3,
             -2
           ],
-          "statistic": 2.5394455824188276,
+          "statistic": 2.5394455824187765,
           "degrees_of_freedom": 2,
-          "p_value": 0.2809094815638212
+          "p_value": 0.2809094815638284
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_non_success_app_this_year.csv"
       },
@@ -2111,9 +2111,9 @@
             -3,
             -2
           ],
-          "statistic": 0.3333169151923981,
+          "statistic": 0.33331691519238643,
           "degrees_of_freedom": 2,
-          "p_value": 0.8464886737472651
+          "p_value": 0.84648867374727
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_entgelt_value.csv"
       },
@@ -2126,9 +2126,9 @@
             -3,
             -2
           ],
-          "statistic": 1.3790296777531141,
+          "statistic": 1.3790296777528344,
           "degrees_of_freedom": 2,
-          "p_value": 0.501819473315581
+          "p_value": 0.501819473315651
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_rtzb_value.csv"
       },
@@ -2141,9 +2141,9 @@
             -3,
             -2
           ],
-          "statistic": 1.142895955887953,
+          "statistic": 1.1428959558876268,
           "degrees_of_freedom": 2,
-          "p_value": 0.5647071629031644
+          "p_value": 0.5647071629032565
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_rtzb_missing.csv"
       },
@@ -2156,9 +2156,9 @@
             -3,
             -2
           ],
-          "statistic": 2.287081942954095,
+          "statistic": 2.287081942954147,
           "degrees_of_freedom": 2,
-          "p_value": 0.318688554439798
+          "p_value": 0.31868855443978966
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_rehab_starts_this_year.csv"
       }

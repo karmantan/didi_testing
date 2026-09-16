@@ -190,6 +190,44 @@ stop"). Each was diagnosed to a root cause before fixing.
    genuine, non-fatal `RuntimeWarning: All-NaN slice encountered` (see the 0.001-scale test
    log below) -- a real finding, correctly surfaced once the false positives were removed.
 
+6. **`pipeline_0.01.exit` read `127` even though `pipeline_0.01.stdout`/`.stderr` show a
+   fully completed, correct run.** Root cause: `pipeline_0.01` was *launched* at 17:43:38-48
+   (config birth 17:43:38, gate birth 17:43:42, pid-file birth 17:43:48) using the **still-
+   buggy** `run_stage.sh` from item 4 above -- the `(wait "$pid"; echo $? > exitfile) &`
+   pattern. `scripts/run_stage.sh`'s own mtime is 17:50:45, i.e. the item-4 fix landed
+   *seven minutes after* `pipeline_0.01` was already running in the background. `wait "$pid"`
+   in that detached subshell failed immediately with "not a child of this shell" (bash's
+   documented behavior for `wait` on a PID outside the calling shell's job table), and a
+   failed `wait` itself returns 127 -- so `echo $?` wrote `127` to `pipeline_0.01.exit`
+   within seconds of launch. Evidence: `stat -f "%SB %Sm"` shows `pipeline_0.01.exit`'s birth
+   time *equals* its modify time (17:43:48, a single write, never touched again) -- i.e. it
+   was written once, right after launch, not after the ~30-minute run finished. The real
+   `psm_260915.py` process launched by the same `nohup ... &` line was *not* affected by
+   that bug (it doesn't depend on `wait`/job-control at all) and ran to completion
+   independently: its first log line is 17:43:52 and its last is 18:13:42-45, matching the
+   run directories' own `mtime`s (`workbench_synthetic_0.01_seed42__lag1_common_2014_2018`
+   at 18:06:48, `..._lag3_common_2014_2018` and the top-level run dir both at 18:13:45-46).
+   Confirmed no other explanation fits: `grep -n "subprocess\|os\.system\|check_call\|
+   shell=True\|sys\.exit" psm_260915.py` still returns nothing, so the script cannot have
+   deliberately produced 127 itself, and the currently-committed `run_stage.sh` (with item
+   4's fix already applied) has no code path that writes to `*.exit` early. This was purely
+   a stale artifact from a bug that already existed for part of one run's lifetime and was
+   fixed mid-flight, with nothing left to re-check the already-running job's real exit code
+   once psm_260915.py actually finished.
+
+   Before trusting the item-4 fix for the real rerun below, re-verified it under the actual
+   failure-prone conditions (a 15+ second backgrounded job with a concurrent sibling
+   "monitor" process polling its PID, mirroring `monitor_memory.py`), not just the original
+   short `bash -c 'exit N'` smoke test: a throwaway dummy pipeline script that sleeps ~15s
+   and exits 3, launched via the exact `nohup bash -c '"$1" "$2" --config "$3" > "$4" 2>
+   "$5"; echo $? > "$6"' _ ...` snippet with a sibling poller running alongside it, produced
+   an exit file containing `3` with a birth/modify time ~16 seconds *after* the pid file's
+   birth time (18:39:48 -> 18:40:04) and only after the sibling poller observed the target
+   PID disappear -- i.e. the fix genuinely waits for the real command (not the wait-based
+   job-control shortcut) and is not merely luck for interpreter-shutdown timing.
+   `pipeline_0.01` was then re-run for real with the fixed script to get a trustworthy exit
+   code end-to-end (see below).
+
 ## Line-ending check (Hard Rule 4)
 
 Ran a CRLF scan (`grep -lU $'\r'`) over every `.py`/`.sh`/`.md`/`.env`/`.txt`/`.json`/`.ipynb`
