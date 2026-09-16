@@ -1,0 +1,11 @@
+{
+  "n_treated": 14594,
+  "n_controls": 13313942,
+  "propensity_fit_rows": 501302,
+  "controls_used_to_fit_propensity": 486708,
+  "control_sampling_fraction": 0.03655626560488246,
+  "propensity_solver": "lbfgs",
+  "propensity_iterations": 59,
+  "propensity_max_iter": 10000,
+  "propensity_tol": 0.0001
+}

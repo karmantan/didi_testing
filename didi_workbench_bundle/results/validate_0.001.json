@@ -1,0 +1,19 @@
+{
+  "divorcing_rows_by_year": {
+    "2012": 21,
+    "2013": 18,
+    "2014": 16,
+    "2015": 13,
+    "2016": 13,
+    "2017": 12,
+    "2018": 11
+  },
+  "failures": [],
+  "n_conflicting_death_year_people": 0,
+  "n_duplicate_person_year_keys": 10346,
+  "n_excess_duplicate_rows": 10346,
+  "n_people_with_internal_gaps": 322,
+  "n_raw_rows": 236953,
+  "n_shard_files_found": 22,
+  "status": "PASS"
+}

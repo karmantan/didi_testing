@@ -1,0 +1,5 @@
+=== validate_raw.py: /Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/raw_0.01 (fraction 0.01) ===
+Status: PASS
+Raw rows: 2,370,254
+Duplicate keys: 103,458  Conflicting-death people: 1  Gapped people: 3,192
+All checks passed.

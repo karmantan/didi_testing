@@ -1,0 +1,5 @@
+{
+  "n_duplicate_person_year_keys": 10345764,
+  "n_excess_rows_dropped": 11297317,
+  "reconciliation_rule": "Within each (simple_id, ja) group, keep the row with the fewest null values across all other available columns; ties broken by original row order (first-encountered row wins), not at random."
+}

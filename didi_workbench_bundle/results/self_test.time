@@ -1,0 +1,6 @@
+NOTE: /usr/bin/time -v is not available on this OS (this looks like macOS).
+Peak memory will NOT be measured here; it WILL be measured on the Linux Workbench session.
+
+real	0m39.319s
+user	1m25.723s
+sys	0m8.465s

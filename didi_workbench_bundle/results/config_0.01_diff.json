@@ -1,0 +1,78 @@
+{
+  "changed_from_user_config": {
+    "absolute_effect_bootstrap_replicates": {
+      "this_run": 20,
+      "user_config": 200
+    },
+    "mediation_bootstrap_replicates": {
+      "this_run": 20,
+      "user_config": 200
+    },
+    "mediation_bootstrap_workers": {
+      "reason": "MEDIATION_WORKERS=0 (auto); available_ram_gib=24.00 from machine.json (half=12.00 GiB budget). No completed run yet to read an actual per-worker mediation panel size from, so starting at 2 (Gate 2's 1% value); re-run make_config.py after a completed run to raise this once the log's 'mediation panel %.2f GB in memory per worker' line is known.",
+      "this_run": 2,
+      "user_config": 0
+    },
+    "outcome_bootstrap_replicates": {
+      "this_run": 20,
+      "user_config": 200
+    },
+    "output_dir": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs",
+    "raw_glob": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/raw_0.01/raw_*.parquet",
+    "sample_tag": "workbench_synthetic_0.01_seed42"
+  },
+  "production_bootstrap": false,
+  "scale": 0.01,
+  "seed": 42,
+  "unchanged_from_user_config": [
+    "caliper",
+    "control_pool",
+    "controls_per_treated",
+    "data_profile",
+    "death_registry_end_year",
+    "exact_covariates",
+    "first_marriage_source",
+    "followup_years",
+    "gcomp_bootstrap_simulation_repetitions",
+    "gcomp_continuous_log_cap_headroom",
+    "gcomp_horizon_years",
+    "gcomp_ipcw_cap",
+    "gcomp_logit_max_iter",
+    "gcomp_logit_tol",
+    "gcomp_observation_probability_floor",
+    "gcomp_simulation_repetitions",
+    "gcomp_timevarying_binary",
+    "gcomp_timevarying_categorical",
+    "gcomp_timevarying_continuous",
+    "gcomp_use_observation_ipcw",
+    "generate_figures",
+    "lag_comparison_common_year_start",
+    "lag_depth",
+    "max_propensity_fit_rows",
+    "mental_health_diagnosis_codes",
+    "minimum_category_frequency",
+    "mortality_horizon",
+    "msk_diagnosis_codes",
+    "optimal_match_dense_max_entries",
+    "optimal_match_sparse_max_edges",
+    "outcome_logit_max_iter",
+    "propensity_binary",
+    "propensity_categorical",
+    "propensity_max_iter",
+    "propensity_numeric",
+    "propensity_score_batch_size",
+    "propensity_solver",
+    "propensity_tol",
+    "protect_matching",
+    "run_lag1_vs_lag3",
+    "run_longitudinal_mediation",
+    "run_msk_dropout_sensitivity",
+    "seed",
+    "smd_threshold",
+    "source_has_entgelt",
+    "strict_main_run",
+    "total_rebuild",
+    "year_cap",
+    "year_start"
+  ]
+}

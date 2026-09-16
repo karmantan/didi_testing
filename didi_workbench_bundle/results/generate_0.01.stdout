@@ -1,0 +1,28 @@
+=== generate_raw.py: fraction=0.01 seed=42 shards=22 ===
+Target people: 175,595  (scaled from 17,559,509 real people)
+Treated (divorce) events assigned: 1,261 across years 2012-2018
+[1/22] raw_000.parquet: 107,594 rows in 3.9s (total 107,594 rows, elapsed 5.0s, ETA 105.0s)
+[2/22] raw_001.parquet: 107,466 rows in 3.3s (total 215,060 rows, elapsed 8.3s, ETA 82.9s)
+[3/22] raw_002.parquet: 107,954 rows in 3.2s (total 323,014 rows, elapsed 11.5s, ETA 72.5s)
+[4/22] raw_003.parquet: 107,885 rows in 3.0s (total 430,899 rows, elapsed 14.5s, ETA 65.1s)
+[5/22] raw_004.parquet: 107,581 rows in 2.7s (total 538,480 rows, elapsed 17.1s, ETA 58.3s)
+[6/22] raw_005.parquet: 107,841 rows in 2.5s (total 646,321 rows, elapsed 19.7s, ETA 52.5s)
+[7/22] raw_006.parquet: 107,801 rows in 2.5s (total 754,122 rows, elapsed 22.2s, ETA 47.5s)
+[8/22] raw_007.parquet: 107,407 rows in 2.5s (total 861,529 rows, elapsed 24.6s, ETA 43.1s)
+[9/22] raw_008.parquet: 107,517 rows in 2.9s (total 969,046 rows, elapsed 27.5s, ETA 39.8s)
+[10/22] raw_009.parquet: 107,939 rows in 3.2s (total 1,076,985 rows, elapsed 30.7s, ETA 36.9s)
+[11/22] raw_010.parquet: 107,891 rows in 3.2s (total 1,184,876 rows, elapsed 33.9s, ETA 33.9s)
+[12/22] raw_011.parquet: 107,442 rows in 3.2s (total 1,292,318 rows, elapsed 37.1s, ETA 30.9s)
+[13/22] raw_012.parquet: 107,737 rows in 3.2s (total 1,400,055 rows, elapsed 40.3s, ETA 27.9s)
+[14/22] raw_013.parquet: 108,071 rows in 3.2s (total 1,508,126 rows, elapsed 43.5s, ETA 24.8s)
+[15/22] raw_014.parquet: 107,860 rows in 3.2s (total 1,615,986 rows, elapsed 46.7s, ETA 21.8s)
+[16/22] raw_015.parquet: 107,999 rows in 3.1s (total 1,723,985 rows, elapsed 49.8s, ETA 18.7s)
+[17/22] raw_016.parquet: 107,618 rows in 3.2s (total 1,831,603 rows, elapsed 53.0s, ETA 15.6s)
+[18/22] raw_017.parquet: 107,548 rows in 3.1s (total 1,939,151 rows, elapsed 56.1s, ETA 12.5s)
+[19/22] raw_018.parquet: 107,760 rows in 3.1s (total 2,046,911 rows, elapsed 59.2s, ETA 9.4s)
+[20/22] raw_019.parquet: 107,716 rows in 3.0s (total 2,154,627 rows, elapsed 62.2s, ETA 6.2s)
+[21/22] raw_020.parquet: 108,121 rows in 2.4s (total 2,262,748 rows, elapsed 64.7s, ETA 3.1s)
+[22/22] raw_021.parquet: 107,506 rows in 2.4s (total 2,370,254 rows, elapsed 67.1s, ETA 0.0s)
+
+Done. 2,370,254 raw rows across 22 shards in 67.1s.
+Wrote /Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/raw_0.01/generation_manifest.json

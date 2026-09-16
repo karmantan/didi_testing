@@ -1,0 +1,3649 @@
+{
+  "lag1_full_window": {
+    "estimand": "Effect of experiencing a first observed divorce from the earliest observed marriage spell between 2012 and 2018, with treatment assignment fixed after t0.",
+    "source_profile": {
+      "data_profile": "canonical",
+      "source_has_entgelt": true,
+      "first_marriage_source": "date_fields",
+      "playdata_warning": null
+    },
+    "run_policy": "total_rebuild",
+    "paper_reporting_config": {
+      "minimum_cell_people": 20,
+      "pool_small_diagnosis_codes": true,
+      "protect_matchability_cells": true,
+      "withhold_small_overlap_counts": true
+    },
+    "panel": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/panels/analysis_panel.parquet",
+    "panel_coverage_diagnostics": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/panel_coverage_diagnostics.csv",
+    "rehab_code_definition": {
+      "msk_diagnosis_codes": [
+        20,
+        53,
+        56
+      ],
+      "mental_health_diagnosis_codes": [
+        30
+      ]
+    },
+    "rehab_code_definition_eligibility_audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/rehab_code_definition_eligibility_audit_not_yet_divorced_lag1.json",
+    "marital_tables": {
+      "marriage_order": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/marriage_order_restriction_summary.csv",
+      "composition": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/marital_state_composition_around_t0.csv",
+      "sequences": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/marital_state_sequences_around_t0.csv"
+    },
+    "paper_summary_tables": {
+      "sample_overview": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_sample_overview.csv",
+      "annual_panel": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_annual_panel_counts.csv",
+      "divorce_cohorts": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_divorce_and_matching_by_t0.csv",
+      "rehab_codes": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_rehabilitation_codes.csv",
+      "rehab_codes_by_year": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_rehabilitation_codes_by_year.csv",
+      "filter_attrition": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_filter_attrition.csv",
+      "matching_overall": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_matching_overall.csv",
+      "matching_by_year": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_matching_by_year.csv",
+      "matched_vs_unmatched_treated": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_matched_vs_unmatched_treated.csv",
+      "repeated_person_overlap": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_repeated_person_overlap.csv",
+      "propensity_distribution": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_propensity_score_distribution.csv",
+      "propensity_overlap": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_propensity_score_overlap_by_t0.csv",
+      "balance_overview": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_balance_overview.csv",
+      "limitations": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_summary_limitations.json",
+      "manifest": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_summary_manifest.json",
+      "signature": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/paper_summary_tables/paper_summary_signature.json"
+    },
+    "risksets": {
+      "treated": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/riskset_treated_lag1.parquet",
+      "controls": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/riskset_controls_not_yet_divorced_lag1.parquet",
+      "audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/filter_audit_not_yet_divorced_lag1.csv"
+    },
+    "matching": {
+      "matches": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/matched_pairs_not_yet_divorced_lag1.parquet",
+      "scores": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/propensity_scores_not_yet_divorced_lag1.parquet",
+      "audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/matching_audit_not_yet_divorced_lag1.csv",
+      "edge_preflight": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/matching_edge_preflight_not_yet_divorced_lag1.csv"
+    },
+    "balance": {
+      "detail": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/balance_detail_not_yet_divorced_lag1.csv",
+      "summary": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/balance_summary_not_yet_divorced_lag1.csv"
+    },
+    "pretrends": {
+      "non_success_applications": {
+        "outcome": "non_success_app_this_year",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": 3.673775759990448,
+          "degrees_of_freedom": 2,
+          "p_value": 0.1593124548907642
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/event_study_not_yet_divorced_lag1_non_success_app_this_year.csv"
+      },
+      "earnings_amount": {
+        "outcome": "entgelt_value",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": 0.6691265800157172,
+          "degrees_of_freedom": 2,
+          "p_value": 0.7156505498656327
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/event_study_not_yet_divorced_lag1_entgelt_value.csv"
+      },
+      "pension_income_amount": {
+        "outcome": "rtzb_value",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": 11.710365122168783,
+          "degrees_of_freedom": 2,
+          "p_value": 0.002865012513576765
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/event_study_not_yet_divorced_lag1_rtzb_value.csv"
+      },
+      "pension_income_missingness": {
+        "outcome": "rtzb_missing",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": 8.06050054139781e-14,
+          "degrees_of_freedom": 2,
+          "p_value": 0.9999999999999597
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/event_study_not_yet_divorced_lag1_rtzb_missing.csv"
+      },
+      "prior_rehabilitation_activity": {
+        "outcome": "rehab_starts_this_year",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": 3.876801756184054e-17,
+          "degrees_of_freedom": 2,
+          "p_value": 1.0
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/event_study_not_yet_divorced_lag1_rehab_starts_this_year.csv"
+      }
+    },
+    "msk_followup": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/msk_followup_not_yet_divorced_lag1_fixed_assignment.parquet",
+    "mortality_followup": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/mortality_followup_not_yet_divorced_lag1_fixed_assignment.parquet",
+    "msk_dropout_sensitivity": {
+      "followup": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/msk_followup_not_yet_divorced_lag1_pair_censored_at_first_gap.parquet",
+      "audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/msk_pair_censored_at_first_gap_audit_not_yet_divorced_lag1.json",
+      "models": {
+        "unadjusted": {
+          "label": "msk_pair_censored_not_yet_divorced_lag1",
+          "adjusted": false,
+          "adjustment_rule": "none",
+          "selected_covariates": [],
+          "design_columns_used": [
+            "Intercept",
+            "treated",
+            "follow_year_2",
+            "follow_year_3",
+            "follow_year_4",
+            "follow_year_5"
+          ],
+          "transformations": [],
+          "n_person_years": 650,
+          "n_matched_sets": 69,
+          "events": 3,
+          "log_odds": -0.6913347590092036,
+          "standard_error": 1.2597346878869542,
+          "z_value": -0.5487939370541827,
+          "p_value": 0.583146871551869,
+          "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+          "successful_bootstrap_replicates": null,
+          "odds_ratio": 0.5009070324896961,
+          "ci_low": 0.0424081487687547,
+          "ci_high": 5.916501014128123,
+          "separation_warning": null,
+          "sklearn_fit_method": "unpenalized_none_lbfgs",
+          "sklearn_iterations": 33,
+          "sklearn_max_iter": 5000,
+          "fit_warning": null
+        },
+        "adjusted": {
+          "label": "msk_pair_censored_not_yet_divorced_lag1",
+          "adjusted": true,
+          "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
+          "selected_covariates": [
+            {
+              "variable": "lag1_whot_bland_cat",
+              "trigger_component": "lag1_whot_bland_cat",
+              "variable_type": "categorical_level",
+              "max_abs_smd": 0.24433888871261045
+            },
+            {
+              "variable": "lag1_byvlgs_missing",
+              "trigger_component": "lag1_byvlgs_missing",
+              "variable_type": "binary",
+              "max_abs_smd": 0.22908106449636373
+            },
+            {
+              "variable": "lag1_bygmgs_value",
+              "trigger_component": "lag1_bygmgs_value",
+              "variable_type": "continuous",
+              "max_abs_smd": 0.20000989101526903
+            },
+            {
+              "variable": "lag1_byvlgs_value",
+              "trigger_component": "lag1_byvlgs_value",
+              "variable_type": "continuous",
+              "max_abs_smd": 0.17451060027046764
+            },
+            {
+              "variable": "lag1_non_success_app_this_year",
+              "trigger_component": "lag1_non_success_app_this_year",
+              "variable_type": "binary",
+              "max_abs_smd": 0.16783627165933782
+            },
+            {
+              "variable": "lag1_fmsd_cat",
+              "trigger_component": "lag1_fmsd_cat",
+              "variable_type": "categorical_level",
+              "max_abs_smd": 0.16783627165933782
+            },
+            {
+              "variable": "lag1_bygmgs_missing",
+              "trigger_component": "lag1_bygmgs_missing",
+              "variable_type": "binary",
+              "max_abs_smd": 0.14851121190588812
+            },
+            {
+              "variable": "lag1_income_source_status",
+              "trigger_component": "lag1_income_source_status",
+              "variable_type": "categorical_level",
+              "max_abs_smd": 0.13934660285832356
+            },
+            {
+              "variable": "lag1_entgelt_value",
+              "trigger_component": "lag1_entgelt_value",
+              "variable_type": "continuous",
+              "max_abs_smd": 0.126505952593555
+            }
+          ],
+          "design_columns_used": [
+            "Intercept",
+            "treated",
+            "follow_year_2",
+            "follow_year_3",
+            "follow_year_4",
+            "follow_year_5",
+            "lag1_whot_bland_cat_02",
+            "lag1_whot_bland_cat_03",
+            "lag1_whot_bland_cat_04",
+            "lag1_whot_bland_cat_05",
+            "lag1_whot_bland_cat_06",
+            "lag1_whot_bland_cat_07",
+            "lag1_whot_bland_cat_08",
+            "lag1_whot_bland_cat_09",
+            "lag1_whot_bland_cat_10",
+            "lag1_whot_bland_cat_11",
+            "lag1_whot_bland_cat_12",
+            "lag1_whot_bland_cat_13",
+            "lag1_whot_bland_cat_14",
+            "lag1_whot_bland_cat_15",
+            "lag1_whot_bland_cat_16",
+            "lag1_byvlgs_missing",
+            "lag1_bygmgs_value",
+            "lag1_byvlgs_value",
+            "lag1_non_success_app_this_year",
+            "lag1_fmsd_cat_3",
+            "lag1_bygmgs_missing",
+            "lag1_income_source_status_neither_observed",
+            "lag1_entgelt_value__log1p"
+          ],
+          "transformations": [
+            {
+              "variable": "lag1_whot_bland_cat",
+              "role": "categorical",
+              "levels": [
+                "01",
+                "02",
+                "03",
+                "04",
+                "05",
+                "06",
+                "07",
+                "08",
+                "09",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16"
+              ],
+              "reference_level": "01"
+            },
+            {
+              "variable": "lag1_byvlgs_missing",
+              "role": "binary",
+              "imputation": 0.0,
+              "center": 0.0,
+              "scale": 1.0,
+              "missing_indicator_included": false
+            },
+            {
+              "variable": "lag1_bygmgs_value",
+              "role": "numeric",
+              "imputation": 58.15689901771516,
+              "center": 45.214051630314714,
+              "scale": 33.30370441516943,
+              "missing_indicator_included": false
+            },
+            {
+              "variable": "lag1_byvlgs_value",
+              "role": "numeric",
+              "imputation": 314.1999811668114,
+              "center": 298.5397106047876,
+              "scale": 75.04633364499983,
+              "missing_indicator_included": false
+            },
+            {
+              "variable": "lag1_non_success_app_this_year",
+              "role": "binary",
+              "imputation": 0.0,
+              "center": 0.0,
+              "scale": 1.0,
+              "missing_indicator_included": false
+            },
+            {
+              "variable": "lag1_fmsd_cat",
+              "role": "categorical",
+              "levels": [
+                "2",
+                "3"
+              ],
+              "reference_level": "2"
+            },
+            {
+              "variable": "lag1_bygmgs_missing",
+              "role": "binary",
+              "imputation": 0.0,
+              "center": 0.0,
+              "scale": 1.0,
+              "missing_indicator_included": false
+            },
+            {
+              "variable": "lag1_income_source_status",
+              "role": "categorical",
+              "levels": [
+                "earnings_only",
+                "neither_observed"
+              ],
+              "reference_level": "earnings_only"
+            },
+            {
+              "variable": "lag1_entgelt_value",
+              "role": "numeric",
+              "imputation": 45306.489696222234,
+              "center": 10.255846692286624,
+              "scale": 2.063791141546668,
+              "missing_indicator_included": false
+            }
+          ],
+          "n_person_years": 650,
+          "n_matched_sets": 69,
+          "events": 3,
+          "log_odds": -59.06457361324217,
+          "standard_error": 1.2580120210455372,
+          "z_value": -46.950722747588244,
+          "p_value": 0.0,
+          "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+          "successful_bootstrap_replicates": null,
+          "odds_ratio": 1.9287498479639178e-22,
+          "ci_low": 1.9287498479639178e-22,
+          "ci_high": 1.9287498479639178e-22,
+          "separation_warning": "Treatment log-odds magnitude exceeds 10; the outcome may be sparse or separated and the OR is clipped for numerical output.",
+          "sklearn_fit_method": "unpenalized_none_lbfgs",
+          "sklearn_iterations": 46,
+          "sklearn_max_iter": 5000,
+          "fit_warning": null
+        }
+      }
+    },
+    "msk_cumulative_incidence": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/msk_cumulative_incidence_competing_death.csv",
+    "cumulative_mortality": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/cumulative_mortality.csv",
+    "msk_curve_ci_pooled": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/msk_curve_ci_pooled.csv",
+    "mortality_curve_ci_pooled": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/mortality_curve_ci_pooled.csv",
+    "msk_sex_outputs": {
+      "curve": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/msk_curve_ci_by_sex.csv",
+      "heterogeneity": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/msk_sex_heterogeneity.json"
+    },
+    "mortality_sex_outputs": {
+      "curve": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/mortality_curve_ci_by_sex.csv",
+      "heterogeneity": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/mortality_sex_heterogeneity.json"
+    },
+    "absolute_effect_magnitudes": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/absolute_effect_magnitudes.json",
+    "models": {
+      "msk_unadjusted": {
+        "label": "msk_not_yet_divorced_lag1",
+        "adjusted": false,
+        "adjustment_rule": "none",
+        "selected_covariates": [],
+        "design_columns_used": [
+          "Intercept",
+          "treated",
+          "follow_year_2",
+          "follow_year_3",
+          "follow_year_4",
+          "follow_year_5"
+        ],
+        "transformations": [],
+        "n_person_years": 697,
+        "n_matched_sets": 72,
+        "events": 4,
+        "log_odds": -0.025864620626247784,
+        "standard_error": 1.0257386777638624,
+        "z_value": -0.02521560431223413,
+        "p_value": 0.979882990472508,
+        "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+        "successful_bootstrap_replicates": null,
+        "odds_ratio": 0.974467003412008,
+        "ci_low": 0.13050908614076356,
+        "ci_high": 7.27601402184811,
+        "separation_warning": null,
+        "sklearn_fit_method": "unpenalized_none_lbfgs",
+        "sklearn_iterations": 37,
+        "sklearn_max_iter": 5000,
+        "fit_warning": null
+      },
+      "msk_adjusted": {
+        "label": "msk_not_yet_divorced_lag1",
+        "adjusted": true,
+        "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
+        "selected_covariates": [
+          {
+            "variable": "lag1_whot_bland_cat",
+            "trigger_component": "lag1_whot_bland_cat",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.24433888871261045
+          },
+          {
+            "variable": "lag1_byvlgs_missing",
+            "trigger_component": "lag1_byvlgs_missing",
+            "variable_type": "binary",
+            "max_abs_smd": 0.22908106449636373
+          },
+          {
+            "variable": "lag1_bygmgs_value",
+            "trigger_component": "lag1_bygmgs_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.20000989101526903
+          },
+          {
+            "variable": "lag1_byvlgs_value",
+            "trigger_component": "lag1_byvlgs_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.17451060027046764
+          },
+          {
+            "variable": "lag1_non_success_app_this_year",
+            "trigger_component": "lag1_non_success_app_this_year",
+            "variable_type": "binary",
+            "max_abs_smd": 0.16783627165933782
+          },
+          {
+            "variable": "lag1_fmsd_cat",
+            "trigger_component": "lag1_fmsd_cat",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.16783627165933782
+          },
+          {
+            "variable": "lag1_bygmgs_missing",
+            "trigger_component": "lag1_bygmgs_missing",
+            "variable_type": "binary",
+            "max_abs_smd": 0.14851121190588812
+          },
+          {
+            "variable": "lag1_income_source_status",
+            "trigger_component": "lag1_income_source_status",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.13934660285832356
+          },
+          {
+            "variable": "lag1_entgelt_value",
+            "trigger_component": "lag1_entgelt_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.126505952593555
+          }
+        ],
+        "design_columns_used": [
+          "Intercept",
+          "treated",
+          "follow_year_2",
+          "follow_year_3",
+          "follow_year_4",
+          "follow_year_5",
+          "lag1_whot_bland_cat_02",
+          "lag1_whot_bland_cat_03",
+          "lag1_whot_bland_cat_04",
+          "lag1_whot_bland_cat_05",
+          "lag1_whot_bland_cat_06",
+          "lag1_whot_bland_cat_07",
+          "lag1_whot_bland_cat_08",
+          "lag1_whot_bland_cat_09",
+          "lag1_whot_bland_cat_10",
+          "lag1_whot_bland_cat_11",
+          "lag1_whot_bland_cat_12",
+          "lag1_whot_bland_cat_13",
+          "lag1_whot_bland_cat_14",
+          "lag1_whot_bland_cat_15",
+          "lag1_whot_bland_cat_16",
+          "lag1_byvlgs_missing",
+          "lag1_bygmgs_value",
+          "lag1_byvlgs_value",
+          "lag1_non_success_app_this_year",
+          "lag1_fmsd_cat_3",
+          "lag1_bygmgs_missing",
+          "lag1_income_source_status_neither_observed",
+          "lag1_entgelt_value__log1p"
+        ],
+        "transformations": [
+          {
+            "variable": "lag1_whot_bland_cat",
+            "role": "categorical",
+            "levels": [
+              "01",
+              "02",
+              "03",
+              "04",
+              "05",
+              "06",
+              "07",
+              "08",
+              "09",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16"
+            ],
+            "reference_level": "01"
+          },
+          {
+            "variable": "lag1_byvlgs_missing",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_bygmgs_value",
+            "role": "numeric",
+            "imputation": 56.80191469176645,
+            "center": 44.489700447895935,
+            "scale": 33.221222887715,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_byvlgs_value",
+            "role": "numeric",
+            "imputation": 312.1545479837653,
+            "center": 297.13318321453124,
+            "scale": 73.15255883994907,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_non_success_app_this_year",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_fmsd_cat",
+            "role": "categorical",
+            "levels": [
+              "2",
+              "3"
+            ],
+            "reference_level": "2"
+          },
+          {
+            "variable": "lag1_bygmgs_missing",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_income_source_status",
+            "role": "categorical",
+            "levels": [
+              "earnings_only",
+              "neither_observed"
+            ],
+            "reference_level": "earnings_only"
+          },
+          {
+            "variable": "lag1_entgelt_value",
+            "role": "numeric",
+            "imputation": 44623.070082923514,
+            "center": 10.243080244787398,
+            "scale": 2.0685996799588033,
+            "missing_indicator_included": false
+          }
+        ],
+        "n_person_years": 697,
+        "n_matched_sets": 72,
+        "events": 4,
+        "log_odds": -206.0579463176289,
+        "standard_error": 4.459973822380391,
+        "z_value": -46.20160443176122,
+        "p_value": 0.0,
+        "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+        "successful_bootstrap_replicates": null,
+        "odds_ratio": 1.9287498479639178e-22,
+        "ci_low": 1.9287498479639178e-22,
+        "ci_high": 1.9287498479639178e-22,
+        "separation_warning": "Treatment log-odds magnitude exceeds 10; the outcome may be sparse or separated and the OR is clipped for numerical output.",
+        "sklearn_fit_method": "unpenalized_none_lbfgs",
+        "sklearn_iterations": 57,
+        "sklearn_max_iter": 5000,
+        "fit_warning": null
+      },
+      "mortality_unadjusted": {
+        "label": "mortality_not_yet_divorced_lag1",
+        "adjusted": false,
+        "adjustment_rule": "none",
+        "selected_covariates": [],
+        "design_columns_used": [
+          "Intercept",
+          "treated",
+          "follow_year_10",
+          "follow_year_2",
+          "follow_year_3",
+          "follow_year_4",
+          "follow_year_5",
+          "follow_year_6",
+          "follow_year_7",
+          "follow_year_8",
+          "follow_year_9"
+        ],
+        "transformations": [],
+        "n_person_years": 1129,
+        "n_matched_sets": 72,
+        "events": 12,
+        "log_odds": -0.7439313465615626,
+        "standard_error": 0.5895248801564117,
+        "z_value": -1.2619167936799953,
+        "p_value": 0.20697872838566245,
+        "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+        "successful_bootstrap_replicates": null,
+        "odds_ratio": 0.47524189755654933,
+        "ci_low": 0.14965837060983414,
+        "ci_high": 1.509136176431876,
+        "separation_warning": null,
+        "sklearn_fit_method": "unpenalized_none_lbfgs",
+        "sklearn_iterations": 40,
+        "sklearn_max_iter": 5000,
+        "fit_warning": null
+      },
+      "mortality_adjusted": {
+        "label": "mortality_not_yet_divorced_lag1",
+        "adjusted": true,
+        "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
+        "selected_covariates": [
+          {
+            "variable": "lag1_whot_bland_cat",
+            "trigger_component": "lag1_whot_bland_cat",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.24433888871261045
+          },
+          {
+            "variable": "lag1_byvlgs_missing",
+            "trigger_component": "lag1_byvlgs_missing",
+            "variable_type": "binary",
+            "max_abs_smd": 0.22908106449636373
+          },
+          {
+            "variable": "lag1_bygmgs_value",
+            "trigger_component": "lag1_bygmgs_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.20000989101526903
+          },
+          {
+            "variable": "lag1_byvlgs_value",
+            "trigger_component": "lag1_byvlgs_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.17451060027046764
+          },
+          {
+            "variable": "lag1_non_success_app_this_year",
+            "trigger_component": "lag1_non_success_app_this_year",
+            "variable_type": "binary",
+            "max_abs_smd": 0.16783627165933782
+          },
+          {
+            "variable": "lag1_fmsd_cat",
+            "trigger_component": "lag1_fmsd_cat",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.16783627165933782
+          },
+          {
+            "variable": "lag1_bygmgs_missing",
+            "trigger_component": "lag1_bygmgs_missing",
+            "variable_type": "binary",
+            "max_abs_smd": 0.14851121190588812
+          },
+          {
+            "variable": "lag1_income_source_status",
+            "trigger_component": "lag1_income_source_status",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.13934660285832356
+          },
+          {
+            "variable": "lag1_entgelt_value",
+            "trigger_component": "lag1_entgelt_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.126505952593555
+          }
+        ],
+        "design_columns_used": [
+          "Intercept",
+          "treated",
+          "follow_year_10",
+          "follow_year_2",
+          "follow_year_3",
+          "follow_year_4",
+          "follow_year_5",
+          "follow_year_6",
+          "follow_year_7",
+          "follow_year_8",
+          "follow_year_9",
+          "lag1_whot_bland_cat_02",
+          "lag1_whot_bland_cat_03",
+          "lag1_whot_bland_cat_04",
+          "lag1_whot_bland_cat_05",
+          "lag1_whot_bland_cat_06",
+          "lag1_whot_bland_cat_07",
+          "lag1_whot_bland_cat_08",
+          "lag1_whot_bland_cat_09",
+          "lag1_whot_bland_cat_10",
+          "lag1_whot_bland_cat_11",
+          "lag1_whot_bland_cat_12",
+          "lag1_whot_bland_cat_13",
+          "lag1_whot_bland_cat_14",
+          "lag1_whot_bland_cat_15",
+          "lag1_whot_bland_cat_16",
+          "lag1_byvlgs_missing",
+          "lag1_bygmgs_value",
+          "lag1_byvlgs_value",
+          "lag1_non_success_app_this_year",
+          "lag1_fmsd_cat_3",
+          "lag1_bygmgs_missing",
+          "lag1_income_source_status_neither_observed",
+          "lag1_entgelt_value__log1p"
+        ],
+        "transformations": [
+          {
+            "variable": "lag1_whot_bland_cat",
+            "role": "categorical",
+            "levels": [
+              "01",
+              "02",
+              "03",
+              "04",
+              "05",
+              "06",
+              "07",
+              "08",
+              "09",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16"
+            ],
+            "reference_level": "01"
+          },
+          {
+            "variable": "lag1_byvlgs_missing",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_bygmgs_value",
+            "role": "numeric",
+            "imputation": 57.75328298361496,
+            "center": 45.430510041712026,
+            "scale": 32.914216009550444,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_byvlgs_value",
+            "role": "numeric",
+            "imputation": 311.06515437707503,
+            "center": 295.69482261191064,
+            "scale": 77.73490629033967,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_non_success_app_this_year",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_fmsd_cat",
+            "role": "categorical",
+            "levels": [
+              "2",
+              "3"
+            ],
+            "reference_level": "2"
+          },
+          {
+            "variable": "lag1_bygmgs_missing",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_income_source_status",
+            "role": "categorical",
+            "levels": [
+              "earnings_only",
+              "neither_observed"
+            ],
+            "reference_level": "earnings_only"
+          },
+          {
+            "variable": "lag1_entgelt_value",
+            "role": "numeric",
+            "imputation": 44787.52898556836,
+            "center": 10.269236747388026,
+            "scale": 2.007059450880889,
+            "missing_indicator_included": false
+          }
+        ],
+        "n_person_years": 1129,
+        "n_matched_sets": 72,
+        "events": 12,
+        "log_odds": -1.200405562536787,
+        "standard_error": 0.5296389943906139,
+        "z_value": -2.26645993827916,
+        "p_value": 0.02342323734248045,
+        "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+        "successful_bootstrap_replicates": null,
+        "odds_ratio": 0.30107208359056337,
+        "ci_low": 0.10661852610011956,
+        "ci_high": 0.8501749445724287,
+        "separation_warning": null,
+        "sklearn_fit_method": "unpenalized_none_lbfgs",
+        "sklearn_iterations": 315,
+        "sklearn_max_iter": 5000,
+        "fit_warning": null
+      }
+    },
+    "mediation": {
+      "longitudinal_gcomp": {
+        "horizon_years": 5,
+        "target_population": "baseline covariate distribution of the matched treated individuals (ATT standardization)",
+        "estimand": "ATT-standardized five-year interventional total, direct and indirect risk differences for divorce, with the indirect effect operating through the incidence and timing of first MSK rehabilitation.",
+        "identification_warning": "The mediation decomposition requires sequential exchangeability: conditional on baseline matching variables and observed prior post-divorce history, there must be no remaining unmeasured mediator-outcome or prior-survival-mediator confounding. Defining the longitudinal mediator distribution for a survival outcome also uses the survival-mediational-g-formula intervention that sets prior survival to one in the source mediator simulation. Observation IPCW additionally assumes record-gap censoring is independent conditional on measured prior history. Positivity, consistency and correct specification of the longitudinal parametric models are also required.",
+        "point_estimates": {
+          "risk_q00": 0.040834460608322375,
+          "risk_q10": 0.04031638785884153,
+          "risk_q11": 0.03989525590136236,
+          "risk_q01": 0.04183027070493622,
+          "interventional_total_effect_risk_difference": -0.0009392047069600173,
+          "interventional_direct_effect_risk_difference": -0.0005180727494808468,
+          "interventional_indirect_effect_risk_difference": -0.00042113195747917054,
+          "proportion_mediated": 0.44839208572780126,
+          "simulated_first_msk_risk_q00": 0.04619718309859154,
+          "simulated_first_msk_risk_q11": 0.02647887323943662,
+          "monte_carlo_repetitions": 25,
+          "target_population": "baseline covariate distribution of the matched treated individuals (ATT standardization)",
+          "estimator": "parametric survival mediational g-formula with fixed divorce exposure, an absorbing first-MSK event-time process randomized from the source-treatment joint mediator distribution, annually updated lagged history, interventional direct/indirect effects, and optional observation IPCW",
+          "history_order": "L(t-1) -> first MSK at t -> death at t -> L(t) for use at t+1",
+          "model_diagnostics": {
+            "observation_model_fit_method": "unpenalized_none_lbfgs",
+            "observation_risk_rows": 693,
+            "first_gap_rows": 7,
+            "p_observed_min": 0.30404519229409593,
+            "p_observed_p01": 0.8004016775117923,
+            "p_observed_p99": 0.999999999,
+            "p_observed_max": 0.999999999,
+            "probability_floor": 0.02,
+            "raw_ipcw_max": 2.014810653548934,
+            "ipcw_cap": 20.0,
+            "rows_at_ipcw_cap": 0,
+            "use_observation_ipcw": true,
+            "analysis_person_years": 686,
+            "mediator_risk_rows": 678,
+            "mediator_events": 4,
+            "death_events": 5,
+            "survivor_rows_for_history_models": 681,
+            "mediator_model_fit_method": "unpenalized_none_lbfgs",
+            "mediator_probability_min": 1e-09,
+            "mediator_probability_p01": 1e-09,
+            "mediator_probability_p99": 0.00012269650709768897,
+            "mediator_probability_max": 0.9999981053191276,
+            "death_model_fit_method": "unpenalized_none_lbfgs",
+            "death_probability_min": 1e-09,
+            "death_probability_p01": 1e-09,
+            "death_probability_p99": 0.00016049174223437636,
+            "death_probability_max": 0.999999166305547,
+            "income_status_model_fit_method": "unpenalized_none_lbfgs",
+            "income_status_model_converged": true,
+            "income_status_model_iterations": 667,
+            "mediator_model_converged": true,
+            "death_model_converged": true,
+            "observation_model_converged": true,
+            "history_binary_model_fit": {
+              "non_success_app_this_year": {
+                "fit_method": "unpenalized_none_lbfgs",
+                "converged": true,
+                "n_iter": 265
+              },
+              "non_msk_rehab_this_year": {
+                "fit_method": "unpenalized_none_lbfgs",
+                "converged": true,
+                "n_iter": 24
+              }
+            },
+            "logit_iteration_budget": 20000,
+            "logit_tolerance": 1e-06,
+            "continuous_model_log_value_caps": {
+              "entgelt_value": {
+                "observed_log_max": 11.068492427888113,
+                "log_value_cap": 14.068492427888113
+              },
+              "rtzb_value": {
+                "observed_log_max": 9.469030960085425,
+                "log_value_cap": 12.469030960085425
+              }
+            },
+            "post_divorce_history_models": {
+              "continuous": [
+                "entgelt_value",
+                "rtzb_value"
+              ],
+              "binary": [
+                "non_success_app_this_year",
+                "non_msk_rehab_this_year"
+              ],
+              "categorical": [
+                "income_source_status"
+              ]
+            }
+          }
+        },
+        "bootstrap_intervals": {
+          "interventional_total_effect_risk_difference": {
+            "ci_low": -0.05424050387426732,
+            "ci_high": 0.04205106248622016
+          },
+          "interventional_direct_effect_risk_difference": {
+            "ci_low": -0.05471722100411982,
+            "ci_high": 0.03949736955294939
+          },
+          "interventional_indirect_effect_risk_difference": {
+            "ci_low": -0.003017406236427122,
+            "ci_high": 0.004003495775272994
+          },
+          "proportion_mediated": {
+            "ci_low": -0.37214666768404536,
+            "ci_high": 0.8925460805985301
+          }
+        },
+        "successful_bootstrap_replicates": 20,
+        "requested_bootstrap_replicates": 20,
+        "bootstrap_worker_processes": 2,
+        "point_estimate_simulation_diagnostics": [
+          {
+            "repetition": 0,
+            "risk_q00": 0.028445130395333362,
+            "risk_q10": 0.04199830329226817,
+            "risk_q11": 0.04225398103818789,
+            "risk_q01": 0.04226658413040041,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 1,
+            "risk_q00": 0.030486980331865143,
+            "risk_q10": 0.028210462745175913,
+            "risk_q11": 0.04221712930095445,
+            "risk_q01": 0.05081913613613842,
+            "msk_q00": 0.056338028169014086,
+            "msk_q10": 0.056338028169014086,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 2,
+            "risk_q00": 0.05609368316110219,
+            "risk_q10": 0.04231460868676329,
+            "risk_q11": 0.02813644186298847,
+            "risk_q01": 0.042265824924401674,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 3,
+            "risk_q00": 0.04246475548056039,
+            "risk_q10": 0.042245827240106504,
+            "risk_q11": 0.040343287152703966,
+            "risk_q01": 0.04285564043731949,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.014084507042253521,
+            "msk_q01": 0.014084507042253521
+          },
+          {
+            "repetition": 4,
+            "risk_q00": 0.0422138868959836,
+            "risk_q10": 0.04224883292927817,
+            "risk_q11": 0.04225354867632125,
+            "risk_q01": 0.043267902186535534,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 5,
+            "risk_q00": 0.028214158984036564,
+            "risk_q10": 0.01529450265642962,
+            "risk_q11": 0.04217971553815025,
+            "risk_q01": 0.044886964229551185,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 6,
+            "risk_q00": 0.04332239358862522,
+            "risk_q10": 0.05098024100062659,
+            "risk_q11": 0.04225596419013056,
+            "risk_q01": 0.042463727930727835,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 7,
+            "risk_q00": 0.04226596578212094,
+            "risk_q10": 0.04227038451192022,
+            "risk_q11": 0.0423351671954284,
+            "risk_q01": 0.04265171771170484,
+            "msk_q00": 0.056338028169014086,
+            "msk_q10": 0.056338028169014086,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 8,
+            "risk_q00": 0.028367521334371593,
+            "risk_q10": 0.042206065183087005,
+            "risk_q11": 0.0423330703235133,
+            "risk_q01": 0.04402084857928623,
+            "msk_q00": 0.056338028169014086,
+            "msk_q10": 0.056338028169014086,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 9,
+            "risk_q00": 0.04227355097344854,
+            "risk_q10": 0.04226023148101099,
+            "risk_q11": 0.028285541510242762,
+            "risk_q01": 0.04257104869825434,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 10,
+            "risk_q00": 0.0422528091417389,
+            "risk_q10": 0.04225466416574564,
+            "risk_q11": 0.04226351251881166,
+            "risk_q01": 0.028298501137746568,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 11,
+            "risk_q00": 0.0444442990385997,
+            "risk_q10": 0.04225345755649934,
+            "risk_q11": 0.04224259631715477,
+            "risk_q01": 0.04321697328731544,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 12,
+            "risk_q00": 0.045483693634767675,
+            "risk_q10": 0.04224957773357885,
+            "risk_q11": 0.04225392231959857,
+            "risk_q01": 0.042611453104879016,
+            "msk_q00": 0.056338028169014086,
+            "msk_q10": 0.056338028169014086,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 13,
+            "risk_q00": 0.04241831084201053,
+            "risk_q10": 0.042236857872219424,
+            "risk_q11": 0.042261963070187036,
+            "risk_q01": 0.042253539344589974,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 14,
+            "risk_q00": 0.04253116933246304,
+            "risk_q10": 0.028580552812555005,
+            "risk_q11": 0.042297758532638174,
+            "risk_q01": 0.042306281980738936,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 15,
+            "risk_q00": 0.04467473612346595,
+            "risk_q10": 0.04219226294940914,
+            "risk_q11": 0.042603200058886403,
+            "risk_q01": 0.044720909380571716,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 16,
+            "risk_q00": 0.043315980396212095,
+            "risk_q10": 0.039417343961591134,
+            "risk_q11": 0.04233618108315118,
+            "risk_q01": 0.04272605771663551,
+            "msk_q00": 0.056338028169014086,
+            "msk_q10": 0.056338028169014086,
+            "msk_q11": 0.014084507042253521,
+            "msk_q01": 0.014084507042253521
+          },
+          {
+            "repetition": 17,
+            "risk_q00": 0.050846979300314454,
+            "risk_q10": 0.04223140470464182,
+            "risk_q11": 0.04225435478027273,
+            "risk_q01": 0.042444351131279645,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 18,
+            "risk_q00": 0.04537815242857002,
+            "risk_q10": 0.04225350093684144,
+            "risk_q11": 0.028167859253808603,
+            "risk_q01": 0.03551135944316286,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 19,
+            "risk_q00": 0.042527174207607876,
+            "risk_q10": 0.0429727418657303,
+            "risk_q11": 0.0422234088383977,
+            "risk_q01": 0.042275237300320345,
+            "msk_q00": 0.056338028169014086,
+            "msk_q10": 0.056338028169014086,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 20,
+            "risk_q00": 0.036872192955413885,
+            "risk_q10": 0.042255134304770015,
+            "risk_q11": 0.040941908418521855,
+            "risk_q01": 0.04316204293684445,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 21,
+            "risk_q00": 0.04288850279221745,
+            "risk_q10": 0.04225341142098615,
+            "risk_q11": 0.042254880254816385,
+            "risk_q01": 0.04233918922024893,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 22,
+            "risk_q00": 0.04227560021252874,
+            "risk_q10": 0.04223019202020328,
+            "risk_q11": 0.04223193411369275,
+            "risk_q01": 0.04227341101980164,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 23,
+            "risk_q00": 0.028222796365368175,
+            "risk_q10": 0.042245019183258514,
+            "risk_q11": 0.04227591736471581,
+            "risk_q01": 0.042717888153793404,
+            "msk_q00": 0.056338028169014086,
+            "msk_q10": 0.056338028169014086,
+            "msk_q11": 0.028169014084507043,
+            "msk_q01": 0.028169014084507043
+          },
+          {
+            "repetition": 24,
+            "risk_q00": 0.042581091509333424,
+            "risk_q10": 0.042254115256341596,
+            "risk_q11": 0.028178153820783924,
+            "risk_q01": 0.030830177501157352,
+            "msk_q00": 0.04225352112676056,
+            "msk_q10": 0.04225352112676056,
+            "msk_q11": 0.014084507042253521,
+            "msk_q01": 0.014084507042253521
+          }
+        ],
+        "data_paths": {
+          "panel": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/longitudinal_mediation_panel_not_yet_divorced_lag1.parquet",
+          "audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/longitudinal_mediation_data_audit_not_yet_divorced_lag1.json",
+          "gaps": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/longitudinal_mediation_observation_gaps_not_yet_divorced_lag1.csv",
+          "event_cells": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/longitudinal_mediation_event_cells_not_yet_divorced_lag1.csv"
+        }
+      }
+    },
+    "figures": {
+      "figure_1_balance": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_1_balance_after_matching.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_1_balance_after_matching.pdf"
+      },
+      "figure_2a_msk_pooled": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_2a_msk_cumulative_incidence_pooled.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_2a_msk_cumulative_incidence_pooled.pdf"
+      },
+      "figure_2b_msk_by_sex": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_2b_msk_cumulative_incidence_by_sex.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_2b_msk_cumulative_incidence_by_sex.pdf"
+      },
+      "figure_3a_mortality_pooled": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_3a_cumulative_mortality_pooled.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_3a_cumulative_mortality_pooled.pdf"
+      },
+      "figure_3b_mortality_by_sex": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_3b_cumulative_mortality_by_sex.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_3b_cumulative_mortality_by_sex.pdf"
+      },
+      "appendix_pretrend_battery": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/appendix_pretrend_battery.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/appendix_pretrend_battery.pdf"
+      },
+      "figure_5_longitudinal_mediation": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_5_longitudinal_mediation_decomposition.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_5_longitudinal_mediation_decomposition.pdf"
+      }
+    }
+  },
+  "lag1_common_window": {
+    "specification": {
+      "lag_depth": 1,
+      "year_start": 2014,
+      "year_cap": 2018,
+      "sample_tag": "workbench_synthetic_0.001_seed42__lag1_common_2014_2018"
+    },
+    "panel_reference": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/panels/analysis_panel.parquet",
+    "marital_tables": {
+      "marriage_order": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/marriage_order_restriction_summary.csv",
+      "composition": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/marital_state_composition_around_t0.csv",
+      "sequences": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/marital_state_sequences_around_t0.csv"
+    },
+    "paper_reporting_config": {
+      "minimum_cell_people": 20,
+      "pool_small_diagnosis_codes": true,
+      "protect_matchability_cells": true,
+      "withhold_small_overlap_counts": true
+    },
+    "paper_summary_tables": {
+      "sample_overview": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_sample_overview.csv",
+      "annual_panel": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_annual_panel_counts.csv",
+      "divorce_cohorts": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_divorce_and_matching_by_t0.csv",
+      "rehab_codes": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_rehabilitation_codes.csv",
+      "rehab_codes_by_year": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_rehabilitation_codes_by_year.csv",
+      "filter_attrition": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_filter_attrition.csv",
+      "matching_overall": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_matching_overall.csv",
+      "matching_by_year": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_matching_by_year.csv",
+      "matched_vs_unmatched_treated": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_matched_vs_unmatched_treated.csv",
+      "repeated_person_overlap": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_repeated_person_overlap.csv",
+      "propensity_distribution": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_propensity_score_distribution.csv",
+      "propensity_overlap": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_propensity_score_overlap_by_t0.csv",
+      "balance_overview": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_balance_overview.csv",
+      "limitations": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_summary_limitations.json",
+      "manifest": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_summary_manifest.json",
+      "signature": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_summary_signature.json"
+    },
+    "risksets": {
+      "treated": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/riskset_treated_lag1.parquet",
+      "controls": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/riskset_controls_not_yet_divorced_lag1.parquet",
+      "audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/filter_audit_not_yet_divorced_lag1.csv"
+    },
+    "matching": {
+      "matches": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/matched_pairs_not_yet_divorced_lag1.parquet",
+      "scores": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/propensity_scores_not_yet_divorced_lag1.parquet",
+      "audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/matching_audit_not_yet_divorced_lag1.csv",
+      "edge_preflight": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/matching_edge_preflight_not_yet_divorced_lag1.csv"
+    },
+    "balance": {
+      "detail": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/balance_detail_not_yet_divorced_lag1.csv",
+      "summary": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/balance_summary_not_yet_divorced_lag1.csv"
+    },
+    "pretrends": {
+      "non_success_applications": {
+        "outcome": "non_success_app_this_year",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": 3.077365876122394,
+          "degrees_of_freedom": 2,
+          "p_value": 0.21466364063604304
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_non_success_app_this_year.csv"
+      },
+      "earnings_amount": {
+        "outcome": "entgelt_value",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": 0.8285857610142985,
+          "degrees_of_freedom": 2,
+          "p_value": 0.6608073853193095
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_entgelt_value.csv"
+      },
+      "pension_income_amount": {
+        "outcome": "rtzb_value",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": 5.822334801555898e-15,
+          "degrees_of_freedom": 2,
+          "p_value": 0.9999999999999971
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_rtzb_value.csv"
+      },
+      "pension_income_missingness": {
+        "outcome": "rtzb_missing",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": -155.03484808555663,
+          "degrees_of_freedom": 2,
+          "p_value": 1.0
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_rtzb_missing.csv"
+      },
+      "prior_rehabilitation_activity": {
+        "outcome": "rehab_starts_this_year",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": -5.615485245472445e-16,
+          "degrees_of_freedom": 2,
+          "p_value": 1.0
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_rehab_starts_this_year.csv"
+      }
+    },
+    "msk_followup": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/msk_followup_not_yet_divorced_lag1_fixed_assignment.parquet",
+    "mortality_followup": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/mortality_followup_not_yet_divorced_lag1_fixed_assignment.parquet",
+    "msk_dropout_sensitivity": {
+      "followup": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/msk_followup_not_yet_divorced_lag1_pair_censored_at_first_gap.parquet",
+      "audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/msk_pair_censored_at_first_gap_audit_not_yet_divorced_lag1.json",
+      "models": {
+        "unadjusted": {
+          "label": "msk_pair_censored_not_yet_divorced_lag1",
+          "adjusted": false,
+          "adjustment_rule": "none",
+          "selected_covariates": [],
+          "design_columns_used": [
+            "Intercept",
+            "treated",
+            "follow_year_2",
+            "follow_year_3",
+            "follow_year_4",
+            "follow_year_5"
+          ],
+          "transformations": [],
+          "n_person_years": 429,
+          "n_matched_sets": 45,
+          "events": 2,
+          "log_odds": -12.041547342060248,
+          "standard_error": 0.7433865385918426,
+          "z_value": -16.198231629092867,
+          "p_value": 5.18981226265298e-59,
+          "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+          "successful_bootstrap_replicates": null,
+          "odds_ratio": 5.894166988748272e-06,
+          "ci_low": 1.3729004246965106e-06,
+          "ci_high": 2.5304970314165107e-05,
+          "separation_warning": "Treatment log-odds magnitude exceeds 10; the outcome may be sparse or separated and the OR is clipped for numerical output.",
+          "sklearn_fit_method": "unpenalized_none_lbfgs",
+          "sklearn_iterations": 26,
+          "sklearn_max_iter": 5000,
+          "fit_warning": null
+        },
+        "adjusted": {
+          "label": "msk_pair_censored_not_yet_divorced_lag1",
+          "adjusted": true,
+          "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
+          "selected_covariates": [
+            {
+              "variable": "lag1_whot_bland_cat",
+              "trigger_component": "lag1_whot_bland_cat",
+              "variable_type": "categorical_level",
+              "max_abs_smd": 0.35777087639996635
+            },
+            {
+              "variable": "lag1_byvlgs_missing",
+              "trigger_component": "lag1_byvlgs_missing",
+              "variable_type": "binary",
+              "max_abs_smd": 0.30151134457776363
+            },
+            {
+              "variable": "lag1_byvlgs_value",
+              "trigger_component": "lag1_byvlgs_value",
+              "variable_type": "continuous",
+              "max_abs_smd": 0.2963679524503473
+            },
+            {
+              "variable": "lag1_non_success_app_this_year",
+              "trigger_component": "lag1_non_success_app_this_year",
+              "variable_type": "binary",
+              "max_abs_smd": 0.21081851067789198
+            },
+            {
+              "variable": "lag1_bygmgs_value",
+              "trigger_component": "lag1_bygmgs_value",
+              "variable_type": "continuous",
+              "max_abs_smd": 0.1354468012036078
+            }
+          ],
+          "design_columns_used": [
+            "Intercept",
+            "treated",
+            "follow_year_2",
+            "follow_year_3",
+            "follow_year_4",
+            "follow_year_5",
+            "lag1_whot_bland_cat_02",
+            "lag1_whot_bland_cat_03",
+            "lag1_whot_bland_cat_04",
+            "lag1_whot_bland_cat_05",
+            "lag1_whot_bland_cat_06",
+            "lag1_whot_bland_cat_07",
+            "lag1_whot_bland_cat_08",
+            "lag1_whot_bland_cat_09",
+            "lag1_whot_bland_cat_10",
+            "lag1_whot_bland_cat_11",
+            "lag1_whot_bland_cat_12",
+            "lag1_whot_bland_cat_13",
+            "lag1_whot_bland_cat_14",
+            "lag1_whot_bland_cat_15",
+            "lag1_whot_bland_cat_16",
+            "lag1_byvlgs_missing",
+            "lag1_byvlgs_value",
+            "lag1_non_success_app_this_year",
+            "lag1_bygmgs_value"
+          ],
+          "transformations": [
+            {
+              "variable": "lag1_whot_bland_cat",
+              "role": "categorical",
+              "levels": [
+                "01",
+                "02",
+                "03",
+                "04",
+                "05",
+                "06",
+                "07",
+                "08",
+                "09",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16"
+              ],
+              "reference_level": "01"
+            },
+            {
+              "variable": "lag1_byvlgs_missing",
+              "role": "binary",
+              "imputation": 0.0,
+              "center": 0.0,
+              "scale": 1.0,
+              "missing_indicator_included": false
+            },
+            {
+              "variable": "lag1_byvlgs_value",
+              "role": "numeric",
+              "imputation": 313.9213593465699,
+              "center": 302.44342371948363,
+              "scale": 62.11448826137154,
+              "missing_indicator_included": false
+            },
+            {
+              "variable": "lag1_non_success_app_this_year",
+              "role": "binary",
+              "imputation": 0.0,
+              "center": 0.0,
+              "scale": 1.0,
+              "missing_indicator_included": false
+            },
+            {
+              "variable": "lag1_bygmgs_value",
+              "role": "numeric",
+              "imputation": 56.44867290487371,
+              "center": 41.93423225896888,
+              "scale": 33.44742540642253,
+              "missing_indicator_included": false
+            }
+          ],
+          "n_person_years": 429,
+          "n_matched_sets": 45,
+          "events": 2,
+          "log_odds": -326.5243854731209,
+          "standard_error": 0.5406350425052001,
+          "z_value": -603.9645228323878,
+          "p_value": 0.0,
+          "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+          "successful_bootstrap_replicates": null,
+          "odds_ratio": 1.9287498479639178e-22,
+          "ci_low": 1.9287498479639178e-22,
+          "ci_high": 1.9287498479639178e-22,
+          "separation_warning": "Treatment log-odds magnitude exceeds 10; the outcome may be sparse or separated and the OR is clipped for numerical output.",
+          "sklearn_fit_method": "unpenalized_none_lbfgs",
+          "sklearn_iterations": 36,
+          "sklearn_max_iter": 5000,
+          "fit_warning": null
+        }
+      }
+    },
+    "msk_cumulative_incidence": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/msk_cumulative_incidence_competing_death.csv",
+    "cumulative_mortality": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/cumulative_mortality.csv",
+    "msk_curve_ci_pooled": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/msk_curve_ci_pooled.csv",
+    "mortality_curve_ci_pooled": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/mortality_curve_ci_pooled.csv",
+    "msk_sex_outputs": {
+      "curve": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/msk_curve_ci_by_sex.csv",
+      "heterogeneity": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/msk_sex_heterogeneity.json"
+    },
+    "mortality_sex_outputs": {
+      "curve": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/mortality_curve_ci_by_sex.csv",
+      "heterogeneity": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/mortality_sex_heterogeneity.json"
+    },
+    "absolute_effect_magnitudes": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/absolute_effect_magnitudes.json",
+    "models": {
+      "msk_unadjusted": {
+        "label": "msk_not_yet_divorced_lag1",
+        "adjusted": false,
+        "adjustment_rule": "none",
+        "selected_covariates": [],
+        "design_columns_used": [
+          "Intercept",
+          "treated",
+          "follow_year_2",
+          "follow_year_3",
+          "follow_year_4",
+          "follow_year_5"
+        ],
+        "transformations": [],
+        "n_person_years": 452,
+        "n_matched_sets": 46,
+        "events": 3,
+        "log_odds": -0.728549189547712,
+        "standard_error": 1.2576893864733771,
+        "z_value": -0.5792759304350971,
+        "p_value": 0.5624030037690866,
+        "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+        "successful_bootstrap_replicates": null,
+        "odds_ratio": 0.4826086561087389,
+        "ci_low": 0.0410230823299839,
+        "ci_high": 5.6775625263255165,
+        "separation_warning": null,
+        "sklearn_fit_method": "unpenalized_none_lbfgs",
+        "sklearn_iterations": 33,
+        "sklearn_max_iter": 5000,
+        "fit_warning": null
+      },
+      "msk_adjusted": {
+        "label": "msk_not_yet_divorced_lag1",
+        "adjusted": true,
+        "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
+        "selected_covariates": [
+          {
+            "variable": "lag1_whot_bland_cat",
+            "trigger_component": "lag1_whot_bland_cat",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.35777087639996635
+          },
+          {
+            "variable": "lag1_byvlgs_missing",
+            "trigger_component": "lag1_byvlgs_missing",
+            "variable_type": "binary",
+            "max_abs_smd": 0.30151134457776363
+          },
+          {
+            "variable": "lag1_byvlgs_value",
+            "trigger_component": "lag1_byvlgs_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.2963679524503473
+          },
+          {
+            "variable": "lag1_non_success_app_this_year",
+            "trigger_component": "lag1_non_success_app_this_year",
+            "variable_type": "binary",
+            "max_abs_smd": 0.21081851067789198
+          },
+          {
+            "variable": "lag1_bygmgs_value",
+            "trigger_component": "lag1_bygmgs_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.1354468012036078
+          }
+        ],
+        "design_columns_used": [
+          "Intercept",
+          "treated",
+          "follow_year_2",
+          "follow_year_3",
+          "follow_year_4",
+          "follow_year_5",
+          "lag1_whot_bland_cat_02",
+          "lag1_whot_bland_cat_03",
+          "lag1_whot_bland_cat_04",
+          "lag1_whot_bland_cat_05",
+          "lag1_whot_bland_cat_06",
+          "lag1_whot_bland_cat_07",
+          "lag1_whot_bland_cat_08",
+          "lag1_whot_bland_cat_09",
+          "lag1_whot_bland_cat_10",
+          "lag1_whot_bland_cat_11",
+          "lag1_whot_bland_cat_12",
+          "lag1_whot_bland_cat_13",
+          "lag1_whot_bland_cat_14",
+          "lag1_whot_bland_cat_15",
+          "lag1_whot_bland_cat_16",
+          "lag1_byvlgs_missing",
+          "lag1_byvlgs_value",
+          "lag1_non_success_app_this_year",
+          "lag1_bygmgs_value"
+        ],
+        "transformations": [
+          {
+            "variable": "lag1_whot_bland_cat",
+            "role": "categorical",
+            "levels": [
+              "01",
+              "02",
+              "03",
+              "04",
+              "05",
+              "06",
+              "07",
+              "08",
+              "09",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16"
+            ],
+            "reference_level": "01"
+          },
+          {
+            "variable": "lag1_byvlgs_missing",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_byvlgs_value",
+            "role": "numeric",
+            "imputation": 312.7216642891136,
+            "center": 301.999155933885,
+            "scale": 61.25512471800951,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_non_success_app_this_year",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_bygmgs_value",
+            "role": "numeric",
+            "imputation": 55.24880474972805,
+            "center": 40.812388113808254,
+            "scale": 33.52974988263602,
+            "missing_indicator_included": false
+          }
+        ],
+        "n_person_years": 452,
+        "n_matched_sets": 46,
+        "events": 3,
+        "log_odds": -36.92083173909657,
+        "standard_error": 1.1537028940321068,
+        "z_value": -32.002027497791026,
+        "p_value": 1.0218494448085937e-224,
+        "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+        "successful_bootstrap_replicates": null,
+        "odds_ratio": 9.236054957226273e-17,
+        "ci_low": 9.62575445939267e-18,
+        "ci_high": 8.862132473124215e-16,
+        "separation_warning": "Treatment log-odds magnitude exceeds 10; the outcome may be sparse or separated and the OR is clipped for numerical output.",
+        "sklearn_fit_method": "unpenalized_none_lbfgs",
+        "sklearn_iterations": 37,
+        "sklearn_max_iter": 5000,
+        "fit_warning": null
+      },
+      "mortality_unadjusted": {
+        "label": "mortality_not_yet_divorced_lag1",
+        "adjusted": false,
+        "adjustment_rule": "none",
+        "selected_covariates": [],
+        "design_columns_used": [
+          "Intercept",
+          "treated",
+          "follow_year_2",
+          "follow_year_3",
+          "follow_year_4",
+          "follow_year_5",
+          "follow_year_6",
+          "follow_year_7",
+          "follow_year_8",
+          "follow_year_9"
+        ],
+        "transformations": [],
+        "n_person_years": 645,
+        "n_matched_sets": 46,
+        "events": 6,
+        "log_odds": -0.7050517690515089,
+        "standard_error": 0.9218811475652284,
+        "z_value": -0.7647968188888714,
+        "p_value": 0.44439254233377623,
+        "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+        "successful_bootstrap_replicates": null,
+        "odds_ratio": 0.4940829953860127,
+        "ci_low": 0.08111082753877248,
+        "ci_high": 3.0096845727892707,
+        "separation_warning": null,
+        "sklearn_fit_method": "unpenalized_none_lbfgs",
+        "sklearn_iterations": 38,
+        "sklearn_max_iter": 5000,
+        "fit_warning": null
+      },
+      "mortality_adjusted": {
+        "label": "mortality_not_yet_divorced_lag1",
+        "adjusted": true,
+        "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
+        "selected_covariates": [
+          {
+            "variable": "lag1_whot_bland_cat",
+            "trigger_component": "lag1_whot_bland_cat",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.35777087639996635
+          },
+          {
+            "variable": "lag1_byvlgs_missing",
+            "trigger_component": "lag1_byvlgs_missing",
+            "variable_type": "binary",
+            "max_abs_smd": 0.30151134457776363
+          },
+          {
+            "variable": "lag1_byvlgs_value",
+            "trigger_component": "lag1_byvlgs_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.2963679524503473
+          },
+          {
+            "variable": "lag1_non_success_app_this_year",
+            "trigger_component": "lag1_non_success_app_this_year",
+            "variable_type": "binary",
+            "max_abs_smd": 0.21081851067789198
+          },
+          {
+            "variable": "lag1_bygmgs_value",
+            "trigger_component": "lag1_bygmgs_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.1354468012036078
+          }
+        ],
+        "design_columns_used": [
+          "Intercept",
+          "treated",
+          "follow_year_2",
+          "follow_year_3",
+          "follow_year_4",
+          "follow_year_5",
+          "follow_year_6",
+          "follow_year_7",
+          "follow_year_8",
+          "follow_year_9",
+          "lag1_whot_bland_cat_02",
+          "lag1_whot_bland_cat_03",
+          "lag1_whot_bland_cat_04",
+          "lag1_whot_bland_cat_05",
+          "lag1_whot_bland_cat_06",
+          "lag1_whot_bland_cat_07",
+          "lag1_whot_bland_cat_08",
+          "lag1_whot_bland_cat_09",
+          "lag1_whot_bland_cat_10",
+          "lag1_whot_bland_cat_11",
+          "lag1_whot_bland_cat_12",
+          "lag1_whot_bland_cat_13",
+          "lag1_whot_bland_cat_14",
+          "lag1_whot_bland_cat_15",
+          "lag1_whot_bland_cat_16",
+          "lag1_byvlgs_missing",
+          "lag1_byvlgs_value",
+          "lag1_non_success_app_this_year",
+          "lag1_bygmgs_value"
+        ],
+        "transformations": [
+          {
+            "variable": "lag1_whot_bland_cat",
+            "role": "categorical",
+            "levels": [
+              "01",
+              "02",
+              "03",
+              "04",
+              "05",
+              "06",
+              "07",
+              "08",
+              "09",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16"
+            ],
+            "reference_level": "01"
+          },
+          {
+            "variable": "lag1_byvlgs_missing",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_byvlgs_value",
+            "role": "numeric",
+            "imputation": 313.9213593465699,
+            "center": 301.52651806727175,
+            "scale": 65.9431637272902,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_non_success_app_this_year",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_bygmgs_value",
+            "role": "numeric",
+            "imputation": 56.13529501577659,
+            "center": 41.34470842216714,
+            "scale": 33.27813285127668,
+            "missing_indicator_included": false
+          }
+        ],
+        "n_person_years": 645,
+        "n_matched_sets": 46,
+        "events": 6,
+        "log_odds": -0.6791633775902745,
+        "standard_error": 0.971048018844243,
+        "z_value": -0.6994127627165396,
+        "p_value": 0.4842941141145707,
+        "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+        "successful_bootstrap_replicates": null,
+        "odds_ratio": 0.5070410168440084,
+        "ci_low": 0.07559104202690212,
+        "ci_high": 3.4010722152859048,
+        "separation_warning": null,
+        "sklearn_fit_method": "unpenalized_none_lbfgs",
+        "sklearn_iterations": 55,
+        "sklearn_max_iter": 5000,
+        "fit_warning": null
+      }
+    },
+    "mediation": {
+      "longitudinal_gcomp": {
+        "horizon_years": 5,
+        "target_population": "baseline covariate distribution of the matched treated individuals (ATT standardization)",
+        "estimand": "ATT-standardized five-year interventional total, direct and indirect risk differences for divorce, with the indirect effect operating through the incidence and timing of first MSK rehabilitation.",
+        "identification_warning": "The mediation decomposition requires sequential exchangeability: conditional on baseline matching variables and observed prior post-divorce history, there must be no remaining unmeasured mediator-outcome or prior-survival-mediator confounding. Defining the longitudinal mediator distribution for a survival outcome also uses the survival-mediational-g-formula intervention that sets prior survival to one in the source mediator simulation. Observation IPCW additionally assumes record-gap censoring is independent conditional on measured prior history. Positivity, consistency and correct specification of the longitudinal parametric models are also required.",
+        "point_estimates": {
+          "risk_q00": 0.03895613215399159,
+          "risk_q10": 0.0338188104567832,
+          "risk_q11": 0.04267770609806318,
+          "risk_q01": 0.04405085065401735,
+          "interventional_total_effect_risk_difference": 0.0037215739440715906,
+          "interventional_direct_effect_risk_difference": -0.0051373216972083885,
+          "interventional_indirect_effect_risk_difference": 0.008858895641279979,
+          "proportion_mediated": 2.3804163975814756,
+          "simulated_first_msk_risk_q00": 0.22222222222222224,
+          "simulated_first_msk_risk_q11": 0.022222222222222223,
+          "monte_carlo_repetitions": 25,
+          "target_population": "baseline covariate distribution of the matched treated individuals (ATT standardization)",
+          "estimator": "parametric survival mediational g-formula with fixed divorce exposure, an absorbing first-MSK event-time process randomized from the source-treatment joint mediator distribution, annually updated lagged history, interventional direct/indirect effects, and optional observation IPCW",
+          "history_order": "L(t-1) -> first MSK at t -> death at t -> L(t) for use at t+1",
+          "model_diagnostics": {
+            "observation_model_fit_method": "unpenalized_none_lbfgs",
+            "observation_risk_rows": 450,
+            "first_gap_rows": 4,
+            "p_observed_min": 2.4378206246571146e-09,
+            "p_observed_p01": 0.999942688078883,
+            "p_observed_p99": 0.999999999,
+            "p_observed_max": 0.999999999,
+            "probability_floor": 0.02,
+            "raw_ipcw_max": 1.00005753059133,
+            "ipcw_cap": 20.0,
+            "rows_at_ipcw_cap": 0,
+            "use_observation_ipcw": true,
+            "analysis_person_years": 446,
+            "mediator_risk_rows": 441,
+            "mediator_events": 3,
+            "death_events": 3,
+            "survivor_rows_for_history_models": 443,
+            "mediator_model_fit_method": "unpenalized_none_lbfgs",
+            "mediator_probability_min": 1e-09,
+            "mediator_probability_p01": 1e-09,
+            "mediator_probability_p99": 9.164091630400665e-05,
+            "mediator_probability_max": 0.9999999289701192,
+            "death_model_fit_method": "unpenalized_none_lbfgs",
+            "death_probability_min": 1e-09,
+            "death_probability_p01": 1e-09,
+            "death_probability_p99": 6.1018952343562874e-05,
+            "death_probability_max": 0.9999847220491519,
+            "income_status_model_fit_method": "unpenalized_none_lbfgs",
+            "income_status_model_converged": true,
+            "income_status_model_iterations": 674,
+            "mediator_model_converged": true,
+            "death_model_converged": true,
+            "observation_model_converged": true,
+            "history_binary_model_fit": {
+              "non_success_app_this_year": {
+                "fit_method": "unpenalized_none_lbfgs",
+                "converged": true,
+                "n_iter": 428
+              },
+              "non_msk_rehab_this_year": {
+                "fit_method": "unpenalized_none_lbfgs",
+                "converged": true,
+                "n_iter": 22
+              }
+            },
+            "logit_iteration_budget": 20000,
+            "logit_tolerance": 1e-06,
+            "continuous_model_log_value_caps": {
+              "entgelt_value": {
+                "observed_log_max": 10.982652210822568,
+                "log_value_cap": 13.982652210822568
+              },
+              "rtzb_value": {
+                "observed_log_max": 9.469030960085425,
+                "log_value_cap": 12.469030960085425
+              }
+            },
+            "post_divorce_history_models": {
+              "continuous": [
+                "entgelt_value",
+                "rtzb_value"
+              ],
+              "binary": [
+                "non_success_app_this_year",
+                "non_msk_rehab_this_year"
+              ],
+              "categorical": [
+                "income_source_status"
+              ]
+            }
+          }
+        },
+        "bootstrap_intervals": {
+          "interventional_total_effect_risk_difference": {
+            "ci_low": -0.014222390131842571,
+            "ci_high": 0.04882407810579786
+          },
+          "interventional_direct_effect_risk_difference": {
+            "ci_low": -0.012434861939210668,
+            "ci_high": 0.049201170280084264
+          },
+          "interventional_indirect_effect_risk_difference": {
+            "ci_low": -0.004515560309548424,
+            "ci_high": 0.0031569161967576445
+          }
+        },
+        "successful_bootstrap_replicates": 20,
+        "requested_bootstrap_replicates": 20,
+        "bootstrap_worker_processes": 2,
+        "point_estimate_simulation_diagnostics": [
+          {
+            "repetition": 0,
+            "risk_q00": 0.04447789842685901,
+            "risk_q10": 0.04444307028869299,
+            "risk_q11": 0.04430004895390727,
+            "risk_q01": 0.041501012299810736,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 1,
+            "risk_q00": 0.04513946175705841,
+            "risk_q10": 0.04444888615311582,
+            "risk_q11": 0.04447539997955974,
+            "risk_q01": 0.04444651743470884,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 2,
+            "risk_q00": 0.0420993531092928,
+            "risk_q10": 0.031824201709522715,
+            "risk_q11": 0.044448054074830656,
+            "risk_q01": 0.0444661956371355,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 3,
+            "risk_q00": 0.04446960138161293,
+            "risk_q10": 0.022230293541229518,
+            "risk_q11": 0.04444987700175329,
+            "risk_q01": 0.037487908556663396,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 4,
+            "risk_q00": 0.044265596377532024,
+            "risk_q10": 0.0444942644888231,
+            "risk_q11": 0.030006796830836846,
+            "risk_q01": 0.0466138470507349,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 5,
+            "risk_q00": 0.02263298613500908,
+            "risk_q10": 0.04402840083459947,
+            "risk_q11": 0.04444235794011364,
+            "risk_q01": 0.04456721422008947,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 6,
+            "risk_q00": 0.03318774161081339,
+            "risk_q10": 0.01460808243378453,
+            "risk_q11": 0.044451475182132216,
+            "risk_q01": 0.04385395551078686,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 7,
+            "risk_q00": 0.04445463938167871,
+            "risk_q10": 0.04444410464831494,
+            "risk_q11": 0.04446298247766023,
+            "risk_q01": 0.0444431787182441,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 8,
+            "risk_q00": 0.03647427750390553,
+            "risk_q10": 0.04443974618826996,
+            "risk_q11": 0.044454163023245674,
+            "risk_q01": 0.042726102185022596,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 9,
+            "risk_q00": 0.04467912168322674,
+            "risk_q10": 0.04444612477609067,
+            "risk_q11": 0.04444981114252722,
+            "risk_q01": 0.044575963285722775,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 10,
+            "risk_q00": 0.038548423953731925,
+            "risk_q10": 0.03905051298685969,
+            "risk_q11": 0.044351974279478124,
+            "risk_q01": 0.04444715294553769,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 11,
+            "risk_q00": 0.044453655716143015,
+            "risk_q10": 0.023016386807019118,
+            "risk_q11": 0.04444685141114635,
+            "risk_q01": 0.04501845216753264,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 12,
+            "risk_q00": 0.04505128988120233,
+            "risk_q10": 0.025027008978431464,
+            "risk_q11": 0.04472167297366969,
+            "risk_q01": 0.04452876720816756,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 13,
+            "risk_q00": 0.0444501890127299,
+            "risk_q10": 0.04445887652779257,
+            "risk_q11": 0.044704353015805554,
+            "risk_q01": 0.044476774154756704,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 14,
+            "risk_q00": 0.04451852043451965,
+            "risk_q10": 0.023853871383913816,
+            "risk_q11": 0.044105023870879556,
+            "risk_q01": 0.04444649628662789,
+            "msk_q00": 0.24444444444444444,
+            "msk_q10": 0.24444444444444444,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 15,
+            "risk_q00": 0.04424214056791709,
+            "risk_q10": 0.023090784300019762,
+            "risk_q11": 0.044513999726416675,
+            "risk_q01": 0.044461969865619566,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 16,
+            "risk_q00": 0.04312814550372712,
+            "risk_q10": 0.022946459100277927,
+            "risk_q11": 0.04444735170648473,
+            "risk_q01": 0.044446142040014514,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 17,
+            "risk_q00": 0.023912887627269175,
+            "risk_q10": 0.04448528019245823,
+            "risk_q11": 0.04445565116445338,
+            "risk_q01": 0.044284864229581,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 18,
+            "risk_q00": 0.04444527268879539,
+            "risk_q10": 0.04416954970536435,
+            "risk_q11": 0.044447954733311534,
+            "risk_q01": 0.044574209946223076,
+            "msk_q00": 0.24444444444444444,
+            "msk_q10": 0.24444444444444444,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 19,
+            "risk_q00": 0.044453274787330854,
+            "risk_q10": 0.02404949121107458,
+            "risk_q11": 0.04444424144533543,
+            "risk_q01": 0.04457305117886945,
+            "msk_q00": 0.2,
+            "msk_q10": 0.2,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 20,
+            "risk_q00": 0.022228167111305708,
+            "risk_q10": 0.025582643014022688,
+            "risk_q11": 0.0444062873391311,
+            "risk_q01": 0.04444818663227179,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 21,
+            "risk_q00": 0.044450110471058735,
+            "risk_q10": 0.04446302359104681,
+            "risk_q11": 0.036125829471621795,
+            "risk_q01": 0.04449464176779039,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 22,
+            "risk_q00": 0.04334328978385116,
+            "risk_q10": 0.022883666968220306,
+            "risk_q11": 0.044457606214703405,
+            "risk_q01": 0.044101011827346936,
+            "msk_q00": 0.2,
+            "msk_q10": 0.2,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 23,
+            "risk_q00": 0.023659520995424677,
+            "risk_q10": 0.044474315473689185,
+            "risk_q11": 0.04475410986598327,
+            "risk_q01": 0.04445542681492454,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          },
+          {
+            "repetition": 24,
+            "risk_q00": 0.02113773794779439,
+            "risk_q10": 0.014511216116945835,
+            "risk_q11": 0.022618778626592118,
+            "risk_q01": 0.043832224386250895,
+            "msk_q00": 0.2222222222222222,
+            "msk_q10": 0.2222222222222222,
+            "msk_q11": 0.022222222222222223,
+            "msk_q01": 0.022222222222222223
+          }
+        ],
+        "data_paths": {
+          "panel": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/analysis/longitudinal_mediation_panel_not_yet_divorced_lag1.parquet",
+          "audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/longitudinal_mediation_data_audit_not_yet_divorced_lag1.json",
+          "gaps": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/longitudinal_mediation_observation_gaps_not_yet_divorced_lag1.csv",
+          "event_cells": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/diagnostics/longitudinal_mediation_event_cells_not_yet_divorced_lag1.csv"
+        }
+      }
+    },
+    "figures": {
+      "figure_1_balance": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/figure_1_balance_after_matching.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/figure_1_balance_after_matching.pdf"
+      },
+      "figure_2a_msk_pooled": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/figure_2a_msk_cumulative_incidence_pooled.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/figure_2a_msk_cumulative_incidence_pooled.pdf"
+      },
+      "figure_2b_msk_by_sex": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/figure_2b_msk_cumulative_incidence_by_sex.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/figure_2b_msk_cumulative_incidence_by_sex.pdf"
+      },
+      "figure_3a_mortality_pooled": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/figure_3a_cumulative_mortality_pooled.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/figure_3a_cumulative_mortality_pooled.pdf"
+      },
+      "figure_3b_mortality_by_sex": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/figure_3b_cumulative_mortality_by_sex.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/figure_3b_cumulative_mortality_by_sex.pdf"
+      },
+      "appendix_pretrend_battery": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/appendix_pretrend_battery.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/appendix_pretrend_battery.pdf"
+      },
+      "figure_5_longitudinal_mediation": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/figure_5_longitudinal_mediation_decomposition.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag1_common_2014_2018/figures/figure_5_longitudinal_mediation_decomposition.pdf"
+      }
+    }
+  },
+  "lag3_common_window": {
+    "specification": {
+      "lag_depth": 3,
+      "year_start": 2014,
+      "year_cap": 2018,
+      "sample_tag": "workbench_synthetic_0.001_seed42__lag3_common_2014_2018"
+    },
+    "panel_reference": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/panels/analysis_panel.parquet",
+    "marital_tables": {
+      "marriage_order": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/marriage_order_restriction_summary.csv",
+      "composition": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/marital_state_composition_around_t0.csv",
+      "sequences": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/marital_state_sequences_around_t0.csv"
+    },
+    "paper_reporting_config": {
+      "minimum_cell_people": 20,
+      "pool_small_diagnosis_codes": true,
+      "protect_matchability_cells": true,
+      "withhold_small_overlap_counts": true
+    },
+    "paper_summary_tables": {
+      "sample_overview": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_sample_overview.csv",
+      "annual_panel": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_annual_panel_counts.csv",
+      "divorce_cohorts": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_divorce_and_matching_by_t0.csv",
+      "rehab_codes": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_rehabilitation_codes.csv",
+      "rehab_codes_by_year": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_rehabilitation_codes_by_year.csv",
+      "filter_attrition": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_filter_attrition.csv",
+      "matching_overall": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_matching_overall.csv",
+      "matching_by_year": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_matching_by_year.csv",
+      "matched_vs_unmatched_treated": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_matched_vs_unmatched_treated.csv",
+      "repeated_person_overlap": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_repeated_person_overlap.csv",
+      "propensity_distribution": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_propensity_score_distribution.csv",
+      "propensity_overlap": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_propensity_score_overlap_by_t0.csv",
+      "balance_overview": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_balance_overview.csv",
+      "limitations": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_summary_limitations.json",
+      "manifest": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_summary_manifest.json",
+      "signature": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_summary_signature.json"
+    },
+    "risksets": {
+      "treated": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/riskset_treated_lag3.parquet",
+      "controls": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/riskset_controls_not_yet_divorced_lag3.parquet",
+      "audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/filter_audit_not_yet_divorced_lag3.csv"
+    },
+    "matching": {
+      "matches": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/matched_pairs_not_yet_divorced_lag3.parquet",
+      "scores": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/propensity_scores_not_yet_divorced_lag3.parquet",
+      "audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/matching_audit_not_yet_divorced_lag3.csv",
+      "edge_preflight": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/matching_edge_preflight_not_yet_divorced_lag3.csv"
+    },
+    "balance": {
+      "detail": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/balance_detail_not_yet_divorced_lag3.csv",
+      "summary": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/balance_summary_not_yet_divorced_lag3.csv"
+    },
+    "pretrends": {
+      "non_success_applications": {
+        "outcome": "non_success_app_this_year",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": 1.5885667939198314,
+          "degrees_of_freedom": 2,
+          "p_value": 0.4519049553840633
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_non_success_app_this_year.csv"
+      },
+      "earnings_amount": {
+        "outcome": "entgelt_value",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": 3.1461518204290853,
+          "degrees_of_freedom": 2,
+          "p_value": 0.20740623722821305
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_entgelt_value.csv"
+      },
+      "pension_income_amount": {
+        "outcome": "rtzb_value",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": 6.2022605371913,
+          "degrees_of_freedom": 2,
+          "p_value": 0.04499831345933297
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_rtzb_value.csv"
+      },
+      "pension_income_missingness": {
+        "outcome": "rtzb_missing",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": -27.05720117763779,
+          "degrees_of_freedom": 2,
+          "p_value": 1.0
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_rtzb_missing.csv"
+      },
+      "prior_rehabilitation_activity": {
+        "outcome": "rehab_starts_this_year",
+        "reference_period": -1,
+        "estimator": "sklearn OLS on matched-pair differences with manual matched-set cluster covariance",
+        "joint_pretrend_test": {
+          "tested_event_times": [
+            -3,
+            -2
+          ],
+          "statistic": 1.0487840735880437e-16,
+          "degrees_of_freedom": 2,
+          "p_value": 1.0
+        },
+        "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_rehab_starts_this_year.csv"
+      }
+    },
+    "msk_followup": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/msk_followup_not_yet_divorced_lag3_fixed_assignment.parquet",
+    "mortality_followup": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/mortality_followup_not_yet_divorced_lag3_fixed_assignment.parquet",
+    "msk_dropout_sensitivity": {
+      "followup": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/msk_followup_not_yet_divorced_lag3_pair_censored_at_first_gap.parquet",
+      "audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/msk_pair_censored_at_first_gap_audit_not_yet_divorced_lag3.json",
+      "models": {
+        "unadjusted": {
+          "label": "msk_pair_censored_not_yet_divorced_lag3",
+          "adjusted": false,
+          "adjustment_rule": "none",
+          "selected_covariates": [],
+          "design_columns_used": [
+            "Intercept",
+            "treated",
+            "follow_year_2",
+            "follow_year_3",
+            "follow_year_4",
+            "follow_year_5"
+          ],
+          "transformations": [],
+          "n_person_years": 392,
+          "n_matched_sets": 40,
+          "events": 1,
+          "log_odds": 12.646272275676534,
+          "standard_error": 1.0045225333034622,
+          "z_value": 12.589336581717223,
+          "p_value": 2.4169613880006966e-36,
+          "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+          "successful_bootstrap_replicates": null,
+          "odds_ratio": 310603.44332441525,
+          "ci_low": 43365.00725423622,
+          "ci_high": 2224708.471495964,
+          "separation_warning": "Treatment log-odds magnitude exceeds 10; the outcome may be sparse or separated and the OR is clipped for numerical output.",
+          "sklearn_fit_method": "unpenalized_none_lbfgs",
+          "sklearn_iterations": 27,
+          "sklearn_max_iter": 5000,
+          "fit_warning": null
+        },
+        "adjusted": {
+          "label": "msk_pair_censored_not_yet_divorced_lag3",
+          "adjusted": true,
+          "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
+          "selected_covariates": [
+            {
+              "variable": "lag3_entgelt_value",
+              "trigger_component": "lag3_entgelt_value",
+              "variable_type": "continuous",
+              "max_abs_smd": 0.4400378195642068
+            },
+            {
+              "variable": "lag3_income_source_status",
+              "trigger_component": "lag3_income_source_status",
+              "variable_type": "categorical_level",
+              "max_abs_smd": 0.39735970711951313
+            },
+            {
+              "variable": "lag1_whot_bland_cat",
+              "trigger_component": "lag1_whot_bland_cat",
+              "variable_type": "categorical_level",
+              "max_abs_smd": 0.39735970711951313
+            },
+            {
+              "variable": "lag2_non_success_app_this_year",
+              "trigger_component": "lag2_non_success_app_this_year",
+              "variable_type": "binary",
+              "max_abs_smd": 0.2279211529192759
+            },
+            {
+              "variable": "lag1_fmsd_cat",
+              "trigger_component": "lag1_fmsd_cat",
+              "variable_type": "categorical_level",
+              "max_abs_smd": 0.2236067977499791
+            },
+            {
+              "variable": "lag1_entgelt_value",
+              "trigger_component": "lag1_entgelt_value",
+              "variable_type": "continuous",
+              "max_abs_smd": 0.21618966642533813
+            },
+            {
+              "variable": "lag3_non_success_app_this_year",
+              "trigger_component": "lag3_non_success_app_this_year",
+              "variable_type": "binary",
+              "max_abs_smd": 0.18814417367671946
+            },
+            {
+              "variable": "lag2_income_source_status",
+              "trigger_component": "lag2_income_source_status",
+              "variable_type": "categorical_level",
+              "max_abs_smd": 0.10206207261596573
+            }
+          ],
+          "design_columns_used": [
+            "Intercept",
+            "treated",
+            "follow_year_2",
+            "follow_year_3",
+            "follow_year_4",
+            "follow_year_5",
+            "lag3_entgelt_value__log1p",
+            "lag3_income_source_status_neither_observed",
+            "lag1_whot_bland_cat_02",
+            "lag1_whot_bland_cat_03",
+            "lag1_whot_bland_cat_04",
+            "lag1_whot_bland_cat_05",
+            "lag1_whot_bland_cat_06",
+            "lag1_whot_bland_cat_07",
+            "lag1_whot_bland_cat_08",
+            "lag1_whot_bland_cat_09",
+            "lag1_whot_bland_cat_10",
+            "lag1_whot_bland_cat_11",
+            "lag1_whot_bland_cat_12",
+            "lag1_whot_bland_cat_13",
+            "lag1_whot_bland_cat_14",
+            "lag1_whot_bland_cat_15",
+            "lag1_whot_bland_cat_16",
+            "lag2_non_success_app_this_year",
+            "lag1_fmsd_cat_2",
+            "lag1_entgelt_value__log1p",
+            "lag3_non_success_app_this_year",
+            "lag2_income_source_status_neither_observed"
+          ],
+          "transformations": [
+            {
+              "variable": "lag3_entgelt_value",
+              "role": "numeric",
+              "imputation": 44983.544119277474,
+              "center": 10.274218510881441,
+              "scale": 2.058225304785909,
+              "missing_indicator_included": false
+            },
+            {
+              "variable": "lag3_income_source_status",
+              "role": "categorical",
+              "levels": [
+                "earnings_only",
+                "neither_observed"
+              ],
+              "reference_level": "earnings_only"
+            },
+            {
+              "variable": "lag1_whot_bland_cat",
+              "role": "categorical",
+              "levels": [
+                "01",
+                "02",
+                "03",
+                "04",
+                "05",
+                "06",
+                "07",
+                "08",
+                "09",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16"
+              ],
+              "reference_level": "01"
+            },
+            {
+              "variable": "lag2_non_success_app_this_year",
+              "role": "binary",
+              "imputation": 0.0,
+              "center": 0.0,
+              "scale": 1.0,
+              "missing_indicator_included": false
+            },
+            {
+              "variable": "lag1_fmsd_cat",
+              "role": "categorical",
+              "levels": [
+                "1",
+                "2"
+              ],
+              "reference_level": "1"
+            },
+            {
+              "variable": "lag1_entgelt_value",
+              "role": "numeric",
+              "imputation": 44787.52898556836,
+              "center": 10.15770180454821,
+              "scale": 2.3002760610371955,
+              "missing_indicator_included": false
+            },
+            {
+              "variable": "lag3_non_success_app_this_year",
+              "role": "binary",
+              "imputation": 0.0,
+              "center": 0.0,
+              "scale": 1.0,
+              "missing_indicator_included": false
+            },
+            {
+              "variable": "lag2_income_source_status",
+              "role": "categorical",
+              "levels": [
+                "earnings_only",
+                "neither_observed"
+              ],
+              "reference_level": "earnings_only"
+            }
+          ],
+          "n_person_years": 392,
+          "n_matched_sets": 40,
+          "events": 1,
+          "log_odds": 9938.232912530746,
+          "standard_error": 2.3085101858974975,
+          "z_value": 4305.041828813496,
+          "p_value": 0.0,
+          "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+          "successful_bootstrap_replicates": null,
+          "odds_ratio": 5.184705528587072e+21,
+          "ci_low": 5.184705528587072e+21,
+          "ci_high": 5.184705528587072e+21,
+          "separation_warning": "Treatment log-odds magnitude exceeds 10; the outcome may be sparse or separated and the OR is clipped for numerical output.",
+          "sklearn_fit_method": "unpenalized_none_lbfgs",
+          "sklearn_iterations": 43,
+          "sklearn_max_iter": 5000,
+          "fit_warning": null
+        }
+      }
+    },
+    "msk_cumulative_incidence": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/msk_cumulative_incidence_competing_death.csv",
+    "cumulative_mortality": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/cumulative_mortality.csv",
+    "msk_curve_ci_pooled": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/msk_curve_ci_pooled.csv",
+    "mortality_curve_ci_pooled": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/mortality_curve_ci_pooled.csv",
+    "msk_sex_outputs": {
+      "curve": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/msk_curve_ci_by_sex.csv",
+      "heterogeneity": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/msk_sex_heterogeneity.json"
+    },
+    "mortality_sex_outputs": {
+      "curve": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/mortality_curve_ci_by_sex.csv",
+      "heterogeneity": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/mortality_sex_heterogeneity.json"
+    },
+    "absolute_effect_magnitudes": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/absolute_effect_magnitudes.json",
+    "models": {
+      "msk_unadjusted": {
+        "label": "msk_not_yet_divorced_lag3",
+        "adjusted": false,
+        "adjustment_rule": "none",
+        "selected_covariates": [],
+        "design_columns_used": [
+          "Intercept",
+          "treated",
+          "follow_year_2",
+          "follow_year_3",
+          "follow_year_4",
+          "follow_year_5"
+        ],
+        "transformations": [],
+        "n_person_years": 406,
+        "n_matched_sets": 41,
+        "events": 1,
+        "log_odds": 13.074554075637707,
+        "standard_error": 0.9967887805482039,
+        "z_value": 13.116674596244046,
+        "p_value": 2.642793559300952e-39,
+        "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+        "successful_bootstrap_replicates": null,
+        "odds_ratio": 476657.7826693595,
+        "ci_low": 67565.18170219344,
+        "ci_high": 3362717.8386156023,
+        "separation_warning": "Treatment log-odds magnitude exceeds 10; the outcome may be sparse or separated and the OR is clipped for numerical output.",
+        "sklearn_fit_method": "unpenalized_none_lbfgs",
+        "sklearn_iterations": 29,
+        "sklearn_max_iter": 5000,
+        "fit_warning": null
+      },
+      "msk_adjusted": {
+        "label": "msk_not_yet_divorced_lag3",
+        "adjusted": true,
+        "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
+        "selected_covariates": [
+          {
+            "variable": "lag3_entgelt_value",
+            "trigger_component": "lag3_entgelt_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.4400378195642068
+          },
+          {
+            "variable": "lag3_income_source_status",
+            "trigger_component": "lag3_income_source_status",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.39735970711951313
+          },
+          {
+            "variable": "lag1_whot_bland_cat",
+            "trigger_component": "lag1_whot_bland_cat",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.39735970711951313
+          },
+          {
+            "variable": "lag2_non_success_app_this_year",
+            "trigger_component": "lag2_non_success_app_this_year",
+            "variable_type": "binary",
+            "max_abs_smd": 0.2279211529192759
+          },
+          {
+            "variable": "lag1_fmsd_cat",
+            "trigger_component": "lag1_fmsd_cat",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.2236067977499791
+          },
+          {
+            "variable": "lag1_entgelt_value",
+            "trigger_component": "lag1_entgelt_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.21618966642533813
+          },
+          {
+            "variable": "lag3_non_success_app_this_year",
+            "trigger_component": "lag3_non_success_app_this_year",
+            "variable_type": "binary",
+            "max_abs_smd": 0.18814417367671946
+          },
+          {
+            "variable": "lag2_income_source_status",
+            "trigger_component": "lag2_income_source_status",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.10206207261596573
+          }
+        ],
+        "design_columns_used": [
+          "Intercept",
+          "treated",
+          "follow_year_2",
+          "follow_year_3",
+          "follow_year_4",
+          "follow_year_5",
+          "lag3_entgelt_value__log1p",
+          "lag3_income_source_status_neither_observed",
+          "lag1_whot_bland_cat_02",
+          "lag1_whot_bland_cat_03",
+          "lag1_whot_bland_cat_04",
+          "lag1_whot_bland_cat_05",
+          "lag1_whot_bland_cat_06",
+          "lag1_whot_bland_cat_07",
+          "lag1_whot_bland_cat_08",
+          "lag1_whot_bland_cat_09",
+          "lag1_whot_bland_cat_10",
+          "lag1_whot_bland_cat_11",
+          "lag1_whot_bland_cat_12",
+          "lag1_whot_bland_cat_13",
+          "lag1_whot_bland_cat_14",
+          "lag1_whot_bland_cat_15",
+          "lag1_whot_bland_cat_16",
+          "lag2_non_success_app_this_year",
+          "lag1_fmsd_cat_2",
+          "lag1_entgelt_value__log1p",
+          "lag3_non_success_app_this_year",
+          "lag2_income_source_status_neither_observed"
+        ],
+        "transformations": [
+          {
+            "variable": "lag3_entgelt_value",
+            "role": "numeric",
+            "imputation": 44545.73012681416,
+            "center": 10.286182805604355,
+            "scale": 2.023457730269311,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag3_income_source_status",
+            "role": "categorical",
+            "levels": [
+              "earnings_only",
+              "neither_observed"
+            ],
+            "reference_level": "earnings_only"
+          },
+          {
+            "variable": "lag1_whot_bland_cat",
+            "role": "categorical",
+            "levels": [
+              "01",
+              "02",
+              "03",
+              "04",
+              "05",
+              "06",
+              "07",
+              "08",
+              "09",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16"
+            ],
+            "reference_level": "01"
+          },
+          {
+            "variable": "lag2_non_success_app_this_year",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_fmsd_cat",
+            "role": "categorical",
+            "levels": [
+              "1",
+              "2"
+            ],
+            "reference_level": "1"
+          },
+          {
+            "variable": "lag1_entgelt_value",
+            "role": "numeric",
+            "imputation": 44766.010962262444,
+            "center": 10.174297178436758,
+            "scale": 2.2620235767710244,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag3_non_success_app_this_year",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag2_income_source_status",
+            "role": "categorical",
+            "levels": [
+              "earnings_only",
+              "neither_observed"
+            ],
+            "reference_level": "earnings_only"
+          }
+        ],
+        "n_person_years": 406,
+        "n_matched_sets": 41,
+        "events": 1,
+        "log_odds": 6040.687797842051,
+        "standard_error": 2.270708939885574,
+        "z_value": 2660.2651232554945,
+        "p_value": 0.0,
+        "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+        "successful_bootstrap_replicates": null,
+        "odds_ratio": 5.184705528587072e+21,
+        "ci_low": 5.184705528587072e+21,
+        "ci_high": 5.184705528587072e+21,
+        "separation_warning": "Treatment log-odds magnitude exceeds 10; the outcome may be sparse or separated and the OR is clipped for numerical output.",
+        "sklearn_fit_method": "unpenalized_none_lbfgs",
+        "sklearn_iterations": 39,
+        "sklearn_max_iter": 5000,
+        "fit_warning": null
+      },
+      "mortality_unadjusted": {
+        "label": "mortality_not_yet_divorced_lag3",
+        "adjusted": false,
+        "adjustment_rule": "none",
+        "selected_covariates": [],
+        "design_columns_used": [
+          "Intercept",
+          "treated",
+          "follow_year_2",
+          "follow_year_3",
+          "follow_year_4",
+          "follow_year_5",
+          "follow_year_6",
+          "follow_year_7",
+          "follow_year_8",
+          "follow_year_9"
+        ],
+        "transformations": [],
+        "n_person_years": 564,
+        "n_matched_sets": 41,
+        "events": 5,
+        "log_odds": 0.451684458836302,
+        "standard_error": 0.9614437305729522,
+        "z_value": 0.46979812179661323,
+        "p_value": 0.6384992564206353,
+        "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+        "successful_bootstrap_replicates": null,
+        "odds_ratio": 1.5709561690246414,
+        "ci_low": 0.2386528596272852,
+        "ci_high": 10.34097512533817,
+        "separation_warning": null,
+        "sklearn_fit_method": "unpenalized_none_lbfgs",
+        "sklearn_iterations": 36,
+        "sklearn_max_iter": 5000,
+        "fit_warning": null
+      },
+      "mortality_adjusted": {
+        "label": "mortality_not_yet_divorced_lag3",
+        "adjusted": true,
+        "adjustment_rule": "post-match max absolute SMD > 0.1; categorical variables use level-specific SMDs",
+        "selected_covariates": [
+          {
+            "variable": "lag3_entgelt_value",
+            "trigger_component": "lag3_entgelt_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.4400378195642068
+          },
+          {
+            "variable": "lag3_income_source_status",
+            "trigger_component": "lag3_income_source_status",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.39735970711951313
+          },
+          {
+            "variable": "lag1_whot_bland_cat",
+            "trigger_component": "lag1_whot_bland_cat",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.39735970711951313
+          },
+          {
+            "variable": "lag2_non_success_app_this_year",
+            "trigger_component": "lag2_non_success_app_this_year",
+            "variable_type": "binary",
+            "max_abs_smd": 0.2279211529192759
+          },
+          {
+            "variable": "lag1_fmsd_cat",
+            "trigger_component": "lag1_fmsd_cat",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.2236067977499791
+          },
+          {
+            "variable": "lag1_entgelt_value",
+            "trigger_component": "lag1_entgelt_value",
+            "variable_type": "continuous",
+            "max_abs_smd": 0.21618966642533813
+          },
+          {
+            "variable": "lag3_non_success_app_this_year",
+            "trigger_component": "lag3_non_success_app_this_year",
+            "variable_type": "binary",
+            "max_abs_smd": 0.18814417367671946
+          },
+          {
+            "variable": "lag2_income_source_status",
+            "trigger_component": "lag2_income_source_status",
+            "variable_type": "categorical_level",
+            "max_abs_smd": 0.10206207261596573
+          }
+        ],
+        "design_columns_used": [
+          "Intercept",
+          "treated",
+          "follow_year_2",
+          "follow_year_3",
+          "follow_year_4",
+          "follow_year_5",
+          "follow_year_6",
+          "follow_year_7",
+          "follow_year_8",
+          "follow_year_9",
+          "lag3_entgelt_value__log1p",
+          "lag3_income_source_status_neither_observed",
+          "lag1_whot_bland_cat_02",
+          "lag1_whot_bland_cat_03",
+          "lag1_whot_bland_cat_04",
+          "lag1_whot_bland_cat_05",
+          "lag1_whot_bland_cat_06",
+          "lag1_whot_bland_cat_07",
+          "lag1_whot_bland_cat_08",
+          "lag1_whot_bland_cat_09",
+          "lag1_whot_bland_cat_10",
+          "lag1_whot_bland_cat_11",
+          "lag1_whot_bland_cat_12",
+          "lag1_whot_bland_cat_13",
+          "lag1_whot_bland_cat_14",
+          "lag1_whot_bland_cat_15",
+          "lag1_whot_bland_cat_16",
+          "lag2_non_success_app_this_year",
+          "lag1_fmsd_cat_2",
+          "lag1_entgelt_value__log1p",
+          "lag3_non_success_app_this_year",
+          "lag2_income_source_status_neither_observed"
+        ],
+        "transformations": [
+          {
+            "variable": "lag3_entgelt_value",
+            "role": "numeric",
+            "imputation": 44976.89659122482,
+            "center": 10.338863779803946,
+            "scale": 1.8874429145872265,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag3_income_source_status",
+            "role": "categorical",
+            "levels": [
+              "earnings_only",
+              "neither_observed"
+            ],
+            "reference_level": "earnings_only"
+          },
+          {
+            "variable": "lag1_whot_bland_cat",
+            "role": "categorical",
+            "levels": [
+              "01",
+              "02",
+              "03",
+              "04",
+              "05",
+              "06",
+              "07",
+              "08",
+              "09",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16"
+            ],
+            "reference_level": "01"
+          },
+          {
+            "variable": "lag2_non_success_app_this_year",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag1_fmsd_cat",
+            "role": "categorical",
+            "levels": [
+              "1",
+              "2"
+            ],
+            "reference_level": "1"
+          },
+          {
+            "variable": "lag1_entgelt_value",
+            "role": "numeric",
+            "imputation": 44787.52898556836,
+            "center": 10.17990717431807,
+            "scale": 2.246118393952994,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag3_non_success_app_this_year",
+            "role": "binary",
+            "imputation": 0.0,
+            "center": 0.0,
+            "scale": 1.0,
+            "missing_indicator_included": false
+          },
+          {
+            "variable": "lag2_income_source_status",
+            "role": "categorical",
+            "levels": [
+              "earnings_only",
+              "neither_observed"
+            ],
+            "reference_level": "earnings_only"
+          }
+        ],
+        "n_person_years": 564,
+        "n_matched_sets": 41,
+        "events": 5,
+        "log_odds": 0.8165045832476286,
+        "standard_error": 1.109449680100989,
+        "z_value": 0.7359545889213338,
+        "p_value": 0.461758334180995,
+        "inference_method": "manual matched-set cluster-robust sandwich around unpenalized sklearn logit",
+        "successful_bootstrap_replicates": null,
+        "odds_ratio": 2.262577348630624,
+        "ci_low": 0.2571702943101261,
+        "ci_high": 19.906094800992,
+        "separation_warning": null,
+        "sklearn_fit_method": "unpenalized_none_lbfgs",
+        "sklearn_iterations": 67,
+        "sklearn_max_iter": 5000,
+        "fit_warning": null
+      }
+    },
+    "mediation": {
+      "longitudinal_gcomp": {
+        "horizon_years": 5,
+        "target_population": "baseline covariate distribution of the matched treated individuals (ATT standardization)",
+        "estimand": "ATT-standardized five-year interventional total, direct and indirect risk differences for divorce, with the indirect effect operating through the incidence and timing of first MSK rehabilitation.",
+        "identification_warning": "The mediation decomposition requires sequential exchangeability: conditional on baseline matching variables and observed prior post-divorce history, there must be no remaining unmeasured mediator-outcome or prior-survival-mediator confounding. Defining the longitudinal mediator distribution for a survival outcome also uses the survival-mediational-g-formula intervention that sets prior survival to one in the source mediator simulation. Observation IPCW additionally assumes record-gap censoring is independent conditional on measured prior history. Positivity, consistency and correct specification of the longitudinal parametric models are also required.",
+        "point_estimates": {
+          "risk_q00": 4.999999858590343e-09,
+          "risk_q10": 0.05008458231683685,
+          "risk_q11": 0.0488237732851964,
+          "risk_q01": 4.999999858590343e-09,
+          "interventional_total_effect_risk_difference": 0.048823768285196543,
+          "interventional_direct_effect_risk_difference": 0.05008457731683699,
+          "interventional_indirect_effect_risk_difference": -0.0012608090316404488,
+          "proportion_mediated": -0.02582367309863562,
+          "simulated_first_msk_risk_q00": 0.018000000000000002,
+          "simulated_first_msk_risk_q11": 0.025000000000000005,
+          "monte_carlo_repetitions": 25,
+          "target_population": "baseline covariate distribution of the matched treated individuals (ATT standardization)",
+          "estimator": "parametric survival mediational g-formula with fixed divorce exposure, an absorbing first-MSK event-time process randomized from the source-treatment joint mediator distribution, annually updated lagged history, interventional direct/indirect effects, and optional observation IPCW",
+          "history_order": "L(t-1) -> first MSK at t -> death at t -> L(t) for use at t+1",
+          "model_diagnostics": {
+            "observation_model_fit_method": "unpenalized_none_lbfgs",
+            "observation_risk_rows": 403,
+            "first_gap_rows": 2,
+            "p_observed_min": 3.4010315527025095e-06,
+            "p_observed_p01": 0.9999094134430626,
+            "p_observed_p99": 0.999999999,
+            "p_observed_max": 0.999999999,
+            "probability_floor": 0.02,
+            "raw_ipcw_max": 1.0002075045426853,
+            "ipcw_cap": 20.0,
+            "rows_at_ipcw_cap": 0,
+            "use_observation_ipcw": true,
+            "analysis_person_years": 401,
+            "mediator_risk_rows": 400,
+            "mediator_events": 1,
+            "death_events": 2,
+            "survivor_rows_for_history_models": 399,
+            "mediator_model_fit_method": "unpenalized_none_lbfgs",
+            "mediator_probability_min": 1e-09,
+            "mediator_probability_p01": 1e-09,
+            "mediator_probability_p99": 2.894875358163198e-05,
+            "mediator_probability_max": 0.9999571629990637,
+            "death_model_fit_method": "unpenalized_none_lbfgs",
+            "death_probability_min": 1e-09,
+            "death_probability_p01": 1e-09,
+            "death_probability_p99": 5.310748701249739e-06,
+            "death_probability_max": 0.9999568970067539,
+            "income_status_model_fit_method": "unpenalized_none_lbfgs",
+            "income_status_model_converged": true,
+            "income_status_model_iterations": 1667,
+            "mediator_model_converged": true,
+            "death_model_converged": true,
+            "observation_model_converged": true,
+            "history_binary_model_fit": {
+              "non_success_app_this_year": {
+                "fit_method": "unpenalized_none_lbfgs",
+                "converged": true,
+                "n_iter": 71
+              },
+              "non_msk_rehab_this_year": {
+                "fit_method": "unpenalized_none_lbfgs",
+                "converged": true,
+                "n_iter": 28
+              }
+            },
+            "logit_iteration_budget": 20000,
+            "logit_tolerance": 1e-06,
+            "continuous_model_log_value_caps": {
+              "entgelt_value": {
+                "observed_log_max": 11.059750471234072,
+                "log_value_cap": 14.059750471234072
+              },
+              "rtzb_value": {
+                "observed_log_max": 9.495800847731138,
+                "log_value_cap": 12.495800847731138
+              }
+            },
+            "post_divorce_history_models": {
+              "continuous": [
+                "entgelt_value",
+                "rtzb_value"
+              ],
+              "binary": [
+                "non_success_app_this_year",
+                "non_msk_rehab_this_year"
+              ],
+              "categorical": [
+                "income_source_status"
+              ]
+            }
+          }
+        },
+        "bootstrap_intervals": {
+          "interventional_total_effect_risk_difference": {
+            "ci_low": 0.0,
+            "ci_high": 0.1148015980935703
+          },
+          "interventional_direct_effect_risk_difference": {
+            "ci_low": 0.0,
+            "ci_high": 0.11506899326068312
+          },
+          "interventional_indirect_effect_risk_difference": {
+            "ci_low": -0.0011781087909123575,
+            "ci_high": 0.0021073498320725616
+          }
+        },
+        "successful_bootstrap_replicates": 20,
+        "requested_bootstrap_replicates": 20,
+        "bootstrap_worker_processes": 2,
+        "point_estimate_simulation_diagnostics": [
+          {
+            "repetition": 0,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.04999574259319084,
+            "risk_q11": 0.050031910085367004,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.0,
+            "msk_q10": 0.0,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 1,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.050006811067059176,
+            "risk_q11": 0.04718719420158046,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 2,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.049957907862093975,
+            "risk_q11": 0.05004890706099552,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 3,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.0496638139133877,
+            "risk_q11": 0.05000136479865769,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 4,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.05000180785488306,
+            "risk_q11": 0.050043179123102965,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 5,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.05002308229532382,
+            "risk_q11": 0.05005190041072505,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.0,
+            "msk_q10": 0.0,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 6,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.05009214379256688,
+            "risk_q11": 0.049954234556533805,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 7,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.049981153668720024,
+            "risk_q11": 0.05000239994831934,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 8,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.050005967392227846,
+            "risk_q11": 0.050009827867402046,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 9,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.0499989815311892,
+            "risk_q11": 0.05000189316854775,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 10,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.050000673337074475,
+            "risk_q11": 0.04999396799115208,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 11,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.05002790420353964,
+            "risk_q11": 0.05000655246808061,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.0,
+            "msk_q10": 0.0,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 12,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.050063695687132315,
+            "risk_q11": 0.05000799608731088,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 13,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.050033309009396953,
+            "risk_q11": 0.050000270491636245,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 14,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.05261034233973216,
+            "risk_q11": 0.05000069809628227,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 15,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.05000333759832587,
+            "risk_q11": 0.05000146257419613,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.0,
+            "msk_q10": 0.0,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 16,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.04995451893493341,
+            "risk_q11": 0.049930724470416465,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 17,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.04972255124850855,
+            "risk_q11": 0.05000262032814751,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 18,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.050008176511221025,
+            "risk_q11": 0.02502231446817882,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 19,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.04997001403418133,
+            "risk_q11": 0.04997384617425649,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.0,
+            "msk_q10": 0.0,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 20,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.05012502952566289,
+            "risk_q11": 0.05001937372821674,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 21,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.050017800638040955,
+            "risk_q11": 0.05000296093821088,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.0,
+            "msk_q10": 0.0,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 22,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.0500115177895788,
+            "risk_q11": 0.05000887857824199,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.0,
+            "msk_q10": 0.0,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 23,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.050007628993288145,
+            "risk_q11": 0.04999922264860712,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          },
+          {
+            "repetition": 24,
+            "risk_q00": 4.999999858590343e-09,
+            "risk_q10": 0.04983064609966237,
+            "risk_q11": 0.048290631865744116,
+            "risk_q01": 4.999999858590343e-09,
+            "msk_q00": 0.025,
+            "msk_q10": 0.025,
+            "msk_q11": 0.025,
+            "msk_q01": 0.025
+          }
+        ],
+        "data_paths": {
+          "panel": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/analysis/longitudinal_mediation_panel_not_yet_divorced_lag3.parquet",
+          "audit": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/longitudinal_mediation_data_audit_not_yet_divorced_lag3.json",
+          "gaps": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/longitudinal_mediation_observation_gaps_not_yet_divorced_lag3.csv",
+          "event_cells": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/diagnostics/longitudinal_mediation_event_cells_not_yet_divorced_lag3.csv"
+        }
+      }
+    },
+    "figures": {
+      "figure_1_balance": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/figure_1_balance_after_matching.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/figure_1_balance_after_matching.pdf"
+      },
+      "figure_2a_msk_pooled": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/figure_2a_msk_cumulative_incidence_pooled.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/figure_2a_msk_cumulative_incidence_pooled.pdf"
+      },
+      "figure_2b_msk_by_sex": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/figure_2b_msk_cumulative_incidence_by_sex.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/figure_2b_msk_cumulative_incidence_by_sex.pdf"
+      },
+      "figure_3a_mortality_pooled": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/figure_3a_cumulative_mortality_pooled.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/figure_3a_cumulative_mortality_pooled.pdf"
+      },
+      "figure_3b_mortality_by_sex": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/figure_3b_cumulative_mortality_by_sex.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/figure_3b_cumulative_mortality_by_sex.pdf"
+      },
+      "appendix_pretrend_battery": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/appendix_pretrend_battery.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/appendix_pretrend_battery.pdf"
+      },
+      "figure_5_longitudinal_mediation": {
+        "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/figure_5_longitudinal_mediation_decomposition.png",
+        "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42__lag3_common_2014_2018/figures/figure_5_longitudinal_mediation_decomposition.pdf"
+      }
+    }
+  },
+  "head_to_head_table": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/analysis/lag_depth_and_common_window_comparison.csv",
+  "figure_4": {
+    "png": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_4_lag_depth_common_window_comparison.png",
+    "pdf": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/figures/figure_4_lag_depth_common_window_comparison.pdf"
+  },
+  "interpretation_note": "Compare lag1_common_window with lag3_common_window to assess sensitivity to deeper pre-treatment history while holding the 2014\u20132018 cohort window fixed. Compare lag1_full_window with lag1_common_window to assess the role of excluding the 2012\u20132013 cohorts."
+}

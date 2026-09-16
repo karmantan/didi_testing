@@ -1,0 +1,6 @@
+#!/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_workbench_bundle/venv_didi/bin/python
+import sys
+from fontTools.__main__ import main
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(main())

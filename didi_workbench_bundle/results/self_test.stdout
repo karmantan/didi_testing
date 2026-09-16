@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "rehab_code_relabel_verified": true,
+  "legacy_signature_handling_verified": true,
+  "synthetic_people": 240,
+  "synthetic_person_years": 2640,
+  "matched_pairs": 33,
+  "main_models_finite": true,
+  "sex_heterogeneity_outputs_created": true,
+  "longitudinal_mediation_finite": true,
+  "matched_vs_unmatched_treated_table_created": true,
+  "small_cell_pooling_rules_verified": true
+}

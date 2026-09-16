@@ -1,0 +1,15 @@
+{
+  "available_ram_gib": 24.0,
+  "available_ram_source": "macOS sysctl hw.memsize (local-laptop-only fallback, NOT a cgroup-aware figure)",
+  "cgroup_memory_limit_bytes": null,
+  "cgroup_memory_limit_source": "no cgroup memory file found at any known path",
+  "cores": 8,
+  "cores_source": "os.cpu_count()",
+  "data_root": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data",
+  "free_disk_gib_at_data_root": 707.356,
+  "hostname": "Mac",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "proc_meminfo_available_bytes": null,
+  "python_executable": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_workbench_bundle/venv_didi/bin/python",
+  "python_version": "3.9.25"
+}
