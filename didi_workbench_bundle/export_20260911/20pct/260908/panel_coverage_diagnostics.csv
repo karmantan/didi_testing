@@ -1,0 +1,9 @@
+diagnostic,value
+n_people,17559407
+earliest_record_year,2011
+latest_record_year,2024
+people_with_internal_year_gaps,329898
+total_internal_gap_years,559195
+people_with_recorded_death_year,2514450
+deaths_recorded_after_last_annual_record,1915117
+deaths_on_or_before_last_annual_record,599333

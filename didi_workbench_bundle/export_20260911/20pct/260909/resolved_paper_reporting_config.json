@@ -1,0 +1,6 @@
+{
+  "minimum_cell_people": 20,
+  "pool_small_diagnosis_codes": true,
+  "protect_matchability_cells": true,
+  "withhold_small_overlap_counts": true
+}

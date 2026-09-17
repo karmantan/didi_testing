@@ -1,0 +1,20 @@
+{
+  "target_python": "3.9.1",
+  "target_polars": "0.20.16",
+  "python": "3.9.25 (main, Oct 31 2025, 18:40:52) \n[Clang 17.0.0 (clang-1700.6.3.2)]",
+  "python_executable": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_workbench_bundle/venv_didi/bin/python",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "polars_version": "0.20.16",
+  "polars_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_workbench_bundle/venv_didi/lib/python3.9/site-packages/polars/__init__.py",
+  "streaming_collect_mode": "streaming=True",
+  "collect_batches_available": false,
+  "slice_batch_fallback_available": true,
+  "numpy": "1.25.0",
+  "pandas": "2.3.3",
+  "scikit_learn": "1.5.2",
+  "scipy": "1.13.1",
+  "pyarrow_available": true,
+  "pyarrow_version": "15.0.2",
+  "polars_pandas_roundtrip_ok": true,
+  "error": null
+}

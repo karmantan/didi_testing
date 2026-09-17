@@ -1,0 +1,36 @@
+{
+  "runtime": {
+    "python": "3.9.25 (main, Oct 31 2025, 18:40:52) \n[Clang 17.0.0 (clang-1700.6.3.2)]",
+    "python_executable": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_workbench_bundle/venv_didi/bin/python",
+    "polars_version": "0.20.16",
+    "polars_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_workbench_bundle/venv_didi/lib/python3.9/site-packages/polars/__init__.py",
+    "streaming_collect_mode": "streaming=True",
+    "collect_batches_available": false,
+    "slice_batch_fallback_available": true,
+    "scikit_learn": "1.5.2"
+  },
+  "data_profile": "canonical",
+  "raw_glob": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/raw_0.001/raw_*.parquet",
+  "n_columns_in_union_schema": 40,
+  "required_columns": [
+    "divorcing",
+    "entgelt",
+    "first_marriage_start",
+    "fmsd",
+    "gbja",
+    "ja",
+    "marriage_start",
+    "simple_id"
+  ],
+  "missing_required_columns": [],
+  "optional_canonical_columns_absent": [
+    "maciufzt_succeed_1",
+    "maciufzt_succeed_2"
+  ],
+  "playdata_only_columns_detected": [
+    "is_first_marriage"
+  ],
+  "incapacity_source_slot1": "mcaiufzt_succeed_1",
+  "incapacity_source_slot2": "mcaiufzt_succeed_2",
+  "report_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.001_seed42/diagnostics/source_schema_report.json"
+}

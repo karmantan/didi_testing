@@ -1,0 +1,302 @@
+2026-09-08 12:58:54,428 [INFO] __main__: Run policy: TOTAL REBUILD (no prior generated files reused)
+2026-09-08 12:58:54,428 [INFO] __main__: Runtime: Python=3.9.1; Polars=0.20.16; collect=streaming=True; collect_batches=False; fallback=lazy-slice
+2026-09-08 12:58:56,413 [INFO] __main__: Writing final analysis panel (single raw pass, person-hash buckets)
+2026-09-08 12:58:57,944 [INFO] __main__: Bucketing 211,593,776 raw rows into 212 person-hash buckets
+2026-09-08 13:40:12,858 [INFO] __main__:   bucketed raw shard 1/22 (9,971,486 rows so far)
+2026-09-08 14:21:29,758 [INFO] __main__:   bucketed raw shard 2/22 (19,971,486 rows so far)
+2026-09-08 14:37:39,659 [INFO] __main__:   bucketed raw shard 3/22 (22,295,334 rows so far)
+2026-09-08 15:17:26,292 [INFO] __main__:   bucketed raw shard 4/22 (32,244,942 rows so far)
+2026-09-08 15:56:20,344 [INFO] __main__:   bucketed raw shard 5/22 (42,216,228 rows so far)
+2026-09-08 16:36:34,894 [INFO] __main__:   bucketed raw shard 6/22 (52,188,473 rows so far)
+2026-09-08 17:18:56,063 [INFO] __main__:   bucketed raw shard 7/22 (62,160,588 rows so far)
+2026-09-08 17:58:31,833 [INFO] __main__:   bucketed raw shard 8/22 (72,133,716 rows so far)
+2026-09-08 18:36:33,280 [INFO] __main__:   bucketed raw shard 9/22 (82,092,007 rows so far)
+2026-09-08 19:19:31,974 [INFO] __main__:   bucketed raw shard 10/22 (91,973,988 rows so far)
+2026-09-08 20:08:21,620 [INFO] __main__:   bucketed raw shard 11/22 (101,944,649 rows so far)
+2026-09-08 20:50:41,959 [INFO] __main__:   bucketed raw shard 12/22 (111,915,428 rows so far)
+2026-09-08 21:30:12,323 [INFO] __main__:   bucketed raw shard 13/22 (121,866,045 rows so far)
+2026-09-08 22:09:30,812 [INFO] __main__:   bucketed raw shard 14/22 (131,791,167 rows so far)
+2026-09-08 22:49:22,747 [INFO] __main__:   bucketed raw shard 15/22 (141,763,278 rows so far)
+2026-09-08 23:28:28,549 [INFO] __main__:   bucketed raw shard 16/22 (151,736,701 rows so far)
+2026-09-09 00:07:02,039 [INFO] __main__:   bucketed raw shard 17/22 (161,729,957 rows so far)
+2026-09-09 00:47:03,156 [INFO] __main__:   bucketed raw shard 18/22 (171,688,302 rows so far)
+2026-09-09 01:26:42,874 [INFO] __main__:   bucketed raw shard 19/22 (181,660,224 rows so far)
+2026-09-09 02:05:26,176 [INFO] __main__:   bucketed raw shard 20/22 (191,639,026 rows so far)
+2026-09-09 02:44:05,303 [INFO] __main__:   bucketed raw shard 21/22 (201,611,132 rows so far)
+2026-09-09 03:23:19,408 [INFO] __main__:   bucketed raw shard 22/22 (211,593,776 rows so far)
+2026-09-09 03:23:28,705 [INFO] __main__:   final-panel bucket 1/212 written
+2026-09-09 03:23:37,439 [INFO] __main__:   final-panel bucket 2/212 written
+2026-09-09 03:23:46,502 [INFO] __main__:   final-panel bucket 3/212 written
+2026-09-09 03:23:56,055 [INFO] __main__:   final-panel bucket 4/212 written
+2026-09-09 03:24:06,289 [INFO] __main__:   final-panel bucket 5/212 written
+2026-09-09 03:24:16,462 [INFO] __main__:   final-panel bucket 6/212 written
+2026-09-09 03:24:26,510 [INFO] __main__:   final-panel bucket 7/212 written
+2026-09-09 03:24:35,963 [INFO] __main__:   final-panel bucket 8/212 written
+2026-09-09 03:24:46,011 [INFO] __main__:   final-panel bucket 9/212 written
+2026-09-09 03:24:55,557 [INFO] __main__:   final-panel bucket 10/212 written
+2026-09-09 03:25:05,990 [INFO] __main__:   final-panel bucket 11/212 written
+2026-09-09 03:25:16,053 [INFO] __main__:   final-panel bucket 12/212 written
+2026-09-09 03:25:25,648 [INFO] __main__:   final-panel bucket 13/212 written
+2026-09-09 03:25:35,413 [INFO] __main__:   final-panel bucket 14/212 written
+2026-09-09 03:25:44,655 [INFO] __main__:   final-panel bucket 15/212 written
+2026-09-09 03:25:54,215 [INFO] __main__:   final-panel bucket 16/212 written
+2026-09-09 03:26:04,218 [INFO] __main__:   final-panel bucket 17/212 written
+2026-09-09 03:26:13,687 [INFO] __main__:   final-panel bucket 18/212 written
+2026-09-09 03:26:23,234 [INFO] __main__:   final-panel bucket 19/212 written
+2026-09-09 03:26:32,235 [INFO] __main__:   final-panel bucket 20/212 written
+2026-09-09 03:26:41,157 [INFO] __main__:   final-panel bucket 21/212 written
+2026-09-09 03:26:50,188 [INFO] __main__:   final-panel bucket 22/212 written
+2026-09-09 03:26:59,450 [INFO] __main__:   final-panel bucket 23/212 written
+2026-09-09 03:27:09,049 [INFO] __main__:   final-panel bucket 24/212 written
+2026-09-09 03:27:18,942 [INFO] __main__:   final-panel bucket 25/212 written
+2026-09-09 03:27:29,114 [INFO] __main__:   final-panel bucket 26/212 written
+2026-09-09 03:27:38,708 [INFO] __main__:   final-panel bucket 27/212 written
+2026-09-09 03:27:48,755 [INFO] __main__:   final-panel bucket 28/212 written
+2026-09-09 03:27:58,184 [INFO] __main__:   final-panel bucket 29/212 written
+2026-09-09 03:28:07,825 [INFO] __main__:   final-panel bucket 30/212 written
+2026-09-09 03:28:17,794 [INFO] __main__:   final-panel bucket 31/212 written
+2026-09-09 03:28:27,951 [INFO] __main__:   final-panel bucket 32/212 written
+2026-09-09 03:28:37,326 [INFO] __main__:   final-panel bucket 33/212 written
+2026-09-09 03:28:46,935 [INFO] __main__:   final-panel bucket 34/212 written
+2026-09-09 03:28:56,873 [INFO] __main__:   final-panel bucket 35/212 written
+2026-09-09 03:29:06,889 [INFO] __main__:   final-panel bucket 36/212 written
+2026-09-09 03:29:17,262 [INFO] __main__:   final-panel bucket 37/212 written
+2026-09-09 03:29:27,294 [INFO] __main__:   final-panel bucket 38/212 written
+2026-09-09 03:29:36,700 [INFO] __main__:   final-panel bucket 39/212 written
+2026-09-09 03:29:46,126 [INFO] __main__:   final-panel bucket 40/212 written
+2026-09-09 03:29:55,122 [INFO] __main__:   final-panel bucket 41/212 written
+2026-09-09 03:30:05,856 [INFO] __main__:   final-panel bucket 42/212 written
+2026-09-09 03:30:16,123 [INFO] __main__:   final-panel bucket 43/212 written
+2026-09-09 03:30:25,750 [INFO] __main__:   final-panel bucket 44/212 written
+2026-09-09 03:30:34,657 [INFO] __main__:   final-panel bucket 45/212 written
+2026-09-09 03:30:43,798 [INFO] __main__:   final-panel bucket 46/212 written
+2026-09-09 03:30:52,966 [INFO] __main__:   final-panel bucket 47/212 written
+2026-09-09 03:31:03,123 [INFO] __main__:   final-panel bucket 48/212 written
+2026-09-09 03:31:13,163 [INFO] __main__:   final-panel bucket 49/212 written
+2026-09-09 03:31:23,233 [INFO] __main__:   final-panel bucket 50/212 written
+2026-09-09 03:31:33,324 [INFO] __main__:   final-panel bucket 51/212 written
+2026-09-09 03:31:43,028 [INFO] __main__:   final-panel bucket 52/212 written
+2026-09-09 03:31:52,872 [INFO] __main__:   final-panel bucket 53/212 written
+2026-09-09 03:32:03,108 [INFO] __main__:   final-panel bucket 54/212 written
+2026-09-09 03:32:13,905 [INFO] __main__:   final-panel bucket 55/212 written
+2026-09-09 03:32:24,015 [INFO] __main__:   final-panel bucket 56/212 written
+2026-09-09 03:32:33,433 [INFO] __main__:   final-panel bucket 57/212 written
+2026-09-09 03:32:42,778 [INFO] __main__:   final-panel bucket 58/212 written
+2026-09-09 03:32:52,247 [INFO] __main__:   final-panel bucket 59/212 written
+2026-09-09 03:33:01,341 [INFO] __main__:   final-panel bucket 60/212 written
+2026-09-09 03:33:10,733 [INFO] __main__:   final-panel bucket 61/212 written
+2026-09-09 03:33:20,328 [INFO] __main__:   final-panel bucket 62/212 written
+2026-09-09 03:33:29,609 [INFO] __main__:   final-panel bucket 63/212 written
+2026-09-09 03:33:39,056 [INFO] __main__:   final-panel bucket 64/212 written
+2026-09-09 03:33:48,447 [INFO] __main__:   final-panel bucket 65/212 written
+2026-09-09 03:33:57,936 [INFO] __main__:   final-panel bucket 66/212 written
+2026-09-09 03:34:07,046 [INFO] __main__:   final-panel bucket 67/212 written
+2026-09-09 03:34:16,094 [INFO] __main__:   final-panel bucket 68/212 written
+2026-09-09 03:34:25,438 [INFO] __main__:   final-panel bucket 69/212 written
+2026-09-09 03:34:34,594 [INFO] __main__:   final-panel bucket 70/212 written
+2026-09-09 03:34:44,109 [INFO] __main__:   final-panel bucket 71/212 written
+2026-09-09 03:34:53,280 [INFO] __main__:   final-panel bucket 72/212 written
+2026-09-09 03:35:02,608 [INFO] __main__:   final-panel bucket 73/212 written
+2026-09-09 03:35:11,796 [INFO] __main__:   final-panel bucket 74/212 written
+2026-09-09 03:35:20,875 [INFO] __main__:   final-panel bucket 75/212 written
+2026-09-09 03:35:30,067 [INFO] __main__:   final-panel bucket 76/212 written
+2026-09-09 03:35:39,333 [INFO] __main__:   final-panel bucket 77/212 written
+2026-09-09 03:35:48,506 [INFO] __main__:   final-panel bucket 78/212 written
+2026-09-09 03:35:57,718 [INFO] __main__:   final-panel bucket 79/212 written
+2026-09-09 03:36:07,202 [INFO] __main__:   final-panel bucket 80/212 written
+2026-09-09 03:36:16,906 [INFO] __main__:   final-panel bucket 81/212 written
+2026-09-09 03:36:26,673 [INFO] __main__:   final-panel bucket 82/212 written
+2026-09-09 03:36:35,891 [INFO] __main__:   final-panel bucket 83/212 written
+2026-09-09 03:36:45,461 [INFO] __main__:   final-panel bucket 84/212 written
+2026-09-09 03:36:55,313 [INFO] __main__:   final-panel bucket 85/212 written
+2026-09-09 03:37:05,189 [INFO] __main__:   final-panel bucket 86/212 written
+2026-09-09 03:37:14,737 [INFO] __main__:   final-panel bucket 87/212 written
+2026-09-09 03:37:24,144 [INFO] __main__:   final-panel bucket 88/212 written
+2026-09-09 03:37:33,534 [INFO] __main__:   final-panel bucket 89/212 written
+2026-09-09 03:37:42,692 [INFO] __main__:   final-panel bucket 90/212 written
+2026-09-09 03:37:52,076 [INFO] __main__:   final-panel bucket 91/212 written
+2026-09-09 03:38:01,896 [INFO] __main__:   final-panel bucket 92/212 written
+2026-09-09 03:38:11,287 [INFO] __main__:   final-panel bucket 93/212 written
+2026-09-09 03:38:20,725 [INFO] __main__:   final-panel bucket 94/212 written
+2026-09-09 03:38:30,413 [INFO] __main__:   final-panel bucket 95/212 written
+2026-09-09 03:38:39,850 [INFO] __main__:   final-panel bucket 96/212 written
+2026-09-09 03:38:49,101 [INFO] __main__:   final-panel bucket 97/212 written
+2026-09-09 03:38:59,306 [INFO] __main__:   final-panel bucket 98/212 written
+2026-09-09 03:39:09,010 [INFO] __main__:   final-panel bucket 99/212 written
+2026-09-09 03:39:18,416 [INFO] __main__:   final-panel bucket 100/212 written
+2026-09-09 03:39:27,808 [INFO] __main__:   final-panel bucket 101/212 written
+2026-09-09 03:39:36,808 [INFO] __main__:   final-panel bucket 102/212 written
+2026-09-09 03:39:46,043 [INFO] __main__:   final-panel bucket 103/212 written
+2026-09-09 03:39:55,532 [INFO] __main__:   final-panel bucket 104/212 written
+2026-09-09 03:40:05,755 [INFO] __main__:   final-panel bucket 105/212 written
+2026-09-09 03:40:14,975 [INFO] __main__:   final-panel bucket 106/212 written
+2026-09-09 03:40:24,320 [INFO] __main__:   final-panel bucket 107/212 written
+2026-09-09 03:40:33,523 [INFO] __main__:   final-panel bucket 108/212 written
+2026-09-09 03:40:42,617 [INFO] __main__:   final-panel bucket 109/212 written
+2026-09-09 03:40:51,642 [INFO] __main__:   final-panel bucket 110/212 written
+2026-09-09 03:41:01,220 [INFO] __main__:   final-panel bucket 111/212 written
+2026-09-09 03:41:10,480 [INFO] __main__:   final-panel bucket 112/212 written
+2026-09-09 03:41:19,527 [INFO] __main__:   final-panel bucket 113/212 written
+2026-09-09 03:41:28,699 [INFO] __main__:   final-panel bucket 114/212 written
+2026-09-09 03:41:37,731 [INFO] __main__:   final-panel bucket 115/212 written
+2026-09-09 03:41:46,949 [INFO] __main__:   final-panel bucket 116/212 written
+2026-09-09 03:41:56,251 [INFO] __main__:   final-panel bucket 117/212 written
+2026-09-09 03:42:05,721 [INFO] __main__:   final-panel bucket 118/212 written
+2026-09-09 03:42:14,959 [INFO] __main__:   final-panel bucket 119/212 written
+2026-09-09 03:42:24,193 [INFO] __main__:   final-panel bucket 120/212 written
+2026-09-09 03:42:33,444 [INFO] __main__:   final-panel bucket 121/212 written
+2026-09-09 03:42:42,366 [INFO] __main__:   final-panel bucket 122/212 written
+2026-09-09 03:42:51,767 [INFO] __main__:   final-panel bucket 123/212 written
+2026-09-09 03:43:01,518 [INFO] __main__:   final-panel bucket 124/212 written
+2026-09-09 03:43:10,990 [INFO] __main__:   final-panel bucket 125/212 written
+2026-09-09 03:43:20,135 [INFO] __main__:   final-panel bucket 126/212 written
+2026-09-09 03:43:29,244 [INFO] __main__:   final-panel bucket 127/212 written
+2026-09-09 03:43:38,136 [INFO] __main__:   final-panel bucket 128/212 written
+2026-09-09 03:43:46,933 [INFO] __main__:   final-panel bucket 129/212 written
+2026-09-09 03:43:56,126 [INFO] __main__:   final-panel bucket 130/212 written
+2026-09-09 03:44:05,361 [INFO] __main__:   final-panel bucket 131/212 written
+2026-09-09 03:44:14,502 [INFO] __main__:   final-panel bucket 132/212 written
+2026-09-09 03:44:25,025 [INFO] __main__:   final-panel bucket 133/212 written
+2026-09-09 03:44:34,682 [INFO] __main__:   final-panel bucket 134/212 written
+2026-09-09 03:44:44,465 [INFO] __main__:   final-panel bucket 135/212 written
+2026-09-09 03:44:54,220 [INFO] __main__:   final-panel bucket 136/212 written
+2026-09-09 03:45:04,751 [INFO] __main__:   final-panel bucket 137/212 written
+2026-09-09 03:45:15,003 [INFO] __main__:   final-panel bucket 138/212 written
+2026-09-09 03:45:25,220 [INFO] __main__:   final-panel bucket 139/212 written
+2026-09-09 03:45:34,935 [INFO] __main__:   final-panel bucket 140/212 written
+2026-09-09 03:45:44,305 [INFO] __main__:   final-panel bucket 141/212 written
+2026-09-09 03:45:54,330 [INFO] __main__:   final-panel bucket 142/212 written
+2026-09-09 03:46:04,581 [INFO] __main__:   final-panel bucket 143/212 written
+2026-09-09 03:46:14,347 [INFO] __main__:   final-panel bucket 144/212 written
+2026-09-09 03:46:23,879 [INFO] __main__:   final-panel bucket 145/212 written
+2026-09-09 03:46:33,023 [INFO] __main__:   final-panel bucket 146/212 written
+2026-09-09 03:46:42,859 [INFO] __main__:   final-panel bucket 147/212 written
+2026-09-09 03:46:52,596 [INFO] __main__:   final-panel bucket 148/212 written
+2026-09-09 03:47:02,269 [INFO] __main__:   final-panel bucket 149/212 written
+2026-09-09 03:47:11,879 [INFO] __main__:   final-panel bucket 150/212 written
+2026-09-09 03:47:21,520 [INFO] __main__:   final-panel bucket 151/212 written
+2026-09-09 03:47:30,956 [INFO] __main__:   final-panel bucket 152/212 written
+2026-09-09 03:47:40,054 [INFO] __main__:   final-panel bucket 153/212 written
+2026-09-09 03:47:49,273 [INFO] __main__:   final-panel bucket 154/212 written
+2026-09-09 03:47:59,003 [INFO] __main__:   final-panel bucket 155/212 written
+2026-09-09 03:48:08,769 [INFO] __main__:   final-panel bucket 156/212 written
+2026-09-09 03:48:18,098 [INFO] __main__:   final-panel bucket 157/212 written
+2026-09-09 03:48:27,161 [INFO] __main__:   final-panel bucket 158/212 written
+2026-09-09 03:48:35,928 [INFO] __main__:   final-panel bucket 159/212 written
+2026-09-09 03:48:45,299 [INFO] __main__:   final-panel bucket 160/212 written
+2026-09-09 03:48:55,018 [INFO] __main__:   final-panel bucket 161/212 written
+2026-09-09 03:49:04,706 [INFO] __main__:   final-panel bucket 162/212 written
+2026-09-09 03:49:14,362 [INFO] __main__:   final-panel bucket 163/212 written
+2026-09-09 03:49:24,393 [INFO] __main__:   final-panel bucket 164/212 written
+2026-09-09 03:49:33,816 [INFO] __main__:   final-panel bucket 165/212 written
+2026-09-09 03:49:44,212 [INFO] __main__:   final-panel bucket 166/212 written
+2026-09-09 03:49:54,706 [INFO] __main__:   final-panel bucket 167/212 written
+2026-09-09 03:50:05,457 [INFO] __main__:   final-panel bucket 168/212 written
+2026-09-09 03:50:16,552 [INFO] __main__:   final-panel bucket 169/212 written
+2026-09-09 03:50:27,131 [INFO] __main__:   final-panel bucket 170/212 written
+2026-09-09 03:50:37,162 [INFO] __main__:   final-panel bucket 171/212 written
+2026-09-09 03:50:47,233 [INFO] __main__:   final-panel bucket 172/212 written
+2026-09-09 03:50:56,987 [INFO] __main__:   final-panel bucket 173/212 written
+2026-09-09 03:51:06,659 [INFO] __main__:   final-panel bucket 174/212 written
+2026-09-09 03:51:16,644 [INFO] __main__:   final-panel bucket 175/212 written
+2026-09-09 03:51:27,204 [INFO] __main__:   final-panel bucket 176/212 written
+2026-09-09 03:51:37,004 [INFO] __main__:   final-panel bucket 177/212 written
+2026-09-09 03:51:46,802 [INFO] __main__:   final-panel bucket 178/212 written
+2026-09-09 03:51:56,739 [INFO] __main__:   final-panel bucket 179/212 written
+2026-09-09 03:52:06,833 [INFO] __main__:   final-panel bucket 180/212 written
+2026-09-09 03:52:16,973 [INFO] __main__:   final-panel bucket 181/212 written
+2026-09-09 03:52:26,883 [INFO] __main__:   final-panel bucket 182/212 written
+2026-09-09 03:52:36,884 [INFO] __main__:   final-panel bucket 183/212 written
+2026-09-09 03:52:46,619 [INFO] __main__:   final-panel bucket 184/212 written
+2026-09-09 03:52:56,515 [INFO] __main__:   final-panel bucket 185/212 written
+2026-09-09 03:53:07,175 [INFO] __main__:   final-panel bucket 186/212 written
+2026-09-09 03:53:16,847 [INFO] __main__:   final-panel bucket 187/212 written
+2026-09-09 03:53:26,488 [INFO] __main__:   final-panel bucket 188/212 written
+2026-09-09 03:53:35,597 [INFO] __main__:   final-panel bucket 189/212 written
+2026-09-09 03:53:44,816 [INFO] __main__:   final-panel bucket 190/212 written
+2026-09-09 03:53:54,160 [INFO] __main__:   final-panel bucket 191/212 written
+2026-09-09 03:54:04,410 [INFO] __main__:   final-panel bucket 192/212 written
+2026-09-09 03:54:14,316 [INFO] __main__:   final-panel bucket 193/212 written
+2026-09-09 03:54:24,191 [INFO] __main__:   final-panel bucket 194/212 written
+2026-09-09 03:54:33,347 [INFO] __main__:   final-panel bucket 195/212 written
+2026-09-09 03:54:42,692 [INFO] __main__:   final-panel bucket 196/212 written
+2026-09-09 03:54:51,879 [INFO] __main__:   final-panel bucket 197/212 written
+2026-09-09 03:55:01,567 [INFO] __main__:   final-panel bucket 198/212 written
+2026-09-09 03:55:11,381 [INFO] __main__:   final-panel bucket 199/212 written
+2026-09-09 03:55:21,350 [INFO] __main__:   final-panel bucket 200/212 written
+2026-09-09 03:55:30,928 [INFO] __main__:   final-panel bucket 201/212 written
+2026-09-09 03:55:40,461 [INFO] __main__:   final-panel bucket 202/212 written
+2026-09-09 03:55:49,712 [INFO] __main__:   final-panel bucket 203/212 written
+2026-09-09 03:55:58,989 [INFO] __main__:   final-panel bucket 204/212 written
+2026-09-09 03:56:09,214 [INFO] __main__:   final-panel bucket 205/212 written
+2026-09-09 03:56:18,746 [INFO] __main__:   final-panel bucket 206/212 written
+2026-09-09 03:56:28,255 [INFO] __main__:   final-panel bucket 207/212 written
+2026-09-09 03:56:37,505 [INFO] __main__:   final-panel bucket 208/212 written
+2026-09-09 03:56:46,692 [INFO] __main__:   final-panel bucket 209/212 written
+2026-09-09 03:56:55,989 [INFO] __main__:   final-panel bucket 210/212 written
+2026-09-09 03:57:05,460 [INFO] __main__:   final-panel bucket 211/212 written
+2026-09-09 03:57:15,526 [INFO] __main__:   final-panel bucket 212/212 written
+2026-09-09 03:57:16,482 [WARNING] __main__: Found 10345764 duplicate (simple_id, ja) keys (11297317 excess rows) in the processed input. See D:\gastwissenschaftler\gastw_20\DIDI\XPrivat\Tan\processed_data\pipeline_runs\20pct_firstmarriage_lag1_lag3_notyetdivorced\diagnostics\duplicate_person_year_keys.csv. Resolving by keeping the least-missing row per key; see duplicate_person_year_keys_resolution.json for the exact rule and counts.
+2026-09-09 03:57:16,543 [WARNING] __main__: Found 102 simple_ids (0.00% of 17559509 total) with conflicting non-null rtwf_jjjj (death year) values. Excluding these people entirely -- see D:\gastwissenschaftler\gastw_20\DIDI\XPrivat\Tan\processed_data\pipeline_runs\20pct_firstmarriage_lag1_lag3_notyetdivorced\diagnostics\conflicting_person_death_years.csv and conflicting_person_death_years_resolution.json. divorcing-flag share: excluded=0.0000 vs retained=0.0131 (a large gap here means the exclusion is not a free lunch even at this share of the sample).
+2026-09-09 03:57:16,721 [INFO] __main__: Final analysis panel written
+2026-09-09 03:57:16,746 [INFO] __main__: Built analysis panel: D:\gastwissenschaftler\gastw_20\DIDI\XPrivat\Tan\processed_data\pipeline_runs\20pct_firstmarriage_lag1_lag3_notyetdivorced\panels\analysis_panel.parquet
+2026-09-09 10:01:43,679 [INFO] __main__: Run policy: signature-protected checkpoint reuse
+2026-09-09 10:01:43,685 [INFO] __main__: Runtime: Python=3.9.1; Polars=0.20.16; collect=streaming=True; collect_batches=False; fallback=lazy-slice
+2026-09-09 10:01:43,820 [INFO] __main__: [skip] analysis panel exists: D:\gastwissenschaftler\gastw_20\DIDI\XPrivat\Tan\processed_data\pipeline_runs\20pct_firstmarriage_lag1_lag3_notyetdivorced\panels\analysis_panel.parquet
+2026-09-09 10:03:45,521 [INFO] __main__: Run policy: stage-aware checkpoint reuse (--reuse-existing)
+2026-09-09 10:03:45,526 [INFO] __main__: Runtime: Python=3.9.1; Polars=0.20.16; collect=streaming=True; collect_batches=False (not needed: scoring streams per-year parquet files through pyarrow); script=psm_260908.py
+2026-09-09 10:03:45,629 [INFO] __main__: Run signature changed only in run-policy settings, newly introduced settings, or the script itself (policy keys: []; introduced: ['mediation_bootstrap_workers', 'propensity_solver', 'reuse_existing_outputs']; script changed: True). Reusing every existing stage output.
+2026-09-09 10:03:45,668 [INFO] __main__: [skip] analysis panel exists: D:\gastwissenschaftler\gastw_20\DIDI\XPrivat\Tan\processed_data\pipeline_runs\20pct_firstmarriage_lag1_lag3_notyetdivorced\panels\analysis_panel.parquet
+2026-09-09 10:03:46,578 [INFO] __main__: Building lag-1 risk sets from 200,295,283 panel rows in 11 person-hash partition(s)
+2026-09-09 10:06:14,957 [INFO] __main__:   risk-set partition 1/11: 11,591 treated, 8,454,505 control person-years
+2026-09-09 10:08:48,168 [INFO] __main__:   risk-set partition 2/11: 11,470 treated, 8,461,427 control person-years
+2026-09-09 10:11:27,661 [INFO] __main__:   risk-set partition 3/11: 11,536 treated, 8,445,296 control person-years
+2026-09-09 10:14:06,498 [INFO] __main__:   risk-set partition 4/11: 11,555 treated, 8,451,895 control person-years
+2026-09-09 10:16:53,064 [INFO] __main__:   risk-set partition 5/11: 11,656 treated, 8,452,785 control person-years
+2026-09-09 10:19:33,241 [INFO] __main__:   risk-set partition 6/11: 11,536 treated, 8,458,960 control person-years
+2026-09-09 10:22:10,610 [INFO] __main__:   risk-set partition 7/11: 11,816 treated, 8,439,249 control person-years
+2026-09-09 10:24:55,682 [INFO] __main__:   risk-set partition 8/11: 11,579 treated, 8,446,428 control person-years
+2026-09-09 10:27:33,694 [INFO] __main__:   risk-set partition 9/11: 11,489 treated, 8,448,104 control person-years
+2026-09-09 10:30:15,010 [INFO] __main__:   risk-set partition 10/11: 11,476 treated, 8,456,755 control person-years
+2026-09-09 10:33:03,066 [INFO] __main__:   risk-set partition 11/11: 11,693 treated, 8,435,704 control person-years
+2026-09-09 10:33:05,070 [INFO] __main__: Partitioned treated risk set (127,397 rows) into 7 treatment-year files under D:\gastwissenschaftler\gastw_20\DIDI\XPrivat\Tan\processed_data\pipeline_runs\20pct_firstmarriage_lag1_lag3_notyetdivorced\_matching_temp\risk_sets_by_year
+2026-09-09 10:35:58,439 [INFO] __main__: Partitioned controls risk set (92,951,108 rows) into 7 treatment-year files under D:\gastwissenschaftler\gastw_20\DIDI\XPrivat\Tan\processed_data\pipeline_runs\20pct_firstmarriage_lag1_lag3_notyetdivorced\_matching_temp\risk_sets_by_year
+2026-09-09 10:36:01,488 [INFO] __main__: Year 2012: fitting propensity model on 501,338 rows (21,754 treated, 479,584 sampled controls; 13,370,917 total eligible controls)
+2026-09-09 10:36:13,284 [INFO] __main__: Year 2012: propensity model converged with solver=lbfgs in 83 iterations (max_iter=10000, tol=0.0001)
+2026-09-09 10:37:00,367 [INFO] __main__: Year 2012: scored 13,392,671 rows (21,754 treated + 13,370,917 controls)
+2026-09-09 10:37:01,158 [ERROR] __main__: Year 2012 exact stratum {"lag1_age_band": "45-49", "lag1_ever_rehab_to_date": "0", "lag1_ge_cat": "1"} requires the sparse solver but has 54,717,445 admissible edges including dummies, above cap 20,000,000.
+2026-09-09 10:37:01,692 [WARNING] __main__: Matching did not finish; per-year checkpoints kept under D:\gastwissenschaftler\gastw_20\DIDI\XPrivat\Tan\processed_data\pipeline_runs\20pct_firstmarriage_lag1_lag3_notyetdivorced\_matching_temp for --reuse-existing.
+2026-09-09 10:38:38,162 [INFO] __main__: Run policy: stage-aware checkpoint reuse (--reuse-existing)
+2026-09-09 10:38:38,165 [INFO] __main__: Runtime: Python=3.9.1; Polars=0.20.16; collect=streaming=True; collect_batches=False (not needed: scoring streams per-year parquet files through pyarrow); script=psm_260908.py
+2026-09-09 10:38:38,610 [WARNING] __main__: Run signature changed (keys: ['optimal_match_sparse_max_edges']). Rebuilding from the 'matching' stage onward; removed 2 existing output(s), kept everything earlier in the pipeline.
+2026-09-09 10:38:38,646 [INFO] __main__: [skip] analysis panel exists: D:\gastwissenschaftler\gastw_20\DIDI\XPrivat\Tan\processed_data\pipeline_runs\20pct_firstmarriage_lag1_lag3_notyetdivorced\panels\analysis_panel.parquet
+2026-09-09 10:38:39,587 [INFO] __main__: Partitioned treated risk set (127,397 rows) into 7 treatment-year files under D:\gastwissenschaftler\gastw_20\DIDI\XPrivat\Tan\processed_data\pipeline_runs\20pct_firstmarriage_lag1_lag3_notyetdivorced\_matching_temp\risk_sets_by_year
+2026-09-09 10:41:56,727 [INFO] __main__: Partitioned controls risk set (92,951,108 rows) into 7 treatment-year files under D:\gastwissenschaftler\gastw_20\DIDI\XPrivat\Tan\processed_data\pipeline_runs\20pct_firstmarriage_lag1_lag3_notyetdivorced\_matching_temp\risk_sets_by_year
+2026-09-09 10:41:59,926 [INFO] __main__: Year 2012: fitting propensity model on 501,338 rows (21,754 treated, 479,584 sampled controls; 13,370,917 total eligible controls)
+2026-09-09 10:42:15,249 [INFO] __main__: Year 2012: propensity model converged with solver=lbfgs in 83 iterations (max_iter=10000, tol=0.0001)
+2026-09-09 10:43:10,375 [INFO] __main__: Year 2012: scored 13,392,671 rows (21,754 treated + 13,370,917 controls)
+2026-09-09 10:45:36,166 [INFO] __main__: Year 2012: matched 21,730 of 21,754 treated (checkpoint written)
+2026-09-09 10:45:39,123 [INFO] __main__: Year 2013: fitting propensity model on 501,462 rows (20,535 treated, 480,927 sampled controls; 13,299,340 total eligible controls)
+2026-09-09 10:45:54,372 [INFO] __main__: Year 2013: propensity model converged with solver=lbfgs in 96 iterations (max_iter=10000, tol=0.0001)
+2026-09-09 10:46:50,764 [INFO] __main__: Year 2013: scored 13,319,875 rows (20,535 treated + 13,299,340 controls)
+2026-09-09 10:48:58,685 [INFO] __main__: Year 2013: matched 20,513 of 20,535 treated (checkpoint written)
+2026-09-09 10:49:00,799 [INFO] __main__: Year 2014: fitting propensity model on 501,525 rows (19,611 treated, 481,914 sampled controls; 13,248,470 total eligible controls)
+2026-09-09 10:49:12,989 [INFO] __main__: Year 2014: propensity model converged with solver=lbfgs in 82 iterations (max_iter=10000, tol=0.0001)
+2026-09-09 10:50:03,344 [INFO] __main__: Year 2014: scored 13,268,081 rows (19,611 treated + 13,248,470 controls)
+2026-09-09 10:52:05,095 [INFO] __main__: Year 2014: matched 19,561 of 19,611 treated (checkpoint written)
+2026-09-09 10:52:07,288 [INFO] __main__: Year 2015: fitting propensity model on 501,457 rows (18,373 treated, 483,084 sampled controls; 13,226,732 total eligible controls)
+2026-09-09 10:52:18,511 [INFO] __main__: Year 2015: propensity model converged with solver=lbfgs in 72 iterations (max_iter=10000, tol=0.0001)
+2026-09-09 10:53:07,915 [INFO] __main__: Year 2015: scored 13,245,105 rows (18,373 treated + 13,226,732 controls)
+2026-09-09 10:55:05,483 [INFO] __main__: Year 2015: matched 18,305 of 18,373 treated (checkpoint written)
+2026-09-09 10:55:08,008 [INFO] __main__: Year 2016: fitting propensity model on 501,327 rows (16,791 treated, 484,536 sampled controls; 13,228,780 total eligible controls)
+2026-09-09 10:55:19,145 [INFO] __main__: Year 2016: propensity model converged with solver=lbfgs in 62 iterations (max_iter=10000, tol=0.0001)
+2026-09-09 10:56:11,466 [INFO] __main__: Year 2016: scored 13,245,571 rows (16,791 treated + 13,228,780 controls)
+2026-09-09 10:58:06,709 [INFO] __main__: Year 2016: matched 15,937 of 16,791 treated (checkpoint written)
+2026-09-09 10:58:08,989 [INFO] __main__: Year 2017: fitting propensity model on 501,356 rows (15,739 treated, 485,617 sampled controls; 13,262,927 total eligible controls)
+2026-09-09 10:58:19,492 [INFO] __main__: Year 2017: propensity model converged with solver=lbfgs in 64 iterations (max_iter=10000, tol=0.0001)
+2026-09-09 10:59:07,515 [INFO] __main__: Year 2017: scored 13,278,666 rows (15,739 treated + 13,262,927 controls)
+2026-09-09 11:00:51,921 [INFO] __main__: Year 2017: matched 11,437 of 15,739 treated (checkpoint written)
+2026-09-09 11:00:54,091 [INFO] __main__: Year 2018: fitting propensity model on 501,302 rows (14,594 treated, 486,708 sampled controls; 13,313,942 total eligible controls)
+2026-09-09 11:01:04,418 [INFO] __main__: Year 2018: propensity model converged with solver=lbfgs in 59 iterations (max_iter=10000, tol=0.0001)
+2026-09-09 11:01:51,258 [INFO] __main__: Year 2018: scored 13,328,536 rows (14,594 treated + 13,313,942 controls)
+2026-09-09 11:03:24,131 [INFO] __main__: Year 2018: matched 7,577 of 14,594 treated (checkpoint written)

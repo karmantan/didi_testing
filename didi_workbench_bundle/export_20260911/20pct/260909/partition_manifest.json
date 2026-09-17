@@ -1,0 +1,44 @@
+{
+  "treated": {
+    "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\pipeline_runs\\20pct_firstmarriage_lag1_lag3_notyetdivorced\\analysis\\riskset_treated_lag1.parquet",
+    "size": 1818601,
+    "mtime": 1788942783.065925
+  },
+  "controls": {
+    "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\pipeline_runs\\20pct_firstmarriage_lag1_lag3_notyetdivorced\\analysis\\riskset_controls_not_yet_divorced_lag1.parquet",
+    "size": 641406672,
+    "mtime": 1788942783.1127899
+  },
+  "years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018
+  ],
+  "use_columns": [
+    "simple_id",
+    "t0",
+    "lag1_ge_cat",
+    "lag1_age_band",
+    "lag1_ever_rehab_to_date",
+    "lag1_age",
+    "lag1_cum_rehabs_by_year",
+    "lag1_cum_mental_health_rehabs_by_year",
+    "lag1_years_since_last_rehab",
+    "lag1_byvlgs_value",
+    "lag1_bygmgs_value",
+    "lag1_entgelt_value",
+    "lag1_rtzb_value",
+    "lag1_ever_mental_health_rehab_to_date",
+    "lag1_non_success_app_this_year",
+    "lag1_byvlgs_missing",
+    "lag1_bygmgs_missing",
+    "lag1_whot_bland_cat",
+    "lag1_occ_l1_cat",
+    "lag1_income_source_status",
+    "lag1_fmsd_cat"
+  ]
+}

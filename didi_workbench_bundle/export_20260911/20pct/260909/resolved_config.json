@@ -1,0 +1,86 @@
+{
+  "raw_glob": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\*.parquet",
+  "output_dir": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\pipeline_runs",
+  "sample_tag": "20pct_firstmarriage_lag1_lag3_notyetdivorced",
+  "year_start": 2012,
+  "year_cap": 2018,
+  "followup_years": 5,
+  "mortality_horizon": 10,
+  "lag_depth": 1,
+  "control_pool": "not_yet_divorced",
+  "caliper": 0.01,
+  "controls_per_treated": 1,
+  "seed": 42,
+  "reuse_controls_across_years": false,
+  "minimum_category_frequency": 10,
+  "strict_main_run": true,
+  "checkpoint_row_group_size": 200000,
+  "max_propensity_fit_rows": 500000,
+  "propensity_score_batch_size": 100000,
+  "propensity_max_iter": 10000,
+  "propensity_tol": 0.0001,
+  "smd_threshold": 0.1,
+  "outcome_bootstrap_replicates": 200,
+  "absolute_effect_bootstrap_replicates": 200,
+  "optimal_match_dense_max_entries": 5000000,
+  "optimal_match_sparse_max_edges": 100000000,
+  "run_lag1_vs_lag3": false,
+  "lag_comparison_common_year_start": 2014,
+  "generate_figures": true,
+  "run_longitudinal_mediation": true,
+  "run_msk_dropout_sensitivity": true,
+  "mediation_bootstrap_replicates": 200,
+  "mediation_bootstrap_workers": 0,
+  "propensity_solver": "lbfgs",
+  "gcomp_horizon_years": 5,
+  "gcomp_simulation_repetitions": 25,
+  "gcomp_bootstrap_simulation_repetitions": 25,
+  "gcomp_use_observation_ipcw": true,
+  "gcomp_observation_probability_floor": 0.02,
+  "gcomp_ipcw_cap": 20.0,
+  "gcomp_timevarying_continuous": [
+    "entgelt_value",
+    "rtzb_value"
+  ],
+  "gcomp_timevarying_binary": [
+    "non_success_app_this_year",
+    "non_msk_rehab_this_year"
+  ],
+  "gcomp_timevarying_categorical": [
+    "income_source_status"
+  ],
+  "death_registry_end_year": 2023,
+  "total_rebuild": true,
+  "reuse_existing_outputs": true,
+  "data_profile": "canonical",
+  "source_has_entgelt": true,
+  "first_marriage_source": "date_fields",
+  "exact_covariates": [
+    "lag1_ge_cat",
+    "lag1_age_band",
+    "lag1_ever_rehab_to_date"
+  ],
+  "propensity_numeric": [
+    "lag1_age",
+    "lag1_cum_rehabs_by_year",
+    "lag1_cum_mental_health_rehabs_by_year",
+    "lag1_years_since_last_rehab",
+    "lag1_byvlgs_value",
+    "lag1_bygmgs_value",
+    "lag1_entgelt_value",
+    "lag1_rtzb_value"
+  ],
+  "propensity_binary": [
+    "lag1_ever_rehab_to_date",
+    "lag1_ever_mental_health_rehab_to_date",
+    "lag1_non_success_app_this_year",
+    "lag1_byvlgs_missing",
+    "lag1_bygmgs_missing"
+  ],
+  "propensity_categorical": [
+    "lag1_whot_bland_cat",
+    "lag1_occ_l1_cat",
+    "lag1_income_source_status",
+    "lag1_fmsd_cat"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "n_affected_simple_ids": 102,
+  "total_simple_ids": 17559509,
+  "affected_share": 5.808818458420449e-06,
+  "resolution": "excluded (dropped entirely from the analysis panel)",
+  "rationale": "rtwf_jjjj is the terminal outcome (mortality), not a covariate; the pipeline will not guess which conflicting value is correct. Excluding the affected person's full history (not just nulling the field) avoids a partially-defined death year feeding risk-set eligibility and age-masking logic elsewhere in the file.",
+  "identification_check": {
+    "description": "Share of excluded vs. retained simple_ids with at least one divorcing==1 person-year row, as a crude check for whether exclusion is differential by (proxy-)treatment status. If these differ substantially, exclusion may not be ignorable and should be reported as a limitation, not assumed away.",
+    "excluded_share_with_divorcing_flag": 0.0,
+    "retained_share_with_divorcing_flag": 0.013122481869689563
+  }
+}

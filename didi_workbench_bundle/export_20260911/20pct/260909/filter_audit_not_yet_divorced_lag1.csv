@@ -1,0 +1,15 @@
+group,stage,n_rows,n_persons,removed_since_previous
+treated,first observed divorce in 2012-2018 before first-marriage restriction,140063,140063,
+treated,restrict to marriage spell with marriage_start equal to first_marriage_start,138946,138946,1117
+treated,require alive at assigned t0,138936,138936,10
+treated,exclude MSK rehabilitation starting in t0,136332,136332,2604
+treated,require an observed t0-1 record,135574,135574,758
+treated,require valid age at t0-1 for exact matching,135574,135574,0
+treated,exclude prior MSK rehabilitation through t0-1,127397,127397,8177
+controls,person-years in treated index years,98657411,15686298,
+controls,not yet divorced at candidate t0,97914601,15639937,742810
+controls,require alive at assigned t0,97582499,15593821,332102
+controls,exclude MSK rehabilitation starting in t0,97007476,15593156,575023
+controls,require an observed t0-1 record,94764396,15264005,2243080
+controls,require valid age at t0-1 for exact matching,94763040,15263998,1356
+controls,exclude prior MSK rehabilitation through t0-1,92951108,15113969,1811932

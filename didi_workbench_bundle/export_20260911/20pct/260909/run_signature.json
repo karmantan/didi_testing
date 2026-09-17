@@ -1,0 +1,265 @@
+{
+  "signature": "c8fa471471405901ebd062dbc4b2904c3bd25621595c9e9cb727efbc737d9662",
+  "payload": {
+    "config": {
+      "raw_glob": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\*.parquet",
+      "output_dir": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\pipeline_runs",
+      "sample_tag": "20pct_firstmarriage_lag1_lag3_notyetdivorced",
+      "year_start": 2012,
+      "year_cap": 2018,
+      "followup_years": 5,
+      "mortality_horizon": 10,
+      "lag_depth": 1,
+      "control_pool": "not_yet_divorced",
+      "caliper": 0.01,
+      "controls_per_treated": 1,
+      "seed": 42,
+      "reuse_controls_across_years": false,
+      "minimum_category_frequency": 10,
+      "strict_main_run": true,
+      "checkpoint_row_group_size": 200000,
+      "max_propensity_fit_rows": 500000,
+      "propensity_score_batch_size": 100000,
+      "propensity_max_iter": 10000,
+      "propensity_tol": 0.0001,
+      "smd_threshold": 0.1,
+      "outcome_bootstrap_replicates": 200,
+      "absolute_effect_bootstrap_replicates": 200,
+      "optimal_match_dense_max_entries": 5000000,
+      "optimal_match_sparse_max_edges": 100000000,
+      "run_lag1_vs_lag3": false,
+      "lag_comparison_common_year_start": 2014,
+      "generate_figures": true,
+      "run_longitudinal_mediation": true,
+      "run_msk_dropout_sensitivity": true,
+      "mediation_bootstrap_replicates": 200,
+      "mediation_bootstrap_workers": 0,
+      "propensity_solver": "lbfgs",
+      "gcomp_horizon_years": 5,
+      "gcomp_simulation_repetitions": 25,
+      "gcomp_bootstrap_simulation_repetitions": 25,
+      "gcomp_use_observation_ipcw": true,
+      "gcomp_observation_probability_floor": 0.02,
+      "gcomp_ipcw_cap": 20.0,
+      "gcomp_timevarying_continuous": [
+        "entgelt_value",
+        "rtzb_value"
+      ],
+      "gcomp_timevarying_binary": [
+        "non_success_app_this_year",
+        "non_msk_rehab_this_year"
+      ],
+      "gcomp_timevarying_categorical": [
+        "income_source_status"
+      ],
+      "death_registry_end_year": 2023,
+      "total_rebuild": true,
+      "reuse_existing_outputs": true,
+      "data_profile": "canonical",
+      "source_has_entgelt": true,
+      "first_marriage_source": "date_fields",
+      "exact_covariates": [
+        "lag1_ge_cat",
+        "lag1_age_band",
+        "lag1_ever_rehab_to_date"
+      ],
+      "propensity_numeric": [
+        "lag1_age",
+        "lag1_cum_rehabs_by_year",
+        "lag1_cum_mental_health_rehabs_by_year",
+        "lag1_years_since_last_rehab",
+        "lag1_byvlgs_value",
+        "lag1_bygmgs_value",
+        "lag1_entgelt_value",
+        "lag1_rtzb_value"
+      ],
+      "propensity_binary": [
+        "lag1_ever_rehab_to_date",
+        "lag1_ever_mental_health_rehab_to_date",
+        "lag1_non_success_app_this_year",
+        "lag1_byvlgs_missing",
+        "lag1_bygmgs_missing"
+      ],
+      "propensity_categorical": [
+        "lag1_whot_bland_cat",
+        "lag1_occ_l1_cat",
+        "lag1_income_source_status",
+        "lag1_fmsd_cat"
+      ]
+    },
+    "raw_files": [
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_120746.parquet",
+        "size": 232367411,
+        "mtime": 1782895464.2258196
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_1411.parquet",
+        "size": 178806882,
+        "mtime": 1782895440.0086467
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_180171.parquet",
+        "size": 44719675,
+        "mtime": 1782895369.498006
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_192019.parquet",
+        "size": 93177325,
+        "mtime": 1782895448.042857
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_20837.parquet",
+        "size": 232153147,
+        "mtime": 1782895470.8736567
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_295040.parquet",
+        "size": 232530896,
+        "mtime": 1782895486.8689601
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_307135.parquet",
+        "size": 232155859,
+        "mtime": 1782895564.6850748
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_328733.parquet",
+        "size": 232386336,
+        "mtime": 1782895576.41275
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_343812.parquet",
+        "size": 182157652,
+        "mtime": 1782895537.2164388
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_345381.parquet",
+        "size": 170967310,
+        "mtime": 1782895533.6362152
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_382788.parquet",
+        "size": 232335458,
+        "mtime": 1782895613.7193875
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_418004.parquet",
+        "size": 232471532,
+        "mtime": 1782895660.3463979
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_425963.parquet",
+        "size": 93212614,
+        "mtime": 1782895622.2747464
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_427557.parquet",
+        "size": 160294748,
+        "mtime": 1782895637.72021
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_501443.parquet",
+        "size": 232294890,
+        "mtime": 1782895701.4610214
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_527553.parquet",
+        "size": 232341689,
+        "mtime": 1782895747.270254
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_544691.parquet",
+        "size": 170120528,
+        "mtime": 1782895708.1987028
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_560885.parquet",
+        "size": 112094253,
+        "mtime": 1782895723.0792553
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_584455.parquet",
+        "size": 232136765,
+        "mtime": 1782895777.1270316
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_615718.parquet",
+        "size": 248418891,
+        "mtime": 1782895805.074521
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_618002.parquet",
+        "size": 232399978,
+        "mtime": 1782895843.048834
+      },
+      {
+        "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_88031.parquet",
+        "size": 159342637,
+        "mtime": 1782895790.0742416
+      }
+    ],
+    "code_files": [
+      {
+        "path": "psm_260908.py",
+        "sha256": "ff08f7fb648552355398c4c9612f68a7c723e5a607754e431a42b37eca0bbd06"
+      }
+    ]
+  },
+  "lineage": [
+    {
+      "at_utc": "2026-09-09T08:03:45.631821+00:00",
+      "previous_signature": "7b7cfedc97a597dadb18b94174a14cafb96638568e2922e0e9a2a212c55538e0",
+      "action": "stage-aware reuse (--reuse-existing)",
+      "removed_outputs": [],
+      "changed_config_keys": [],
+      "changed_run_policy_keys": [],
+      "settings_introduced_by_this_script_version": [
+        "mediation_bootstrap_workers",
+        "propensity_solver",
+        "reuse_existing_outputs"
+      ],
+      "changed_config_details": {},
+      "raw_files_changed": false,
+      "code_files_changed": true,
+      "previous_code_files": [
+        {
+          "path": "psm_260907.py",
+          "sha256": "52c3531ed6de9d6b8c6fae30284b287aac97ea9ec0b7cdb3f8e0aaa837d2b590"
+        }
+      ],
+      "first_stage_to_rebuild": null,
+      "first_stage_to_rebuild_label": null
+    },
+    {
+      "at_utc": "2026-09-09T08:38:38.611289+00:00",
+      "previous_signature": "c6c509e4ac9602447ac044adb8f5ad9f91db73a4fb45c493e2965d08fff69d8d",
+      "action": "stage-aware reuse (--reuse-existing)",
+      "removed_outputs": [
+        "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\pipeline_runs\\20pct_firstmarriage_lag1_lag3_notyetdivorced\\diagnostics\\matching_edge_preflight_not_yet_divorced_lag1.csv",
+        "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\pipeline_runs\\20pct_firstmarriage_lag1_lag3_notyetdivorced\\_matching_temp"
+      ],
+      "changed_config_keys": [
+        "optimal_match_sparse_max_edges"
+      ],
+      "changed_run_policy_keys": [],
+      "settings_introduced_by_this_script_version": [],
+      "changed_config_details": {
+        "optimal_match_sparse_max_edges": {
+          "previous": 20000000,
+          "current": 100000000
+        }
+      },
+      "raw_files_changed": false,
+      "code_files_changed": true,
+      "previous_code_files": [
+        {
+          "path": "psm_260908.py",
+          "sha256": "8b6fbd156b5a641b9e8831fd4056acebc38cfdbbd0840b085efc3292cf5813a8"
+        }
+      ],
+      "first_stage_to_rebuild": 2,
+      "first_stage_to_rebuild_label": "matching"
+    }
+  ]
+}

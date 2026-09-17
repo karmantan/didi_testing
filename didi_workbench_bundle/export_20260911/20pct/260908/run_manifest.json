@@ -1,0 +1,329 @@
+{
+  "config": {
+    "raw_glob": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\*.parquet",
+    "output_dir": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\pipeline_runs",
+    "sample_tag": "20pct_firstmarriage_lag1_lag3_notyetdivorced",
+    "year_start": 2012,
+    "year_cap": 2018,
+    "followup_years": 5,
+    "mortality_horizon": 10,
+    "lag_depth": 1,
+    "control_pool": "not_yet_divorced",
+    "caliper": 0.01,
+    "controls_per_treated": 1,
+    "seed": 42,
+    "reuse_controls_across_years": false,
+    "minimum_category_frequency": 10,
+    "strict_main_run": true,
+    "checkpoint_row_group_size": 200000,
+    "max_propensity_fit_rows": 500000,
+    "propensity_score_batch_size": 100000,
+    "propensity_max_iter": 10000,
+    "propensity_tol": 0.0001,
+    "smd_threshold": 0.1,
+    "outcome_bootstrap_replicates": 200,
+    "absolute_effect_bootstrap_replicates": 200,
+    "optimal_match_dense_max_entries": 5000000,
+    "optimal_match_sparse_max_edges": 20000000,
+    "run_lag1_vs_lag3": false,
+    "lag_comparison_common_year_start": 2014,
+    "generate_figures": true,
+    "run_longitudinal_mediation": true,
+    "run_msk_dropout_sensitivity": true,
+    "mediation_bootstrap_replicates": 200,
+    "gcomp_horizon_years": 5,
+    "gcomp_simulation_repetitions": 25,
+    "gcomp_bootstrap_simulation_repetitions": 25,
+    "gcomp_use_observation_ipcw": true,
+    "gcomp_observation_probability_floor": 0.02,
+    "gcomp_ipcw_cap": 20.0,
+    "gcomp_timevarying_continuous": [
+      "entgelt_value",
+      "rtzb_value"
+    ],
+    "gcomp_timevarying_binary": [
+      "non_success_app_this_year",
+      "non_msk_rehab_this_year"
+    ],
+    "gcomp_timevarying_categorical": [
+      "income_source_status"
+    ],
+    "death_registry_end_year": 2023,
+    "total_rebuild": true,
+    "data_profile": "canonical",
+    "source_has_entgelt": true,
+    "first_marriage_source": "date_fields",
+    "exact_covariates": [
+      "lag1_ge_cat",
+      "lag1_age_band",
+      "lag1_ever_rehab_to_date"
+    ],
+    "propensity_numeric": [
+      "lag1_age",
+      "lag1_cum_rehabs_by_year",
+      "lag1_cum_mental_health_rehabs_by_year",
+      "lag1_years_since_last_rehab",
+      "lag1_byvlgs_value",
+      "lag1_bygmgs_value",
+      "lag1_entgelt_value",
+      "lag1_rtzb_value"
+    ],
+    "propensity_binary": [
+      "lag1_ever_rehab_to_date",
+      "lag1_ever_mental_health_rehab_to_date",
+      "lag1_non_success_app_this_year",
+      "lag1_byvlgs_missing",
+      "lag1_bygmgs_missing"
+    ],
+    "propensity_categorical": [
+      "lag1_whot_bland_cat",
+      "lag1_occ_l1_cat",
+      "lag1_income_source_status",
+      "lag1_fmsd_cat"
+    ]
+  },
+  "target_runtime": {
+    "python": "3.9.1",
+    "polars": "0.20.16"
+  },
+  "runtime": {
+    "python": "3.9.1 (tags/v3.9.1:1e5d33e, Dec  7 2020, 17:08:21) [MSC v.1927 64 bit (AMD64)]",
+    "python_executable": "C:\\Program Files\\Python39\\python.exe",
+    "platform": "Windows-10-10.0.17763-SP0",
+    "polars_version": "0.20.16",
+    "polars_path": "D:\\zusatzmodule\\python_site_packages\\polars\\__init__.py",
+    "streaming_collect_mode": "streaming=True",
+    "collect_batches_available": false,
+    "slice_batch_fallback_available": true,
+    "numpy": "1.25.0",
+    "pandas": "2.3.3",
+    "scikit_learn": "1.5.2",
+    "scipy": "1.13.1"
+  },
+  "raw_files": [
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_120746.parquet",
+      "size": 232367411,
+      "mtime": 1782895464.2258196
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_1411.parquet",
+      "size": 178806882,
+      "mtime": 1782895440.0086467
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_180171.parquet",
+      "size": 44719675,
+      "mtime": 1782895369.498006
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_192019.parquet",
+      "size": 93177325,
+      "mtime": 1782895448.042857
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_20837.parquet",
+      "size": 232153147,
+      "mtime": 1782895470.8736567
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_295040.parquet",
+      "size": 232530896,
+      "mtime": 1782895486.8689601
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_307135.parquet",
+      "size": 232155859,
+      "mtime": 1782895564.6850748
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_328733.parquet",
+      "size": 232386336,
+      "mtime": 1782895576.41275
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_343812.parquet",
+      "size": 182157652,
+      "mtime": 1782895537.2164388
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_345381.parquet",
+      "size": 170967310,
+      "mtime": 1782895533.6362152
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_382788.parquet",
+      "size": 232335458,
+      "mtime": 1782895613.7193875
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_418004.parquet",
+      "size": 232471532,
+      "mtime": 1782895660.3463979
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_425963.parquet",
+      "size": 93212614,
+      "mtime": 1782895622.2747464
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_427557.parquet",
+      "size": 160294748,
+      "mtime": 1782895637.72021
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_501443.parquet",
+      "size": 232294890,
+      "mtime": 1782895701.4610214
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_527553.parquet",
+      "size": 232341689,
+      "mtime": 1782895747.270254
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_544691.parquet",
+      "size": 170120528,
+      "mtime": 1782895708.1987028
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_560885.parquet",
+      "size": 112094253,
+      "mtime": 1782895723.0792553
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_584455.parquet",
+      "size": 232136765,
+      "mtime": 1782895777.1270316
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_615718.parquet",
+      "size": 248418891,
+      "mtime": 1782895805.074521
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_618002.parquet",
+      "size": 232399978,
+      "mtime": 1782895843.048834
+    },
+    {
+      "path": "D:\\gastwissenschaftler\\gastw_20\\DIDI\\XPrivat\\Tan\\processed_data\\parquet_files\\df_20pct_processed\\df_processed_big_88031.parquet",
+      "size": 159342637,
+      "mtime": 1782895790.0742416
+    }
+  ],
+  "found_raw_columns": [
+    "simple_id",
+    "ja",
+    "gbja",
+    "rtwf_jjjj",
+    "ge",
+    "divorcing",
+    "fmsd",
+    "marriage_start",
+    "marriage_end",
+    "court_decision",
+    "first_marriage_start",
+    "first_marriage_end",
+    "is_first_marriage",
+    "entgelt",
+    "rtzb",
+    "byvlgs",
+    "bygmgs",
+    "whot_bland",
+    "whot_skt",
+    "ttsc1_kldb1988",
+    "seg_start_rsd_1",
+    "seg_end_rsd_1",
+    "rehab_start_1",
+    "rehab_end_1",
+    "mcdggr_succeed_1",
+    "mcdams_succeed_1",
+    "seg_start_rsd_2",
+    "seg_end_rsd_2",
+    "rehab_start_2",
+    "rehab_end_2",
+    "mcdggr_succeed_2",
+    "mcdams_succeed_2",
+    "application_date_fail",
+    "decision_date_fail",
+    "application_date_withdrawn",
+    "decision_date_withdrawn",
+    "application_date_forward",
+    "decision_date_forward",
+    "mcaiufzt_succeed_1",
+    "mcaiufzt_succeed_2"
+  ],
+  "generated_columns": [
+    "simple_id",
+    "ja",
+    "rtwf_jjjj",
+    "age",
+    "age_band",
+    "ge_cat",
+    "fmsd",
+    "fmsd_cat",
+    "divorcing",
+    "first_divorce_year",
+    "n_distinct_divorce_flag_years",
+    "divorce_event_time",
+    "pre_first_divorce",
+    "post_first_divorce",
+    "first_divorce_this_year",
+    "divorce_from_first_marriage_this_year",
+    "qualifying_first_divorce_this_year",
+    "marriage_start",
+    "first_marriage_start",
+    "first_marriage_end",
+    "is_first_marriage",
+    "first_marriage_definition_source",
+    "data_profile",
+    "marriage_start_year",
+    "first_marriage_start_year",
+    "first_marriage_end_year",
+    "marriage_end_proxy_year",
+    "marriage_duration_years",
+    "is_observed_married_this_year",
+    "ever_observed_married_to_date",
+    "rehab_start_slot1",
+    "rehab_start_slot2",
+    "rehab_diagnosis_code_slot1_this_year",
+    "rehab_diagnosis_code_slot2_this_year",
+    "rehab_starts_this_year",
+    "msk_starts_this_year",
+    "mental_health_rehab_starts_this_year",
+    "non_msk_rehab_this_year",
+    "msk_duration_days_this_year",
+    "cum_rehabs_by_year",
+    "cum_msk_rehabs_by_year",
+    "cum_mental_health_rehabs_by_year",
+    "ever_rehab_to_date",
+    "ever_msk_rehab_to_date",
+    "ever_mental_health_rehab_to_date",
+    "last_rehab_year",
+    "years_since_last_rehab",
+    "failed_app_this_year",
+    "withdrawn_app_this_year",
+    "forwarded_app_this_year",
+    "non_success_app_this_year",
+    "n_application_activity_types_this_year",
+    "entgelt_value",
+    "rtzb_value",
+    "entgelt_missing",
+    "rtzb_missing",
+    "income_source_status",
+    "pension_income_observation_status",
+    "byvlgs",
+    "bygmgs",
+    "byvlgs_value",
+    "bygmgs_value",
+    "byvlgs_missing",
+    "bygmgs_missing",
+    "whot_bland_cat",
+    "whot_skt_cat",
+    "occ_l1_cat",
+    "msk_incapacity_months_cat_slot1_this_year",
+    "msk_incapacity_months_cat_slot2_this_year",
+    "msk_incapacity_months_cat_this_year"
+  ]
+}
