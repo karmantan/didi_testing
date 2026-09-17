@@ -785,3 +785,89 @@ All three passed with no failures; proceeded to Step 3.
 (`79913323979459633db82f254a747180a0293aec8850e95847f3696936fcb056`) as a deliberate hand-edit
 by the paper's author, not a Claude Code change, alongside the existing Gate-2/xerr-fix
 history.
+
+## 2026-09-17 — re-verification of the death-count logic: no code change, four numeric invariants checked
+
+Second pass on the same hand-edit committed above (`5bbe4a1`) — no code was touched this time.
+The author asked for the annual death-count logic specifically to be checked against four
+numeric invariants (not just "did it crash"), before pushing so the bundle can be downloaded
+and tested on Workbench.
+
+### Baseline confirmation
+
+Before doing anything, re-hashed both copies of `psm_260915.py` and compared against the
+hash verified in commit `5bbe4a1`:
+
+- Repo-root `psm_260915.py`: `79913323979459633db82f254a747180a0293aec8850e95847f3696936fcb056`
+- `didi_workbench_bundle/psm_260915.py`: `79913323979459633db82f254a747180a0293aec8850e95847f3696936fcb056`
+
+Both match `5bbe4a1`'s verified hash exactly, and `git status` showed neither file modified.
+No drift — proceeded on the already-verified code, not a different baseline.
+
+### Fast checks
+
+- `python psm_260915.py --self-test` → PASS, exit 0.
+- `python psm_260915.py --environment-check` → exit 0, `"error": null`.
+- `python psm_260915.py --config results/config_0.01.yml --schema-check` → exit 0,
+  `"missing_required_columns": []`.
+
+### Full test ladder — one real failure, diagnosed as environmental, then a clean retry
+
+- `bash scripts/run_stage.sh all 0.01` (first attempt): **`pipeline_0.01` exited 1.** Stderr
+  showed a Rust-level polars panic — `thread '<unnamed>' panicked ... called
+  Result::unwrap() on an Err value: Os { code: 2, kind: NotFound, message: "No such file or
+  directory" }` — while re-reading `scores_2013.parquet` during propensity scoring inside
+  `_match_scored_year_by_exact_strata` (`psm_260915.py:2978`), i.e. deep in the matching
+  step, nowhere near `build_paper_summary_tables` or the death-count logic. Diagnosed before
+  retrying, not after: `scores_2013.parquet` had abnormal permissions (`-rwx------@` vs. the
+  normal `-rw-r--r--` on `scores_2012.parquet`) and a `com.apple.FinderInfo` extended
+  attribute the sibling file lacked — consistent with this laptop's working directory living
+  inside a live OneDrive-synced folder (`OneDrive-Personal/BiB/didi_testing`) whose sync
+  agent can transiently touch/relock a file the pipeline just wrote and immediately tries to
+  read back. Not a code regression: the file hash was already confirmed unchanged from the
+  verified `5bbe4a1` state above, and the crash site is unrelated to the edited function.
+- Retried with `bash scripts/run_stage.sh pipeline 0.01` alone (generate/validate/schema-check/gate
+  were already done for this scale) — **exit 0, clean**, no fatal tokens
+  (Traceback/MemoryError/Killed/NaN/Inf/xerr/OOM) in stdout+stderr, peak memory 3.50 GiB.
+- `python scripts/compare_preflight.py --run ... --scale 0.01` → 12 of 19 present strata
+  PASS, same as the documented baseline; `results/preflight_comparison_0.01.csv` byte-identical
+  to `HEAD`'s committed version (`git diff` empty).
+- `python scripts/make_report.py --scale 0.01` → exit 0, "Fatal/warning tokens found: none".
+
+### The four death-count invariants (against the fresh `paper_annual_panel_counts.csv`, 0.01 scale)
+
+1. **No lost deaths.** `sum(deaths_by_death_year)` across all 14 years = **25,240**. Unique
+   `simple_id` in `panels/analysis_panel.parquet` with non-null `rtwf_jjjj` = **25,240**.
+   **MATCH** — every decedent counted exactly once, none lost or double-counted in the
+   group-by/join.
+2. **Direction of the fix.** `sum(recorded_deaths_in_year)` = **6,046** ≤
+   `sum(deaths_by_death_year)` = **25,240**. Old definition undercounts, as designed; it
+   never overcounts.
+3. **No dropped/duplicate years.** 14 rows, 14 unique `ja` values, 0 null `ja`. Years where
+   `deaths_by_death_year > 0` but `person_year_rows == 0`: **0** — this synthetic run
+   happens not to contain that edge case at all, so this check confirms the outer join didn't
+   spuriously invent or corrupt a row, but does **not** positively exercise the
+   zero-person-year-rows rescue path the fix was written for (no such year exists in this
+   run's data to exercise it).
+4. **No regression elsewhere.** Compared column headers between this run's
+   `paper_annual_panel_counts.csv` and the pre-fix real-data export at
+   `export_20260911/4pct/260909/diagnostics/paper_summary_tables/paper_annual_panel_counts.csv`.
+   Old header (11 columns): `ja, person_year_rows, unique_people, first_observed_divorces,
+   qualifying_first_marriage_divorces, medical_rehabilitation_events,
+   people_with_medical_rehabilitation, msk_rehabilitation_events,
+   people_with_msk_rehabilitation, mental_health_rehabilitation_events,
+   recorded_deaths_in_year`. New header: identical 11 columns in the identical order, plus
+   exactly one new trailing column, `deaths_by_death_year`. Nothing else added, removed, or
+   reordered. Absolute values obviously differ (real data: ~2.9–3.1M person-year rows/year;
+   0.01-scale synthetic: ~150k–175k/year) — expected given synthetic vs. real data, not a
+   concern.
+
+### Verdict
+
+**Safe.** No code changed since the already-verified `5bbe4a1` commit (confirmed by hash
+before starting). The one pipeline failure encountered was diagnosed as an environmental
+OneDrive-sync file-locking issue unrelated to the death-count logic or any code path near it,
+and a clean retry (unchanged code, same config) succeeded with matching exit codes and no
+fatal tokens. All four requested numeric invariants on the death-count logic hold on real
+data from this run. `psm_260915.py` (both copies) is unchanged from `5bbe4a1` — nothing to
+recommit there. Rebuilt `didi_workbench_bundle.zip` to package the fresh, byte-identical-where-expected results.
