@@ -489,3 +489,299 @@ naming/columns, `checkpoint_row_group_size`, and the `xerr` plotting bug locatio
 needed before `generate_raw.py`, `make_config.py`, `memory_gate.py`, and
 `compare_preflight.py` can be written correctly. Findings will be appended below once it
 returns.
+
+## 2026-09-17 — hand-edited `psm_260915.py`: descriptive-statistics table + annual death-count fix
+
+The paper's author hand-edited `psm_260915.py` outside of Claude Code and asked for it to be
+verified the same way this bundle verifies everything else: diff, then fast checks, then the
+real local test ladder, compared against the documented baseline, before trusting it.
+
+### Step 1 — what changed, and a framing correction
+
+The request described `didi_workbench_bundle/psm_260915.py` as the last known-good, tested
+copy and the repo-root `psm_260915.py` as the hand-edited copy to diff against it and then
+copy in. Checking both files' SHA-256 against `MANIFEST.json` before touching anything showed
+the opposite is true:
+
+- Repo-root `psm_260915.py`: sha256 `1584052db3bcac0d241bbab58671d6af242c25a34f151bd335b2515251273546`
+  — byte-identical to `git HEAD` and to `MANIFEST.json`'s recorded `estimator.sha256`.
+  Untouched since 2026-09-15.
+- `didi_workbench_bundle/psm_260915.py`: sha256
+  `79913323979459633db82f254a747180a0293aec8850e95847f3696936fcb056` — the file `git status`
+  flags as modified (152 insertions / 27 deletions vs. `HEAD`), mtime 2026-09-17.
+
+So the hand-edit is in the bundle copy, not the root copy. Following the original Step 3
+instruction literally ("copy the edited root file into the bundle") would have overwritten the
+actual edit with the untouched pre-edit baseline. Did not do that — diffed and tested the
+bundle copy in place instead, since `run_stage.sh` already reads `psm_260915.py` from exactly
+that path.
+
+### Diff (`didi_workbench_bundle/psm_260915.py` vs. `git HEAD`)
+
+Two changes, both inside `build_paper_summary_tables` (plus one new function it calls):
+
+1. New `build_descriptive_statistics_table()`: a plain n/mean/median/SD/min/max (continuous)
+   and n/% (binary) table of the matched sample, pooled treated+control, reusing the same
+   feature lists and post-match frames as `build_balance_tables` so the two tables can't
+   silently disagree about which covariates or which matched population they describe. Wired
+   in as `paper_descriptive_statistics.csv` with its own `definitions` entry.
+2. Annual death-count fix: the old `recorded_deaths_in_year` counted a death only in a year
+   where the person also had an ordinary person-year row — an undercount, since most recorded
+   deaths occur strictly after a person's last annual record (per
+   `panel_coverage_diagnostics.csv`). New `deaths_by_death_year` counts each person once by
+   their person-level death year (`rtwf_jjjj`) via an outer join, so a death year with zero
+   ordinary person-year rows still surfaces as its own row. `recorded_deaths_in_year` is kept
+   only as a backward-compatible audit column. The `annual_death_count_definition` limitations
+   text was rewritten to say plainly: quote `deaths_by_death_year`, not
+   `recorded_deaths_in_year`.
+
+Full literal diff:
+
+```diff
+diff --git a/didi_workbench_bundle/psm_260915.py b/didi_workbench_bundle/psm_260915.py
+index ad7143e..3bc45c0 100644
+--- a/didi_workbench_bundle/psm_260915.py
++++ b/didi_workbench_bundle/psm_260915.py
+@@ -3399,6 +3399,81 @@ def build_balance_tables(
+     summary.write_csv(summary_path)
+     return {"detail": detail_path, "summary": summary_path}
+ 
++def build_descriptive_statistics_table(
++    config: PipelineConfig,
++    treated_path: str | Path,
++    controls_path: str | Path,
++    matches_path: str | Path,
++    output_path: str | Path,
++    force: bool = False,
++) -> Path:
++    """Classic n/mean/median/SD/min/max (continuous) and n/% (binary) table.
++
++    This is deliberately a *different* view of the same matched sample as
++    build_balance_tables: the balance table answers "did matching close the
++    gap between divorced people and their controls" (treated mean vs. control
++    mean vs. SMD). This function answers "what does the matched sample look
++    like overall" (pooled distributional summary), which a referee expects
++    to see as a plain sample-characteristics table alongside, not instead
++    of, the balance table. Reuses the same feature lists and the same
++    post-match analysis frames as build_balance_tables so the two tables can
++    never silently disagree about which covariates or which matched
++    population they describe.
++    """
++    output_path = Path(output_path)
++    if output_path.exists() and not force:
++        return output_path
++    common = set(pl.read_parquet_schema(treated_path)) & set(pl.read_parquet_schema(controls_path))
++    features = resolve_features(config, common)
++    frames = _analysis_frames(treated_path, controls_path, matches_path)
++    post_t, post_c = frames["post"]
++    # Fix an explicit column order before concatenating: the two source
++    # parquet files are not guaranteed to list columns in the same order,
++    # and relying on positional (rather than name-based) vertical concat
++    # would silently misalign columns rather than raising an error.
++    ordered_columns = sorted(common)
++    pooled = pl.concat(
++        [post_t.select(ordered_columns), post_c.select(ordered_columns)],
++        how="vertical",
++    )
++    rows: list[dict] = []
++    for variable in features.numeric:
++        valid = pooled.filter(pl.col(variable).is_not_null())
++        stats = valid.select([
++            pl.len().alias("n"),
++            pl.col(variable).mean().alias("mean"),
++            pl.col(variable).median().alias("median"),
++            pl.col(variable).std().alias("sd"),
++            pl.col(variable).min().alias("min"),
++            pl.col(variable).max().alias("max"),
++        ]).pipe(_safe_collect).row(0, named=True)
++        rows.append({
++            "variable": variable, "variable_type": "continuous",
++            "n": stats["n"], "mean": stats["mean"], "median": stats["median"],
++            "sd": stats["sd"], "min": stats["min"], "max": stats["max"],
++        })
++    for variable in features.binary:
++        valid = pooled.filter(pl.col(variable).is_not_null())
++        stats = valid.select([
++            pl.len().alias("n"),
++            (pl.col(variable).cast(pl.Float64).mean() * 100.0).alias("mean_pct"),
++        ]).pipe(_safe_collect).row(0, named=True)
++        rows.append({
++            "variable": variable, "variable_type": "binary",
++            "n": stats["n"], "mean": stats["mean_pct"],
++            "median": None, "sd": None, "min": None, "max": None,
++        })
++    table = pl.DataFrame(
++        rows,
++        schema={
++            "variable": pl.Utf8, "variable_type": pl.Utf8, "n": pl.Int64,
++            "mean": pl.Float64, "median": pl.Float64, "sd": pl.Float64,
++            "min": pl.Float64, "max": pl.Float64,
++        },
++    )
++    table.write_csv(output_path)
++    return output_path
++
+ def select_imbalanced_covariates(
+     config: PipelineConfig,
+     balance_summary_path: str | Path,
+@@ -3662,6 +3737,7 @@ def build_paper_summary_tables(
+     output_dir.mkdir(parents=True, exist_ok=True)
+     paths = {
+         "sample_overview": output_dir / "paper_sample_overview.csv",
++        "descriptive_statistics": output_dir / "paper_descriptive_statistics.csv",
+         "annual_panel": output_dir / "paper_annual_panel_counts.csv",
+         "divorce_cohorts": output_dir / "paper_divorce_and_matching_by_t0.csv",
+         "rehab_codes": output_dir / "paper_rehabilitation_codes.csv",
+@@ -3743,25 +3819,67 @@ def build_paper_summary_tables(
+         {"section": "rehabilitation", "metric": "people_with_any_mental_health_rehabilitation", "value": _scalar(any_mental, pl.col("simple_id").n_unique()), "unit": "people"},
+     ]
+     _write_metric_table(overview_rows, paths["sample_overview"])
++    build_descriptive_statistics_table(
++        config, treated_path, controls_path, matches_path,
++        paths["descriptive_statistics"], force=force,
++    )
++    annual_count_columns = [
++        "person_year_rows", "unique_people", "first_observed_divorces",
++        "qualifying_first_marriage_divorces", "medical_rehabilitation_events",
++        "people_with_medical_rehabilitation", "msk_rehabilitation_events",
++        "people_with_msk_rehabilitation", "mental_health_rehabilitation_events",
++        "recorded_deaths_in_year",
++    ]
++    annual_by_row_year = panel.group_by("ja").agg([
++        pl.len().alias("person_year_rows"),
++        pl.col("simple_id").n_unique().alias("unique_people"),
++        pl.col("first_divorce_this_year").sum().alias("first_observed_divorces"),
++        pl.col("qualifying_first_divorce_this_year").sum().alias(
++            "qualifying_first_marriage_divorces"
++        ),
++        pl.col("rehab_starts_this_year").sum().alias("medical_rehabilitation_events"),
++        pl.col("simple_id").filter(pl.col("rehab_starts_this_year") > 0)
++        .n_unique().alias("people_with_medical_rehabilitation"),
++        pl.col("msk_starts_this_year").sum().alias("msk_rehabilitation_events"),
++        pl.col("simple_id").filter(pl.col("msk_starts_this_year") > 0)
++        .n_unique().alias("people_with_msk_rehabilitation"),
++        pl.col("mental_health_rehab_starts_this_year").sum().alias(
++            "mental_health_rehabilitation_events"
++        ),
++        # Kept only as an audit trail against the old (buggy) definition: this counts a
++        # death only in a year where the person ALSO happens to have a person-year row.
++        # Per the panel-coverage diagnostics, most recorded deaths (rtwf_jjjj) occur
++        # strictly after a person's last annual record -- i.e. death does not require an
++        # annual record -- so this undercounts substantially and must not be quoted as
++        # "the" annual death count. See deaths_by_death_year below for the corrected count.
++        (pl.col("rtwf_jjjj") == pl.col("ja")).sum().alias("recorded_deaths_in_year"),
++    ])
++    # Corrected death count: take each person's death year exactly once (person-level
++    # attribute, per CANONICAL_DEFINITIONS / death_measure elsewhere in this file), then
++    # count by that year directly. This deliberately does NOT require the person to also
++    # have a person-year row in their death year -- a death that arrives after someone's
++    # last observed economic-activity record is still a real death in that calendar year.
++    death_year_per_person = (
++        panel.group_by("simple_id")
++        .agg(pl.col("rtwf_jjjj").drop_nulls().max().alias("death_year"))
++        .filter(pl.col("death_year").is_not_null())
++    )
++    deaths_by_death_year = (
++        death_year_per_person
++        .group_by("death_year")
++        .agg(pl.len().alias("deaths_by_death_year"))
++    )
++    # An outer join (not a left join) matters here: a death year with zero ordinary
++    # person-year rows anywhere in the panel (everyone who died that year had already
++    # stopped appearing beforehand) must still surface as its own row, or that year's
++    # deaths would silently vanish from the table rather than just being undercounted.
+     annual = (
+-        panel.group_by("ja")
+-        .agg([
+-            pl.len().alias("person_year_rows"),
+-            pl.col("simple_id").n_unique().alias("unique_people"),
+-            pl.col("first_divorce_this_year").sum().alias("first_observed_divorces"),
+-            pl.col("qualifying_first_divorce_this_year").sum().alias(
+-                "qualifying_first_marriage_divorces"
+-            ),
+-            pl.col("rehab_starts_this_year").sum().alias("medical_rehabilitation_events"),
+-            pl.col("simple_id").filter(pl.col("rehab_starts_this_year") > 0)
+-            .n_unique().alias("people_with_medical_rehabilitation"),
+-            pl.col("msk_starts_this_year").sum().alias("msk_rehabilitation_events"),
+-            pl.col("simple_id").filter(pl.col("msk_starts_this_year") > 0)
+-            .n_unique().alias("people_with_msk_rehabilitation"),
+-            pl.col("mental_health_rehab_starts_this_year").sum().alias(
+-                "mental_health_rehabilitation_events"
+-            ),
+-            (pl.col("rtwf_jjjj") == pl.col("ja")).sum().alias("recorded_deaths_in_year"),
++        annual_by_row_year
++        .join(deaths_by_death_year, left_on="ja", right_on="death_year", how="outer")
++        .with_columns(pl.coalesce(["ja", "death_year"]).alias("ja"))
++        .drop("death_year")
++        .with_columns([
++            pl.col(column).fill_null(0) for column in [*annual_count_columns, "deaths_by_death_year"]
+         ])
+         .sort("ja")
+         .pipe(_safe_collect)
+@@ -4520,14 +4638,20 @@ def build_paper_summary_tables(
+             "mentioned in prose."
+         ),
+         "annual_death_count_definition": (
+-            "recorded_deaths_in_year in paper_annual_panel_counts.csv counts person-year "
+-            "rows whose calendar year equals the person's death year (rtwf_jjjj). A death "
+-            "with no annual record in the death year is therefore not counted there "
+-            "(guideline open question 14.2: whether the register writes a row at the "
+-            "death year). Quantify the gap with deaths_recorded_after_last_annual_record "
+-            "in diagnostics/panel_coverage_diagnostics.csv before quoting annual death "
+-            "counts. Mortality follow-up and all mortality estimates are unaffected: the "
+-            "death year enters the outcome builders as a person-level attribute, not "
++            "paper_annual_panel_counts.csv now reports two different death counts; quote "
++            "deaths_by_death_year, not recorded_deaths_in_year. deaths_by_death_year "
++            "counts each person once, by their person-level death year (rtwf_jjjj), "
++            "regardless of whether that person also has an ordinary person-year row in "
++            "that year. recorded_deaths_in_year is kept only for backward-compatible "
++            "auditing: it counts person-year rows whose calendar year equals the death "
++            "year, so a death with no annual record in the death year was previously "
++            "invisible there entirely (resolved guideline open question 14.2: the "
++            "register does not reliably write a row at the death year -- per "
++            "panel_coverage_diagnostics.csv, most recorded deaths occur strictly after "
++            "the person's last annual record, so the old definition was not a minor "
++            "undercount). Mortality follow-up and all mortality estimates were always "
++            "unaffected by this: the death year enters the outcome builders as a "
++            "person-level attribute, not "
+             "through annual rows."
+         ),
+         "provisional_output_control": (
+@@ -4598,7 +4722,8 @@ def build_paper_summary_tables(
+         "files": {key: str(value) for key, value in paths.items() if key != "manifest"},
+         "definitions": {
+             "sample_overview": "Headline counts of the processed source panel: people, person-years, observation window, divorce and rehabilitation totals.",
+-            "annual_panel": "Annual person-year rows, unique people, divorces, rehabilitation events and recorded deaths; the annual death-count definition in the limitations file constrains how deaths may be quoted.",
++            "descriptive_statistics": "Classic n/mean/median/SD/min/max (continuous) and n/% (binary) summary of the matched (post-match) covariates, pooled across divorced individuals and their controls. Same feature list and same matched population as the balance table; use the balance table instead for the treated-vs-control comparison itself.",
++            "annual_panel": "Annual person-year rows, unique people, divorces, rehabilitation events and deaths by death year (deaths_by_death_year); the annual death-count definition in the limitations file explains why recorded_deaths_in_year is kept only as an audit column and must not be quoted.",
+             "divorce_cohorts": "Per treatment year t0: observed divorces, eligible treated and controls, matched pairs, match rate and matched-pair distance summaries.",
+             "rehab_codes": "Rehabilitation starts by broad diagnosis code with unique people, year span and event shares; small cells pooled per the limitations file.",
+             "rehab_codes_by_year": "Rehabilitation starts by calendar year and diagnosis code; small cells pooled per the limitations file.",
+```
+
+### Step 2 — fast checks (against `didi_workbench_bundle/psm_260915.py`, the actual edited file)
+
+- `python psm_260915.py --self-test` → **PASS**, exit 0. `{"status": "PASS", "rehab_code_relabel_verified": true, "legacy_signature_handling_verified": true, "main_models_finite": true, "longitudinal_mediation_finite": true, "matched_vs_unmatched_treated_table_created": true, "small_cell_pooling_rules_verified": true, ...}`
+- `python psm_260915.py --environment-check` → exit 0, `"error": null`, python 3.9.25 / polars 0.20.16 (matches the manifest's recorded `laptop_python_version`).
+- `python psm_260915.py --config results/config_0.01.yml --schema-check` → exit 0, `"missing_required_columns": []`.
+
+All three passed with no failures; proceeded to Step 3.
+
+### Steps 3-4 — full local test ladder, compared against the documented baseline
+
+- `bash scripts/run_stage.sh all 0.001` → `pipeline_0.001` exit 0; scanned stdout+stderr for `Traceback`/`MemoryError`/`Killed`/`NaN`/`Inf`/`xerr`/`OOM` — none found.
+- `python scripts/compare_preflight.py --run ... --scale 0.001` → 2 of 5 present strata FAIL (only 5/20 real strata present at all). **Not a regression** — this file already documents 0.001 as "not meaningful" for this check (see "Fixed structurally instead of chasing crash sites" above and `LOCAL_TEST_REPORT.md`'s 0.001 section): too few real strata have any synthetic counterpart at this scale for the comparison to mean anything, independent of the estimator.
+- `bash scripts/run_stage.sh all 0.01` → `pipeline_0.01` exit 0; same fatal-token scan — none found.
+- `python scripts/compare_preflight.py --run ... --scale 0.01` → **12 of 19 present strata PASS — exactly the documented baseline.** `results/preflight_comparison_0.01.csv` is byte-identical to the version already committed at `HEAD` (`git diff` against it is empty). This check measures the synthetic generator's calibration, not the estimator; the edit touches neither propensity scoring nor matching logic, so an unchanged result is exactly what should happen, not a coincidence.
+- `python scripts/make_report.py --scale 0.001` and `--scale 0.01` → both exit 0, "Fatal/warning tokens found: none"; appended sections match the existing report's structure and figure counts (8 PNG / 8 PDF at both scales, unchanged).
+- Inspected the two outputs the edit actually changes:
+  - `paper_descriptive_statistics.csv` (new, 0.01 scale): sensible values — e.g. `lag1_age` n=1766, mean=44.96, sd=9.74, min=21, max=74; binary rows report plausible percentages (e.g. 44.6% missing on `lag1_bygmgs_missing`, 0.96% on `lag1_ever_mental_health_rehab_to_date`).
+  - `paper_annual_panel_counts.csv` (0.01 scale): `deaths_by_death_year` (~1,880–2,000/yr) is roughly 4x the old `recorded_deaths_in_year` (~430–510/yr) — consistent with the diff's documented claim that most recorded deaths occur strictly after a person's last annual record.
+- `git status` after both runs shows only expected churn: `psm_260915.py` itself, `results/WORKBENCH_REPORT.md` (new appended sections, same structure as before), and run-specific logs/PIDs/memory-sample files that change on every run regardless of code content. No other tracked file moved unexpectedly.
+
+### Verdict
+
+**Safe to keep.** The edit is scoped exactly to `build_paper_summary_tables` and its one new helper function. Both changes are deliberate and explicable (a new descriptive-statistics table; a documented death-undercount fix), the Step-3 calibration check — which measures the synthetic generator, not this edit — is byte-for-byte unchanged from the pre-edit baseline, and both pipeline scales run clean end-to-end with matching exit codes and no fatal tokens. `MANIFEST.json`'s `estimator.sha256` and `FINAL_REPORT.md`'s SHA-256 section were updated to record the new hash
+(`79913323979459633db82f254a747180a0293aec8850e95847f3696936fcb056`) as a deliberate hand-edit
+by the paper's author, not a Claude Code change, alongside the existing Gate-2/xerr-fix
+history.

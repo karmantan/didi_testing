@@ -34,6 +34,7 @@
     },
     "paper_summary_tables": {
       "sample_overview": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/diagnostics/paper_summary_tables/paper_sample_overview.csv",
+      "descriptive_statistics": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/diagnostics/paper_summary_tables/paper_descriptive_statistics.csv",
       "annual_panel": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/diagnostics/paper_summary_tables/paper_annual_panel_counts.csv",
       "divorce_cohorts": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/diagnostics/paper_summary_tables/paper_divorce_and_matching_by_t0.csv",
       "rehab_codes": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/diagnostics/paper_summary_tables/paper_rehabilitation_codes.csv",
@@ -75,9 +76,9 @@
             -3,
             -2
           ],
-          "statistic": 0.8726975987691484,
+          "statistic": 0.8726975987686719,
           "degrees_of_freedom": 2,
-          "p_value": 0.6463922254000887
+          "p_value": 0.6463922254002428
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_non_success_app_this_year.csv"
       },
@@ -90,9 +91,9 @@
             -3,
             -2
           ],
-          "statistic": 18.79389838034517,
+          "statistic": 18.793898380347834,
           "degrees_of_freedom": 2,
-          "p_value": 8.297682631525312e-05
+          "p_value": 8.297682631514252e-05
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_entgelt_value.csv"
       },
@@ -105,9 +106,9 @@
             -3,
             -2
           ],
-          "statistic": 1.287778911092369,
+          "statistic": 1.2877789110925026,
           "degrees_of_freedom": 2,
-          "p_value": 0.5252455268381675
+          "p_value": 0.5252455268381324
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_rtzb_value.csv"
       },
@@ -120,9 +121,9 @@
             -3,
             -2
           ],
-          "statistic": 0.8912898314593642,
+          "statistic": 0.8912898314593113,
           "degrees_of_freedom": 2,
-          "p_value": 0.6404111316127303
+          "p_value": 0.6404111316127472
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_rtzb_missing.csv"
       },
@@ -135,9 +136,9 @@
             -3,
             -2
           ],
-          "statistic": 1.0235776655496767,
+          "statistic": 1.0235776655495286,
           "degrees_of_freedom": 2,
-          "p_value": 0.5994223528368275
+          "p_value": 0.5994223528368718
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42/analysis/event_study_not_yet_divorced_lag1_rehab_starts_this_year.csv"
       }
@@ -978,6 +979,7 @@
     },
     "paper_summary_tables": {
       "sample_overview": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_sample_overview.csv",
+      "descriptive_statistics": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_descriptive_statistics.csv",
       "annual_panel": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_annual_panel_counts.csv",
       "divorce_cohorts": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_divorce_and_matching_by_t0.csv",
       "rehab_codes": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/diagnostics/paper_summary_tables/paper_rehabilitation_codes.csv",
@@ -1019,9 +1021,9 @@
             -3,
             -2
           ],
-          "statistic": 0.8222565418768486,
+          "statistic": 0.8222565418765224,
           "degrees_of_freedom": 2,
-          "p_value": 0.6629018950988204
+          "p_value": 0.6629018950989285
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_non_success_app_this_year.csv"
       },
@@ -1034,9 +1036,9 @@
             -3,
             -2
           ],
-          "statistic": 12.17053889006408,
+          "statistic": 12.170538890063723,
           "degrees_of_freedom": 2,
-          "p_value": 0.0022761509440584393
+          "p_value": 0.0022761509440588465
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_entgelt_value.csv"
       },
@@ -1049,9 +1051,9 @@
             -3,
             -2
           ],
-          "statistic": 0.12171628324274827,
+          "statistic": 0.12171628324276983,
           "degrees_of_freedom": 2,
-          "p_value": 0.9409567129022947
+          "p_value": 0.9409567129022846
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_rtzb_value.csv"
       },
@@ -1064,9 +1066,9 @@
             -3,
             -2
           ],
-          "statistic": 0.07466286889288361,
+          "statistic": 0.07466286889289646,
           "degrees_of_freedom": 2,
-          "p_value": 0.9633567928060677
+          "p_value": 0.9633567928060615
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_rtzb_missing.csv"
       },
@@ -1079,9 +1081,9 @@
             -3,
             -2
           ],
-          "statistic": 1.8960086113804935,
+          "statistic": 1.8960086113804417,
           "degrees_of_freedom": 2,
-          "p_value": 0.3875136109822024
+          "p_value": 0.38751361098221254
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag1_common_2014_2018/analysis/event_study_not_yet_divorced_lag1_rehab_starts_this_year.csv"
       }
@@ -1920,6 +1922,7 @@
     },
     "paper_summary_tables": {
       "sample_overview": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_sample_overview.csv",
+      "descriptive_statistics": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_descriptive_statistics.csv",
       "annual_panel": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_annual_panel_counts.csv",
       "divorce_cohorts": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_divorce_and_matching_by_t0.csv",
       "rehab_codes": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/diagnostics/paper_summary_tables/paper_rehabilitation_codes.csv",
@@ -1961,9 +1964,9 @@
             -3,
             -2
           ],
-          "statistic": 0.10831979241117193,
+          "statistic": 0.10831979241118371,
           "degrees_of_freedom": 2,
-          "p_value": 0.9472806278136748
+          "p_value": 0.9472806278136692
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_non_success_app_this_year.csv"
       },
@@ -1976,9 +1979,9 @@
             -3,
             -2
           ],
-          "statistic": 1.6845752778680392,
+          "statistic": 1.684575277867993,
           "degrees_of_freedom": 2,
-          "p_value": 0.43072405440014305
+          "p_value": 0.4307240544001528
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_entgelt_value.csv"
       },
@@ -1991,9 +1994,9 @@
             -3,
             -2
           ],
-          "statistic": 0.8660431634448655,
+          "statistic": 0.8660431634449542,
           "degrees_of_freedom": 2,
-          "p_value": 0.6485464949035002
+          "p_value": 0.6485464949034715
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_rtzb_value.csv"
       },
@@ -2006,9 +2009,9 @@
             -3,
             -2
           ],
-          "statistic": 1.8822085276841332,
+          "statistic": 1.8822085276841707,
           "degrees_of_freedom": 2,
-          "p_value": 0.3901967172421126
+          "p_value": 0.3901967172421051
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_rtzb_missing.csv"
       },
@@ -2021,9 +2024,9 @@
             -3,
             -2
           ],
-          "statistic": 0.22157218833431583,
+          "statistic": 0.22157218833402348,
           "degrees_of_freedom": 2,
-          "p_value": 0.8951302020232
+          "p_value": 0.8951302020233309
         },
         "estimates_path": "/Users/tankarman/Library/CloudStorage/OneDrive-Personal/BiB/didi_testing/didi_data/runs/workbench_synthetic_0.01_seed42__lag3_common_2014_2018/analysis/event_study_not_yet_divorced_lag3_rehab_starts_this_year.csv"
       }

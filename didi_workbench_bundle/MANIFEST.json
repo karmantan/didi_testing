@@ -4,9 +4,10 @@
   "laptop_python_version": "3.9.25",
   "estimator": {
     "path": "psm_260915.py",
-    "sha256": "1584052db3bcac0d241bbab58671d6af242c25a34f151bd335b2515251273546",
+    "sha256": "79913323979459633db82f254a747180a0293aec8850e95847f3696936fcb056",
+    "pre_hand_edit_sha256": "1584052db3bcac0d241bbab58671d6af242c25a34f151bd335b2515251273546",
     "gate2_validated_sha256": "db6e6f0b15d5d27d9492e8098f1fc5e7a2d2c34045215fad08734a00de9c0ad0",
-    "note": "gate2_validated_sha256 is expected to differ -- see BUILD_LOG.md for the one commit (a7c52db) that separates them (an xerr plotting fix, not an estimator-logic change)."
+    "note": "sha256 reflects a deliberate hand-edit by the paper's author (not a Claude Code change) made 2026-09-17, adding a descriptive-statistics table and fixing an annual death-count undercount in build_paper_summary_tables; verified against the local test ladder, see BUILD_LOG.md. pre_hand_edit_sha256 is the value this field held before that edit (identical to gate2_validated_sha256's predecessor chain -- see BUILD_LOG.md for the one earlier commit, a7c52db, that separates pre_hand_edit_sha256 from gate2_validated_sha256: an xerr plotting fix, not an estimator-logic change)."
   },
   "file_count": 109,
   "files_sha256": {
@@ -50,7 +51,7 @@
     "export_20260911/20pct/260909/year_2018_audit.json": "920110ef664e8468bd5887d24831063bfbc916482e62b14d384d0b72409dfadb",
     "export_20260911/GATE2_REPORT.md": "5b3d1400e0a4588449ca4b618a936fa5de7c27b64bceef3266a4adb8031c46e2",
     "notebook/run_on_workbench.ipynb": "251d4aeec008be94bc8583e6b7153371fc5617be2aaa11e73eb0b122e911d03a",
-    "psm_260915.py": "1584052db3bcac0d241bbab58671d6af242c25a34f151bd335b2515251273546",
+    "psm_260915.py": "79913323979459633db82f254a747180a0293aec8850e95847f3696936fcb056",
     "requirements.txt": "9c574162b42f6048ecc22c4471a2d1d1969e3d18e42790ecbc76a3bb43863c5c",
     "results/WORKBENCH_REPORT.md": "c190d993599c21bf4318f1117a64dccd42d6c57be2b7be0d3237a46e6002cb6b",
     "results/config_0.001.yml": "5fdd3ef7009d9e21d857645c9beeeb0ffd4439c9e2521aa1b9c589786af58957",

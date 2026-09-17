@@ -1,19 +1,19 @@
 {
   "available_ram_gib": 24.0,
-  "basis_note": "projected from local run at scale 0.01 (results/pipeline_0.01_memory_samples.txt): 3.734 GiB at 2,115,938 rows",
-  "basis_peak_gib": 3.7343,
+  "basis_note": "projected from local run at scale 0.01 (results/pipeline_0.01_memory_samples.txt): 4.022 GiB at 2,115,938 rows",
+  "basis_peak_gib": 4.0216,
   "basis_rows": 2115938,
   "decision": "GO",
   "disk_needed_gib": 0.1165,
   "disk_ok": true,
-  "free_disk_gib": 709.5493,
+  "free_disk_gib": 721.303,
   "memory_ceiling_gib": 19.2,
   "memory_gate_fraction": 0.8,
   "memory_ok": true,
   "note": "optimal_match_sparse_max_edges is never raised above 100,000,000 to force a GO, regardless of this gate's outcome.",
   "optimal_match_sparse_max_edges": 100000000,
   "projected_output_gib": 0.0388,
-  "projected_peak_gib": 3.7343,
+  "projected_peak_gib": 4.0216,
   "scale": 0.01,
   "target_rows": 2115938
 }

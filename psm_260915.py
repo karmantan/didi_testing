@@ -3399,6 +3399,81 @@ def build_balance_tables(
     summary.write_csv(summary_path)
     return {"detail": detail_path, "summary": summary_path}
 
+def build_descriptive_statistics_table(
+    config: PipelineConfig,
+    treated_path: str | Path,
+    controls_path: str | Path,
+    matches_path: str | Path,
+    output_path: str | Path,
+    force: bool = False,
+) -> Path:
+    """Classic n/mean/median/SD/min/max (continuous) and n/% (binary) table.
+
+    This is deliberately a *different* view of the same matched sample as
+    build_balance_tables: the balance table answers "did matching close the
+    gap between divorced people and their controls" (treated mean vs. control
+    mean vs. SMD). This function answers "what does the matched sample look
+    like overall" (pooled distributional summary), which a referee expects
+    to see as a plain sample-characteristics table alongside, not instead
+    of, the balance table. Reuses the same feature lists and the same
+    post-match analysis frames as build_balance_tables so the two tables can
+    never silently disagree about which covariates or which matched
+    population they describe.
+    """
+    output_path = Path(output_path)
+    if output_path.exists() and not force:
+        return output_path
+    common = set(pl.read_parquet_schema(treated_path)) & set(pl.read_parquet_schema(controls_path))
+    features = resolve_features(config, common)
+    frames = _analysis_frames(treated_path, controls_path, matches_path)
+    post_t, post_c = frames["post"]
+    # Fix an explicit column order before concatenating: the two source
+    # parquet files are not guaranteed to list columns in the same order,
+    # and relying on positional (rather than name-based) vertical concat
+    # would silently misalign columns rather than raising an error.
+    ordered_columns = sorted(common)
+    pooled = pl.concat(
+        [post_t.select(ordered_columns), post_c.select(ordered_columns)],
+        how="vertical",
+    )
+    rows: list[dict] = []
+    for variable in features.numeric:
+        valid = pooled.filter(pl.col(variable).is_not_null())
+        stats = valid.select([
+            pl.len().alias("n"),
+            pl.col(variable).mean().alias("mean"),
+            pl.col(variable).median().alias("median"),
+            pl.col(variable).std().alias("sd"),
+            pl.col(variable).min().alias("min"),
+            pl.col(variable).max().alias("max"),
+        ]).pipe(_safe_collect).row(0, named=True)
+        rows.append({
+            "variable": variable, "variable_type": "continuous",
+            "n": stats["n"], "mean": stats["mean"], "median": stats["median"],
+            "sd": stats["sd"], "min": stats["min"], "max": stats["max"],
+        })
+    for variable in features.binary:
+        valid = pooled.filter(pl.col(variable).is_not_null())
+        stats = valid.select([
+            pl.len().alias("n"),
+            (pl.col(variable).cast(pl.Float64).mean() * 100.0).alias("mean_pct"),
+        ]).pipe(_safe_collect).row(0, named=True)
+        rows.append({
+            "variable": variable, "variable_type": "binary",
+            "n": stats["n"], "mean": stats["mean_pct"],
+            "median": None, "sd": None, "min": None, "max": None,
+        })
+    table = pl.DataFrame(
+        rows,
+        schema={
+            "variable": pl.Utf8, "variable_type": pl.Utf8, "n": pl.Int64,
+            "mean": pl.Float64, "median": pl.Float64, "sd": pl.Float64,
+            "min": pl.Float64, "max": pl.Float64,
+        },
+    )
+    table.write_csv(output_path)
+    return output_path
+
 def select_imbalanced_covariates(
     config: PipelineConfig,
     balance_summary_path: str | Path,
@@ -3662,6 +3737,7 @@ def build_paper_summary_tables(
     output_dir.mkdir(parents=True, exist_ok=True)
     paths = {
         "sample_overview": output_dir / "paper_sample_overview.csv",
+        "descriptive_statistics": output_dir / "paper_descriptive_statistics.csv",
         "annual_panel": output_dir / "paper_annual_panel_counts.csv",
         "divorce_cohorts": output_dir / "paper_divorce_and_matching_by_t0.csv",
         "rehab_codes": output_dir / "paper_rehabilitation_codes.csv",
@@ -3743,25 +3819,67 @@ def build_paper_summary_tables(
         {"section": "rehabilitation", "metric": "people_with_any_mental_health_rehabilitation", "value": _scalar(any_mental, pl.col("simple_id").n_unique()), "unit": "people"},
     ]
     _write_metric_table(overview_rows, paths["sample_overview"])
+    build_descriptive_statistics_table(
+        config, treated_path, controls_path, matches_path,
+        paths["descriptive_statistics"], force=force,
+    )
+    annual_count_columns = [
+        "person_year_rows", "unique_people", "first_observed_divorces",
+        "qualifying_first_marriage_divorces", "medical_rehabilitation_events",
+        "people_with_medical_rehabilitation", "msk_rehabilitation_events",
+        "people_with_msk_rehabilitation", "mental_health_rehabilitation_events",
+        "recorded_deaths_in_year",
+    ]
+    annual_by_row_year = panel.group_by("ja").agg([
+        pl.len().alias("person_year_rows"),
+        pl.col("simple_id").n_unique().alias("unique_people"),
+        pl.col("first_divorce_this_year").sum().alias("first_observed_divorces"),
+        pl.col("qualifying_first_divorce_this_year").sum().alias(
+            "qualifying_first_marriage_divorces"
+        ),
+        pl.col("rehab_starts_this_year").sum().alias("medical_rehabilitation_events"),
+        pl.col("simple_id").filter(pl.col("rehab_starts_this_year") > 0)
+        .n_unique().alias("people_with_medical_rehabilitation"),
+        pl.col("msk_starts_this_year").sum().alias("msk_rehabilitation_events"),
+        pl.col("simple_id").filter(pl.col("msk_starts_this_year") > 0)
+        .n_unique().alias("people_with_msk_rehabilitation"),
+        pl.col("mental_health_rehab_starts_this_year").sum().alias(
+            "mental_health_rehabilitation_events"
+        ),
+        # Kept only as an audit trail against the old (buggy) definition: this counts a
+        # death only in a year where the person ALSO happens to have a person-year row.
+        # Per the panel-coverage diagnostics, most recorded deaths (rtwf_jjjj) occur
+        # strictly after a person's last annual record -- i.e. death does not require an
+        # annual record -- so this undercounts substantially and must not be quoted as
+        # "the" annual death count. See deaths_by_death_year below for the corrected count.
+        (pl.col("rtwf_jjjj") == pl.col("ja")).sum().alias("recorded_deaths_in_year"),
+    ])
+    # Corrected death count: take each person's death year exactly once (person-level
+    # attribute, per CANONICAL_DEFINITIONS / death_measure elsewhere in this file), then
+    # count by that year directly. This deliberately does NOT require the person to also
+    # have a person-year row in their death year -- a death that arrives after someone's
+    # last observed economic-activity record is still a real death in that calendar year.
+    death_year_per_person = (
+        panel.group_by("simple_id")
+        .agg(pl.col("rtwf_jjjj").drop_nulls().max().alias("death_year"))
+        .filter(pl.col("death_year").is_not_null())
+    )
+    deaths_by_death_year = (
+        death_year_per_person
+        .group_by("death_year")
+        .agg(pl.len().alias("deaths_by_death_year"))
+    )
+    # An outer join (not a left join) matters here: a death year with zero ordinary
+    # person-year rows anywhere in the panel (everyone who died that year had already
+    # stopped appearing beforehand) must still surface as its own row, or that year's
+    # deaths would silently vanish from the table rather than just being undercounted.
     annual = (
-        panel.group_by("ja")
-        .agg([
-            pl.len().alias("person_year_rows"),
-            pl.col("simple_id").n_unique().alias("unique_people"),
-            pl.col("first_divorce_this_year").sum().alias("first_observed_divorces"),
-            pl.col("qualifying_first_divorce_this_year").sum().alias(
-                "qualifying_first_marriage_divorces"
-            ),
-            pl.col("rehab_starts_this_year").sum().alias("medical_rehabilitation_events"),
-            pl.col("simple_id").filter(pl.col("rehab_starts_this_year") > 0)
-            .n_unique().alias("people_with_medical_rehabilitation"),
-            pl.col("msk_starts_this_year").sum().alias("msk_rehabilitation_events"),
-            pl.col("simple_id").filter(pl.col("msk_starts_this_year") > 0)
-            .n_unique().alias("people_with_msk_rehabilitation"),
-            pl.col("mental_health_rehab_starts_this_year").sum().alias(
-                "mental_health_rehabilitation_events"
-            ),
-            (pl.col("rtwf_jjjj") == pl.col("ja")).sum().alias("recorded_deaths_in_year"),
+        annual_by_row_year
+        .join(deaths_by_death_year, left_on="ja", right_on="death_year", how="outer")
+        .with_columns(pl.coalesce(["ja", "death_year"]).alias("ja"))
+        .drop("death_year")
+        .with_columns([
+            pl.col(column).fill_null(0) for column in [*annual_count_columns, "deaths_by_death_year"]
         ])
         .sort("ja")
         .pipe(_safe_collect)
@@ -4520,14 +4638,20 @@ def build_paper_summary_tables(
             "mentioned in prose."
         ),
         "annual_death_count_definition": (
-            "recorded_deaths_in_year in paper_annual_panel_counts.csv counts person-year "
-            "rows whose calendar year equals the person's death year (rtwf_jjjj). A death "
-            "with no annual record in the death year is therefore not counted there "
-            "(guideline open question 14.2: whether the register writes a row at the "
-            "death year). Quantify the gap with deaths_recorded_after_last_annual_record "
-            "in diagnostics/panel_coverage_diagnostics.csv before quoting annual death "
-            "counts. Mortality follow-up and all mortality estimates are unaffected: the "
-            "death year enters the outcome builders as a person-level attribute, not "
+            "paper_annual_panel_counts.csv now reports two different death counts; quote "
+            "deaths_by_death_year, not recorded_deaths_in_year. deaths_by_death_year "
+            "counts each person once, by their person-level death year (rtwf_jjjj), "
+            "regardless of whether that person also has an ordinary person-year row in "
+            "that year. recorded_deaths_in_year is kept only for backward-compatible "
+            "auditing: it counts person-year rows whose calendar year equals the death "
+            "year, so a death with no annual record in the death year was previously "
+            "invisible there entirely (resolved guideline open question 14.2: the "
+            "register does not reliably write a row at the death year -- per "
+            "panel_coverage_diagnostics.csv, most recorded deaths occur strictly after "
+            "the person's last annual record, so the old definition was not a minor "
+            "undercount). Mortality follow-up and all mortality estimates were always "
+            "unaffected by this: the death year enters the outcome builders as a "
+            "person-level attribute, not "
             "through annual rows."
         ),
         "provisional_output_control": (
@@ -4598,7 +4722,8 @@ def build_paper_summary_tables(
         "files": {key: str(value) for key, value in paths.items() if key != "manifest"},
         "definitions": {
             "sample_overview": "Headline counts of the processed source panel: people, person-years, observation window, divorce and rehabilitation totals.",
-            "annual_panel": "Annual person-year rows, unique people, divorces, rehabilitation events and recorded deaths; the annual death-count definition in the limitations file constrains how deaths may be quoted.",
+            "descriptive_statistics": "Classic n/mean/median/SD/min/max (continuous) and n/% (binary) summary of the matched (post-match) covariates, pooled across divorced individuals and their controls. Same feature list and same matched population as the balance table; use the balance table instead for the treated-vs-control comparison itself.",
+            "annual_panel": "Annual person-year rows, unique people, divorces, rehabilitation events and deaths by death year (deaths_by_death_year); the annual death-count definition in the limitations file explains why recorded_deaths_in_year is kept only as an audit column and must not be quoted.",
             "divorce_cohorts": "Per treatment year t0: observed divorces, eligible treated and controls, matched pairs, match rate and matched-pair distance summaries.",
             "rehab_codes": "Rehabilitation starts by broad diagnosis code with unique people, year span and event shares; small cells pooled per the limitations file.",
             "rehab_codes_by_year": "Rehabilitation starts by calendar year and diagnosis code; small cells pooled per the limitations file.",

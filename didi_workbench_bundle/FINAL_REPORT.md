@@ -57,9 +57,9 @@ See `LOCAL_TEST_REPORT.md` for full detail; summarized here:
 
 ## Estimator SHA-256, before and after
 
-- Before (Gate-2-validated, per `export_20260911/GATE2_REPORT.md`):
+- Gate-2-validated (per `export_20260911/GATE2_REPORT.md`):
   `db6e6f0b15d5d27d9492e8098f1fc5e7a2d2c34045215fad08734a00de9c0ad0`
-- Local copy used to build and test this bundle:
+- Local copy used to build and test this bundle (post-`a7c52db` xerr fix):
   `1584052db3bcac0d241bbab58671d6af242c25a34f151bd335b2515251273546`
 - **These differ, and that is expected and explained**: the local copy includes one commit
   made after the Gate 2 run (`a7c52db`, "fix plotting when estimates fall outside boostrap
@@ -67,8 +67,29 @@ See `LOCAL_TEST_REPORT.md` for full detail; summarized here:
   risk. See `BUILD_LOG.md` for the full detail. The estimator was copied into the bundle
   byte-for-byte and never edited by this bundle-building process -- both hashes were computed
   from files, never asserted from memory.
-- After copying into the bundle (`didi_workbench_bundle/psm_260915.py`): identical to the
-  local copy above (verified: see `MANIFEST.json`).
+- After copying into the bundle (`didi_workbench_bundle/psm_260915.py`), as of the bundle
+  build referenced above: identical to the local copy above (verified: see `MANIFEST.json`).
+- **2026-09-17, deliberate hand-edit by the paper's author (not a Claude Code change)**:
+  `79913323979459633db82f254a747180a0293aec8850e95847f3696936fcb056`. Adds
+  `build_descriptive_statistics_table` (a plain n/mean/median/SD/min/max and n/% summary of
+  the matched sample, wired into `build_paper_summary_tables` as `paper_descriptive_statistics.csv`)
+  and fixes an annual-death undercount: `recorded_deaths_in_year` only counted a death when
+  the person also had an ordinary person-year row in their death year, which
+  `panel_coverage_diagnostics.csv` shows undercounts substantially since most recorded deaths
+  occur strictly after a person's last annual record. A new `deaths_by_death_year` column
+  (person-level death year, counted once, via an outer join so a death year with zero
+  ordinary person-year rows still surfaces) is now the correct count to quote;
+  `recorded_deaths_in_year` is kept only as a backward-compatible audit column. Mortality
+  follow-up and all mortality estimates were always unaffected, since death year enters the
+  outcome builders as a person-level attribute, not through annual rows. Verified via the
+  same fast-check + local-test-ladder process this bundle uses throughout: `--self-test`
+  PASS, `--environment-check` clean, `--schema-check` clean (no missing required columns);
+  full `run_stage.sh all` at 0.001 and 0.01 scale both exit 0 with no fatal tokens; the
+  0.01-scale Step-3 calibration check is still exactly 12 of 19 present strata PASS, and
+  `results/preflight_comparison_0.01.csv` is byte-identical to the pre-edit baseline (the
+  edit does not touch propensity scoring or matching logic, so this check is unaffected as
+  expected). Full diff, fast-check output, and test-ladder output logged in `BUILD_LOG.md`
+  under "2026-09-17 -- hand-edited psm_260915.py".
 
 ## The exact command sequence to run on Workbench
 
