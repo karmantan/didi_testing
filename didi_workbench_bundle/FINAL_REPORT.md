@@ -128,7 +128,7 @@ an estimate.
 
 ## Bundle size
 
-`didi_workbench_bundle.zip`: **424 KiB** (434,452 bytes), 119 files. Excludes `venv_didi/`
+`didi_workbench_bundle.zip`: **434 KiB** (444,798 bytes), 119 files. Excludes `venv_didi/`
 (a macOS-only Python environment that can't run on Workbench's Linux machine anyway --
 `scripts/setup_env.sh` builds a fresh one there), `scripts/__pycache__/`, and `.DS_Store`
 files. Includes `results/` (this bundle's own local-test logs/JSON/CSVs, for comparison

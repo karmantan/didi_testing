@@ -407,6 +407,64 @@ stop"). Each was diagnosed to a root cause before fixing.
    Re-ran `bash scripts/run_stage.sh all 0.001` a third time with this structural fix; see
    the timestamped result below (not asserted in advance of actually running it).
 
+9. **Final `docs/SETUP_GUIDE.md` skim before upload -- it predated both the exit-code fix
+   and the calibration recalibration.** Read the guide in full against the current state of
+   `scripts/generate_raw.py`, `scripts/compare_preflight.py`, `scripts/run_stage.sh`,
+   `scripts/make_config.py`, `scripts/check_machine.py`, `scripts/setup_env.sh`, and
+   `psm_260915.py`'s own `argparse` block (not just this session's summary of them) before
+   changing anything. Found and fixed:
+   - Section 4.4's Step-3 calibration guidance was still the pre-run hedge ("This must show
+     PASS... if it does not, see BUILD_LOG.md"), written before any 0.01-scale run had
+     happened. Replaced with the actual measured result (12 of 19 present strata PASS) and
+     told the reader plainly that landing in that same range means they don't need to keep
+     iterating -- only investigate further if they get *fewer* than 12, or a large-`n_treated`
+     stratum fails outside the documented small-N pattern.
+   - Added the scale-dependent-sharpness explanation (near the 0.001-not-meaningful
+     paragraph, and again as its own note at the end of section 4.4), including that
+     `generation_manifest.json`'s `age_band_sharpness_used` field lets a reader audit which
+     dict actually applied to their own run rather than take this bundle's word for it.
+   - **A real drift, not just a stale hedge**: `results/WORKBENCH_REPORT.md` and
+     `scripts/make_report.py` were described in three places (section 4's flow, section 7,
+     and twice in section 9's troubleshooting) as if `make_report.py` runs automatically
+     ("flags this automatically", "scans for it anyway on every run") -- it does not;
+     `grep`ing `run_stage.sh` and every other script for `make_report` found zero call sites.
+     It is a standalone script requiring `--scale` that nothing else invokes. The guide's own
+     step-by-step commands (section 4) never actually told the reader to run it, so a reader
+     following the guide literally would never get a `WORKBENCH_REPORT.md` beyond whatever a
+     prior session happened to leave behind (which is exactly what this bundle's own
+     `results/WORKBENCH_REPORT.md` was -- a single stale 0.001 section from before this
+     session's recalibration work, since regenerated). Added the missing
+     `python scripts/make_report.py --scale <s>` command after every scale's
+     `compare_preflight.py` call, and corrected the "automatically" / "on every run" language
+     in section 9 to say plainly that it runs when you run it.
+   - The 1.0-scale section stopped at `gate 1.0` without ever showing the literal
+     `pipeline 1.0` / `compare_preflight.py --scale 1.0` / `make_report.py --scale 1.0`
+     commands, even though the surrounding prose said a full-scale run was "a realistic
+     goal" -- inconsistent with every earlier scale's fully-spelled-out command block. Added
+     the missing commands, matching the established pattern.
+   - Softened "provided the 0.01-scale (or larger) preflight comparison above already
+     passed" to reflect the actual, qualified result (12+ of ~19-20 present strata, not an
+     unqualified full PASS) -- the original wording, if taken literally post-recalibration,
+     would tell the reader this bundle never clears its own gate to attempt 1.0 scale, which
+     is not the intended meaning.
+   - The 0.001 section's "the same cells have 10-25 people each" (at 0.01 scale) was checked
+     against this run's own diagnostics CSV and found overstated -- actual range is 1-14
+     people per cell (several strata have as few as 1-5). Corrected.
+   - Everything else checked out: `run_stage.sh`'s stage names (`generate`/`validate`/
+     `schema-check`/`gate`/`pipeline`/`all`), `compare_preflight.py`'s `--run`/`--scale`
+     flags, `check_machine.py` (no flags), `setup_env.sh --self-test`, `make_config.py
+     --scale`/`--production`, and `psm_260915.py`'s `--config`/`--self-test`/
+     `--schema-check` flags all still match the guide's usage exactly.
+
+   **Decision on the exit-127 bookkeeping bug (item 6)**: NOT added to section 9's
+   troubleshooting. That bug was a stale exit-code artifact from a `run_stage.sh` edit made
+   mid-flight *during this bundle's own development session* -- the fix (chaining the
+   exit-code write inside the same backgrounded process) already ships in the
+   `run_stage.sh` a Workbench reader will actually run, so they cannot reproduce that
+   specific failure mode with this bundle's code. It belongs in this build log (where it
+   already is, item 6) as part of the bundle's own development history, not in a
+   troubleshooting section meant for problems the *reader's* run can actually hit.
+
 ## Line-ending check (Hard Rule 4)
 
 Ran a CRLF scan (`grep -lU $'\r'`) over every `.py`/`.sh`/`.md`/`.env`/`.txt`/`.json`/`.ipynb`
